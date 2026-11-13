@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="zh-Hant" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Twinter Labs | Websites, Mobile Apps, Backend Systems & Expert Advisors</title>
-    <meta name="description" content="Full-spectrum digital product studio. We engineer and sell commercial websites, cross-platform mobile apps (Spirit Feeder), cloud backend systems, and audited MQL5 Expert Advisors.">
+    <title>Twinter Labs | 商業網站開發、行動應用程式、後端系統與量化交易 EA</title>
+    <meta name="description" content="全方位數位產品開發工作室。我們專精於設計與開發商業形象網站、跨平台行動應用程式（Spirit Feeder）、雲端後端系統，以及經過實盤數據驗證的 MQL5 量化交易程式（EA）。">
     <link rel="canonical" href="https://www.twinterlabs.com">
 
     <!-- Tailwind CSS -->
@@ -13,11 +13,11 @@
 
     <!-- Fonts -->
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Noto+Sans+TC:wght@400;500;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap');
         
-        .font-display { font-family: 'Space Grotesk', sans-serif; }
-        .font-mono { font-family: 'JetBrains Mono', monospace; }
-        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .font-display { font-family: 'Space Grotesk', 'Noto Sans TC', sans-serif; }
+        .font-mono { font-family: 'JetBrains Mono', 'Noto Sans TC', monospace; }
+        body { font-family: 'Plus Jakarta Sans', 'Noto Sans TC', sans-serif; }
 
         .terminal-glow {
             box-shadow: 0 0 40px rgba(6, 182, 212, 0.12);
@@ -39,12 +39,12 @@
                 <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
                 <span class="text-slate-300">TWINTER LABS STUDIO</span>
                 <span class="text-slate-600">|</span>
-                <span class="hidden sm:inline text-slate-400">CUSTOM WEB, MOBILE &amp; QUANT SYSTEMS</span>
+                <span class="hidden sm:inline text-slate-400" data-i18n="top_tagline">客製化網站 • 行動 APP • 後端架構 • 量化交易系統</span>
             </div>
             <div class="flex items-center gap-4">
                 <a href="mailto:Twinterlabs@gmail.com" class="text-slate-300 hover:text-cyan-400 transition">Twinterlabs@gmail.com</a>
                 <span class="text-slate-600">|</span>
-                <a href="#quick-request" class="text-cyan-400 hover:text-cyan-300 font-bold transition">START A BUILD (10% OFF CODE: ID) →</a>
+                <a href="#quick-request" class="text-cyan-400 hover:text-cyan-300 font-bold transition" data-i18n="top_cta">立即委託專案（輸入優惠碼 ID 享 9 折）→</a>
             </div>
         </div>
     </div>
@@ -58,27 +58,33 @@
                 </div>
                 <div>
                     <span class="font-display text-lg sm:text-xl font-bold tracking-tight text-white block">Twinter Labs</span>
-                    <span class="text-[9px] uppercase tracking-[0.25em] text-cyan-400 font-mono font-bold block -mt-0.5">Software & Systems Studio</span>
+                    <span class="text-[9px] uppercase tracking-[0.2em] text-cyan-400 font-mono font-bold block -mt-0.5" data-i18n="brand_sub">軟體與系統開發工作室</span>
                 </div>
             </a>
 
-            <div class="hidden lg:flex items-center gap-8 text-xs uppercase tracking-widest font-semibold text-slate-400">
-                <a href="#services" class="hover:text-cyan-400 transition">What We Build</a>
-                <a href="#apps" class="hover:text-cyan-400 transition">Mobile App Demo</a>
-                <a href="#portfolio" class="hover:text-cyan-400 transition">Live Websites</a>
-                <a href="#quant" class="hover:text-cyan-400 transition">Expert Advisors</a>
-                <a href="#quick-request" class="hover:text-cyan-400 transition">Submit Request</a>
+            <div class="hidden lg:flex items-center gap-7 text-xs uppercase tracking-widest font-semibold text-slate-400">
+                <a href="#services" class="hover:text-cyan-400 transition" data-i18n="nav_services">服務項目</a>
+                <a href="#apps" class="hover:text-cyan-400 transition" data-i18n="nav_apps">行動 APP 展示</a>
+                <a href="#portfolio" class="hover:text-cyan-400 transition" data-i18n="nav_portfolio">上線網站案例</a>
+                <a href="#quant" class="hover:text-cyan-400 transition" data-i18n="nav_quant">量化交易 EA</a>
+                <a href="#quick-request" class="hover:text-cyan-400 transition" data-i18n="nav_request">提交需求</a>
             </div>
 
             <div class="flex items-center gap-2.5">
-                <a href="https://line.me/ti/p/rsc69htRfX" target="_blank" title="Add on LINE" class="w-9 h-9 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-emerald-400 hover:border-emerald-500/50 transition">
+                <!-- Language Toggle Button -->
+                <button type="button" id="langToggleBtn" onclick="toggleLanguage()" class="px-3 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 border border-cyan-500/40 text-xs font-mono font-bold text-cyan-300 hover:text-white transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-language text-sm text-cyan-400"></i>
+                    <span id="langToggleText">English</span>
+                </button>
+
+                <a href="https://line.me/ti/p/rsc69htRfX" target="_blank" title="加入 LINE 好友" class="w-9 h-9 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-emerald-400 hover:border-emerald-500/50 transition">
                     <i class="fa-brands fa-line text-base"></i>
                 </a>
-                <a href="https://instagram.com/TwinterLabs" target="_blank" title="Instagram @TwinterLabs" class="w-9 h-9 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-pink-400 hover:border-pink-500/50 transition">
+                <a href="https://instagram.com/TwinterLabs" target="_blank" title="Instagram @TwinterLabs" class="hidden sm:flex w-9 h-9 rounded-xl bg-slate-900 border border-slate-800 items-center justify-center text-pink-400 hover:border-pink-500/50 transition">
                     <i class="fa-brands fa-instagram text-base"></i>
                 </a>
-                <a href="#quick-request" class="bg-cyan-500 hover:bg-cyan-400 text-black font-extrabold text-xs uppercase tracking-wider px-5 py-2.5 rounded-xl transition flex items-center gap-2 emerald-glow">
-                    <span>Order / Inquire</span>
+                <a href="#quick-request" class="bg-cyan-500 hover:bg-cyan-400 text-black font-extrabold text-xs uppercase tracking-wider px-4 sm:px-5 py-2.5 rounded-xl transition flex items-center gap-2 emerald-glow">
+                    <span data-i18n="nav_cta">立即諮詢</span>
                     <i class="fa-solid fa-bolt text-[11px]"></i>
                 </a>
             </div>
@@ -95,44 +101,44 @@
                 <div class="lg:col-span-7 space-y-6">
                     <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#0F172A] border border-cyan-500/30 text-cyan-400 font-mono text-xs">
                         <i class="fa-solid fa-layer-group text-[11px]"></i>
-                        <span>WEBSITES • APPS • SYSTEMS • ALGORITHMS</span>
+                        <span data-i18n="hero_badge">網站開發 • 行動 APP • 後端系統 • 量化演算法</span>
                     </div>
 
-                    <h1 class="font-display text-4xl sm:text-6xl lg:text-7xl font-bold text-white leading-[1.05] tracking-tight">
-                        We build & deploy <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-teal-300 to-emerald-400">custom software</span> that drives real business.
+                    <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-[1.15] tracking-tight" data-i18n="hero_title">
+                        我們打造並部署驅動商業成長的<span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-teal-300 to-emerald-400">客製化軟體系統</span>
                     </h1>
 
-                    <p class="text-slate-400 text-base sm:text-lg leading-relaxed max-w-2xl font-normal">
-                        Twinter Labs is a boutique development studio. We build and sell conversion-driven <strong>commercial websites</strong>, cross-platform <strong>mobile applications</strong>, scalable <strong>backend systems</strong>, and verified <strong>algorithmic trading Expert Advisors</strong>.
+                    <p class="text-slate-400 text-base sm:text-lg leading-relaxed max-w-2xl font-normal" data-i18n="hero_desc">
+                        Twinter Labs 是一間專注於高效能交付的軟體開發工作室。我們設計並開發高轉換率的<strong>商業形象網站</strong>、跨平台<strong>行動應用程式</strong>、高穩定度<strong>雲端後端系統</strong>，以及經過實盤歷史數據驗證的<strong>自動化交易程式（EA）</strong>。
                     </p>
 
                     <div class="pt-2 flex flex-col sm:flex-row gap-4">
                         <a href="#quick-request" class="bg-cyan-500 hover:bg-cyan-400 text-black font-extrabold text-xs uppercase tracking-widest px-8 py-4 rounded-xl shadow-xl transition flex items-center justify-center gap-2 emerald-glow">
-                            <span>Request a Build (10% Off Code: ID)</span>
+                            <span data-i18n="hero_btn_primary">提交專案需求（輸入優惠碼 ID 享 9 折）</span>
                             <i class="fa-solid fa-arrow-right text-xs"></i>
                         </a>
                         <a href="https://line.me/ti/p/rsc69htRfX" target="_blank" class="bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs uppercase tracking-widest px-8 py-4 rounded-xl shadow-md transition flex items-center justify-center gap-2 border border-slate-700">
                             <i class="fa-brands fa-line text-emerald-400 text-base"></i>
-                            <span>Connect on LINE</span>
+                            <span data-i18n="hero_btn_line">透過 LINE 直接聯繫</span>
                         </a>
                     </div>
 
                     <div class="grid grid-cols-4 gap-4 pt-6 border-t border-slate-800/80 font-mono">
                         <div>
                             <div class="text-xl sm:text-2xl font-bold text-white font-display">Web</div>
-                            <div class="text-[10px] text-slate-500 uppercase">Portals & Sites</div>
+                            <div class="text-[10px] text-slate-500 uppercase" data-i18n="stat_web">形象與預約網站</div>
                         </div>
                         <div>
                             <div class="text-xl sm:text-2xl font-bold text-cyan-400 font-display">Mobile</div>
-                            <div class="text-[10px] text-slate-500 uppercase">React Native</div>
+                            <div class="text-[10px] text-slate-500 uppercase" data-i18n="stat_mobile">iOS / Android 應用</div>
                         </div>
                         <div>
                             <div class="text-xl sm:text-2xl font-bold text-white font-display">APIs</div>
-                            <div class="text-[10px] text-slate-500 uppercase">FastAPI & Node</div>
+                            <div class="text-[10px] text-slate-500 uppercase" data-i18n="stat_api">FastAPI 與資料庫</div>
                         </div>
                         <div>
                             <div class="text-xl sm:text-2xl font-bold text-emerald-400 font-display">Quant</div>
-                            <div class="text-[10px] text-slate-500 uppercase">MQL5 Robots</div>
+                            <div class="text-[10px] text-slate-500 uppercase" data-i18n="stat_quant">MQL5 交易機器人</div>
                         </div>
                     </div>
                 </div>
@@ -141,8 +147,8 @@
                 <div class="lg:col-span-5">
                     <div class="bg-[#0D131F] rounded-3xl border border-slate-800 p-6 space-y-4 shadow-2xl terminal-glow">
                         <div class="flex items-center justify-between pb-3 border-b border-slate-800 font-mono text-xs">
-                            <span class="text-slate-400">STUDIO CATALOG</span>
-                            <span class="text-emerald-400 font-bold">READY TO DEPLOY</span>
+                            <span class="text-slate-400" data-i18n="panel_title">工作室產品與服務目錄</span>
+                            <span class="text-emerald-400 font-bold" data-i18n="panel_status">開放專案委託中</span>
                         </div>
                         
                         <div class="space-y-3">
@@ -152,11 +158,11 @@
                                         <i class="fa-solid fa-globe"></i>
                                     </div>
                                     <div>
-                                        <h4 class="text-sm font-bold text-white">Commercial Websites</h4>
-                                        <p class="text-[11px] text-slate-400">Custom portals, booking engines & landing pages</p>
+                                        <h4 class="text-sm font-bold text-white" data-i18n="panel_item1_t">商業網站與預約平台</h4>
+                                        <p class="text-[11px] text-slate-400" data-i18n="panel_item1_d">客製化品牌官網、預約表單與快速載入體驗</p>
                                     </div>
                                 </div>
-                                <span class="text-[10px] font-mono text-cyan-400 bg-cyan-950/60 px-2 py-1 rounded">Live</span>
+                                <span class="text-[10px] font-mono text-cyan-400 bg-cyan-950/60 px-2 py-1 rounded" data-i18n="panel_tag1">已上線</span>
                             </div>
 
                             <div class="p-3.5 rounded-xl bg-amber-950/20 border border-amber-900/40 flex items-center justify-between">
@@ -165,11 +171,11 @@
                                         <i class="fa-solid fa-gamepad"></i>
                                     </div>
                                     <div>
-                                        <h4 class="text-sm font-bold text-white">Spirit Feeder (Mobile App)</h4>
-                                        <p class="text-[11px] text-slate-400">Gamified scripture pet RPG in React Native</p>
+                                        <h4 class="text-sm font-bold text-white" data-i18n="panel_item2_t">Spirit Feeder（行動應用程式）</h4>
+                                        <p class="text-[11px] text-slate-400" data-i18n="panel_item2_d">React Native 開發之遊戲化養成 RPG</p>
                                     </div>
                                 </div>
-                                <span class="text-[10px] font-mono text-amber-400 bg-amber-950/60 px-2 py-1 rounded border border-amber-800/60">Video Demo</span>
+                                <span class="text-[10px] font-mono text-amber-400 bg-amber-950/60 px-2 py-1 rounded border border-amber-800/60" data-i18n="panel_tag2">實機演示</span>
                             </div>
 
                             <div class="p-3.5 rounded-xl bg-slate-900/90 border border-slate-800/80 flex items-center justify-between">
@@ -178,11 +184,11 @@
                                         <i class="fa-solid fa-server"></i>
                                     </div>
                                     <div>
-                                        <h4 class="text-sm font-bold text-white">Backend Systems & APIs</h4>
-                                        <p class="text-[11px] text-slate-400">FastAPI, Python, SQLite/Postgres schemas</p>
+                                        <h4 class="text-sm font-bold text-white" data-i18n="panel_item3_t">後端系統與 API 架構</h4>
+                                        <p class="text-[11px] text-slate-400" data-i18n="panel_item3_d">FastAPI、Python 與高併發資料庫設計</p>
                                     </div>
                                 </div>
-                                <span class="text-[10px] font-mono text-cyan-400 bg-cyan-950/60 px-2 py-1 rounded">Fast</span>
+                                <span class="text-[10px] font-mono text-cyan-400 bg-cyan-950/60 px-2 py-1 rounded" data-i18n="panel_tag3">高效能</span>
                             </div>
 
                             <div class="p-3.5 rounded-xl bg-slate-900/90 border border-emerald-900/50 flex items-center justify-between">
@@ -191,16 +197,16 @@
                                         <i class="fa-solid fa-robot"></i>
                                     </div>
                                     <div>
-                                        <h4 class="text-sm font-bold text-white">MQL5 Expert Advisors</h4>
-                                        <p class="text-[11px] text-slate-400">Audited 3.14 PF trend strategy & custom robots</p>
+                                        <h4 class="text-sm font-bold text-white" data-i18n="panel_item4_t">MQL5 量化交易程式（EA）</h4>
+                                        <p class="text-[11px] text-slate-400" data-i18n="panel_item4_d">獲利因子 3.14 驗證策略與客製化機器人</p>
                                     </div>
                                 </div>
-                                <span class="text-[10px] font-mono text-emerald-400 bg-emerald-950/60 px-2 py-1 rounded border border-emerald-800">Verified</span>
+                                <span class="text-[10px] font-mono text-emerald-400 bg-emerald-950/60 px-2 py-1 rounded border border-emerald-800" data-i18n="panel_tag4">已驗證</span>
                             </div>
                         </div>
 
                         <div class="pt-2 text-center">
-                            <a href="#quick-request" class="text-xs font-mono text-cyan-400 hover:text-cyan-300 font-bold transition">Apply Promo Code & Commission Build →</a>
+                            <a href="#quick-request" class="text-xs font-mono text-cyan-400 hover:text-cyan-300 font-bold transition" data-i18n="panel_footer_cta">輸入優惠碼 ID 立即享 9 折優惠 →</a>
                         </div>
                     </div>
                 </div>
@@ -216,11 +222,11 @@
             <div class="max-w-3xl mx-auto text-center mb-16 space-y-3">
                 <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-950/80 border border-amber-800/60 text-amber-400 font-mono text-xs">
                     <i class="fa-solid fa-mobile-screen"></i>
-                    <span>MOBILE APPLICATION SHOWCASE • BUILT IN-HOUSE</span>
+                    <span data-i18n="app_badge">行動應用程式實機展示 • 工作室自主研發</span>
                 </div>
                 <h2 class="font-display text-3xl sm:text-5xl font-bold text-white">Spirit Feeder</h2>
-                <p class="text-slate-400 text-xs sm:text-sm">
-                    A cross-platform mobile pet RPG engineered with React Native, Expo Router, and a FastAPI backend. Hatch biblical companions (Lion, Donkey, Raven, Camel), feed your spirit with scripture reading, level up, battle serpents through verse quizzes, and customize your sanctuary.
+                <p class="text-slate-400 text-xs sm:text-sm leading-relaxed" data-i18n="app_intro">
+                    採用 React Native、Expo Router 與 FastAPI 後端打造的跨平台寵物養成 RPG 應用程式。孵化專屬夥伴（獅子、驢子、烏鴉、駱駝），透過每日閱讀經文獲取糧食與經驗值升級進化，進行問答對戰並自由布置專屬聖殿空間。
                 </p>
             </div>
 
@@ -244,10 +250,10 @@
 
                 <div class="lg:col-span-7 space-y-6">
                     <div>
-                        <span class="text-xs font-mono text-amber-400 uppercase tracking-widest block font-bold">In-House Product Engineering</span>
-                        <h3 class="font-display text-2xl sm:text-3xl font-bold text-white mt-1">"Feed your pet. Feed your spirit."</h3>
-                        <p class="text-slate-400 text-xs sm:text-sm mt-2 leading-relaxed">
-                            Watch the live app walkthrough demonstrating our end-to-end mobile engineering capabilities: custom pixel art UI components, gamified scripture reward systems, dynamic level progression, and quiz battle engines.
+                        <span class="text-xs font-mono text-amber-400 uppercase tracking-widest block font-bold" data-i18n="app_sub">全端行動產品開發實力</span>
+                        <h3 class="font-display text-2xl sm:text-3xl font-bold text-white mt-1" data-i18n="app_quote">「餵養你的夥伴，滋養你的靈命。」</h3>
+                        <p class="text-slate-400 text-xs sm:text-sm mt-2 leading-relaxed" data-i18n="app_desc">
+                            觀看實機操作影片，了解我們從前端像素美術介面、遊戲化獎勵機制、動態等級成長系統到後端 API 與資料庫設計的完整開發能力。
                         </p>
                     </div>
 
@@ -255,56 +261,56 @@
                         <div class="bg-[#0D131F] p-4 rounded-2xl border border-slate-800 space-y-2">
                             <div class="flex items-center gap-2 text-amber-400 font-display font-bold text-sm">
                                 <i class="fa-solid fa-egg"></i>
-                                <span>Hatch & Evolve Companions</span>
+                                <span data-i18n="app_f1_t">孵化與三階段進化系統</span>
                             </div>
-                            <p class="text-xs text-slate-400 leading-relaxed">
-                                Select from Biblical pets (Lion, Donkey, Raven, Camel) and watch them evolve from Baby to Teen (Lv 30) and Grown-Up (Lv 60).
+                            <p class="text-xs text-slate-400 leading-relaxed" data-i18n="app_f1_d">
+                                選擇不同夥伴（獅子、驢子、烏鴉、駱駝），隨著等級提升從幼年期一路進化至青年期（Lv 30）與完全體（Lv 60）。
                             </p>
                         </div>
 
                         <div class="bg-[#0D131F] p-4 rounded-2xl border border-slate-800 space-y-2">
                             <div class="flex items-center gap-2 text-amber-400 font-display font-bold text-sm">
                                 <i class="fa-solid fa-book-bible"></i>
-                                <span>Read Scripture to Earn Bread</span>
+                                <span data-i18n="app_f2_t">閱讀經文獲取糧食與經驗</span>
                             </div>
-                            <p class="text-xs text-slate-400 leading-relaxed">
-                                Integrated Bible reader passes verses and rewards players with nourishment to keep their companion fed and earning bonus XP.
+                            <p class="text-xs text-slate-400 leading-relaxed" data-i18n="app_f2_d">
+                                內建完整經文閱讀器，完成每日閱讀進度即可獲得糧食道具餵養寵物，累積額外經驗值獎勵。
                             </p>
                         </div>
 
                         <div class="bg-[#0D131F] p-4 rounded-2xl border border-slate-800 space-y-2">
                             <div class="flex items-center gap-2 text-amber-400 font-display font-bold text-sm">
                                 <i class="fa-solid fa-shield-virus"></i>
-                                <span>Battle with the Word</span>
+                                <span data-i18n="app_f3_t">經文填空對戰引擎</span>
                             </div>
-                            <p class="text-xs text-slate-400 leading-relaxed">
-                                Real-time verse fill-in-the-blank quizzes to combat serpents and unlock rare inventory and holy artifacts.
+                            <p class="text-xs text-slate-400 leading-relaxed" data-i18n="app_f3_d">
+                                即時經文填空問答挑戰機制，擊敗試煉敵人並解鎖稀有裝備與聖殿收藏品。
                             </p>
                         </div>
 
                         <div class="bg-[#0D131F] p-4 rounded-2xl border border-slate-800 space-y-2">
                             <div class="flex items-center gap-2 text-amber-400 font-display font-bold text-sm">
                                 <i class="fa-solid fa-shirt"></i>
-                                <span>Custom Outfits & Sanctum</span>
+                                <span data-i18n="app_f4_t">專屬服飾與房間布置</span>
                             </div>
-                            <p class="text-xs text-slate-400 leading-relaxed">
-                                Equippable biblical garments, priestly crowns, and customizable stained-glass room decorations.
+                            <p class="text-xs text-slate-400 leading-relaxed" data-i18n="app_f4_d">
+                                自由替夥伴搭配特色服飾、王冠配件，並自訂彩繪玻璃與聖殿背景裝飾。
                             </p>
                         </div>
                     </div>
 
                     <div class="p-4 rounded-2xl bg-[#0D131F] border border-slate-800 font-mono text-xs flex flex-wrap items-center gap-2 text-slate-300">
-                        <span class="text-slate-500 font-bold mr-2">BUILT WITH:</span>
+                        <span class="text-slate-500 font-bold mr-2" data-i18n="built_with">採用技術棧：</span>
                         <span class="bg-slate-900 px-3 py-1 rounded-lg border border-slate-800 text-cyan-400">React Native</span>
                         <span class="bg-slate-900 px-3 py-1 rounded-lg border border-slate-800 text-cyan-400">Expo Router</span>
                         <span class="bg-slate-900 px-3 py-1 rounded-lg border border-slate-800 text-yellow-400">FastAPI</span>
-                        <span class="bg-slate-900 px-3 py-1 rounded-lg border border-slate-800 text-blue-400">SQLite Schemas</span>
+                        <span class="bg-slate-900 px-3 py-1 rounded-lg border border-slate-800 text-blue-400">SQLite / REST API</span>
                     </div>
 
                     <div class="pt-2 flex flex-col sm:flex-row gap-4">
                         <a href="#quick-request" onclick="selectService('Mobile Application (React Native / Expo)')" class="py-3.5 px-6 bg-cyan-500 hover:bg-cyan-400 text-black font-extrabold text-xs uppercase tracking-wider rounded-xl transition flex items-center justify-center gap-2 font-mono emerald-glow">
                             <i class="fa-solid fa-mobile-screen"></i>
-                            <span>Commission a Custom Mobile App</span>
+                            <span data-i18n="app_cta">委託開發客製化行動 APP</span>
                         </a>
                     </div>
                 </div>
@@ -318,9 +324,9 @@
     <section id="services" class="py-24 bg-[#080B11] border-t border-slate-800/80">
         <div class="max-w-7xl mx-auto px-6">
             <div class="max-w-2xl mb-16 space-y-2">
-                <span class="text-xs font-mono font-bold uppercase tracking-widest text-cyan-400">Our Offerings</span>
-                <h2 class="font-display text-3xl sm:text-4xl font-bold text-white">What We Build & Sell</h2>
-                <p class="text-slate-400 text-xs sm:text-sm">From complete client websites to mission-critical backend microservices and automated trading robots, we build end-to-end solutions.</p>
+                <span class="text-xs font-mono font-bold uppercase tracking-widest text-cyan-400" data-i18n="srv_badge">核心服務項目</span>
+                <h2 class="font-display text-3xl sm:text-4xl font-bold text-white" data-i18n="srv_title">我們開發與銷售的產品</h2>
+                <p class="text-slate-400 text-xs sm:text-sm" data-i18n="srv_desc">從高轉換率的企業形象網站、跨平台手機應用程式到高穩定度後端微服務與量化交易機器人，提供一站式完整技術交付。</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -331,18 +337,18 @@
                         <div class="w-12 h-12 rounded-xl bg-cyan-950/80 text-cyan-400 flex items-center justify-center text-xl border border-cyan-800">
                             <i class="fa-solid fa-globe"></i>
                         </div>
-                        <h3 class="font-display text-lg font-bold text-white">Websites & Platforms</h3>
-                        <p class="text-slate-400 text-xs leading-relaxed">
-                            Bespoke, conversion-engineered commercial websites, product landing pages, and interactive client intake portals built with zero bloat and instant load times.
+                        <h3 class="font-display text-lg font-bold text-white" data-i18n="srv1_t">商業網站與預約平台</h3>
+                        <p class="text-slate-400 text-xs leading-relaxed" data-i18n="srv1_d">
+                            專為企業與品牌打造的客製化官網、產品銷售頁與線上預約系統，具備極速載入效能與高轉換介面設計。
                         </p>
                         <ul class="text-xs text-slate-400 space-y-1.5 pt-2 border-t border-slate-800 font-mono">
-                            <li>• High conversion UX layout</li>
-                            <li>• 1-tap WhatsApp & Form dispatch</li>
-                            <li>• Custom domain, DNS & SSL included</li>
+                            <li data-i18n="srv1_b1">• 高轉換率 RWD 響應式版面</li>
+                            <li data-i18n="srv1_b2">• 整合表單自動寄信與 LINE 聯繫</li>
+                            <li data-i18n="srv1_b3">• 專屬網域設定、DNS 與 SSL 憑證</li>
                         </ul>
                     </div>
-                    <a href="#quick-request" onclick="selectService('Commercial Website / Web Platform')" class="w-full py-3 bg-slate-900 hover:bg-slate-800 text-cyan-400 text-xs font-bold font-mono uppercase tracking-wider text-center rounded-xl transition border border-slate-800">
-                        Order Website →
+                    <a href="#quick-request" onclick="selectService('Commercial Website / Web Platform')" class="w-full py-3 bg-slate-900 hover:bg-slate-800 text-cyan-400 text-xs font-bold font-mono uppercase tracking-wider text-center rounded-xl transition border border-slate-800" data-i18n="srv1_cta">
+                        委託製作網站 →
                     </a>
                 </div>
 
@@ -352,18 +358,18 @@
                         <div class="w-12 h-12 rounded-xl bg-cyan-950/80 text-cyan-400 flex items-center justify-center text-xl border border-cyan-800">
                             <i class="fa-solid fa-mobile-screen-button"></i>
                         </div>
-                        <h3 class="font-display text-lg font-bold text-white">Mobile Applications</h3>
-                        <p class="text-slate-400 text-xs leading-relaxed">
-                            Cross-platform iOS and Android applications developed in React Native and Expo (see Spirit Feeder demo). Fluid gestures, offline persistence, and seamless cloud syncing.
+                        <h3 class="font-display text-lg font-bold text-white" data-i18n="srv2_t">跨平台行動應用程式</h3>
+                        <p class="text-slate-400 text-xs leading-relaxed" data-i18n="srv2_d">
+                            使用 React Native 與 Expo 開發同步支援 iOS 與 Android 的手機 APP（參考上方 Spirit Feeder 實機展示），流暢操作與雲端同步。
                         </p>
                         <ul class="text-xs text-slate-400 space-y-1.5 pt-2 border-t border-slate-800 font-mono">
-                            <li>• React Native & Expo Router</li>
-                            <li>• Single codebase for iOS & Android</li>
-                            <li>• Real-time REST/WebSocket sync</li>
+                            <li data-i18n="srv2_b1">• 單一程式碼庫支援雙平台</li>
+                            <li data-i18n="srv2_b2">• 離線資料儲存與推播整合</li>
+                            <li data-i18n="srv2_b3">• 即時 REST / WebSocket 資料同步</li>
                         </ul>
                     </div>
-                    <a href="#quick-request" onclick="selectService('Mobile Application (React Native / Expo)')" class="w-full py-3 bg-slate-900 hover:bg-slate-800 text-cyan-400 text-xs font-bold font-mono uppercase tracking-wider text-center rounded-xl transition border border-slate-800">
-                        Order Mobile App →
+                    <a href="#quick-request" onclick="selectService('Mobile Application (React Native / Expo)')" class="w-full py-3 bg-slate-900 hover:bg-slate-800 text-cyan-400 text-xs font-bold font-mono uppercase tracking-wider text-center rounded-xl transition border border-slate-800" data-i18n="srv2_cta">
+                        委託開發 APP →
                     </a>
                 </div>
 
@@ -373,18 +379,18 @@
                         <div class="w-12 h-12 rounded-xl bg-cyan-950/80 text-cyan-400 flex items-center justify-center text-xl border border-cyan-800">
                             <i class="fa-solid fa-server"></i>
                         </div>
-                        <h3 class="font-display text-lg font-bold text-white">Backend Systems & APIs</h3>
-                        <p class="text-slate-400 text-xs leading-relaxed">
-                            Robust cloud backend infrastructure with Python (FastAPI) and Node.js. Secure token authentication, database schemas, and external service webhooks.
+                        <h3 class="font-display text-lg font-bold text-white" data-i18n="srv3_t">後端系統與 API 基礎設施</h3>
+                        <p class="text-slate-400 text-xs leading-relaxed" data-i18n="srv3_d">
+                            採用 Python (FastAPI) 與 Node.js 建構高穩定度雲端後端架構，包含安全驗證機制、關聯式資料庫設計與自動化排程。
                         </p>
                         <ul class="text-xs text-slate-400 space-y-1.5 pt-2 border-t border-slate-800 font-mono">
-                            <li>• High-concurrency RESTful APIs</li>
-                            <li>• SQLite & PostgreSQL schemas</li>
-                            <li>• Automated server & cron pipelines</li>
+                            <li data-i18n="srv3_b1">• 高併發非同步 RESTful API</li>
+                            <li data-i18n="srv3_b2">• PostgreSQL / SQLite 資料庫架構</li>
+                            <li data-i18n="srv3_b3">• 第三方金流與 Webhook 串接</li>
                         </ul>
                     </div>
-                    <a href="#quick-request" onclick="selectService('Custom Backend & API Infrastructure')" class="w-full py-3 bg-slate-900 hover:bg-slate-800 text-cyan-400 text-xs font-bold font-mono uppercase tracking-wider text-center rounded-xl transition border border-slate-800">
-                        Order Backend System →
+                    <a href="#quick-request" onclick="selectService('Custom Backend & API Infrastructure')" class="w-full py-3 bg-slate-900 hover:bg-slate-800 text-cyan-400 text-xs font-bold font-mono uppercase tracking-wider text-center rounded-xl transition border border-slate-800" data-i18n="srv3_cta">
+                        委託建置後端 →
                     </a>
                 </div>
 
@@ -394,18 +400,18 @@
                         <div class="w-12 h-12 rounded-xl bg-emerald-950/80 text-emerald-400 flex items-center justify-center text-xl border border-emerald-800">
                             <i class="fa-solid fa-robot"></i>
                         </div>
-                        <h3 class="font-display text-lg font-bold text-white">Expert Advisors (MT5)</h3>
-                        <p class="text-slate-400 text-xs leading-relaxed">
-                            Automated trading robots engineered in MQL5. Rigorous tick-level backtesting, ATR trailing stops, volatility management, and prop-firm compliance.
+                        <h3 class="font-display text-lg font-bold text-white" data-i18n="srv4_t">MT5 量化交易程式（EA）</h3>
+                        <p class="text-slate-400 text-xs leading-relaxed" data-i18n="srv4_d">
+                            以 MQL5 編寫的自動化交易機器人，具備嚴謹的 100% 真實 Tick 回測驗證、ATR 動態移動停損與自營商（Prop-Firm）風控機制。
                         </p>
                         <ul class="text-xs text-slate-400 space-y-1.5 pt-2 border-t border-slate-800 font-mono">
-                            <li>• Buy ready-made AutoTrendEA v2.0</li>
-                            <li>• Commission custom EA to your rules</li>
-                            <li>• 100% tick modeling backtesting</li>
+                            <li data-i18n="srv4_b1">• 直接購買現成 AutoTrendEA v2.0</li>
+                            <li data-i18n="srv4_b2">• 依照您的策略規則客製化編寫</li>
+                            <li data-i18n="srv4_b3">• 完整歷史 Tick 數據回測報告</li>
                         </ul>
                     </div>
-                    <a href="#quant" class="w-full py-3 bg-emerald-950 hover:bg-emerald-900 text-emerald-300 text-xs font-bold font-mono uppercase tracking-wider text-center rounded-xl transition border border-emerald-800">
-                        View EA Proof & Order →
+                    <a href="#quant" class="w-full py-3 bg-emerald-950 hover:bg-emerald-900 text-emerald-300 text-xs font-bold font-mono uppercase tracking-wider text-center rounded-xl transition border border-emerald-800" data-i18n="srv4_cta">
+                        查看回測報告與購買 →
                     </a>
                 </div>
 
@@ -418,11 +424,11 @@
         <div class="max-w-7xl mx-auto px-6">
             <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
                 <div>
-                    <span class="text-xs font-mono font-bold uppercase tracking-widest text-cyan-400">Live Client Demonstrations</span>
-                    <h2 class="font-display text-3xl sm:text-5xl font-bold text-white mt-2">Production Websites We've Built</h2>
+                    <span class="text-xs font-mono font-bold uppercase tracking-widest text-cyan-400" data-i18n="port_badge">線上商業案例展示</span>
+                    <h2 class="font-display text-3xl sm:text-5xl font-bold text-white mt-2" data-i18n="port_title">已上線交付的客戶網站</h2>
                 </div>
-                <p class="text-slate-400 text-xs max-w-md font-mono">
-                    Test live commercial client websites engineered, configured, and deployed by Twinter Labs.
+                <p class="text-slate-400 text-xs max-w-md font-mono" data-i18n="port_desc">
+                    直接點擊體驗由 Twinter Labs 設計、設定網域並正式部署上線的國際客戶商業平台。
                 </p>
             </div>
 
@@ -432,23 +438,23 @@
                 <div class="bg-[#0D131F] rounded-3xl border border-slate-800 overflow-hidden hover:border-cyan-500/40 transition duration-300 flex flex-col justify-between">
                     <div class="p-8 space-y-4">
                         <div class="flex items-center justify-between">
-                            <span class="text-[10px] font-mono uppercase tracking-widest px-3 py-1 rounded-full bg-emerald-950 text-emerald-400 border border-emerald-800">TOURISM & VIP TRANSFERS</span>
+                            <span class="text-[10px] font-mono uppercase tracking-widest px-3 py-1 rounded-full bg-emerald-950 text-emerald-400 border border-emerald-800" data-i18n="c1_tag">觀光旅遊與 VIP 專車接送</span>
                             <span class="text-xs text-slate-400 font-mono">Saint Lucia</span>
                         </div>
                         <h3 class="font-display text-2xl font-bold text-white">Sabina Lady's Cab</h3>
-                        <p class="text-slate-400 text-xs leading-relaxed">
-                            A high-converting web platform engineered for a licensed VIP island tour and taxi operator. Features interactive video tour reels, an integrated booking form linked with Formspree, and automated 1-tap WhatsApp message generation.
+                        <p class="text-slate-400 text-xs leading-relaxed" data-i18n="c1_desc">
+                            專為加勒比海聖露西亞 VIP 觀光導覽與專車接送業者打造的高轉換率預約平台。整合實景導覽影片輪播、自動化表單預約系統與一鍵即時通訊派單功能。
                         </p>
                         <div class="flex flex-wrap gap-2 pt-2 font-mono text-[11px] text-slate-300">
                             <span class="bg-slate-900 px-3 py-1 rounded-lg border border-slate-800">HTML5 / Tailwind</span>
-                            <span class="bg-slate-900 px-3 py-1 rounded-lg border border-slate-800">WhatsApp Dispatch</span>
-                            <span class="bg-slate-900 px-3 py-1 rounded-lg border border-slate-800">Formspree Intake</span>
-                            <span class="bg-slate-900 px-3 py-1 rounded-lg border border-slate-800">Custom Domain & SSL</span>
+                            <span class="bg-slate-900 px-3 py-1 rounded-lg border border-slate-800" data-i18n="c1_t2">一鍵即時預約</span>
+                            <span class="bg-slate-900 px-3 py-1 rounded-lg border border-slate-800" data-i18n="c1_t3">自動化表單串接</span>
+                            <span class="bg-slate-900 px-3 py-1 rounded-lg border border-slate-800" data-i18n="c1_t4">專屬網域與 SSL</span>
                         </div>
                     </div>
                     <div class="p-8 pt-0 flex items-center justify-between border-t border-slate-800/80 mt-6">
                         <a href="https://www.sabinasladycab.com" target="_blank" class="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 font-bold text-xs uppercase tracking-wider transition">
-                            <span>Launch Live Website</span>
+                            <span data-i18n="launch_site">開啟線上網站</span>
                             <i class="fa-solid fa-arrow-up-right-from-square text-[11px]"></i>
                         </a>
                         <span class="text-[11px] font-mono text-slate-500">www.sabinasladycab.com</span>
@@ -459,23 +465,23 @@
                 <div class="bg-[#0D131F] rounded-3xl border border-slate-800 overflow-hidden hover:border-cyan-500/40 transition duration-300 flex flex-col justify-between">
                     <div class="p-8 space-y-4">
                         <div class="flex items-center justify-between">
-                            <span class="text-[10px] font-mono uppercase tracking-widest px-3 py-1 rounded-full bg-cyan-950 text-cyan-400 border border-cyan-800">EXPERIENTIAL EVENT STUDIOS</span>
+                            <span class="text-[10px] font-mono uppercase tracking-widest px-3 py-1 rounded-full bg-cyan-950 text-cyan-400 border border-cyan-800" data-i18n="c2_tag">精品活動與體驗式攝影棚</span>
                             <span class="text-xs text-slate-400 font-mono">Saint Lucia</span>
                         </div>
                         <h3 class="font-display text-2xl font-bold text-white">Refined Art Solutions</h3>
-                        <p class="text-slate-400 text-xs leading-relaxed">
-                            Experiential event studio digital catalog showcasing Infinity Mirror Photo Boxes, Open-Frame Illuminated Cube Stages, touchscreen photo kiosks with physical prints, and organic balloon garlands.
+                        <p class="text-slate-400 text-xs leading-relaxed" data-i18n="c2_desc">
+                            精品活動策劃與互動攝影設備品牌官網，展示無限鏡面攝影亭、發光立體舞台、觸控即時列印機台與客製化派對氣球藝術佈置服務。
                         </p>
                         <div class="flex flex-wrap gap-2 pt-2 font-mono text-[11px] text-slate-300">
-                            <span class="bg-slate-900 px-3 py-1 rounded-lg border border-slate-800">Cinzel Luxury Typography</span>
-                            <span class="bg-slate-900 px-3 py-1 rounded-lg border border-slate-800">Interactive Gallery</span>
-                            <span class="bg-slate-900 px-3 py-1 rounded-lg border border-slate-800">Direct WhatsApp Booking</span>
-                            <span class="bg-slate-900 px-3 py-1 rounded-lg border border-slate-800">GitHub Pages</span>
+                            <span class="bg-slate-900 px-3 py-1 rounded-lg border border-slate-800" data-i18n="c2_t1">精品視覺排版</span>
+                            <span class="bg-slate-900 px-3 py-1 rounded-lg border border-slate-800" data-i18n="c2_t2">互動作品藝廊</span>
+                            <span class="bg-slate-900 px-3 py-1 rounded-lg border border-slate-800" data-i18n="c2_t3">即時檔期詢價</span>
+                            <span class="bg-slate-900 px-3 py-1 rounded-lg border border-slate-800" data-i18n="c2_t4">獨立網域部署</span>
                         </div>
                     </div>
                     <div class="p-8 pt-0 flex items-center justify-between border-t border-slate-800/80 mt-6">
                         <a href="https://www.refinedartsolutions.com" target="_blank" class="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 font-bold text-xs uppercase tracking-wider transition">
-                            <span>Launch Live Website</span>
+                            <span data-i18n="launch_site">開啟線上網站</span>
                             <i class="fa-solid fa-arrow-up-right-from-square text-[11px]"></i>
                         </a>
                         <span class="text-[11px] font-mono text-slate-500">www.refinedartsolutions.com</span>
@@ -493,38 +499,38 @@
             <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
                 <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-950 border border-emerald-800 text-emerald-400 font-mono text-xs">
                     <i class="fa-solid fa-shield-halved"></i>
-                    <span>AUDITED METATRADER 5 QUANTITATIVE STRATEGIES</span>
+                    <span data-i18n="q_badge">通過實盤數據驗證的 METATRADER 5 量化策略</span>
                 </div>
-                <h2 class="font-display text-3xl sm:text-5xl font-bold text-white">Algorithmic Trading & Expert Advisors</h2>
-                <p class="text-slate-400 text-xs sm:text-sm">
-                    We engineer, test, and sell verified algorithmic Expert Advisors (EAs). Buy our audited flagship system or commission a custom trading robot built to your exact indicators and strategy rules.
+                <h2 class="font-display text-3xl sm:text-5xl font-bold text-white" data-i18n="q_title">演算法交易與智能 EA 系統</h2>
+                <p class="text-slate-400 text-xs sm:text-sm leading-relaxed" data-i18n="q_desc">
+                    我們設計、回測並銷售經過嚴格驗證的 MQL5 自動化交易程式（Expert Advisors）。您可以直接購買我們的旗艦穩定獲利系統，或委託我們將您的交易邏輯編寫為低延遲自動化機器人。
                 </p>
             </div>
 
             <!-- Stats Bar -->
             <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 mb-12 font-mono">
                 <div class="bg-[#0D131F] p-5 rounded-2xl border border-slate-800 text-center">
-                    <span class="text-[10px] text-slate-500 uppercase block mb-1">Profit Factor</span>
+                    <span class="text-[10px] text-slate-500 uppercase block mb-1" data-i18n="qs1">獲利因子 (Profit Factor)</span>
                     <span class="text-2xl font-bold text-emerald-400 font-display">3.14</span>
                 </div>
                 <div class="bg-[#0D131F] p-5 rounded-2xl border border-slate-800 text-center">
-                    <span class="text-[10px] text-slate-500 uppercase block mb-1">Recovery Factor</span>
+                    <span class="text-[10px] text-slate-500 uppercase block mb-1" data-i18n="qs2">恢復因子 (Recovery)</span>
                     <span class="text-2xl font-bold text-emerald-400 font-display">3.68</span>
                 </div>
                 <div class="bg-[#0D131F] p-5 rounded-2xl border border-slate-800 text-center">
-                    <span class="text-[10px] text-slate-500 uppercase block mb-1">Max Drawdown</span>
+                    <span class="text-[10px] text-slate-500 uppercase block mb-1" data-i18n="qs3">最大回撤 (Drawdown)</span>
                     <span class="text-2xl font-bold text-cyan-400 font-display">1.55%</span>
                 </div>
                 <div class="bg-[#0D131F] p-5 rounded-2xl border border-slate-800 text-center">
-                    <span class="text-[10px] text-slate-500 uppercase block mb-1">Sharpe Ratio</span>
+                    <span class="text-[10px] text-slate-500 uppercase block mb-1" data-i18n="qs4">夏普比率 (Sharpe)</span>
                     <span class="text-2xl font-bold text-white font-display">9.17</span>
                 </div>
                 <div class="bg-[#0D131F] p-5 rounded-2xl border border-slate-800 text-center">
-                    <span class="text-[10px] text-slate-500 uppercase block mb-1">History Quality</span>
+                    <span class="text-[10px] text-slate-500 uppercase block mb-1" data-i18n="qs5">歷史數據品質</span>
                     <span class="text-2xl font-bold text-emerald-400 font-display">100%</span>
                 </div>
                 <div class="bg-[#0D131F] p-5 rounded-2xl border border-slate-800 text-center">
-                    <span class="text-[10px] text-slate-500 uppercase block mb-1">Expected Payoff</span>
+                    <span class="text-[10px] text-slate-500 uppercase block mb-1" data-i18n="qs6">單筆預期收益</span>
                     <span class="text-2xl font-bold text-white font-display">$59.96</span>
                 </div>
             </div>
@@ -535,33 +541,33 @@
                     <div class="bg-[#121A2B] px-6 py-4 border-b border-slate-800 flex flex-wrap items-center justify-between gap-4">
                         <div class="flex items-center gap-3">
                             <span class="w-3 h-3 rounded-full bg-emerald-400"></span>
-                            <span class="font-mono text-sm font-bold text-white">Performance Audit 01: MT5 Strategy Tester Report</span>
+                            <span class="font-mono text-sm font-bold text-white" data-i18n="qa1_title">績效審計 01：MT5 策略測試器完整報告</span>
                         </div>
-                        <span class="font-mono text-xs text-emerald-400 bg-emerald-950 px-3 py-1 rounded-full border border-emerald-800 font-bold">100% REAL TICKS AUDIT</span>
+                        <span class="font-mono text-xs text-emerald-400 bg-emerald-950 px-3 py-1 rounded-full border border-emerald-800 font-bold" data-i18n="qa1_tag">100% 真實 TICK 數據驗證</span>
                     </div>
                     <div class="p-6 bg-[#090D15]">
                         <img src="images/ea-backtest-report.png" alt="MetaTrader 5 Detailed Strategy Tester Report" onerror="this.style.display='none'" class="w-full rounded-2xl border border-slate-800 object-contain shadow-lg mb-4">
                         
                         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs font-mono text-slate-300">
                             <div class="bg-slate-900/90 p-4 rounded-xl border border-slate-800">
-                                <span class="text-slate-500 block mb-1">Initial Deposit:</span>
+                                <span class="text-slate-500 block mb-1" data-i18n="qm1_l">初始測試資金：</span>
                                 <strong class="text-white text-base font-bold">$10,000.00 USD</strong>
-                                <span class="text-emerald-400 block mt-1">Total Net: +$1,438.95</span>
+                                <span class="text-emerald-400 block mt-1" data-i18n="qm1_s">總淨利：+$1,438.95</span>
                             </div>
                             <div class="bg-slate-900/90 p-4 rounded-xl border border-slate-800">
-                                <span class="text-slate-500 block mb-1">Gross Profit / Loss:</span>
+                                <span class="text-slate-500 block mb-1" data-i18n="qm2_l">總毛利 / 總毛損：</span>
                                 <span class="text-emerald-400 font-bold">$2,111.12</span> / <span class="text-rose-400">-$672.17</span>
-                                <span class="text-slate-400 block mt-1">Profit Factor: 3.14</span>
+                                <span class="text-slate-400 block mt-1" data-i18n="qm2_s">獲利因子：3.14</span>
                             </div>
                             <div class="bg-slate-900/90 p-4 rounded-xl border border-slate-800">
-                                <span class="text-slate-500 block mb-1">Drawdown Exposure:</span>
+                                <span class="text-slate-500 block mb-1" data-i18n="qm3_l">最大資金回撤：</span>
                                 <strong class="text-cyan-400 text-base font-bold">1.55% ($174.53)</strong>
-                                <span class="text-slate-400 block mt-1">Max Relative: 3.68%</span>
+                                <span class="text-slate-400 block mt-1" data-i18n="qm3_s">最大相對回撤：3.68%</span>
                             </div>
                             <div class="bg-slate-900/90 p-4 rounded-xl border border-slate-800">
-                                <span class="text-slate-500 block mb-1">Ticks Modeled:</span>
+                                <span class="text-slate-500 block mb-1" data-i18n="qm4_l">模擬成交跳動數：</span>
                                 <strong class="text-white text-base font-bold">3,254,826</strong>
-                                <span class="text-emerald-400 block mt-1">100% Every Tick Modeled</span>
+                                <span class="text-emerald-400 block mt-1" data-i18n="qm4_s">100% 每個 Tick 精準建模</span>
                             </div>
                         </div>
                     </div>
@@ -570,28 +576,28 @@
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
                     <div class="bg-[#0D131F] rounded-3xl border border-slate-800 overflow-hidden shadow-2xl flex flex-col justify-between">
                         <div class="bg-[#121A2B] px-6 py-4 border-b border-slate-800 flex items-center justify-between">
-                            <span class="font-mono text-xs font-bold text-white">Performance Audit 02: Real-Tick Equity Curve</span>
+                            <span class="font-mono text-xs font-bold text-white" data-i18n="qa2_title">績效審計 02：真實 Tick 資金淨值曲線</span>
                             <span class="font-mono text-[10px] text-cyan-400 bg-cyan-950 px-2 py-0.5 rounded border border-cyan-800">EQUITY & DEPOSIT LOAD</span>
                         </div>
                         <div class="p-6 bg-[#090D15]">
                             <img src="images/ea-equity-curve.png" alt="MetaTrader 5 Equity Curve" onerror="this.style.display='none'" class="w-full rounded-2xl border border-slate-800 object-contain shadow-md mb-4">
-                            <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800 text-xs text-slate-400 font-mono leading-relaxed">
+                            <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800 text-xs text-slate-400 font-mono leading-relaxed" data-i18n="qa2_desc">
                                 <i class="fa-solid fa-arrow-trend-up text-emerald-400 mr-1.5"></i>
-                                Continuous upward balance trajectory over 5,321 bars with minimal deposit load exposure (&lt;10%) and disciplined recovery after volatility drawdowns.
+                                橫跨 5,321 根 K 線展現穩健向上的資金曲線，保證金負載率極低（&lt;10%），並在市場波動回調後迅速恢復淨值新高。
                             </div>
                         </div>
                     </div>
 
                     <div class="bg-[#0D131F] rounded-3xl border border-slate-800 overflow-hidden shadow-2xl flex flex-col justify-between">
                         <div class="bg-[#121A2B] px-6 py-4 border-b border-slate-800 flex items-center justify-between">
-                            <span class="font-mono text-xs font-bold text-white">Performance Audit 03: Session Timing & Distributions</span>
+                            <span class="font-mono text-xs font-bold text-white" data-i18n="qa3_title">績效審計 03：交易時段與流動性過濾</span>
                             <span class="font-mono text-[10px] text-emerald-400 bg-emerald-950 px-2 py-0.5 rounded border border-emerald-800">LIQUIDITY SCHEDULING</span>
                         </div>
                         <div class="p-6 bg-[#090D15]">
                             <img src="images/ea-distributions.png" alt="MetaTrader 5 Profits and losses by hours and weekdays" onerror="this.style.display='none'" class="w-full rounded-2xl border border-slate-800 object-contain shadow-md mb-4">
-                            <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800 text-xs text-slate-400 font-mono leading-relaxed">
+                            <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800 text-xs text-slate-400 font-mono leading-relaxed" data-i18n="qa3_desc">
                                 <i class="fa-solid fa-clock text-cyan-400 mr-1.5"></i>
-                                Built-in server liquidity filters limit exposure to prime market sessions (London & New York overlap), filtering out off-hour slippage and non-trending spreads.
+                                內建伺服器流動性時段過濾器，僅在倫敦與紐約重疊的高流動性交易時段進場，有效避開離峰滑點與盤整摩擦損耗。
                             </div>
                         </div>
                     </div>
@@ -601,32 +607,32 @@
             <!-- Commercial EA Purchase & Custom Order Cards -->
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
                 <div class="bg-gradient-to-b from-[#0D131F] to-[#121c2e] p-8 sm:p-10 rounded-3xl border-2 border-emerald-500/80 shadow-2xl relative emerald-glow flex flex-col justify-between space-y-6">
-                    <span class="absolute -top-3.5 left-8 bg-emerald-500 text-black text-[10px] font-mono font-extrabold uppercase tracking-widest px-4 py-1 rounded-full shadow-lg">
-                        READY FOR DEPLOYMENT
+                    <span class="absolute -top-3.5 left-8 bg-emerald-500 text-black text-[10px] font-mono font-extrabold uppercase tracking-widest px-4 py-1 rounded-full shadow-lg" data-i18n="ea1_badge">
+                        立即可部署上線
                     </span>
 
                     <div class="space-y-4">
                         <div class="flex items-center justify-between">
-                            <span class="text-xs font-mono text-emerald-400 font-bold uppercase tracking-wider">Ready-Made System</span>
+                            <span class="text-xs font-mono text-emerald-400 font-bold uppercase tracking-wider" data-i18n="ea1_sub">現成驗證交易系統</span>
                             <span class="text-xs text-slate-400 font-mono">MetaTrader 5</span>
                         </div>
-                        <h3 class="font-display text-2xl sm:text-3xl font-bold text-white">Purchase AutoTrendEA v2.0</h3>
-                        <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
-                            Acquire the verified, compiled `.ex5` system ready to plug directly into your live broker or prop-firm challenge. Fully equipped with preset configuration files, ATR trailing stops, and active session filters.
+                        <h3 class="font-display text-2xl sm:text-3xl font-bold text-white" data-i18n="ea1_title">購買 AutoTrendEA v2.0</h3>
+                        <p class="text-slate-300 text-xs sm:text-sm leading-relaxed" data-i18n="ea1_desc">
+                            取得經過實盤數據驗證的編譯版本（.ex5），可直接掛載至您的實盤券商帳戶或自營商（Prop-Firm）考核帳戶，內附最佳化參數預設檔與 ATR 移動停損機制。
                         </p>
                         
                         <ul class="text-xs text-slate-300 space-y-2.5 pt-2 font-mono">
-                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Lifetime license for designated MT5 account numbers</li>
-                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Turnkey `.set` parameter presets optimized for stability</li>
-                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Complete setup guide + remote configuration support</li>
-                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Prop-Firm challenge safety rules compatible</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> <span data-i18n="ea1_b1">指定 MT5 交易帳號終身授權使用</span></li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> <span data-i18n="ea1_b2">隨附穩定度最佳化的 .set 參數設定檔</span></li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> <span data-i18n="ea1_b3">完整安裝教學指南與遠端技術協助</span></li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> <span data-i18n="ea1_b4">符合 Prop-Firm 單日與總回撤風控規範</span></li>
                         </ul>
                     </div>
 
                     <div class="pt-6 border-t border-slate-800">
                         <a href="#quick-request" onclick="selectService('Purchase AutoTrendEA v2.0 ($1,500 Model)')" class="w-full py-4 bg-emerald-500 hover:bg-emerald-400 text-black font-extrabold uppercase tracking-widest text-xs rounded-xl shadow-xl transition flex items-center justify-center gap-2 font-mono">
                             <i class="fa-solid fa-cart-shopping"></i>
-                            <span>Order AutoTrendEA v2.0 (10% Off)</span>
+                            <span data-i18n="ea1_cta">訂購 AutoTrendEA v2.0（輸入 ID 享 9 折）</span>
                         </a>
                     </div>
                 </div>
@@ -634,26 +640,26 @@
                 <div class="bg-[#0D131F] p-8 sm:p-10 rounded-3xl border border-slate-800 hover:border-cyan-500/60 shadow-2xl transition duration-300 flex flex-col justify-between space-y-6">
                     <div class="space-y-4">
                         <div class="flex items-center justify-between">
-                            <span class="text-xs font-mono text-cyan-400 font-bold uppercase tracking-wider">Bespoke Algorithmic Engineering</span>
+                            <span class="text-xs font-mono text-cyan-400 font-bold uppercase tracking-wider" data-i18n="ea2_sub">客製化演算法工程</span>
                             <span class="text-xs text-slate-400 font-mono">MQL5 / Python</span>
                         </div>
-                        <h3 class="font-display text-2xl sm:text-3xl font-bold text-white">Commission a Custom Trading Robot</h3>
-                        <p class="text-slate-400 text-xs sm:text-sm leading-relaxed">
-                            Have your own manual strategy, indicator combination, or order flow logic automated into an institutional-grade, low-latency Expert Advisor. Protected under complete intellectual property confidentiality.
+                        <h3 class="font-display text-2xl sm:text-3xl font-bold text-white" data-i18n="ea2_title">委託開發專屬交易機器人</h3>
+                        <p class="text-slate-400 text-xs sm:text-sm leading-relaxed" data-i18n="ea2_desc">
+                            將您的手動交易策略、技術指標組合或價格行為邏輯自動化為低延遲機構級 Expert Advisor。全程簽署嚴格保密協定，策略智慧財產權 100% 歸您所有。
                         </p>
                         
                         <ul class="text-xs text-slate-300 space-y-2.5 pt-2 font-mono">
-                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyan-400"></i> Custom indicators, breakout, SMC, or mean-reversion logic</li>
-                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyan-400"></i> Multi-timeframe and multi-currency portfolio filters</li>
-                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyan-400"></i> Full tick-level backtest audit & parameter optimization</li>
-                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyan-400"></i> Strict Non-Disclosure & IP retention agreement</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyan-400"></i> <span data-i18n="ea2_b1">支援自訂指標、突破、SMC 或均值回歸邏輯</span></li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyan-400"></i> <span data-i18n="ea2_b2">多週期（Multi-Timeframe）與多品種風控過濾</span></li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyan-400"></i> <span data-i18n="ea2_b3">完整 Tick 級別歷史回測審計與參數最佳化</span></li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyan-400"></i> <span data-i18n="ea2_b4">嚴格保密條款（NDA）與完整策略所有權保障</span></li>
                         </ul>
                     </div>
 
                     <div class="pt-6 border-t border-slate-800">
                         <a href="#quick-request" onclick="selectService('Commission Custom MQL5 Expert Advisor')" class="w-full py-4 bg-cyan-500 hover:bg-cyan-400 text-black font-extrabold uppercase tracking-widest text-xs rounded-xl shadow-xl transition flex items-center justify-center gap-2 font-mono">
                             <i class="fa-solid fa-code"></i>
-                            <span>Commission Custom EA Build (10% Off)</span>
+                            <span data-i18n="ea2_cta">委託客製化 EA 開發（輸入 ID 享 9 折）</span>
                         </a>
                     </div>
                 </div>
@@ -666,19 +672,19 @@
     <section id="quick-request" class="py-20 bg-gradient-to-b from-[#080B11] via-[#0D131F] to-[#080B11] border-t border-cyan-500/30">
         <div class="max-w-4xl mx-auto px-6">
             <div class="text-center space-y-3 mb-10">
-                <span class="text-xs uppercase font-mono font-bold tracking-widest text-cyan-400">Zero-Friction Intake</span>
-                <h2 class="font-display text-3xl sm:text-5xl font-bold text-white">Order a Product or Schedule a Call</h2>
-                <p class="text-slate-400 text-xs sm:text-sm">Submit your build requirements below. Enter promo code <strong class="text-cyan-400 font-mono">ID</strong> to validate your 10% discount and dispatch directly to <span class="text-white">Twinterlabs@gmail.com</span>.</p>
+                <span class="text-xs uppercase font-mono font-bold tracking-widest text-cyan-400" data-i18n="form_badge">快速專案委託與預約</span>
+                <h2 class="font-display text-3xl sm:text-5xl font-bold text-white" data-i18n="form_title">訂購產品或預約線上諮詢</h2>
+                <p class="text-slate-400 text-xs sm:text-sm" data-i18n="form_desc">請於下方填寫您的專案需求，輸入專屬優惠碼 <strong class="text-cyan-400 font-mono">ID</strong> 即可立即享有 9 折優惠，表單將直接發送至 <span class="text-white">Twinterlabs@gmail.com</span>。</p>
             </div>
 
             <!-- Mode Switcher -->
             <div class="flex justify-center mb-8">
                 <div class="bg-[#080B11] p-1.5 rounded-2xl border border-slate-800 flex gap-2">
                     <button type="button" id="tabProduct" onclick="setMode('product')" class="px-6 py-2.5 rounded-xl font-bold text-xs uppercase tracking-wider font-mono transition bg-cyan-500 text-black shadow-lg">
-                        <i class="fa-solid fa-cube mr-2"></i>Order Product / Build
+                        <i class="fa-solid fa-cube mr-2"></i><span data-i18n="tab_prod">訂購產品 / 專案委託</span>
                     </button>
                     <button type="button" id="tabMeeting" onclick="setMode('meeting')" class="px-6 py-2.5 rounded-xl font-bold text-xs uppercase tracking-wider font-mono transition text-slate-400 hover:text-white">
-                        <i class="fa-solid fa-calendar-check mr-2"></i>Schedule a Meeting
+                        <i class="fa-solid fa-calendar-check mr-2"></i><span data-i18n="tab_meet">預約線上會議</span>
                     </button>
                 </div>
             </div>
@@ -694,29 +700,29 @@
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                         <div>
-                            <label class="block text-xs uppercase tracking-wider text-slate-400 font-mono mb-2">Your Name / Organization *</label>
-                            <input type="text" id="reqName" name="name" required placeholder="e.g. David Lin / Horizon Studio" class="w-full bg-[#0D131F] border border-slate-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-cyan-500 font-mono">
+                            <label class="block text-xs uppercase tracking-wider text-slate-400 font-mono mb-2" data-i18n="lbl_name">您的姓名 / 公司名稱 *</label>
+                            <input type="text" id="reqName" name="name" required placeholder="例如：林先生 / 創想數位工作室" class="w-full bg-[#0D131F] border border-slate-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-cyan-500 font-mono">
                         </div>
                         <div>
-                            <label class="block text-xs uppercase tracking-wider text-slate-400 font-mono mb-2">Phone / LINE / WhatsApp *</label>
-                            <input type="tel" id="reqPhone" name="phone" required placeholder="Your phone number, LINE, or WhatsApp ID" class="w-full bg-[#0D131F] border border-slate-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-cyan-500 font-mono">
+                            <label class="block text-xs uppercase tracking-wider text-slate-400 font-mono mb-2" data-i18n="lbl_contact">LINE ID / 聯絡方式 *</label>
+                            <input type="text" id="reqPhone" name="phone" required placeholder="請輸入您的 LINE ID 或聯絡方式" class="w-full bg-[#0D131F] border border-slate-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-cyan-500 font-mono">
                         </div>
                     </div>
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                         <div>
-                            <label class="block text-xs uppercase tracking-wider text-slate-400 font-mono mb-2">Email Address *</label>
+                            <label class="block text-xs uppercase tracking-wider text-slate-400 font-mono mb-2" data-i18n="lbl_email">電子郵件地址 *</label>
                             <input type="email" id="reqEmail" name="email" required placeholder="yourname@domain.com" class="w-full bg-[#0D131F] border border-slate-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-cyan-500 font-mono">
                         </div>
                         <div>
-                            <label id="categoryLabel" class="block text-xs uppercase tracking-wider text-slate-400 font-mono mb-2">Deliverable Needed *</label>
+                            <label id="categoryLabel" class="block text-xs uppercase tracking-wider text-slate-400 font-mono mb-2" data-i18n="lbl_cat_prod">委託項目類別 *</label>
                             <select id="reqCategory" name="category" class="w-full bg-[#0D131F] border border-slate-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-cyan-500 font-mono">
-                                <option value="Mobile Application (React Native / Expo)">Mobile Application (React Native / Expo)</option>
-                                <option value="Commercial Website / Web Platform">Commercial Website / Web Platform</option>
-                                <option value="Custom Backend & API Infrastructure">Custom Backend & API Infrastructure</option>
-                                <option value="Purchase AutoTrendEA v2.0 ($1,500 Model)">Purchase AutoTrendEA v2.0 ($1,500 Model)</option>
-                                <option value="Commission Custom MQL5 Expert Advisor">Commission Custom MQL5 Expert Advisor</option>
-                                <option value="Full-Stack Custom System Architecture">Full-Stack Custom System Architecture</option>
+                                <option value="Commercial Website / Web Platform" data-i18n="opt_web">商業形象網站 / 預約平台開發</option>
+                                <option value="Mobile Application (React Native / Expo)" data-i18n="opt_app">跨平台行動應用程式 (iOS / Android)</option>
+                                <option value="Custom Backend & API Infrastructure" data-i18n="opt_api">客製化後端系統與 API 基礎設施</option>
+                                <option value="Purchase AutoTrendEA v2.0 ($1,500 Model)" data-i18n="opt_ea_buy">購買 AutoTrendEA v2.0 量化交易程式</option>
+                                <option value="Commission Custom MQL5 Expert Advisor" data-i18n="opt_ea_custom">委託客製化 MQL5 交易機器人開發</option>
+                                <option value="Full-Stack Custom System Architecture" data-i18n="opt_fullstack">全端整合客製化系統架構</option>
                             </select>
                         </div>
                     </div>
@@ -725,39 +731,39 @@
                     <div class="p-5 rounded-2xl bg-gradient-to-r from-cyan-950/40 via-slate-900 to-slate-900 border border-cyan-800/60 space-y-2">
                         <div class="flex items-center justify-between">
                             <label class="block text-xs uppercase tracking-wider text-cyan-300 font-mono font-bold">
-                                <i class="fa-solid fa-tag text-cyan-400 mr-1.5"></i> Promo Code (10% Discount) *
+                                <i class="fa-solid fa-tag text-cyan-400 mr-1.5"></i> <span data-i18n="lbl_promo">專屬優惠碼（享 9 折優惠）*</span>
                             </label>
-                            <span class="text-[10px] font-mono text-emerald-400 bg-emerald-950 px-2 py-0.5 rounded border border-emerald-800">Save 10% on Build</span>
+                            <span class="text-[10px] font-mono text-emerald-400 bg-emerald-950 px-2 py-0.5 rounded border border-emerald-800" data-i18n="promo_badge">專案總價折抵 10%</span>
                         </div>
-                        <input type="text" id="reqPromoCode" name="promo_code" required placeholder="Enter promo code (e.g. ID)" class="w-full bg-[#080B11] border border-cyan-800/80 rounded-xl px-4 py-3 text-sm text-white uppercase tracking-widest font-mono focus:outline-none focus:border-cyan-400">
-                        <p class="text-[11px] text-slate-400 font-mono">Must enter valid code <strong class="text-cyan-400 font-bold">id</strong> or <strong class="text-cyan-400 font-bold">ID</strong> to submit your inquiry with the 10% discount applied.</p>
+                        <input type="text" id="reqPromoCode" name="promo_code" required placeholder="請輸入優惠碼（例如：ID）" class="w-full bg-[#080B11] border border-cyan-800/80 rounded-xl px-4 py-3 text-sm text-white uppercase tracking-widest font-mono focus:outline-none focus:border-cyan-400">
+                        <p class="text-[11px] text-slate-400 font-mono" data-i18n="promo_hint">請輸入有效優惠碼 <strong class="text-cyan-400 font-bold">id</strong> 或 <strong class="text-cyan-400 font-bold">ID</strong> 以完成驗證並套用 9 折優惠提交需求。</p>
                     </div>
 
                     <!-- Dynamic Meeting Time Row -->
                     <div id="meetingFields" class="hidden grid grid-cols-1 sm:grid-cols-2 gap-6">
                         <div>
-                            <label class="block text-xs uppercase tracking-wider text-slate-400 font-mono mb-2">Preferred Meeting Date *</label> 
+                            <label class="block text-xs uppercase tracking-wider text-slate-400 font-mono mb-2" data-i18n="lbl_date">期望會議日期 *</label> 
                             <input type="date" id="reqDate" name="preferred_date" class="w-full bg-[#0D131F] border border-slate-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-cyan-500 font-mono">
                         </div>
                         <div>
-                            <label class="block text-xs uppercase tracking-wider text-slate-400 font-mono mb-2">Preferred Platform / Time *</label>
-                            <input type="text" id="reqMeetingFormat" name="meeting_format" placeholder="e.g. Google Meet / LINE at 3:00 PM CST" class="w-full bg-[#0D131F] border border-slate-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-cyan-500 font-mono">
+                            <label class="block text-xs uppercase tracking-wider text-slate-400 font-mono mb-2" data-i18n="lbl_time">偏好平台與時段 *</label>
+                            <input type="text" id="reqMeetingFormat" name="meeting_format" placeholder="例如：Google Meet 或 LINE 下午 3:00" class="w-full bg-[#0D131F] border border-slate-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-cyan-500 font-mono">
                         </div>
                     </div>
 
                     <div>
-                        <label id="detailsLabel" class="block text-xs uppercase tracking-wider text-slate-400 font-mono mb-2">Order Details or Project Scope</label>
-                        <textarea id="reqDetails" name="details" rows="4" placeholder="Briefly describe what you want built, desired features, timeline, or strategy specifications..." class="w-full bg-[#0D131F] border border-slate-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-cyan-500 font-mono"></textarea>
+                        <label id="detailsLabel" class="block text-xs uppercase tracking-wider text-slate-400 font-mono mb-2" data-i18n="lbl_det_prod">專案需求說明或功能規格</label>
+                        <textarea id="reqDetails" name="details" rows="4" placeholder="請簡述您希望開發的功能、預計上線時程或交易策略規格..." class="w-full bg-[#0D131F] border border-slate-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-cyan-500 font-mono"></textarea>
                     </div>
 
                     <div class="flex flex-col sm:flex-row gap-4 items-center pt-2">
                         <button type="submit" id="submitBtn" class="w-full sm:w-2/3 py-4 bg-cyan-500 hover:bg-cyan-400 text-black font-extrabold uppercase tracking-widest text-xs rounded-xl shadow-xl transition flex items-center justify-center gap-2 emerald-glow font-mono">
                             <i class="fa-solid fa-paper-plane text-sm"></i>
-                            <span id="btnText">Apply Code & Submit Order</span>
+                            <span id="btnText" data-i18n="btn_submit_prod">套用優惠碼並送出訂單</span>
                         </button>
                         <a href="https://line.me/ti/p/rsc69htRfX" target="_blank" class="w-full sm:w-1/3 py-4 bg-emerald-600 hover:bg-emerald-500 text-white font-bold uppercase tracking-widest text-xs rounded-xl transition flex items-center justify-center gap-2 font-mono">
                             <i class="fa-brands fa-line text-lg"></i>
-                            <span>Chat on LINE</span>
+                            <span data-i18n="btn_line">LINE 即時洽談</span>
                         </a>
                     </div>
                 </form>
@@ -770,14 +776,14 @@
         <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 pb-12 border-b border-slate-900">
             <div>
                 <h3 class="font-display text-xl font-bold text-white mb-2">Twinter Labs</h3>
-                <p class="text-slate-400 leading-relaxed max-w-sm">
-                    High-impact digital systems and algorithmic software engineering. Websites, cross-platform mobile apps (Spirit Feeder), cloud backend systems, and audited MQL5 Expert Advisors.
+                <p class="text-slate-400 leading-relaxed max-w-sm" data-i18n="ft_about">
+                    專注於高效能數位系統與量化演算法軟體工程。提供商業網站開發、跨平台行動應用程式（Spirit Feeder）、雲端後端系統與實盤驗證 MQL5 交易程式。
                 </p>
                 <div class="flex items-center gap-3 mt-4">
                     <a href="https://github.com/FichieX" target="_blank" title="GitHub" class="w-9 h-9 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-300 hover:text-cyan-400 transition"> 
                         <i class="fa-brands fa-github text-sm"></i>
                     </a>
-                    <a href="https://line.me/ti/p/rsc69htRfX" target="_blank" title="LINE Official" class="w-9 h-9 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-emerald-400 hover:border-emerald-500/40 transition">
+                    <a href="https://line.me/ti/p/rsc69htRfX" target="_blank" title="LINE 官方聯繫" class="w-9 h-9 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-emerald-400 hover:border-emerald-500/40 transition">
                         <i class="fa-brands fa-line text-base"></i>
                     </a>
                     <a href="https://instagram.com/TwinterLabs" target="_blank" title="Instagram @TwinterLabs" class="w-9 h-9 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-pink-400 hover:border-pink-500/40 transition">
@@ -787,31 +793,421 @@
             </div>
 
             <div class="space-y-3">
-                <h4 class="font-bold text-white uppercase tracking-wider text-xs mb-3 font-display">Direct Communications</h4>
+                <h4 class="font-bold text-white uppercase tracking-wider text-xs mb-3 font-display" data-i18n="ft_contact_t">直接聯繫管道</h4>
                 <p><i class="fa-solid fa-envelope text-cyan-400 mr-2 text-sm"></i> Email: <a href="mailto:Twinterlabs@gmail.com" class="text-white hover:text-cyan-400 font-bold">Twinterlabs@gmail.com</a></p>
-                <p><i class="fa-brands fa-line text-emerald-400 mr-2 text-sm"></i> LINE Direct: <a href="https://line.me/ti/p/rsc69htRfX" target="_blank" class="text-white hover:text-emerald-400 font-bold">Add Twinter Labs on LINE</a></p>
+                <p><i class="fa-brands fa-line text-emerald-400 mr-2 text-sm"></i> LINE: <a href="https://line.me/ti/p/rsc69htRfX" target="_blank" class="text-white hover:text-emerald-400 font-bold" data-i18n="ft_line_link">點擊加入 Twinter Labs LINE</a></p>
                 <p><i class="fa-brands fa-instagram text-pink-400 mr-2 text-sm"></i> Instagram: <a href="https://instagram.com/TwinterLabs" target="_blank" class="text-white hover:text-pink-400 font-bold">@TwinterLabs</a></p>
-                <p><i class="fa-solid fa-globe text-cyan-400 mr-2 text-sm"></i> Official Domain: <a href="https://www.twinterlabs.com" class="text-white hover:underline">www.twinterlabs.com</a></p>
+                <p><i class="fa-solid fa-globe text-cyan-400 mr-2 text-sm"></i> <span data-i18n="ft_domain">官方網站</span>: <a href="https://www.twinterlabs.com" class="text-white hover:underline">www.twinterlabs.com</a></p>
             </div>
 
             <div class="space-y-2">
-                <h4 class="font-bold text-white uppercase tracking-wider text-xs mb-3 font-display">Core Practices</h4>
-                <p>• Commercial Web Applications</p>
-                <p>• React Native & Expo Mobile Apps</p>
-                <p>• FastAPI & Node.js Backend Microservices</p>
-                <p>• MQL5 Trading Algorithms & Strategy Auditing</p>
-                <p>• Custom Systems Architecture</p>
+                <h4 class="font-bold text-white uppercase tracking-wider text-xs mb-3 font-display" data-i18n="ft_prac_t">核心技術領域</h4>
+                <p data-i18n="ft_p1">• 商業形象與預約網站開發</p>
+                <p data-i18n="ft_p2">• React Native &amp; Expo 行動應用程式</p>
+                <p data-i18n="ft_p3">• FastAPI &amp; Node.js 後端微服務架構</p>
+                <p data-i18n="ft_p4">• MQL5 量化交易程式與歷史回測驗證</p>
+                <p data-i18n="ft_p5">• 客製化全端系統整合設計</p>
             </div>
         </div>
 
         <div class="max-w-7xl mx-auto pt-8 flex flex-col sm:flex-row justify-between items-center text-slate-600 gap-4">
             <p>© 2026 Twinter Labs (www.twinterlabs.com). All Rights Reserved.</p>
-            <p>Engineered for High-Reliability Deployments</p>
+            <p data-i18n="ft_tagline">專為高可靠度商業部署而打造</p>
         </div>
     </footer>
 
-    <!-- Interactive Scripts & Strict Promo Code Verification -->
+    <!-- Bilingual Dictionary, Language Switcher & Native Form Handler -->
     <script>
+        let currentLang = 'zh';
+        let currentMode = 'product';
+
+        const translations = {
+            zh: {
+                toggle_btn: "English",
+                top_tagline: "客製化網站 • 行動 APP • 後端架構 • 量化交易系統",
+                top_cta: "立即委託專案（輸入優惠碼 ID 享 9 折）→",
+                brand_sub: "軟體與系統開發工作室",
+                nav_services: "服務項目",
+                nav_apps: "行動 APP 展示",
+                nav_portfolio: "上線網站案例",
+                nav_quant: "量化交易 EA",
+                nav_request: "提交需求",
+                nav_cta: "立即諮詢",
+                hero_badge: "網站開發 • 行動 APP • 後端系統 • 量化演算法",
+                hero_title: '我們打造並部署驅動商業成長的<span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-teal-300 to-emerald-400">客製化軟體系統</span>',
+                hero_desc: "Twinter Labs 是一間專注於高效能交付的軟體開發工作室。我們設計並開發高轉換率的<strong>商業形象網站</strong>、跨平台<strong>行動應用程式</strong>、高穩定度<strong>雲端後端系統</strong>，以及經過實盤歷史數據驗證的<strong>自動化交易程式（EA）</strong>。",
+                hero_btn_primary: "提交專案需求（輸入優惠碼 ID 享 9 折）",
+                hero_btn_line: "透過 LINE 直接聯繫",
+                stat_web: "形象與預約網站",
+                stat_mobile: "iOS / Android 應用",
+                stat_api: "FastAPI 與資料庫",
+                stat_quant: "MQL5 交易機器人",
+                panel_title: "工作室產品與服務目錄",
+                panel_status: "開放專案委託中",
+                panel_item1_t: "商業網站與預約平台",
+                panel_item1_d: "客製化品牌官網、預約表單與快速載入體驗",
+                panel_tag1: "已上線",
+                panel_item2_t: "Spirit Feeder（行動應用程式）",
+                panel_item2_d: "React Native 開發之遊戲化養成 RPG",
+                panel_tag2: "實機演示",
+                panel_item3_t: "後端系統與 API 架構",
+                panel_item3_d: "FastAPI、Python 與高併發資料庫設計",
+                panel_tag3: "高效能",
+                panel_item4_t: "MQL5 量化交易程式（EA）",
+                panel_item4_d: "獲利因子 3.14 驗證策略與客製化機器人",
+                panel_tag4: "已驗證",
+                panel_footer_cta: "輸入優惠碼 ID 立即享 9 折優惠 →",
+                app_badge: "行動應用程式實機展示 • 工作室自主研發",
+                app_intro: "採用 React Native、Expo Router 與 FastAPI 後端打造的跨平台寵物養成 RPG 應用程式。孵化專屬夥伴（獅子、驢子、烏鴉、駱駝），透過每日閱讀經文獲取糧食與經驗值升級進化，進行問答對戰並自由布置專屬聖殿空間。",
+                app_sub: "全端行動產品開發實力",
+                app_quote: "「餵養你的夥伴，滋養你的靈命。」",
+                app_desc: "觀看實機操作影片，了解我們從前端像素美術介面、遊戲化獎勵機制、動態等級成長系統到後端 API 與資料庫設計的完整開發能力。",
+                app_f1_t: "孵化與三階段進化系統",
+                app_f1_d: "選擇不同夥伴（獅子、驢子、烏鴉、駱駝），隨著等級提升從幼年期一路進化至青年期（Lv 30）與完全體（Lv 60）。",
+                app_f2_t: "閱讀經文獲取糧食與經驗",
+                app_f2_d: "內建完整經文閱讀器，完成每日閱讀進度即可獲得糧食道具餵養寵物，累積額外經驗值獎勵。",
+                app_f3_t: "經文填空對戰引擎",
+                app_f3_d: "即時經文填空問答挑戰機制，擊敗試煉敵人並解鎖稀有裝備與聖殿收藏品。",
+                app_f4_t: "專屬服飾與房間布置",
+                app_f4_d: "自由替夥伴搭配特色服飾、王冠配件，並自訂彩繪玻璃與聖殿背景裝飾。",
+                built_with: "採用技術棧：",
+                app_cta: "委託開發客製化行動 APP",
+                srv_badge: "核心服務項目",
+                srv_title: "我們開發與銷售的產品",
+                srv_desc: "從高轉換率的企業形象網站、跨平台手機應用程式到高穩定度後端微服務與量化交易機器人，提供一站式完整技術交付。",
+                srv1_t: "商業網站與預約平台",
+                srv1_d: "專為企業與品牌打造的客製化官網、產品銷售頁與線上預約系統，具備極速載入效能與高轉換介面設計。",
+                srv1_b1: "• 高轉換率 RWD 響應式版面",
+                srv1_b2: "• 整合表單自動寄信與 LINE 聯繫",
+                srv1_b3: "• 專屬網域設定、DNS 與 SSL 憑證",
+                srv1_cta: "委託製作網站 →",
+                srv2_t: "跨平台行動應用程式",
+                srv2_d: "使用 React Native 與 Expo 開發同步支援 iOS 與 Android 的手機 APP（參考上方 Spirit Feeder 實機展示），流暢操作與雲端同步。",
+                srv2_b1: "• 單一程式碼庫支援雙平台",
+                srv2_b2: "• 離線資料儲存與推播整合",
+                srv2_b3: "• 即時 REST / WebSocket 資料同步",
+                srv2_cta: "委託開發 APP →",
+                srv3_t: "後端系統與 API 基礎設施",
+                srv3_d: "採用 Python (FastAPI) 與 Node.js 建構高穩定度雲端後端架構，包含安全驗證機制、關聯式資料庫設計與自動化排程。",
+                srv3_b1: "• 高併發非同步 RESTful API",
+                srv3_b2: "• PostgreSQL / SQLite 資料庫架構",
+                srv3_b3: "• 第三方金流與 Webhook 串接",
+                srv3_cta: "委託建置後端 →",
+                srv4_t: "MT5 量化交易程式（EA）",
+                srv4_d: "以 MQL5 編寫的自動化交易機器人，具備嚴謹的 100% 真實 Tick 回測驗證、ATR 動態移動停損與自營商（Prop-Firm）風控機制。",
+                srv4_b1: "• 直接購買現成 AutoTrendEA v2.0",
+                srv4_b2: "• 依照您的策略規則客製化編寫",
+                srv4_b3: "• 完整歷史 Tick 數據回測報告",
+                srv4_cta: "查看回測報告與購買 →",
+                port_badge: "線上商業案例展示",
+                port_title: "已上線交付的客戶網站",
+                port_desc: "直接點擊體驗由 Twinter Labs 設計、設定網域並正式部署上線的國際客戶商業平台。",
+                c1_tag: "觀光旅遊與 VIP 專車接送",
+                c1_desc: "專為加勒比海聖露西亞 VIP 觀光導覽與專車接送業者打造的高轉換率預約平台。整合實景導覽影片輪播、自動化表單預約系統與一鍵即時通訊派單功能。",
+                c1_t2: "一鍵即時預約",
+                c1_t3: "自動化表單串接",
+                c1_t4: "專屬網域與 SSL",
+                c2_tag: "精品活動與體驗式攝影棚",
+                c2_desc: "精品活動策劃與互動攝影設備品牌官網，展示無限鏡面攝影亭、發光立體舞台、觸控即時列印機台與客製化派對氣球藝術佈置服務。",
+                c2_t1: "精品視覺排版",
+                c2_t2: "互動作品藝廊",
+                c2_t3: "即時檔期詢價",
+                c2_t4: "獨立網域部署",
+                launch_site: "開啟線上網站",
+                q_badge: "通過實盤數據驗證的 METATRADER 5 量化策略",
+                q_title: "演算法交易與智能 EA 系統",
+                q_desc: "我們設計、回測並銷售經過嚴格驗證的 MQL5 自動化交易程式（Expert Advisors）。您可以直接購買我們的旗艦穩定獲利系統，或委託我們將您的交易邏輯編寫為低延遲自動化機器人。",
+                qs1: "獲利因子 (Profit Factor)",
+                qs2: "恢復因子 (Recovery)",
+                qs3: "最大回撤 (Drawdown)",
+                qs4: "夏普比率 (Sharpe)",
+                qs5: "歷史數據品質",
+                qs6: "單筆預期收益",
+                qa1_title: "績效審計 01：MT5 策略測試器完整報告",
+                qa1_tag: "100% 真實 TICK 數據驗證",
+                qm1_l: "初始測試資金：",
+                qm1_s: "總淨利：+$1,438.95",
+                qm2_l: "總毛利 / 總毛損：",
+                qm2_s: "獲利因子：3.14",
+                qm3_l: "最大資金回撤：",
+                qm3_s: "最大相對回撤：3.68%",
+                qm4_l: "模擬成交跳動數：",
+                qm4_s: "100% 每個 Tick 精準建模",
+                qa2_title: "績效審計 02：真實 Tick 資金淨值曲線",
+                qa2_desc: '<i class="fa-solid fa-arrow-trend-up text-emerald-400 mr-1.5"></i>橫跨 5,321 根 K 線展現穩健向上的資金曲線，保證金負載率極低（&lt;10%），並在市場波動回調後迅速恢復淨值新高。',
+                qa3_title: "績效審計 03：交易時段與流動性過濾",
+                qa3_desc: '<i class="fa-solid fa-clock text-cyan-400 mr-1.5"></i>內建伺服器流動性時段過濾器，僅在倫敦與紐約重疊的高流動性交易時段進場，有效避開離峰滑點與盤整摩擦損耗。',
+                ea1_badge: "立即可部署上線",
+                ea1_sub: "現成驗證交易系統",
+                ea1_title: "購買 AutoTrendEA v2.0",
+                ea1_desc: "取得經過實盤數據驗證的編譯版本（.ex5），可直接掛載至您的實盤券商帳戶或自營商（Prop-Firm）考核帳戶，內附最佳化參數預設檔與 ATR 移動停損機制。",
+                ea1_b1: "指定 MT5 交易帳號終身授權使用",
+                ea1_b2: "隨附穩定度最佳化的 .set 參數設定檔",
+                ea1_b3: "完整安裝教學指南與遠端技術協助",
+                ea1_b4: "符合 Prop-Firm 單日與總回撤風控規範",
+                ea1_cta: "訂購 AutoTrendEA v2.0（輸入 ID 享 9 折）",
+                ea2_sub: "客製化演算法工程",
+                ea2_title: "委託開發專屬交易機器人",
+                ea2_desc: "將您的手動交易策略、技術指標組合或價格行為邏輯自動化為低延遲機構級 Expert Advisor。全程簽署嚴格保密協定，策略智慧財產權 100% 歸您所有。",
+                ea2_b1: "支援自訂指標、突破、SMC 或均值回歸邏輯",
+                ea2_b2: "多週期（Multi-Timeframe）與多品種風控過濾",
+                ea2_b3: "完整 Tick 級別歷史回測審計與參數最佳化",
+                ea2_b4: "嚴格保密條款（NDA）與完整策略所有權保障",
+                ea2_cta: "委託客製化 EA 開發（輸入 ID 享 9 折）",
+                form_badge: "快速專案委託與預約",
+                form_title: "訂購產品或預約線上諮詢",
+                form_desc: '請於下方填寫您的專案需求，輸入專屬優惠碼 <strong class="text-cyan-400 font-mono">ID</strong> 即可立即享有 9 折優惠，表單將直接發送至 <span class="text-white">Twinterlabs@gmail.com</span>。',
+                tab_prod: "訂購產品 / 專案委託",
+                tab_meet: "預約線上會議",
+                lbl_name: "您的姓名 / 公司名稱 *",
+                lbl_contact: "LINE ID / 聯絡方式 *",
+                lbl_email: "電子郵件地址 *",
+                lbl_cat_prod: "委託項目類別 *",
+                lbl_cat_meet: "會議諮詢主題 *",
+                opt_web: "商業形象網站 / 預約平台開發",
+                opt_app: "跨平台行動應用程式 (iOS / Android)",
+                opt_api: "客製化後端系統與 API 基礎設施",
+                opt_ea_buy: "購買 AutoTrendEA v2.0 量化交易程式",
+                opt_ea_custom: "委託客製化 MQL5 交易機器人開發",
+                opt_fullstack: "全端整合客製化系統架構",
+                lbl_promo: "專屬優惠碼（享 9 折優惠）*",
+                promo_badge: "專案總價折抵 10%",
+                promo_hint: '請輸入有效優惠碼 <strong class="text-cyan-400 font-bold">id</strong> 或 <strong class="text-cyan-400 font-bold">ID</strong> 以完成驗證並套用 9 折優惠提交需求。',
+                lbl_date: "期望會議日期 *",
+                lbl_time: "偏好平台與時段 *",
+                lbl_det_prod: "專案需求說明或功能規格",
+                lbl_det_meet: "會議議程 / 討論重點",
+                btn_submit_prod: "套用優惠碼並送出訂單",
+                btn_submit_meet: "套用優惠碼並確認預約",
+                btn_line: "LINE 即時洽談",
+                ft_about: "專注於高效能數位系統與量化演算法軟體工程。提供商業網站開發、跨平台行動應用程式（Spirit Feeder）、雲端後端系統與實盤驗證 MQL5 交易程式。",
+                ft_contact_t: "直接聯繫管道",
+                ft_line_link: "點擊加入 Twinter Labs LINE",
+                ft_domain: "官方網站",
+                ft_prac_t: "核心技術領域",
+                ft_p1: "• 商業形象與預約網站開發",
+                ft_p2: "• React Native & Expo 行動應用程式",
+                ft_p3: "• FastAPI & Node.js 後端微服務架構",
+                ft_p4: "• MQL5 量化交易程式與歷史回測驗證",
+                ft_p5: "• 客製化全端系統整合設計",
+                ft_tagline: "專為高可靠度商業部署而打造",
+                ph_name: "例如：林先生 / 創想數位工作室",
+                ph_contact: "請輸入您的 LINE ID 或聯絡方式",
+                ph_promo: "請輸入優惠碼（例如：ID）",
+                ph_time: "例如：Google Meet 或 LINE 下午 3:00",
+                ph_details: "請簡述您希望開發的功能、預計上線時程或交易策略規格...",
+                err_promo: '<i class="fa-solid fa-triangle-exclamation mr-1.5"></i> 優惠碼無效。請輸入有效優惠碼 "ID" 或 "id" 以套用 9 折優惠並送出需求。',
+                sending_msg: '<i class="fa-solid fa-spinner fa-spin"></i> 正在發送至 Twinterlabs@gmail.com...',
+                success_msg: (code) => `<i class="fa-solid fa-circle-check mr-1.5"></i> 優惠碼 "${code}" 驗證成功（已套用 9 折優惠）！您的需求已直接發送至 Twinterlabs@gmail.com，我們將盡快與您聯繫。`
+            },
+            en: {
+                toggle_btn: "繁體中文",
+                top_tagline: "CUSTOM WEB, MOBILE & QUANT SYSTEMS",
+                top_cta: "START A BUILD (10% OFF CODE: ID) →",
+                brand_sub: "Software & Systems Studio",
+                nav_services: "What We Build",
+                nav_apps: "Mobile App Demo",
+                nav_portfolio: "Live Websites",
+                nav_quant: "Expert Advisors",
+                nav_request: "Submit Request",
+                nav_cta: "Order / Inquire",
+                hero_badge: "WEBSITES • APPS • SYSTEMS • ALGORITHMS",
+                hero_title: 'We build & deploy <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-teal-300 to-emerald-400">custom software</span> that drives real business.',
+                hero_desc: "Twinter Labs is a boutique development studio. We build and sell conversion-driven <strong>commercial websites</strong>, cross-platform <strong>mobile applications</strong>, scalable <strong>backend systems</strong>, and verified <strong>algorithmic trading Expert Advisors</strong>.",
+                hero_btn_primary: "Request a Build (10% Off Code: ID)",
+                hero_btn_line: "Connect on LINE",
+                stat_web: "Portals & Sites",
+                stat_mobile: "React Native",
+                stat_api: "FastAPI & Node",
+                stat_quant: "MQL5 Robots",
+                panel_title: "STUDIO CATALOG",
+                panel_status: "READY TO DEPLOY",
+                panel_item1_t: "Commercial Websites",
+                panel_item1_d: "Custom portals, booking engines & landing pages",
+                panel_tag1: "Live",
+                panel_item2_t: "Spirit Feeder (Mobile App)",
+                panel_item2_d: "Gamified scripture pet RPG in React Native",
+                panel_tag2: "Video Demo",
+                panel_item3_t: "Backend Systems & APIs",
+                panel_item3_d: "FastAPI, Python, SQLite/Postgres schemas",
+                panel_tag3: "Fast",
+                panel_item4_t: "MQL5 Expert Advisors",
+                panel_item4_d: "Audited 3.14 PF trend strategy & custom robots",
+                panel_tag4: "Verified",
+                panel_footer_cta: "Apply Promo Code & Commission Build →",
+                app_badge: "MOBILE APPLICATION SHOWCASE • BUILT IN-HOUSE",
+                app_intro: "A cross-platform mobile pet RPG engineered with React Native, Expo Router, and a FastAPI backend. Hatch biblical companions (Lion, Donkey, Raven, Camel), feed your spirit with scripture reading, level up, battle serpents through verse quizzes, and customize your sanctuary.",
+                app_sub: "In-House Product Engineering",
+                app_quote: '"Feed your pet. Feed your spirit."',
+                app_desc: "Watch the live app walkthrough demonstrating our end-to-end mobile engineering capabilities: custom pixel art UI components, gamified scripture reward systems, dynamic level progression, and quiz battle engines.",
+                app_f1_t: "Hatch & Evolve Companions",
+                app_f1_d: "Select from Biblical pets (Lion, Donkey, Raven, Camel) and watch them evolve from Baby to Teen (Lv 30) and Grown-Up (Lv 60).",
+                app_f2_t: "Read Scripture to Earn Bread",
+                app_f2_d: "Integrated Bible reader passes verses and rewards players with nourishment to keep their companion fed and earning bonus XP.",
+                app_f3_t: "Battle with the Word",
+                app_f3_d: "Real-time verse fill-in-the-blank quizzes to combat serpents and unlock rare inventory and holy artifacts.",
+                app_f4_t: "Custom Outfits & Sanctum",
+                app_f4_d: "Equippable biblical garments, priestly crowns, and customizable stained-glass room decorations.",
+                built_with: "BUILT WITH:",
+                app_cta: "Commission a Custom Mobile App",
+                srv_badge: "Our Offerings",
+                srv_title: "What We Build & Sell",
+                srv_desc: "From complete client websites to mission-critical backend microservices and automated trading robots, we build end-to-end solutions.",
+                srv1_t: "Websites & Platforms",
+                srv1_d: "Bespoke, conversion-engineered commercial websites, product landing pages, and interactive client intake portals built with zero bloat and instant load times.",
+                srv1_b1: "• High conversion UX layout",
+                srv1_b2: "• Automated Email & LINE dispatch",
+                srv1_b3: "• Custom domain, DNS & SSL included",
+                srv1_cta: "Order Website →",
+                srv2_t: "Mobile Applications",
+                srv2_d: "Cross-platform iOS and Android applications developed in React Native and Expo (see Spirit Feeder demo). Fluid gestures, offline persistence, and seamless cloud syncing.",
+                srv2_b1: "• React Native & Expo Router",
+                srv2_b2: "• Single codebase for iOS & Android",
+                srv2_b3: "• Real-time REST/WebSocket sync",
+                srv2_cta: "Order Mobile App →",
+                srv3_t: "Backend Systems & APIs",
+                srv3_d: "Robust cloud backend infrastructure with Python (FastAPI) and Node.js. Secure token authentication, database schemas, and external service webhooks.",
+                srv3_b1: "• High-concurrency RESTful APIs",
+                srv3_b2: "• SQLite & PostgreSQL schemas",
+                srv3_b3: "• Automated server & cron pipelines",
+                srv3_cta: "Order Backend System →",
+                srv4_t: "Expert Advisors (MT5)",
+                srv4_d: "Automated trading robots engineered in MQL5. Rigorous tick-level backtesting, ATR trailing stops, volatility management, and prop-firm compliance.",
+                srv4_b1: "• Buy ready-made AutoTrendEA v2.0",
+                srv4_b2: "• Commission custom EA to your rules",
+                srv4_b3: "• 100% tick modeling backtesting",
+                srv4_cta: "View EA Proof & Order →",
+                port_badge: "Live Client Demonstrations",
+                port_title: "Production Websites We've Built",
+                port_desc: "Test live commercial client websites engineered, configured, and deployed by Twinter Labs.",
+                c1_tag: "TOURISM & VIP TRANSFERS",
+                c1_desc: "A high-converting web platform engineered for a licensed VIP island tour and taxi operator. Features interactive video tour reels, an integrated booking form, and automated 1-tap booking dispatch.",
+                c1_t2: "Instant Dispatch",
+                c1_t3: "Formspree Intake",
+                c1_t4: "Custom Domain & SSL",
+                c2_tag: "EXPERIENTIAL EVENT STUDIOS",
+                c2_desc: "Experiential event studio digital catalog showcasing Infinity Mirror Photo Boxes, Open-Frame Illuminated Cube Stages, touchscreen photo kiosks with physical prints, and organic balloon garlands.",
+                c2_t1: "Cinzel Luxury Typography",
+                c2_t2: "Interactive Gallery",
+                c2_t3: "Direct Event Booking",
+                c2_t4: "Custom Domain Hosting",
+                launch_site: "Launch Live Website",
+                q_badge: "AUDITED METATRADER 5 QUANTITATIVE STRATEGIES",
+                q_title: "Algorithmic Trading & Expert Advisors",
+                q_desc: "We engineer, test, and sell verified algorithmic Expert Advisors (EAs). Buy our audited flagship system or commission a custom trading robot built to your exact indicators and strategy rules.",
+                qs1: "Profit Factor",
+                qs2: "Recovery Factor",
+                qs3: "Max Drawdown",
+                qs4: "Sharpe Ratio",
+                qs5: "History Quality",
+                qs6: "Expected Payoff",
+                qa1_title: "Performance Audit 01: MT5 Strategy Tester Report",
+                qa1_tag: "100% REAL TICKS AUDIT",
+                qm1_l: "Initial Deposit:",
+                qm1_s: "Total Net: +$1,438.95",
+                qm2_l: "Gross Profit / Loss:",
+                qm2_s: "Profit Factor: 3.14",
+                qm3_l: "Drawdown Exposure:",
+                qm3_s: "Max Relative: 3.68%",
+                qm4_l: "Ticks Modeled:",
+                qm4_s: "100% Every Tick Modeled",
+                qa2_title: "Performance Audit 02: Real-Tick Equity Curve",
+                qa2_desc: '<i class="fa-solid fa-arrow-trend-up text-emerald-400 mr-1.5"></i>Continuous upward balance trajectory over 5,321 bars with minimal deposit load exposure (&lt;10%) and disciplined recovery after volatility drawdowns.',
+                qa3_title: "Performance Audit 03: Session Timing & Distributions",
+                qa3_desc: '<i class="fa-solid fa-clock text-cyan-400 mr-1.5"></i>Built-in server liquidity filters limit exposure to prime market sessions (London & New York overlap), filtering out off-hour slippage and non-trending spreads.',
+                ea1_badge: "READY FOR DEPLOYMENT",
+                ea1_sub: "Ready-Made System",
+                ea1_title: "Purchase AutoTrendEA v2.0",
+                ea1_desc: "Acquire the verified, compiled .ex5 system ready to plug directly into your live broker or prop-firm challenge. Fully equipped with preset configuration files, ATR trailing stops, and active session filters.",
+                ea1_b1: "Lifetime license for designated MT5 account numbers",
+                ea1_b2: "Turnkey .set parameter presets optimized for stability",
+                ea1_b3: "Complete setup guide + remote configuration support",
+                ea1_b4: "Prop-Firm challenge safety rules compatible",
+                ea1_cta: "Order AutoTrendEA v2.0 (10% Off)",
+                ea2_sub: "Bespoke Algorithmic Engineering",
+                ea2_title: "Commission a Custom Trading Robot",
+                ea2_desc: "Have your own manual strategy, indicator combination, or order flow logic automated into an institutional-grade, low-latency Expert Advisor. Protected under complete intellectual property confidentiality.",
+                ea2_b1: "Custom indicators, breakout, SMC, or mean-reversion logic",
+                ea2_b2: "Multi-timeframe and multi-currency portfolio filters",
+                ea2_b3: "Full tick-level backtest audit & parameter optimization",
+                ea2_b4: "Strict Non-Disclosure & IP retention agreement",
+                ea2_cta: "Commission Custom EA Build (10% Off)",
+                form_badge: "Zero-Friction Intake",
+                form_title: "Order a Product or Schedule a Call",
+                form_desc: 'Submit your build requirements below. Enter promo code <strong class="text-cyan-400 font-mono">ID</strong> to validate your 10% discount and dispatch directly to <span class="text-white">Twinterlabs@gmail.com</span>.',
+                tab_prod: "Order Product / Build",
+                tab_meet: "Schedule a Meeting",
+                lbl_name: "Your Name / Organization *",
+                lbl_contact: "LINE ID / Contact Handle *",
+                lbl_email: "Email Address *",
+                lbl_cat_prod: "Deliverable Needed *",
+                lbl_cat_meet: "Meeting Topic *",
+                opt_web: "Commercial Website / Web Platform",
+                opt_app: "Mobile Application (React Native / Expo)",
+                opt_api: "Custom Backend & API Infrastructure",
+                opt_ea_buy: "Purchase AutoTrendEA v2.0 ($1,500 Model)",
+                opt_ea_custom: "Commission Custom MQL5 Expert Advisor",
+                opt_fullstack: "Full-Stack Custom System Architecture",
+                lbl_promo: "Promo Code (10% Discount) *",
+                promo_badge: "Save 10% on Build",
+                promo_hint: 'Must enter valid code <strong class="text-cyan-400 font-bold">id</strong> or <strong class="text-cyan-400 font-bold">ID</strong> to submit your inquiry with the 10% discount applied.',
+                lbl_date: "Preferred Meeting Date *",
+                lbl_time: "Preferred Platform / Time *",
+                lbl_det_prod: "Order Details or Project Scope",
+                lbl_det_meet: "Agenda / Discussion Points",
+                btn_submit_prod: "Apply Code & Submit Order",
+                btn_submit_meet: "Apply Code & Confirm Meeting",
+                btn_line: "Chat on LINE",
+                ft_about: "High-impact digital systems and algorithmic software engineering. Websites, cross-platform mobile apps (Spirit Feeder), cloud backend systems, and audited MQL5 Expert Advisors.",
+                ft_contact_t: "Direct Communications",
+                ft_line_link: "Add Twinter Labs on LINE",
+                ft_domain: "Official Domain",
+                ft_prac_t: "Core Practices",
+                ft_p1: "• Commercial Web Applications",
+                ft_p2: "• React Native & Expo Mobile Apps",
+                ft_p3: "• FastAPI & Node.js Backend Microservices",
+                ft_p4: "• MQL5 Trading Algorithms & Strategy Auditing",
+                ft_p5: "• Custom Systems Architecture",
+                ft_tagline: "Engineered for High-Reliability Deployments",
+                ph_name: "e.g. David Lin / Horizon Studio",
+                ph_contact: "Your LINE ID or preferred handle",
+                ph_promo: "Enter promo code (e.g. ID)",
+                ph_time: "e.g. Google Meet / LINE at 3:00 PM CST",
+                ph_details: "Briefly describe what you want built, desired features, timeline, or strategy specifications...",
+                err_promo: '<i class="fa-solid fa-triangle-exclamation mr-1.5"></i> Invalid Promo Code. You must enter valid code "ID" or "id" to submit a request and claim the 10% discount.',
+                sending_msg: '<i class="fa-solid fa-spinner fa-spin"></i> Sending to Twinterlabs@gmail.com...',
+                success_msg: (code) => `<i class="fa-solid fa-circle-check mr-1.5"></i> Promo code "${code}" validated (10% OFF)! Your request has been sent to Twinterlabs@gmail.com. We will reply shortly.`
+            }
+        };
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'zh' ? 'en' : 'zh';
+            applyLanguage(currentLang);
+        }
+
+        function applyLanguage(lang) {
+            const dict = translations[lang];
+            document.documentElement.lang = lang === 'zh' ? 'zh-Hant' : 'en';
+            document.getElementById('langToggleText').innerText = dict.toggle_btn;
+
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (dict[key] !== undefined) {
+                    el.innerHTML = dict[key];
+                }
+            });
+
+            // Update input placeholders
+            document.getElementById('reqName').placeholder = dict.ph_name;
+            document.getElementById('reqPhone').placeholder = dict.ph_contact;
+            document.getElementById('reqPromoCode').placeholder = dict.ph_promo;
+            document.getElementById('reqMeetingFormat').placeholder = dict.ph_time;
+            document.getElementById('reqDetails').placeholder = dict.ph_details;
+
+            // Sync mode-dependent labels
+            setMode(currentMode);
+        }
+
         function selectService(serviceName) {
             setMode('product');
             const select = document.getElementById('reqCategory');
@@ -820,6 +1216,8 @@
         }
 
         function setMode(mode) {
+            currentMode = mode;
+            const dict = translations[currentLang];
             const btnProd = document.getElementById('tabProduct');
             const btnMeet = document.getElementById('tabMeeting');
             const meetingFields = document.getElementById('meetingFields');
@@ -828,26 +1226,27 @@
             const btnText = document.getElementById('btnText');
             const modeInput = document.getElementById('requestMode');
 
-            if(mode === 'meeting') {
+            if (mode === 'meeting') {
                 modeInput.value = "Schedule a Meeting";
                 btnMeet.className = "px-6 py-2.5 rounded-xl font-bold text-xs uppercase tracking-wider font-mono transition bg-cyan-500 text-black shadow-lg";
                 btnProd.className = "px-6 py-2.5 rounded-xl font-bold text-xs uppercase tracking-wider font-mono transition text-slate-400 hover:text-white";
                 meetingFields.classList.remove('hidden');
-                categoryLabel.innerText = "Meeting Topic *";
-                detailsLabel.innerText = "Agenda / Discussion Points";
-                btnText.innerText = "Apply Code & Confirm Meeting";
+                categoryLabel.innerText = dict.lbl_cat_meet;
+                detailsLabel.innerText = dict.lbl_det_meet;
+                btnText.innerText = dict.btn_submit_meet;
             } else {
                 modeInput.value = "Order Product / Build";
                 btnProd.className = "px-6 py-2.5 rounded-xl font-bold text-xs uppercase tracking-wider font-mono transition bg-cyan-500 text-black shadow-lg";
                 btnMeet.className = "px-6 py-2.5 rounded-xl font-bold text-xs uppercase tracking-wider font-mono transition text-slate-400 hover:text-white";
                 meetingFields.classList.add('hidden');
-                categoryLabel.innerText = "Deliverable Needed *";
-                detailsLabel.innerText = "Order Details or Project Scope";
-                btnText.innerText = "Apply Code & Submit Order";
+                categoryLabel.innerText = dict.lbl_cat_prod;
+                detailsLabel.innerText = dict.lbl_det_prod;
+                btnText.innerText = dict.btn_submit_prod;
             }
         }
 
         function handleQuickSubmit(e) {
+            const dict = translations[currentLang];
             const btn = document.getElementById('submitBtn');
             const status = document.getElementById('formStatus');
             const form = document.getElementById('quickRequestForm');
@@ -858,13 +1257,12 @@
             if (rawPromo !== 'id' && rawPromo !== 'ID') {
                 e.preventDefault();
                 status.className = "mb-6 p-4 rounded-xl text-xs font-semibold text-center bg-rose-950 border border-rose-700 text-rose-200 block font-mono";
-                status.innerHTML = `<i class="fa-solid fa-triangle-exclamation mr-1.5"></i> Invalid Promo Code. You must enter valid code "ID" or "id" to submit a request and claim the 10% discount.`;
+                status.innerHTML = dict.err_promo;
                 promoInput.classList.add('border-rose-500');
                 promoInput.focus();
                 return false;
             }
 
-            // Update dynamic subject line before native browser POST submits to hidden iframe
             const mode = document.getElementById('requestMode').value;
             const name = document.getElementById('reqName').value;
             const category = document.getElementById('reqCategory').value;
@@ -873,12 +1271,11 @@
             promoInput.classList.remove('border-rose-500');
             const originalBtnHtml = btn.innerHTML;
             btn.disabled = true;
-            btn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Sending to Twinterlabs@gmail.com...`;
+            btn.innerHTML = dict.sending_msg;
 
-            // Allow native POST to proceed to hidden iframe, then confirm & reset
             setTimeout(() => {
                 status.className = "mb-6 p-4 rounded-xl text-xs font-semibold text-center bg-emerald-950 border border-emerald-700 text-emerald-200 block font-mono";
-                status.innerHTML = `<i class="fa-solid fa-circle-check mr-1.5"></i> Promo code "${rawPromo}" validated (10% OFF)! Your request has been sent to Twinterlabs@gmail.com. We will reply shortly.`;
+                status.innerHTML = dict.success_msg(rawPromo);
                 form.reset();
                 setMode('product');
                 btn.disabled = false;
