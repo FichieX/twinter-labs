@@ -852,6 +852,7 @@
             e.preventDefault();
             const btn = document.getElementById('submitBtn');
             const status = document.getElementById('formStatus');
+            const form = document.getElementById('quickRequestForm');
 
             const promoInput = document.getElementById('reqPromoCode');
             const rawPromo = promoInput.value.trim();
@@ -866,23 +867,26 @@
             }
 
             promoInput.classList.remove('border-rose-500');
+            const originalBtnHtml = btn.innerHTML;
             btn.disabled = true;
-            btn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Validating Code & Transmitting...`;
+            btn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Validating Code & Sending to Email...`;
 
             const mode = document.getElementById('requestMode').value;
             const name = document.getElementById('reqName').value;
             const phone = document.getElementById('reqPhone').value;
             const email = document.getElementById('reqEmail').value;
             const category = document.getElementById('reqCategory').value;
-            const details = document.getElementById('reqDetails').value; 
+            const details = document.getElementById('reqDetails').value;
             const date = document.getElementById('reqDate').value;
             const meetingFormat = document.getElementById('reqMeetingFormat').value;
 
-            // Submit directly to Twinterlabs@gmail.com with 10% discount flag
             try {
-                await fetch('https://formspree.io/f/xaeonapy', {
+                const response = await fetch('https://formspree.io/f/xaeonapy', {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
                     body: JSON.stringify({
                         mode: mode,
                         name: name,
@@ -891,38 +895,33 @@
                         category: category,
                         promo_code: rawPromo,
                         discount_applied: "10% Discount Applied",
-                        preferred_date: date,
-                        meeting_format: meetingFormat,
+                        preferred_date: date || "N/A",
+                        meeting_format: meetingFormat || "N/A",
                         details: details,
+                        _replyto: email,
                         _subject: `[Twinter Labs 10% OFF] ${mode}: ${name} (${category})`
                     })
-                }).catch(() => {});
-            } catch (err) {}
+                });
 
-            // Format WhatsApp Dispatch with 10% discount tag
-            let waMsg = `Hello Twinter Labs! I have submitted an order/request via www.twinterlabs.com:%0A%0A` +
-                        `*Type:* ${encodeURIComponent(mode)}%0A` +
-                        `*Name:* ${encodeURIComponent(name)}%0A` +
-                        `*Phone:* ${encodeURIComponent(phone)}%0A` +
-                        `*Email:* ${encodeURIComponent(email)}%0A` +
-                        `*Scope/Topic:* ${encodeURIComponent(category)}%0A` +
-                        `*Promo Code:* ${encodeURIComponent(rawPromo)} (10% Discount Applied)%0A`;
+                const result = await response.json().catch(() => ({}));
 
-            if(mode === "Schedule a Meeting") {
-                waMsg += `*Preferred Date:* ${encodeURIComponent(date)}%0A` +
-                         `*Format/Time:* ${encodeURIComponent(meetingFormat)}%0A`;
-            }
-
-            waMsg += `*Details:* ${encodeURIComponent(details)}`;
-
-            status.className = "mb-6 p-4 rounded-xl text-xs font-semibold text-center bg-cyan-950 border border-cyan-800 text-cyan-200 block font-mono";
-            status.innerHTML = `✓ Promo code "${rawPromo}" validated! 10% discount applied. Request dispatched to Twinterlabs@gmail.com! Opening WhatsApp channel (+886 965-282-049)...`;
-
-            setTimeout(() => {
-                window.open(`https://wa.me/886965282049?text=${waMsg}`, '_blank');
+                if (response.ok) {
+                    status.className = "mb-6 p-4 rounded-xl text-xs font-semibold text-center bg-emerald-950 border border-emerald-700 text-emerald-200 block font-mono";
+                    status.innerHTML = `<i class="fa-solid fa-circle-check mr-1.5"></i> Promo code "${rawPromo}" validated (10% OFF)! Your request has been delivered directly to Twinterlabs@gmail.com. We will reply shortly.`;
+                    form.reset();
+                    setMode('product');
+                } else {
+                    const errMsg = (result.errors && result.errors.map(err => err.message).join(', ')) || "Submission rejected by server.";
+                    status.className = "mb-6 p-4 rounded-xl text-xs font-semibold text-center bg-rose-950 border border-rose-700 text-rose-200 block font-mono";
+                    status.innerHTML = `<i class="fa-solid fa-triangle-exclamation mr-1.5"></i> Error: ${errMsg} Please try again or email Twinterlabs@gmail.com directly.`;
+                }
+            } catch (err) {
+                status.className = "mb-6 p-4 rounded-xl text-xs font-semibold text-center bg-rose-950 border border-rose-700 text-rose-200 block font-mono";
+                status.innerHTML = `<i class="fa-solid fa-triangle-exclamation mr-1.5"></i> Network error while sending request. Check your connection or email Twinterlabs@gmail.com.`;
+            } finally {
                 btn.disabled = false;
-                btn.innerHTML = `<i class="fa-solid fa-paper-plane text-sm"></i> <span id="btnText">Apply Code & Submit Order</span>`;
-            }, 800);
+                btn.innerHTML = originalBtnHtml;
+            }
         }
     </script>
 </body>
