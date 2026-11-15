@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Twinter Labs | 網站製作販售、手機 APP 開發、完整全端系統設計</title>
-    <meta name="description" content="Twinter Labs 專門開發並販售商業網站、iOS/Android 手機 APP、完整前後端系統，以及客製化交易程式。公開透明報價區間、快速上線。">
+    <meta name="description" content="Twinter Labs 專門開發並販售商業網站、iOS/Android 手機 APP、完整前後端系統，以及客製化交易程式。公開透明報價區間、一條龍上線與維護服務。">
     <link rel="canonical" href="https://www.twinterlabs.com">
     <meta name="google-site-verification" content="VR4HrSrcaNeeW2R7lKLB1Owq403r3E5KG4SZfZC0tWc" />
 
@@ -20,15 +20,9 @@
         .font-mono { font-family: 'JetBrains Mono', 'Noto Sans TC', monospace; }
         body { font-family: 'Plus Jakarta Sans', 'Noto Sans TC', sans-serif; }
 
-        .terminal-glow {
-            box-shadow: 0 0 40px rgba(6, 182, 212, 0.12);
-        }
-        .emerald-glow {
-            box-shadow: 0 0 30px rgba(16, 185, 129, 0.2);
-        }
-        .app-glow {
-            box-shadow: 0 0 35px rgba(245, 158, 11, 0.25);
-        }
+        .terminal-glow { box-shadow: 0 0 40px rgba(6, 182, 212, 0.12); }
+        .emerald-glow { box-shadow: 0 0 30px rgba(16, 185, 129, 0.2); }
+        .app-glow { box-shadow: 0 0 35px rgba(245, 158, 11, 0.25); }
     </style>
 
     <!-- Google tag (gtag.js) -->
@@ -73,11 +67,11 @@
             </a>
 
             <div class="hidden lg:flex items-center gap-7 text-xs uppercase tracking-widest font-semibold text-slate-400">
-                <a href="#services" class="hover:text-cyan-400 transition" data-i18n="nav_services">方案與價格區間</a>
-                <a href="#apps" class="hover:text-cyan-400 transition" data-i18n="nav_apps">手機 APP 實機展示</a>
-                <a href="#portfolio" class="hover:text-cyan-400 transition" data-i18n="nav_portfolio">已上線網站作品</a>
-                <a href="#quant" class="hover:text-cyan-400 transition" data-i18n="nav_quant">客製化交易程式</a>
-                <a href="#quick-request" class="hover:text-cyan-400 transition" data-i18n="nav_request">立即下單 / 諮詢</a>
+                <a href="#services" class="hover:text-cyan-400 transition" data-i18n="nav_services">方案與價格</a>
+                <a href="#portfolio" class="hover:text-cyan-400 transition" data-i18n="nav_portfolio">線上網站作品</a>
+                <a href="#apps" class="hover:text-cyan-400 transition" data-i18n="nav_apps">手機 APP 展示</a>
+                <a href="#process" class="hover:text-cyan-400 transition" data-i18n="nav_process">合作流程與 FAQ</a>
+                <a href="#quick-request" class="hover:text-cyan-400 transition" data-i18n="nav_request">立即下單</a>
             </div>
 
             <div class="flex items-center gap-2.5">
@@ -124,7 +118,7 @@
 
                     <div class="pt-2 flex flex-col sm:flex-row gap-4">
                         <a href="#quick-request" class="bg-cyan-500 hover:bg-cyan-400 text-black font-extrabold text-xs uppercase tracking-widest px-8 py-4 rounded-xl shadow-xl transition flex items-center justify-center gap-2 emerald-glow">
-                            <span data-i18n="hero_btn_primary">立即下單 / 詢價（輸入優惠碼 ID 享 9 折）</span>
+                            <span data-i18n="hero_btn_primary">立即下單 / 免費估價（優惠碼 ID 享 9 折）</span>
                             <i class="fa-solid fa-arrow-right text-xs"></i>
                         </a>
                         <a href="https://line.me/ti/p/rsc69htRfX" target="_blank" class="bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs uppercase tracking-widest px-8 py-4 rounded-xl shadow-md transition flex items-center justify-center gap-2 border border-slate-700">
@@ -216,7 +210,7 @@
                         </div>
 
                         <div class="pt-2 text-center">
-                            <a href="#services" class="text-xs font-mono text-cyan-400 hover:text-cyan-300 font-bold transition" data-i18n="panel_footer_cta">查看各方案詳細內容與報價說明 ↓</a>
+                            <a href="#services" class="text-xs font-mono text-cyan-400 hover:text-cyan-300 font-bold transition" data-i18n="panel_footer_cta">查看各方案詳細內容與月費維護方案 ↓</a>
                         </div>
                     </div>
                 </div>
@@ -225,7 +219,7 @@
         </div>
     </header>
 
-    <!-- The 4 Core Products & Services We Sell (Moved Up for Immediate Pricing Clarity) -->
+    <!-- The 4 Core Products & Services + Optional Maintenance Tier -->
     <section id="services" class="py-24 bg-[#0A0E17] border-t border-slate-800/80">
         <div class="max-w-7xl mx-auto px-6">
             <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
@@ -351,7 +345,7 @@
                         <ul class="text-xs text-slate-400 space-y-1.5 pt-2 border-t border-slate-800 font-mono">
                             <li data-i18n="srv4_b1">• 依照您的策略規則量身編寫</li>
                             <li data-i18n="srv4_b2">• 內建自動停損與資金風控保護</li>
-                            <li data-i18n="srv4_b3">• 100% 歷史逐筆報價回測驗證</li>
+                            <li><a href="quant.html" class="text-emerald-400 hover:underline" data-i18n="srv4_b3">• 查看 100% 歷史回測技術報告 →</a></li>
                         </ul>
                     </div>
                     <a href="#quick-request" onclick="selectService('Custom Quantitative & Algorithmic System (MQL5 / Python)')" class="w-full py-3 bg-emerald-950 hover:bg-emerald-900 text-emerald-300 text-xs font-bold font-mono uppercase tracking-wider text-center rounded-xl transition border border-emerald-800" data-i18n="srv4_cta">
@@ -360,11 +354,127 @@
                 </div>
 
             </div>
+
+            <!-- Optional Monthly Maintenance & Hosting Tier -->
+            <div class="mt-8 bg-[#0D131F] rounded-3xl p-6 sm:p-8 border border-slate-800 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
+                <div class="space-y-2 max-w-2xl">
+                    <div class="inline-flex items-center gap-2 text-xs font-mono text-cyan-400 font-bold">
+                        <i class="fa-solid fa-shield-heart"></i>
+                        <span data-i18n="care_badge">選配安心服務 • 上線後免煩惱維護</span>
+                    </div>
+                    <h3 class="font-display text-xl sm:text-2xl font-bold text-white" data-i18n="care_title">全託管網站與系統維護方案（NT$1,500 – 3,500 / 月）</h3>
+                    <p class="text-xs text-slate-400 leading-relaxed" data-i18n="care_desc">
+                        擔心上線後沒人幫忙改文字、換圖片或續約網址嗎？可自由加購月費維護方案（無綁約、隨時可取消）：包含網域與 SSL 安全憑證代管、每月內容圖文更新、24 小時主機監控與雲端備份。
+                    </p>
+                </div>
+                <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full lg:w-auto shrink-0">
+                    <a href="#quick-request" onclick="selectService('Monthly Website & System Maintenance Plan (NT$1,500 - 3,500/mo)')" class="py-3.5 px-6 bg-slate-900 hover:bg-slate-800 text-cyan-400 font-bold text-xs font-mono uppercase tracking-wider rounded-xl border border-cyan-800/60 text-center transition" data-i18n="care_cta">
+                        加購月費託管維護 →
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Live Client Demos & Portfolio (Now Includes Traditional Chinese Pilates Site!) -->
+    <section id="portfolio" class="py-24 bg-[#080B11] border-t border-slate-800/80">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+                <div>
+                    <span class="text-xs font-mono font-bold uppercase tracking-widest text-cyan-400" data-i18n="port_badge">實際客戶與範例網站作品</span>
+                    <h2 class="font-display text-3xl sm:text-5xl font-bold text-white mt-2" data-i18n="port_title">可以直接點開體驗的線上網站</h2>
+                </div>
+                <p class="text-slate-400 text-xs max-w-md font-mono" data-i18n="port_desc">
+                    包含台灣本地繁體中文預約官網與海外商業網站，點擊下方連結即可直接操作體驗。
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                
+                <!-- Demo 1: Aura Pilates Studio (Traditional Chinese Demo) -->
+                <div class="bg-[#0D131F] rounded-3xl border-2 border-cyan-500/50 overflow-hidden hover:border-cyan-400 transition duration-300 flex flex-col justify-between">
+                    <div class="p-8 space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="text-[10px] font-mono uppercase tracking-widest px-3 py-1 rounded-full bg-cyan-950 text-cyan-300 border border-cyan-800" data-i18n="c0_tag">繁體中文 • 運動課程預約官網</span>
+                            <span class="text-xs text-slate-400 font-mono">Taiwan</span>
+                        </div>
+                        <h3 class="font-display text-2xl font-bold text-white" data-i18n="c0_title">靜息皮拉提斯 Aura Pilates</h3>
+                        <p class="text-slate-400 text-xs leading-relaxed" data-i18n="c0_desc">
+                            專為台灣精品器械皮拉提斯與美學工作室打造的繁體中文官網，支援課程方案展示、即時課表篩選與一鍵線上預約體驗課功能。
+                        </p>
+                        <div class="flex flex-wrap gap-2 pt-2 font-mono text-[11px] text-slate-300">
+                            <span class="bg-slate-900 px-3 py-1 rounded-lg border border-slate-800" data-i18n="c0_t1">繁體中文美學排版</span>
+                            <span class="bg-slate-900 px-3 py-1 rounded-lg border border-slate-800" data-i18n="c0_t2">即時課表篩選</span>
+                            <span class="bg-slate-900 px-3 py-1 rounded-lg border border-slate-800" data-i18n="c0_t3">線上預約體驗表單</span>
+                        </div>
+                    </div>
+                    <div class="p-8 pt-0 flex items-center justify-between border-t border-slate-800/80 mt-6">
+                        <a href="pilates-demo.html" target="_blank" class="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 font-bold text-xs uppercase tracking-wider transition">
+                            <span data-i18n="launch_site">點我開啟網站</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-[11px]"></i>
+                        </a>
+                        <span class="text-[11px] font-mono text-slate-500">pilates-demo.html</span>
+                    </div>
+                </div>
+
+                <!-- Demo 2: Sabina Lady's Cab -->
+                <div class="bg-[#0D131F] rounded-3xl border border-slate-800 overflow-hidden hover:border-cyan-500/40 transition duration-300 flex flex-col justify-between">
+                    <div class="p-8 space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="text-[10px] font-mono uppercase tracking-widest px-3 py-1 rounded-full bg-emerald-950 text-emerald-400 border border-emerald-800" data-i18n="c1_tag">觀光旅遊與專車接送預約網</span>
+                            <span class="text-xs text-slate-400 font-mono">Saint Lucia</span>
+                        </div>
+                        <h3 class="font-display text-2xl font-bold text-white">Sabina Lady's Cab</h3>
+                        <p class="text-slate-400 text-xs leading-relaxed" data-i18n="c1_desc">
+                            幫加勒比海聖露西亞的觀光包車業者打造的線上預約網站。裡面有實景旅遊影片介紹、線上行程預約表單，客人填完單就會自動寄信通知老闆。
+                        </p>
+                        <div class="flex flex-wrap gap-2 pt-2 font-mono text-[11px] text-slate-300">
+                            <span class="bg-slate-900 px-3 py-1 rounded-lg border border-slate-800" data-i18n="c1_t2">線上行程預約</span>
+                            <span class="bg-slate-900 px-3 py-1 rounded-lg border border-slate-800" data-i18n="c1_t3">自動寄信通知</span>
+                            <span class="bg-slate-900 px-3 py-1 rounded-lg border border-slate-800" data-i18n="c1_t4">專屬網址與 SSL</span>
+                        </div>
+                    </div>
+                    <div class="p-8 pt-0 flex items-center justify-between border-t border-slate-800/80 mt-6">
+                        <a href="https://www.sabinasladycab.com" target="_blank" class="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 font-bold text-xs uppercase tracking-wider transition">
+                            <span data-i18n="launch_site">點我開啟網站</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-[11px]"></i>
+                        </a>
+                        <span class="text-[11px] font-mono text-slate-500">www.sabinasladycab.com</span>
+                    </div>
+                </div>
+
+                <!-- Demo 3: Refined Art Solutions -->
+                <div class="bg-[#0D131F] rounded-3xl border border-slate-800 overflow-hidden hover:border-cyan-500/40 transition duration-300 flex flex-col justify-between">
+                    <div class="p-8 space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="text-[10px] font-mono uppercase tracking-widest px-3 py-1 rounded-full bg-cyan-950 text-cyan-400 border border-cyan-800" data-i18n="c2_tag">活動派對與攝影設備租借網</span>
+                            <span class="text-xs text-slate-400 font-mono">Saint Lucia</span>
+                        </div>
+                        <h3 class="font-display text-2xl font-bold text-white">Refined Art Solutions</h3>
+                        <p class="text-slate-400 text-xs leading-relaxed" data-i18n="c2_desc">
+                            幫活動佈置與派對攝影公司設計的品牌展示官網，清楚展示無限鏡面拍照亭、發光舞台、即時印相機台與派對氣球佈置作品，方便客戶線上詢價預約檔期。
+                        </p>
+                        <div class="flex flex-wrap gap-2 pt-2 font-mono text-[11px] text-slate-300">
+                            <span class="bg-slate-900 px-3 py-1 rounded-lg border border-slate-800" data-i18n="c2_t1">精品質感排版</span>
+                            <span class="bg-slate-900 px-3 py-1 rounded-lg border border-slate-800" data-i18n="c2_t3">線上檔期詢價</span>
+                            <span class="bg-slate-900 px-3 py-1 rounded-lg border border-slate-800" data-i18n="c2_t4">專屬網域上線</span>
+                        </div>
+                    </div>
+                    <div class="p-8 pt-0 flex items-center justify-between border-t border-slate-800/80 mt-6">
+                        <a href="https://www.refinedartsolutions.com" target="_blank" class="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 font-bold text-xs uppercase tracking-wider transition">
+                            <span data-i18n="launch_site">點我開啟網站</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-[11px]"></i>
+                        </a>
+                        <span class="text-[11px] font-mono text-slate-500">www.refinedartsolutions.com</span>
+                    </div>
+                </div>
+
+            </div>
         </div>
     </section>
 
     <!-- Mobile App Production Demo (Spirit Feeder) -->
-    <section id="apps" class="py-24 bg-[#080B11] border-t border-slate-800/80">
+    <section id="apps" class="py-24 bg-[#0A0E17] border-t border-slate-800/80">
         <div class="max-w-7xl mx-auto px-6">
             
             <div class="max-w-3xl mx-auto text-center mb-16 space-y-3">
@@ -468,216 +578,78 @@
         </div>
     </section>
 
-    <!-- Live Client Demos & Portfolio -->
-    <section id="portfolio" class="py-24 bg-[#0A0E17] border-t border-slate-800/80">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
-                <div>
-                    <span class="text-xs font-mono font-bold uppercase tracking-widest text-cyan-400" data-i18n="port_badge">實際客戶網站作品</span>
-                    <h2 class="font-display text-3xl sm:text-5xl font-bold text-white mt-2" data-i18n="port_title">我們已經做好的上線網站</h2>
-                </div>
-                <p class="text-slate-400 text-xs max-w-md font-mono" data-i18n="port_desc">
-                    可以直接點擊下方連結，實際逛逛我們幫海外客戶設計、設定網址並正式上線的商業網站。
-                </p>
-            </div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                
-                <!-- Demo 1: Sabina Lady's Cab -->
-                <div class="bg-[#0D131F] rounded-3xl border border-slate-800 overflow-hidden hover:border-cyan-500/40 transition duration-300 flex flex-col justify-between">
-                    <div class="p-8 space-y-4">
-                        <div class="flex items-center justify-between">
-                            <span class="text-[10px] font-mono uppercase tracking-widest px-3 py-1 rounded-full bg-emerald-950 text-emerald-400 border border-emerald-800" data-i18n="c1_tag">觀光旅遊與專車接送預約網</span>
-                            <span class="text-xs text-slate-400 font-mono">Saint Lucia</span>
-                        </div>
-                        <h3 class="font-display text-2xl font-bold text-white">Sabina Lady's Cab</h3>
-                        <p class="text-slate-400 text-xs leading-relaxed" data-i18n="c1_desc">
-                            幫加勒比海聖露西亞的觀光包車業者打造的線上預約網站。裡面有實景旅遊影片介紹、線上行程預約表單，客人填完單就會自動寄信通知老闆。
-                        </p>
-                        <div class="flex flex-wrap gap-2 pt-2 font-mono text-[11px] text-slate-300">
-                            <span class="bg-slate-900 px-3 py-1 rounded-lg border border-slate-800">手機電腦自適應</span>
-                            <span class="bg-slate-900 px-3 py-1 rounded-lg border border-slate-800" data-i18n="c1_t2">線上行程預約</span>
-                            <span class="bg-slate-900 px-3 py-1 rounded-lg border border-slate-800" data-i18n="c1_t3">自動寄信通知</span>
-                            <span class="bg-slate-900 px-3 py-1 rounded-lg border border-slate-800" data-i18n="c1_t4">專屬網址與 SSL</span>
-                        </div>
-                    </div>
-                    <div class="p-8 pt-0 flex items-center justify-between border-t border-slate-800/80 mt-6">
-                        <a href="https://www.sabinasladycab.com" target="_blank" class="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 font-bold text-xs uppercase tracking-wider transition">
-                            <span data-i18n="launch_site">點我開啟網站</span>
-                            <i class="fa-solid fa-arrow-up-right-from-square text-[11px]"></i>
-                        </a>
-                        <span class="text-[11px] font-mono text-slate-500">www.sabinasladycab.com</span>
-                    </div>
-                </div>
-
-                <!-- Demo 2: Refined Art Solutions -->
-                <div class="bg-[#0D131F] rounded-3xl border border-slate-800 overflow-hidden hover:border-cyan-500/40 transition duration-300 flex flex-col justify-between">
-                    <div class="p-8 space-y-4">
-                        <div class="flex items-center justify-between">
-                            <span class="text-[10px] font-mono uppercase tracking-widest px-3 py-1 rounded-full bg-cyan-950 text-cyan-400 border border-cyan-800" data-i18n="c2_tag">活動派對與攝影設備租借網</span>
-                            <span class="text-xs text-slate-400 font-mono">Saint Lucia</span>
-                        </div>
-                        <h3 class="font-display text-2xl font-bold text-white">Refined Art Solutions</h3>
-                        <p class="text-slate-400 text-xs leading-relaxed" data-i18n="c2_desc">
-                            幫活動佈置與派對攝影公司設計的品牌展示官網，清楚展示無限鏡面拍照亭、發光舞台、即時印相機台與派對氣球佈置作品，方便客戶線上詢價預約檔期。
-                        </p>
-                        <div class="flex flex-wrap gap-2 pt-2 font-mono text-[11px] text-slate-300">
-                            <span class="bg-slate-900 px-3 py-1 rounded-lg border border-slate-800" data-i18n="c2_t1">精品質感排版</span>
-                            <span class="bg-slate-900 px-3 py-1 rounded-lg border border-slate-800" data-i18n="c2_t2">作品照片藝廊</span>
-                            <span class="bg-slate-900 px-3 py-1 rounded-lg border border-slate-800" data-i18n="c2_t3">線上檔期詢價</span>
-                            <span class="bg-slate-900 px-3 py-1 rounded-lg border border-slate-800" data-i18n="c2_t4">專屬網域上線</span>
-                        </div>
-                    </div>
-                    <div class="p-8 pt-0 flex items-center justify-between border-t border-slate-800/80 mt-6">
-                        <a href="https://www.refinedartsolutions.com" target="_blank" class="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 font-bold text-xs uppercase tracking-wider transition">
-                            <span data-i18n="launch_site">點我開啟網站</span>
-                            <i class="fa-solid fa-arrow-up-right-from-square text-[11px]"></i>
-                        </a>
-                        <span class="text-[11px] font-mono text-slate-500">www.refinedartsolutions.com</span>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Quantitative Systems & Algorithmic Engineering Case Study -->
-    <section id="quant" class="py-24 bg-[#080B11] border-t border-slate-800/80">
-        <div class="max-w-7xl mx-auto px-6">
+    <!-- 3-Step Workflow & Client FAQ -->
+    <section id="process" class="py-24 bg-[#080B11] border-t border-slate-800/80">
+        <div class="max-w-7xl mx-auto px-6 space-y-20">
             
-            <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-950 border border-emerald-800 text-emerald-400 font-mono text-xs">
-                    <i class="fa-solid fa-microchip"></i>
-                    <span data-i18n="q_badge">程式開發實力展示 • MQL5 &amp; PYTHON 自動化系統</span>
-                </div>
-                <h2 class="font-display text-3xl sm:text-5xl font-bold text-white" data-i18n="q_title">客製化自動交易程式開發</h2>
-                <p class="text-slate-400 text-xs sm:text-sm leading-relaxed" data-i18n="q_desc">
-                    如果您已經有一套自己的交易策略或進出場條件，但不想每天盯盤，我們可以用 MQL5 或 Python 幫您寫成全自動執行程式，並用過去數百萬筆真實市場報價幫您測試穩定度。
-                </p>
-            </div>
-
-            <!-- Engineering Benchmark Metrics -->
-            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 mb-12 font-mono">
-                <div class="bg-[#0D131F] p-5 rounded-2xl border border-slate-800 text-center">
-                    <span class="text-[10px] text-slate-500 uppercase block mb-1" data-i18n="qs1">獲利因子 (Profit Factor)</span>
-                    <span class="text-2xl font-bold text-emerald-400 font-display">3.14</span>
-                </div>
-                <div class="bg-[#0D131F] p-5 rounded-2xl border border-slate-800 text-center">
-                    <span class="text-[10px] text-slate-500 uppercase block mb-1" data-i18n="qs2">恢復因子 (Recovery)</span>
-                    <span class="text-2xl font-bold text-emerald-400 font-display">3.68</span>
-                </div>
-                <div class="bg-[#0D131F] p-5 rounded-2xl border border-slate-800 text-center">
-                    <span class="text-[10px] text-slate-500 uppercase block mb-1" data-i18n="qs3">最大資金回檔</span>
-                    <span class="text-2xl font-bold text-cyan-400 font-display">1.55%</span>
-                </div>
-                <div class="bg-[#0D131F] p-5 rounded-2xl border border-slate-800 text-center">
-                    <span class="text-[10px] text-slate-500 uppercase block mb-1" data-i18n="qs4">夏普比率 (Sharpe)</span>
-                    <span class="text-2xl font-bold text-white font-display">9.17</span>
-                </div>
-                <div class="bg-[#0D131F] p-5 rounded-2xl border border-slate-800 text-center">
-                    <span class="text-[10px] text-slate-500 uppercase block mb-1" data-i18n="qs5">歷史數據精準度</span>
-                    <span class="text-2xl font-bold text-emerald-400 font-display">100%</span>
-                </div>
-                <div class="bg-[#0D131F] p-5 rounded-2xl border border-slate-800 text-center">
-                    <span class="text-[10px] text-slate-500 uppercase block mb-1" data-i18n="qs6">測試報價筆數</span>
-                    <span class="text-2xl font-bold text-white font-display">325 萬筆</span>
-                </div>
-            </div>
-
-            <!-- Engineering Case Study Audit Cards -->
-            <div class="space-y-8 mb-16">
-                <div class="bg-[#0D131F] rounded-3xl border border-slate-800 overflow-hidden shadow-2xl">
-                    <div class="bg-[#121A2B] px-6 py-4 border-b border-slate-800 flex flex-wrap items-center justify-between gap-4">
-                        <div class="flex items-center gap-3">
-                            <span class="w-3 h-3 rounded-full bg-emerald-400"></span>
-                            <span class="font-mono text-sm font-bold text-white" data-i18n="qa1_title">技術案例 01：MT5 歷史真實報價壓力測試報告</span>
-                        </div>
-                        <span class="font-mono text-xs text-emerald-400 bg-emerald-950 px-3 py-1 rounded-full border border-emerald-800 font-bold" data-i18n="qa1_tag">100% 真實 TICK 數據測試</span>
-                    </div>
-                    <div class="p-6 bg-[#090D15]">
-                        <img src="images/ea-backtest-report.png" alt="MetaTrader 5 Detailed Strategy Tester Report" onerror="this.style.display='none'" class="w-full rounded-2xl border border-slate-800 object-contain shadow-lg mb-4">
-                        
-                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs font-mono text-slate-300">
-                            <div class="bg-slate-900/90 p-4 rounded-xl border border-slate-800">
-                                <span class="text-slate-500 block mb-1" data-i18n="qm1_l">測試基準資金：</span>
-                                <strong class="text-white text-base font-bold">$10,000.00 USD</strong>
-                                <span class="text-emerald-400 block mt-1" data-i18n="qm1_s">測試期間淨變動：+14.39%</span>
-                            </div>
-                            <div class="bg-slate-900/90 p-4 rounded-xl border border-slate-800">
-                                <span class="text-slate-500 block mb-1" data-i18n="qm2_l">風險控制表現：</span>
-                                <span class="text-emerald-400 font-bold">PF 3.14</span> / <span class="text-cyan-400">Sharpe 9.17</span>
-                                <span class="text-slate-400 block mt-1" data-i18n="qm2_s">自動追蹤波動率移動停損</span>
-                            </div>
-                            <div class="bg-slate-900/90 p-4 rounded-xl border border-slate-800">
-                                <span class="text-slate-500 block mb-1" data-i18n="qm3_l">最大資金回檔幅度：</span>
-                                <strong class="text-cyan-400 text-base font-bold">1.55% ($174.53)</strong>
-                                <span class="text-slate-400 block mt-1" data-i18n="qm3_s">最大相對回檔：3.68%</span>
-                            </div>
-                            <div class="bg-slate-900/90 p-4 rounded-xl border border-slate-800">
-                                <span class="text-slate-500 block mb-1" data-i18n="qm4_l">模擬成交跳動數：</span>
-                                <strong class="text-white text-base font-bold">3,254,826</strong>
-                                <span class="text-emerald-400 block mt-1" data-i18n="qm4_s">每一筆價格跳動完整模擬</span>
-                            </div>
-                        </div>
-                    </div>
+            <!-- 3-Step Workflow -->
+            <div>
+                <div class="text-center max-w-2xl mx-auto mb-12 space-y-2">
+                    <span class="text-xs font-mono font-bold uppercase tracking-widest text-cyan-400" data-i18n="proc_badge">簡單清楚的合作流程</span>
+                    <h2 class="font-display text-3xl sm:text-4xl font-bold text-white" data-i18n="proc_title">從下單到上線只要三個步驟</h2>
                 </div>
 
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                    <div class="bg-[#0D131F] rounded-3xl border border-slate-800 overflow-hidden shadow-2xl flex flex-col justify-between">
-                        <div class="bg-[#121A2B] px-6 py-4 border-b border-slate-800 flex items-center justify-between">
-                            <span class="font-mono text-xs font-bold text-white" data-i18n="qa2_title">技術案例 02：資金曲線與風險控管穩定度</span>
-                            <span class="font-mono text-[10px] text-cyan-400 bg-cyan-950 px-2 py-0.5 rounded border border-cyan-800">RISK CONTROL</span>
-                        </div>
-                        <div class="p-6 bg-[#090D15]">
-                            <img src="images/ea-equity-curve.png" alt="MetaTrader 5 Equity Curve" onerror="this.style.display='none'" class="w-full rounded-2xl border border-slate-800 object-contain shadow-md mb-4">
-                            <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800 text-xs text-slate-400 font-mono leading-relaxed" data-i18n="qa2_desc">
-                                <i class="fa-solid fa-arrow-trend-up text-emerald-400 mr-1.5"></i>
-                                嚴格限制每次下單的資金比例（保證金使用率低於 10%），避免重倉風險，讓資金曲線維持平穩。
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="bg-[#0D131F] rounded-3xl border border-slate-800 overflow-hidden shadow-2xl flex flex-col justify-between">
-                        <div class="bg-[#121A2B] px-6 py-4 border-b border-slate-800 flex items-center justify-between">
-                            <span class="font-mono text-xs font-bold text-white" data-i18n="qa3_title">技術案例 03：自動避開冷門時段與高點差</span>
-                            <span class="font-mono text-[10px] text-emerald-400 bg-emerald-950 px-2 py-0.5 rounded border border-emerald-800">SMART FILTER</span>
-                        </div>
-                        <div class="p-6 bg-[#090D15]">
-                            <img src="images/ea-distributions.png" alt="MetaTrader 5 Profits and losses by hours and weekdays" onerror="this.style.display='none'" class="w-full rounded-2xl border border-slate-800 object-contain shadow-md mb-4">
-                            <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800 text-xs text-slate-400 font-mono leading-relaxed" data-i18n="qa3_desc">
-                                <i class="fa-solid fa-clock text-cyan-400 mr-1.5"></i>
-                                程式內建交易時段過濾器，只在市場交易最活絡的倫敦與紐約時段運作，自動避開半夜冷門時段的滑價損耗。
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Custom Quantitative Engineering Engagement Banner -->
-            <div class="bg-[#0D131F] p-8 sm:p-10 rounded-3xl border border-slate-800 hover:border-cyan-500/50 shadow-2xl transition duration-300">
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-                    <div class="lg:col-span-8 space-y-4">
-                        <div class="inline-flex items-center gap-2 text-xs font-mono text-cyan-400 font-bold uppercase tracking-wider">
-                            <i class="fa-solid fa-code-branch"></i>
-                            <span data-i18n="ea2_sub">客製化程式編寫服務</span>
-                        </div>
-                        <h3 class="font-display text-2xl sm:text-3xl font-bold text-white" data-i18n="ea2_title">把您的交易想法寫成全自動執行程式</h3>
-                        <p class="text-slate-400 text-xs sm:text-sm leading-relaxed" data-i18n="ea2_desc">
-                            您有自己習慣的技術指標或進出場規則，但每次手動下單太花時間嗎？我們可以幫您寫成 MT5 或 Python 自動化執行程式，並附上完整原始碼。您的交易策略完全保密，100% 歸您所有。
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-[#0D131F] p-7 rounded-2xl border border-slate-800 space-y-3">
+                        <span class="inline-block px-3 py-1 rounded-lg bg-cyan-950 text-cyan-400 font-mono text-xs font-bold">STEP 01</span>
+                        <h3 class="font-display text-lg font-bold text-white" data-i18n="p1_t">免費需求諮詢與報價</h3>
+                        <p class="text-xs text-slate-400 leading-relaxed" data-i18n="p1_d">
+                            在下方填單或加 LINE 告訴我們您想做的網站或系統，24 小時內提供清楚的報價明細與預計完工日期，完全不收諮詢費。
                         </p>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 text-xs text-slate-300 font-mono">
-                            <div class="flex items-center gap-2"><i class="fa-solid fa-check text-cyan-400"></i> <span data-i18n="ea2_b1">依照您的進出場條件與指標量身編寫</span></div>
-                            <div class="flex items-center gap-2"><i class="fa-solid fa-check text-cyan-400"></i> <span data-i18n="ea2_b2">自動計算停損停利與單筆資金上限</span></div>
-                            <div class="flex items-center gap-2"><i class="fa-solid fa-check text-cyan-400"></i> <span data-i18n="ea2_b3">幫您跑完多年歷史數據回測報告</span></div>
-                            <div class="flex items-center gap-2"><i class="fa-solid fa-check text-cyan-400"></i> <span data-i18n="ea2_b4">策略完全保密，交付完整程式原始碼</span></div>
-                        </div>
                     </div>
-                    <div class="lg:col-span-4 flex flex-col justify-center">
-                        <a href="#quick-request" onclick="selectService('Custom Quantitative & Algorithmic System (MQL5 / Python)')" class="w-full py-4 px-6 bg-cyan-500 hover:bg-cyan-400 text-black font-extrabold uppercase tracking-widest text-xs rounded-xl shadow-xl transition flex items-center justify-center gap-2 font-mono emerald-glow text-center">
-                            <i class="fa-solid fa-code"></i>
-                            <span data-i18n="ea2_cta">洽談客製化程式開發</span>
-                        </a>
-                        <p class="text-[11px] text-slate-500 font-mono text-center mt-3" data-i18n="ea2_note">僅提供客製化軟體代寫服務，不販售投資理財建議。</p>
+
+                    <div class="bg-[#0D131F] p-7 rounded-2xl border border-slate-800 space-y-3">
+                        <span class="inline-block px-3 py-1 rounded-lg bg-cyan-950 text-cyan-400 font-mono text-xs font-bold">STEP 02</span>
+                        <h3 class="font-display text-lg font-bold text-white" data-i18n="p2_t">確認規格並啟動開發</h3>
+                        <p class="text-xs text-slate-400 leading-relaxed" data-i18n="p2_d">
+                            確認版面風格與功能後啟動製作，開發期間會提供線上測試網址讓您隨時用手機與電腦查看進度並調整細節。
+                        </p>
+                    </div>
+
+                    <div class="bg-[#0D131F] p-7 rounded-2xl border border-slate-800 space-y-3">
+                        <span class="inline-block px-3 py-1 rounded-lg bg-emerald-950 text-emerald-400 font-mono text-xs font-bold">STEP 03</span>
+                        <h3 class="font-display text-lg font-bold text-white" data-i18n="p3_t">驗收上線與完整交付</h3>
+                        <p class="text-xs text-slate-400 leading-relaxed" data-i18n="p3_d">
+                            幫您設定好專屬網址、SSL 安全鎖與 Google 搜尋收錄，並交付完整原始碼與管理員帳號，讓您安心開始接單。
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Frequently Asked Questions -->
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-10 space-y-2">
+                    <span class="text-xs font-mono font-bold uppercase tracking-widest text-emerald-400" data-i18n="faq_badge">常見問題解答</span>
+                    <h2 class="font-display text-2xl sm:text-4xl font-bold text-white" data-i18n="faq_title">下單前您可能想知道的事</h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-[#0D131F] p-6 rounded-2xl border border-slate-800 space-y-2">
+                        <h4 class="font-bold text-white text-sm" data-i18n="q1_t">Q1：我不懂程式或網址設定，你們會全部幫我弄好嗎？</h4>
+                        <p class="text-xs text-slate-400 leading-relaxed" data-i18n="q1_d">
+                            會的！從購買專屬網址、設定 DNS、開啟 HTTPS 安全鎖到提交給 Google 搜尋引擎，我們都會一條龍幫您設定到好。
+                        </p>
+                    </div>
+
+                    <div class="bg-[#0D131F] p-6 rounded-2xl border border-slate-800 space-y-2">
+                        <h4 class="font-bold text-white text-sm" data-i18n="q2_t">Q2：做好之後，網站和程式的所有權是我的嗎？</h4>
+                        <p class="text-xs text-slate-400 leading-relaxed" data-i18n="q2_d">
+                            100% 歸您所有。結案後我們會交付完整的程式原始碼與所有後台帳號密碼，不會綁死您的資料。
+                        </p>
+                    </div>
+
+                    <div class="bg-[#0D131F] p-6 rounded-2xl border border-slate-800 space-y-2">
+                        <h4 class="font-bold text-white text-sm" data-i18n="q3_t">Q3：製作過程中可以修改設計或文字嗎？</h4>
+                        <p class="text-xs text-slate-400 leading-relaxed" data-i18n="q3_d">
+                            每個專案皆包含 2 次免費版面與圖文微調；上線後若需要長期幫忙改內容或管主機，也可隨時選購 NT$1,500–3,500/月 的維護方案。
+                        </p>
+                    </div>
+
+                    <div class="bg-[#0D131F] p-6 rounded-2xl border border-slate-800 space-y-2">
+                        <h4 class="font-bold text-white text-sm" data-i18n="q4_t">Q4：付款方式與開發時間大概需要多久？</h4>
+                        <p class="text-xs text-slate-400 leading-relaxed" data-i18n="q4_d">
+                            商業網站約 1–2 週完工，手機 APP 與全端系統約 3–8 週。標準付款為確認報價後支付 50% 訂金啟動，驗收完成上線後再付 50% 尾款。
+                        </p>
                     </div>
                 </div>
             </div>
@@ -685,13 +657,13 @@
         </div>
     </section>
 
-    <!-- Super-Easy Quick Request & Meeting Section with Strict Promo Code Gatekeeper -->
+    <!-- Frictionless Quick Request & Meeting Section (Promo Code Optional!) -->
     <section id="quick-request" class="py-20 bg-gradient-to-b from-[#080B11] via-[#0D131F] to-[#080B11] border-t border-cyan-500/30">
         <div class="max-w-4xl mx-auto px-6">
             <div class="text-center space-y-3 mb-10">
-                <span class="text-xs uppercase font-mono font-bold tracking-widest text-cyan-400" data-i18n="form_badge">線上快速下單與預約諮詢</span>
+                <span class="text-xs uppercase font-mono font-bold tracking-widest text-cyan-400" data-i18n="form_badge">線上快速下單與免費估價</span>
                 <h2 class="font-display text-3xl sm:text-5xl font-bold text-white" data-i18n="form_title">訂購網站、APP、全端系統或預約討論</h2>
-                <p class="text-slate-400 text-xs sm:text-sm" data-i18n="form_desc">在下方簡單填寫您的需求，輸入優惠碼 <strong class="text-cyan-400 font-mono">ID</strong> 即可享 9 折優惠，表單會直接寄到 <span class="text-white">Twinterlabs@gmail.com</span>。</p>
+                <p class="text-slate-400 text-xs sm:text-sm" data-i18n="form_desc">在下方簡單填寫您的需求（若有優惠碼 <strong class="text-cyan-400 font-mono">ID</strong> 可享 9 折優惠，未填寫亦可直接送出），表單會直接寄到 <span class="text-white">Twinterlabs@gmail.com</span>。</p>
             </div>
 
             <!-- Mode Switcher -->
@@ -711,8 +683,8 @@
 
                 <iframe name="formspree_target" id="formspree_target" style="display:none;"></iframe>
                 <form id="quickRequestForm" action="https://formspree.io/f/xaeonapy" method="POST" target="formspree_target" onsubmit="return handleQuickSubmit(event)" class="space-y-6">
-                    <input type="hidden" name="_subject" id="hiddenSubject" value="[Twinter Labs 10% OFF] New Inquiry">
-                    <input type="hidden" name="discount_applied" value="10% Discount Applied">
+                    <input type="hidden" name="_subject" id="hiddenSubject" value="[Twinter Labs] New Inquiry">
+                    <input type="hidden" name="discount_applied" id="hiddenDiscount" value="Standard Quote">
                     <input type="hidden" id="requestMode" name="mode" value="Order Product / Build">
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -738,20 +710,20 @@
                                 <option value="Mobile Application (React Native / Expo)" data-i18n="opt_app">手機 APP 開發（NT$45,000 – 120,000）</option>
                                 <option value="Full-Stack Custom System Architecture" data-i18n="opt_fullstack">完整全端系統（NT$60,000 – 180,000+）</option>
                                 <option value="Custom Quantitative & Algorithmic System (MQL5 / Python)" data-i18n="opt_quant">客製化自動交易程式（NT$12,000 – 45,000）</option>
+                                <option value="Monthly Website & System Maintenance Plan (NT$1,500 - 3,500/mo)" data-i18n="opt_care">全託管網站與系統維護方案（NT$1,500 – 3,500 / 月）</option>
                             </select>
                         </div>
                     </div>
 
-                    <!-- PROMO CODE FIELD (10% Discount Gatekeeper: id or ID) -->
-                    <div class="p-5 rounded-2xl bg-gradient-to-r from-cyan-950/40 via-slate-900 to-slate-900 border border-cyan-800/60 space-y-2">
+                    <!-- OPTIONAL PROMO CODE FIELD (Never blocks submission!) -->
+                    <div class="p-5 rounded-2xl bg-gradient-to-r from-cyan-950/30 via-slate-900 to-slate-900 border border-cyan-800/50 space-y-2">
                         <div class="flex items-center justify-between">
                             <label class="block text-xs uppercase tracking-wider text-cyan-300 font-mono font-bold">
-                                <i class="fa-solid fa-tag text-cyan-400 mr-1.5"></i> <span data-i18n="lbl_promo">輸入優惠碼（立即享 9 折）*</span>
+                                <i class="fa-solid fa-tag text-cyan-400 mr-1.5"></i> <span data-i18n="lbl_promo">優惠碼（選填，輸入 ID 享 9 折）</span>
                             </label>
-                            <span class="text-[10px] font-mono text-emerald-400 bg-emerald-950 px-2 py-0.5 rounded border border-emerald-800" data-i18n="promo_badge">總費用直接打 9 折</span>
+                            <span class="text-[10px] font-mono text-emerald-400 bg-emerald-950 px-2 py-0.5 rounded border border-emerald-800" data-i18n="promo_badge">輸入 ID 總費用打 9 折</span>
                         </div>
-                        <input type="text" id="reqPromoCode" name="promo_code" required placeholder="請輸入優惠碼：ID" class="w-full bg-[#080B11] border border-cyan-800/80 rounded-xl px-4 py-3 text-sm text-white uppercase tracking-widest font-mono focus:outline-none focus:border-cyan-400">
-                        <p class="text-[11px] text-slate-400 font-mono" data-i18n="promo_hint">請在上方欄位輸入 <strong class="text-cyan-400 font-bold">id</strong> 或 <strong class="text-cyan-400 font-bold">ID</strong>，系統就會幫您套用 9 折優惠並送出需求。</p>
+                        <input type="text" id="reqPromoCode" name="promo_code" placeholder="若有優惠碼請輸入 ID（選填，可直接送出）" class="w-full bg-[#080B11] border border-slate-700 rounded-xl px-4 py-3 text-sm text-white uppercase tracking-widest font-mono focus:outline-none focus:border-cyan-400">
                     </div>
 
                     <!-- Dynamic Meeting Time Row -->
@@ -774,7 +746,7 @@
                     <div class="flex flex-col sm:flex-row gap-4 items-center pt-2">
                         <button type="submit" id="submitBtn" class="w-full sm:w-2/3 py-4 bg-cyan-500 hover:bg-cyan-400 text-black font-extrabold uppercase tracking-widest text-xs rounded-xl shadow-xl transition flex items-center justify-center gap-2 emerald-glow font-mono">
                             <i class="fa-solid fa-paper-plane text-sm"></i>
-                            <span id="btnText" data-i18n="btn_submit_prod">套用 9 折優惠並送出</span>
+                            <span id="btnText" data-i18n="btn_submit_prod">立即送出需求與免費估價</span>
                         </button>
                         <a href="https://line.me/ti/p/rsc69htRfX" target="_blank" class="w-full sm:w-1/3 py-4 bg-emerald-600 hover:bg-emerald-500 text-white font-bold uppercase tracking-widest text-xs rounded-xl transition flex items-center justify-center gap-2 font-mono">
                             <i class="fa-brands fa-line text-lg"></i>
@@ -820,8 +792,8 @@
                 <p data-i18n="ft_p1">• 商業網站製作販售（NT$15,000 – 45,000）</p>
                 <p data-i18n="ft_p2">• 手機 APP 開發販售（NT$45,000 – 120,000）</p>
                 <p data-i18n="ft_p3">• 完整全端系統開發（NT$60,000 – 180,000+）</p>
-                <p data-i18n="ft_p4">• 客製化自動交易程式（NT$12,000 – 45,000）</p>
-                <p data-i18n="ft_p5">• 專屬網址設定與網站上線一條龍服務</p>
+                <p><a href="quant.html" class="hover:text-emerald-400 transition" data-i18n="ft_p4">• 客製化自動交易程式（NT$12,000 – 45,000）→</a></p>
+                <p data-i18n="ft_p5">• 全託管網站與系統維護（NT$1,500 – 3,500 / 月）</p>
             </div>
         </div>
 
@@ -831,7 +803,7 @@
         </div>
     </footer>
 
-    <!-- Bilingual Dictionary, Language Switcher & Native Form Handler -->
+    <!-- Bilingual Dictionary, Language Switcher, URL Query Pre-select & Frictionless Native Form Handler -->
     <script>
         let currentLang = 'zh';
         let currentMode = 'product';
@@ -842,16 +814,16 @@
                 top_tagline: "我們開發並販售：網站 • 手機 APP • 完整全端系統",
                 top_cta: "立即訂購 / 諮詢（輸入優惠碼 ID 享 9 折）→",
                 brand_sub: "網站 • APP • 全端系統開發與販售",
-                nav_services: "方案與價格區間",
-                nav_apps: "手機 APP 實機展示",
-                nav_portfolio: "已上線網站作品",
-                nav_quant: "客製化交易程式",
-                nav_request: "立即下單 / 諮詢",
+                nav_services: "方案與價格",
+                nav_portfolio: "線上網站作品",
+                nav_apps: "手機 APP 展示",
+                nav_process: "合作流程與 FAQ",
+                nav_request: "立即下單",
                 nav_cta: "立即訂購",
                 hero_badge: "網站製作販售 • 手機 APP 開發 • 完整全端系統",
                 hero_title: '我們專門開發並販售<span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-teal-300 to-emerald-400">網站、手機 APP 與完整全端系統</span>',
                 hero_desc: "無論您想為店面或品牌<strong>架設形象與預約網站</strong>、開發上架 <strong>iOS / Android 手機 APP</strong>，還是需要一套包含前台畫面、後台管理與資料庫的<strong>完整全端系統</strong>，我們都能直接幫您從零做到好、交付給您使用。",
-                hero_btn_primary: "立即下單 / 詢價（輸入優惠碼 ID 享 9 折）",
+                hero_btn_primary: "立即下單 / 免費估價（優惠碼 ID 享 9 折）",
                 hero_btn_line: "加 LINE 直接聊聊",
                 stat_web_t: "NT$1.5萬起",
                 stat_web: "官網與預約系統",
@@ -875,7 +847,7 @@
                 panel_item4_t: "客製化自動交易程式",
                 panel_item4_d: "把您的交易策略寫成全自動執行程式",
                 panel_tag4: "NT$12k–45k",
-                panel_footer_cta: "查看各方案詳細內容與報價說明 ↓",
+                panel_footer_cta: "查看各方案詳細內容與月費維護方案 ↓",
                 srv_badge: "方案與透明價格區間",
                 srv_title: "我們專門製作並販售的四大系統",
                 srv_desc: '實際費用會依頁面數量與功能複雜度評估；下單時輸入專屬優惠碼 <strong class="text-cyan-400 font-mono">ID</strong>，總金額直接再打 <strong class="text-emerald-400 font-mono">9 折</strong>。',
@@ -916,8 +888,32 @@
                 srv4_d: "如果您有自己的一套交易策略或進出場規則，我們能幫您寫成 MT5 / Python 全自動執行程式，並用歷史數據幫您完整測試。",
                 srv4_b1: "• 依照您的策略規則量身編寫",
                 srv4_b2: "• 內建自動停損與資金風控保護",
-                srv4_b3: "• 100% 歷史逐筆報價回測驗證",
+                srv4_b3: "• 查看 100% 歷史回測技術報告 →",
                 srv4_cta: "洽談客製程式開發 →",
+                care_badge: "選配安心服務 • 上線後免煩惱維護",
+                care_title: "全託管網站與系統維護方案（NT$1,500 – 3,500 / 月）",
+                care_desc: "擔心上線後沒人幫忙改文字、換圖片或續約網址嗎？可自由加購月費維護方案（無綁約、隨時可取消）：包含網域與 SSL 安全憑證代管、每月內容圖文更新、24 小時主機監控與雲端備份。",
+                care_cta: "加購月費託管維護 →",
+                port_badge: "實際客戶與範例網站作品",
+                port_title: "可以直接點開體驗的線上網站",
+                port_desc: "包含台灣本地繁體中文預約官網與海外商業網站，點擊下方連結即可直接操作體驗。",
+                c0_tag: "繁體中文 • 運動課程預約官網",
+                c0_title: "靜息皮拉提斯 Aura Pilates",
+                c0_desc: "專為台灣精品器械皮拉提斯與美學工作室打造的繁體中文官網，支援課程方案展示、即時課表篩選與一鍵線上預約體驗課功能。",
+                c0_t1: "繁體中文美學排版",
+                c0_t2: "即時課表篩選",
+                c0_t3: "線上預約體驗表單",
+                c1_tag: "觀光旅遊與專車接送預約網",
+                c1_desc: "幫加勒比海聖露西亞的觀光包車業者打造的線上預約網站。裡面有實景旅遊影片介紹、線上行程預約表單，客人填完單就會自動寄信通知老闆。",
+                c1_t2: "線上行程預約",
+                c1_t3: "自動寄信通知",
+                c1_t4: "專屬網址與 SSL",
+                c2_tag: "活動派對與攝影設備租借網",
+                c2_desc: "幫活動佈置與派對攝影公司設計的品牌展示官網，清楚展示無限鏡面拍照亭、發光舞台、即時印相機台與派對氣球佈置作品，方便客戶線上詢價預約檔期。",
+                c2_t1: "精品質感排版",
+                c2_t3: "線上檔期詢價",
+                c2_t4: "專屬網域上線",
+                launch_site: "點我開啟網站",
                 app_badge: "手機 APP 實際作品展示 • 我們自己做出來的",
                 app_intro: "這是我們從零開發的手機養成遊戲 APP，同時支援 iPhone 與 Android 手機。使用者可以領養可愛夥伴（獅子、驢子、烏鴉、駱駝），透過每天閱讀獲得食物與經驗值讓寵物長大進化，還能進行問答闖關並自由布置房間。",
                 app_sub: "想做自己的手機 APP 嗎？",
@@ -933,56 +929,27 @@
                 app_f4_d: "可以替寵物換上不同衣服與王冠配件，還能自由更換背景與房間裝飾。",
                 built_with: "使用技術：",
                 app_cta: "訂購您的專屬手機 APP",
-                port_badge: "實際客戶網站作品",
-                port_title: "我們已經做好的上線網站",
-                port_desc: "可以直接點擊下方連結，實際逛逛我們幫海外客戶設計、設定網址並正式上線的商業網站。",
-                c1_tag: "觀光旅遊與專車接送預約網",
-                c1_desc: "幫加勒比海聖露西亞的觀光包車業者打造的線上預約網站。裡面有實景旅遊影片介紹、線上行程預約表單，客人填完單就會自動寄信通知老闆。",
-                c1_t2: "線上行程預約",
-                c1_t3: "自動寄信通知",
-                c1_t4: "專屬網址與 SSL",
-                c2_tag: "活動派對與攝影設備租借網",
-                c2_desc: "幫活動佈置與派對攝影公司設計的品牌展示官網，清楚展示無限鏡面拍照亭、發光舞台、即時印相機台與派對氣球佈置作品，方便客戶線上詢價預約檔期。",
-                c2_t1: "精品質感排版",
-                c2_t2: "作品照片藝廊",
-                c2_t3: "線上檔期詢價",
-                c2_t4: "專屬網域上線",
-                launch_site: "點我開啟網站",
-                q_badge: "程式開發實力展示 • MQL5 & PYTHON 自動化系統",
-                q_title: "客製化自動交易程式開發",
-                q_desc: "如果您已經有一套自己的交易策略或進出場條件，但不想每天盯盤，我們可以用 MQL5 或 Python 幫您寫成全自動執行程式，並用過去數百萬筆真實市場報價幫您測試穩定度。",
-                qs1: "獲利因子 (Profit Factor)",
-                qs2: "恢復因子 (Recovery)",
-                qs3: "最大資金回檔",
-                qs4: "夏普比率 (Sharpe)",
-                qs5: "歷史數據精準度",
-                qs6: "測試報價筆數",
-                qa1_title: "技術案例 01：MT5 歷史真實報價壓力測試報告",
-                qa1_tag: "100% 真實 TICK 數據測試",
-                qm1_l: "測試基準資金：",
-                qm1_s: "測試期間淨變動：+14.39%",
-                qm2_l: "風險控制表現：",
-                qm2_s: "自動追蹤波動率移動停損",
-                qm3_l: "最大資金回檔幅度：",
-                qm3_s: "最大相對回檔：3.68%",
-                qm4_l: "模擬成交跳動數：",
-                qm4_s: "每一筆價格跳動完整模擬",
-                qa2_title: "技術案例 02：資金曲線與風險控管穩定度",
-                qa2_desc: '<i class="fa-solid fa-arrow-trend-up text-emerald-400 mr-1.5"></i>嚴格限制每次下單的資金比例（保證金使用率低於 10%），避免重倉風險，讓資金曲線維持平穩。',
-                qa3_title: "技術案例 03：自動避開冷門時段與高點差",
-                qa3_desc: '<i class="fa-solid fa-clock text-cyan-400 mr-1.5"></i>程式內建交易時段過濾器，只在市場交易最活絡的倫敦與紐約時段運作，自動避開半夜冷門時段的滑價損耗。',
-                ea2_sub: "客製化程式編寫服務",
-                ea2_title: "把您的交易想法寫成全自動執行程式",
-                ea2_desc: "您有自己習慣的技術指標或進出場規則，但每次手動下單太花時間嗎？我們可以幫您寫成 MT5 或 Python 自動化執行程式，並附上完整原始碼。您的交易策略完全保密，100% 歸您所有。",
-                ea2_b1: "依照您的進出場條件與指標量身編寫",
-                ea2_b2: "自動計算停損停利與單筆資金上限",
-                ea2_b3: "幫您跑完多年歷史數據回測報告",
-                ea2_b4: "策略完全保密，交付完整程式原始碼",
-                ea2_cta: "洽談客製化程式開發",
-                ea2_note: "僅提供客製化軟體代寫服務，不販售投資理財建議。",
-                form_badge: "線上快速下單與預約諮詢",
+                proc_badge: "簡單清楚的合作流程",
+                proc_title: "從下單到上線只要三個步驟",
+                p1_t: "免費需求諮詢與報價",
+                p1_d: "在下方填單或加 LINE 告訴我們您想做的網站或系統，24 小時內提供清楚的報價明細與預計完工日期，完全不收諮詢費。",
+                p2_t: "確認規格並啟動開發",
+                p2_d: "確認版面風格與功能後啟動製作，開發期間會提供線上測試網址讓您隨時用手機與電腦查看進度並調整細節。",
+                p3_t: "驗收上線與完整交付",
+                p3_d: "幫您設定好專屬網址、SSL 安全鎖與 Google 搜尋收錄，並交付完整原始碼與管理員帳號，讓您安心開始接單。",
+                faq_badge: "常見問題解答",
+                faq_title: "下單前您可能想知道的事",
+                q1_t: "Q1：我不懂程式或網址設定，你們會全部幫我弄好嗎？",
+                q1_d: "會的！從購買專屬網址、設定 DNS、開啟 HTTPS 安全鎖到提交給 Google 搜尋引擎，我們都會一條龍幫您設定到好。",
+                q2_t: "Q2：做好之後，網站和程式的所有權是我的嗎？",
+                q2_d: "100% 歸您所有。結案後我們會交付完整的程式原始碼與所有後台帳號密碼，不會綁死您的資料。",
+                q3_t: "Q3：製作過程中可以修改設計或文字嗎？",
+                q3_d: "每個專案皆包含 2 次免費版面與圖文微調；上線後若需要長期幫忙改內容或管主機，也可隨時選購 NT$1,500–3,500/月 的維護方案。",
+                q4_t: "Q4：付款方式與開發時間大概需要多久？",
+                q4_d: "商業網站約 1–2 週完工，手機 APP 與全端系統約 3–8 週。標準付款為確認報價後支付 50% 訂金啟動，驗收完成上線後再付 50% 尾款。",
+                form_badge: "線上快速下單與免費估價",
                 form_title: "訂購網站、APP、全端系統或預約討論",
-                form_desc: '在下方簡單填寫您的需求，輸入優惠碼 <strong class="text-cyan-400 font-mono">ID</strong> 即可享 9 折優惠，表單會直接寄到 <span class="text-white">Twinterlabs@gmail.com</span>。',
+                form_desc: '在下方簡單填寫您的需求（若有優惠碼 <strong class="text-cyan-400 font-mono">ID</strong> 可享 9 折優惠，未填寫亦可直接送出），表單會直接寄到 <span class="text-white">Twinterlabs@gmail.com</span>。',
                 tab_prod: "訂購網站 / APP / 系統",
                 tab_meet: "預約線上通話討論",
                 lbl_name: "您的稱呼 / 公司店名 *",
@@ -994,15 +961,15 @@
                 opt_app: "手機 APP 開發（NT$45,000 – 120,000）",
                 opt_fullstack: "完整全端系統（NT$60,000 – 180,000+）",
                 opt_quant: "客製化自動交易程式（NT$12,000 – 45,000）",
-                lbl_promo: "輸入優惠碼（立即享 9 折）*",
-                promo_badge: "總費用直接打 9 折",
-                promo_hint: '請在上方欄位輸入 <strong class="text-cyan-400 font-bold">id</strong> 或 <strong class="text-cyan-400 font-bold">ID</strong>，系統就會幫您套用 9 折優惠並送出需求。',
+                opt_care: "全託管網站與系統維護方案（NT$1,500 – 3,500 / 月）",
+                lbl_promo: "優惠碼（選填，輸入 ID 享 9 折）",
+                promo_badge: "輸入 ID 總費用打 9 折",
                 lbl_date: "您方便的日期 *",
                 lbl_time: "偏好的通話方式與時間 *",
                 lbl_det_prod: "簡單描述您想做的網站或系統",
                 lbl_det_meet: "您想討論的重點內容",
-                btn_submit_prod: "套用 9 折優惠並送出",
-                btn_submit_meet: "套用 9 折並預約通話",
+                btn_submit_prod: "立即送出需求與免費估價",
+                btn_submit_meet: "確認預約線上通話",
                 btn_line: "加 LINE 聊聊",
                 ft_about: "我們專門製作並販售商業網站、iPhone/Android 手機 APP，以及包含前台、後台與資料庫的完整全端系統，用最簡單清楚的方式幫您的事業數位升級。",
                 ft_contact_t: "聯絡我們",
@@ -1012,17 +979,17 @@
                 ft_p1: "• 商業網站製作販售（NT$15,000 – 45,000）",
                 ft_p2: "• 手機 APP 開發販售（NT$45,000 – 120,000）",
                 ft_p3: "• 完整全端系統開發（NT$60,000 – 180,000+）",
-                ft_p4: "• 客製化自動交易程式（NT$12,000 – 45,000）",
-                ft_p5: "• 專屬網址設定與網站上線一條龍服務",
+                ft_p4: "• 客製化自動交易程式（NT$12,000 – 45,000）→",
+                ft_p5: "• 全託管網站與系統維護（NT$1,500 – 3,500 / 月）",
                 ft_tagline: "公開透明報價、穩定可靠的軟體開發夥伴",
                 ph_name: "例如：林先生 / 陽光咖啡廳",
                 ph_contact: "方便我們加您好友或聯繫您",
-                ph_promo: "請輸入優惠碼：ID",
+                ph_promo: "若有優惠碼請輸入 ID（選填，可直接送出）",
                 ph_time: "例如：LINE 語音或 Google Meet 下午 3 點",
                 ph_details: "用白話告訴我們您想做什麼功能、希望什麼時候完成，或貼上您喜歡的參考網站...",
-                err_promo: '<i class="fa-solid fa-triangle-exclamation mr-1.5"></i> 優惠碼不正確喔！請輸入 "ID" 或 "id" 即可享 9 折優惠並送出表單。',
                 sending_msg: '<i class="fa-solid fa-spinner fa-spin"></i> 正在把您的需求寄給 Twinterlabs@gmail.com...',
-                success_msg: (code) => `<i class="fa-solid fa-circle-check mr-1.5"></i> 優惠碼 "${code}" 驗證成功（已享 9 折優惠）！我們已經收到您的需求，會盡快與您聯繫。`
+                success_promo_msg: (code) => `<i class="fa-solid fa-circle-check mr-1.5"></i> 已收到您的需求並套用優惠碼 "${code}"（享 9 折優惠）！我們已將資料寄至 Twinterlabs@gmail.com，將於 24 小時內與您聯繫。`,
+                success_std_msg: `<i class="fa-solid fa-circle-check mr-1.5"></i> 需求已成功送出！我們已收到您的免費估價申請，將於 24 小時內透過 Email 或 LINE 與您聯繫。`
             },
             en: {
                 toggle_btn: "繁體中文",
@@ -1030,15 +997,15 @@
                 top_cta: "BUY OR ORDER A BUILD (10% OFF CODE: ID) →",
                 brand_sub: "Websites • Apps • Full-Stack Systems For Sale",
                 nav_services: "Pricing & Packages",
-                nav_apps: "Mobile App Demo",
                 nav_portfolio: "Live Websites",
-                nav_quant: "Custom Automation",
-                nav_request: "Order / Inquire",
+                nav_apps: "Mobile App Demo",
+                nav_process: "Process & FAQ",
+                nav_request: "Order Now",
                 nav_cta: "Order Now",
                 hero_badge: "WE BUILD & SELL WEBSITES • MOBILE APPS • FULL-STACK SYSTEMS",
                 hero_title: 'We build and sell <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-teal-300 to-emerald-400">websites, mobile apps &amp; full-stack systems</span>',
                 hero_desc: "Twinter Labs builds and sells ready-to-launch <strong>business websites</strong>, cross-platform <strong>iOS &amp; Android mobile apps</strong>, and complete <strong>full-stack systems</strong> (customer frontend, admin dashboard, and cloud database) with transparent pricing.",
-                hero_btn_primary: "Order a Website, App, or System (10% Off Code: ID)",
+                hero_btn_primary: "Get a Free Quote or Order (10% Off Code: ID)",
                 hero_btn_line: "Chat on LINE",
                 stat_web_t: "$500+",
                 stat_web: "Sites & Booking Portals",
@@ -1062,7 +1029,7 @@
                 panel_item4_t: "Custom Trading Automation",
                 panel_item4_d: "Turn your trading rules into automated code",
                 panel_tag4: "$400 – $1,500",
-                panel_footer_cta: "Explore Packages & Price Details ↓",
+                panel_footer_cta: "Explore Packages & Monthly Care Plan ↓",
                 srv_badge: "Transparent Pricing & Packages",
                 srv_title: "Websites, Apps & Full-Stack Systems We Sell",
                 srv_desc: 'Final quotes depend on page count and feature scope. Enter promo code <strong class="text-cyan-400 font-mono">ID</strong> at checkout to take <strong class="text-emerald-400 font-mono">10% OFF</strong> your entire build.',
@@ -1103,8 +1070,32 @@
                 srv4_d: "Have your own trading rules? We code custom MQL5 & Python automation systems with risk controls and real-tick historical testing.",
                 srv4_b1: "• Built strictly to your strategy rules",
                 srv4_b2: "• Automated stop-loss & position sizing",
-                srv4_b3: "• 100% real-tick backtest verification",
+                srv4_b3: "• View 100% real-tick backtest report →",
                 srv4_cta: "Order Custom Automation →",
+                care_badge: "OPTIONAL PEACE OF MIND • HASSLE-FREE UPKEEP",
+                care_title: "Managed Hosting & Monthly Care Plan ($50 – $120 / mo)",
+                care_desc: "Don't want to worry about updating text, swapping photos, or renewing domains after launch? Add our optional no-contract monthly care plan: includes domain & SSL renewal, monthly content edits, 24/7 uptime monitoring, and cloud backups.",
+                care_cta: "Add Monthly Care Plan →",
+                port_badge: "Live Client & Studio Websites",
+                port_title: "Websites You Can Test Live Right Now",
+                port_desc: "Explore both our Traditional Chinese booking website demo and live international client deployments below.",
+                c0_tag: "TRADITIONAL CHINESE • STUDIO BOOKING SITE",
+                c0_title: "Aura Pilates Studio (Taiwan Demo)",
+                c0_desc: "A Traditional Chinese boutique Pilates studio website featuring Reformer & private class packages, live schedule filtering, and 1-tap trial session booking.",
+                c0_t1: "Editorial Chinese UI",
+                c0_t2: "Live Schedule Filter",
+                c0_t3: "Trial Class Booking",
+                c1_tag: "TOURISM & VIP TRANSFERS",
+                c1_desc: "A high-converting booking website built for a VIP island tour and taxi company in Saint Lucia, featuring tour videos and instant booking forms.",
+                c1_t2: "Instant Booking",
+                c1_t3: "Auto Email Alerts",
+                c1_t4: "Custom Domain & SSL",
+                c2_tag: "EVENT & PHOTO BOOTH RENTALS",
+                c2_desc: "A luxury event rental catalog showcasing Infinity Mirror Photo Boxes, LED cube stages, touchscreen photo kiosks, and balloon decor with online quote requests.",
+                c2_t1: "Luxury Visual Design",
+                c2_t3: "Direct Event Booking",
+                c2_t4: "Custom Domain Live",
+                launch_site: "Visit Live Website",
                 app_badge: "LIVE MOBILE APP DEMO • BUILT IN-HOUSE",
                 app_intro: "Spirit Feeder is a cross-platform mobile RPG we built from scratch for iOS and Android. Users hatch companions (Lion, Donkey, Raven, Camel), earn food and XP through daily reading to evolve their pets, play quiz battles, and customize their room.",
                 app_sub: "Want Your Own Mobile App?",
@@ -1120,56 +1111,27 @@
                 app_f4_d: "Equip outfits and crowns, and personalize room backgrounds and stained-glass decor.",
                 built_with: "BUILT WITH:",
                 app_cta: "Order Your Custom Mobile App",
-                port_badge: "Live Client Websites",
-                port_title: "Websites We've Built & Launched",
-                port_desc: "Click below to explore live commercial websites we designed, configured with custom domains, and launched for clients.",
-                c1_tag: "TOURISM & VIP TRANSFERS",
-                c1_desc: "A high-converting booking website built for a VIP island tour and taxi company in Saint Lucia, featuring tour videos and instant booking forms.",
-                c1_t2: "Instant Booking",
-                c1_t3: "Auto Email Alerts",
-                c1_t4: "Custom Domain & SSL",
-                c2_tag: "EVENT & PHOTO BOOTH RENTALS",
-                c2_desc: "A luxury event rental catalog showcasing Infinity Mirror Photo Boxes, LED cube stages, touchscreen photo kiosks, and balloon decor with online quote requests.",
-                c2_t1: "Luxury Visual Design",
-                c2_t2: "Interactive Gallery",
-                c2_t3: "Direct Event Booking",
-                c2_t4: "Custom Domain Live",
-                launch_site: "Visit Live Website",
-                q_badge: "TECHNICAL CASE STUDY • MQL5 & PYTHON AUTOMATION",
-                q_title: "Custom Trading & Automation Engineering",
-                q_desc: "If you already have your own trading strategy or entry/exit rules and want them automated, we build custom MQL5 and Python execution systems tested on millions of historical ticks.",
-                qs1: "Profit Factor",
-                qs2: "Recovery Factor",
-                qs3: "Max Drawdown",
-                qs4: "Sharpe Ratio",
-                qs5: "Tick Modeling",
-                qs6: "Ticks Tested",
-                qa1_title: "Case Study 01: MT5 Real-Tick Stress Test Report",
-                qa1_tag: "100% REAL TICKS BENCHMARK",
-                qm1_l: "Test Account Baseline:",
-                qm1_s: "Sample Period Net: +14.39%",
-                qm2_l: "Risk-Adjusted Structure:",
-                qm2_s: "ATR Dynamic Volatility Stops",
-                qm3_l: "Drawdown Exposure:",
-                qm3_s: "Max Relative: 3.68%",
-                qm4_l: "Ticks Modeled:",
-                qm4_s: "100% Every Tick Modeled",
-                qa2_title: "Case Study 02: Equity & Margin Load Stability",
-                qa2_desc: '<i class="fa-solid fa-arrow-trend-up text-emerald-400 mr-1.5"></i>Maintained &lt;10% deposit load across 5,321 bars with strict per-trade exposure caps and disciplined drawdown containment.',
-                qa3_title: "Case Study 03: Session Timing & Liquidity Filters",
-                qa3_desc: '<i class="fa-solid fa-clock text-cyan-400 mr-1.5"></i>Built-in server liquidity scheduling restricts execution to prime London & New York overlap sessions to avoid off-hour slippage.',
-                ea2_sub: "Custom Software Engineering",
-                ea2_title: "Turn Your Strategy Rules Into Automated Software",
-                ea2_desc: "Have your own manual trading rules or indicators? We build custom MQL5 and Python execution engines delivered with full source code under strict NDA—100% owned by you.",
-                ea2_b1: "Built to your exact entry, exit & indicator rules",
-                ea2_b2: "Automated stop-loss, take-profit & position sizing",
-                ea2_b3: "Full real-tick historical backtest audit",
-                ea2_b4: "Strict NDA & 100% full source code ownership",
-                ea2_cta: "Inquire About Custom Automation",
-                ea2_note: "Custom software coding service only; no financial advice or retail signals.",
-                form_badge: "Order or Book a Call",
+                proc_badge: "SIMPLE 3-STEP WORKFLOW",
+                proc_title: "How We Take Your Project From Idea to Launch",
+                p1_t: "Free Consultation & Quote",
+                p1_d: "Submit the quick form below or message us on LINE. Within 24 hours, you'll receive an itemized quote and delivery timeline at zero cost.",
+                p2_t: "Approve Scope & Build",
+                p2_d: "Once approved, we start building and share live preview links so you can test progress on your phone and computer along the way.",
+                p3_t: "Launch & Full Handover",
+                p3_d: "We configure your custom domain, SSL certificate, and Google indexing, then hand over 100% of your source code and admin accounts.",
+                faq_badge: "FREQUENTLY ASKED QUESTIONS",
+                faq_title: "Common Questions Before You Order",
+                q1_t: "Q1: I'm not technical—will you set up my domain and hosting?",
+                q1_d: "Yes! From domain registration and DNS setup to HTTPS security and Google Search indexing, we handle the entire launch for you.",
+                q2_t: "Q2: Do I own 100% of the website, app, and source code?",
+                q2_d: "Yes, 100%. Upon completion, we hand over full source code, repositories, and all admin credentials with zero lock-in.",
+                q3_t: "Q3: Can I request design or text revisions during the build?",
+                q3_d: "Every build includes 2 free rounds of layout and content revisions. After launch, you can optionally add our $50–$120/mo care plan.",
+                q4_t: "Q4: How do payments and timelines work?",
+                q4_d: "Websites take 1–2 weeks; mobile apps and full-stack systems take 3–8 weeks. Standard terms are 50% deposit to start and 50% upon launch approval.",
+                form_badge: "Fast Order & Free Quote",
                 form_title: "Order a Website, App, Full-Stack System or Book a Call",
-                form_desc: 'Tell us what you need below. Enter promo code <strong class="text-cyan-400 font-mono">ID</strong> for 10% off—your request goes straight to <span class="text-white">Twinterlabs@gmail.com</span>.',
+                form_desc: 'Tell us what you need below (enter optional promo code <strong class="text-cyan-400 font-mono">ID</strong> for 10% off, or leave blank to submit directly to <span class="text-white">Twinterlabs@gmail.com</span>).',
                 tab_prod: "Order Website / App / System",
                 tab_meet: "Schedule a Call",
                 lbl_name: "Your Name / Business Name *",
@@ -1181,15 +1143,15 @@
                 opt_app: "Mobile App Build ($1,500 – $4,000 USD)",
                 opt_fullstack: "Complete Full-Stack System ($2,000 – $6,000+ USD)",
                 opt_quant: "Custom Trading Automation ($400 – $1,500 USD)",
-                lbl_promo: "Promo Code (10% Discount) *",
-                promo_badge: "Save 10% on Total",
-                promo_hint: 'Enter <strong class="text-cyan-400 font-bold">id</strong> or <strong class="text-cyan-400 font-bold">ID</strong> above to apply your 10% discount and submit your order.',
+                opt_care: "Managed Hosting & Monthly Care Plan ($50 – $120 / mo)",
+                lbl_promo: "Promo Code (Optional — Enter ID for 10% Off)",
+                promo_badge: "Code ID = 10% Off",
                 lbl_date: "Preferred Date *",
                 lbl_time: "Preferred Platform & Time *",
                 lbl_det_prod: "Describe What You Want Built",
                 lbl_det_meet: "Topics You Want to Discuss",
-                btn_submit_prod: "Apply 10% Off & Submit Order",
-                btn_submit_meet: "Apply 10% Off & Book Call",
+                btn_submit_prod: "Submit Inquiry & Get Free Quote",
+                btn_submit_meet: "Confirm Call Booking",
                 btn_line: "Chat on LINE",
                 ft_about: "We build and sell custom websites, iOS & Android mobile apps, and complete full-stack systems (frontend, admin dashboard, and database) with transparent pricing.",
                 ft_contact_t: "Contact Us",
@@ -1199,17 +1161,17 @@
                 ft_p1: "• Commercial Websites ($500 – $1,500 USD)",
                 ft_p2: "• iOS & Android Mobile Apps ($1,500 – $4,000 USD)",
                 ft_p3: "• Complete Full-Stack Systems ($2,000 – $6,000+ USD)",
-                ft_p4: "• Custom Trading Automation ($400 – $1,500 USD)",
-                ft_p5: "• Custom Domain Setup & End-to-End Launch",
+                ft_p4: "• Custom Trading Automation ($400 – $1,500 USD) →",
+                ft_p5: "• Managed Hosting & Care Plan ($50 – $120 / mo)",
                 ft_tagline: "Transparent Pricing & Reliable Software Engineering",
                 ph_name: "e.g. David Lin / Sunrise Cafe",
                 ph_contact: "Your LINE ID or preferred contact",
-                ph_promo: "Enter promo code: ID",
+                ph_promo: "Enter ID for 10% off (optional — leave blank to submit)",
                 ph_time: "e.g. LINE Call or Google Meet at 3:00 PM",
                 ph_details: "Describe the website, app, or full-stack system you want to buy or build...",
-                err_promo: '<i class="fa-solid fa-triangle-exclamation mr-1.5"></i> Invalid Promo Code. Please enter "ID" or "id" to apply your 10% discount and submit.',
-                sending_msg: '<i class="fa-solid fa-spinner fa-spin"></i> Sending your order to Twinterlabs@gmail.com...',
-                success_msg: (code) => `<i class="fa-solid fa-circle-check mr-1.5"></i> Promo code "${code}" applied (10% OFF)! Your request has been sent to Twinterlabs@gmail.com—we will reply shortly.`
+                sending_msg: '<i class="fa-solid fa-spinner fa-spin"></i> Sending your inquiry to Twinterlabs@gmail.com...',
+                success_promo_msg: (code) => `<i class="fa-solid fa-circle-check mr-1.5"></i> Request sent with promo code "${code}" (10% OFF applied)! We have dispatched your details to Twinterlabs@gmail.com and will reply within 24 hours.`,
+                success_std_msg: `<i class="fa-solid fa-circle-check mr-1.5"></i> Request sent successfully! We have received your inquiry at Twinterlabs@gmail.com and will reply within 24 hours.`
             }
         };
 
@@ -1230,14 +1192,12 @@
                 }
             });
 
-            // Update input placeholders
             document.getElementById('reqName').placeholder = dict.ph_name;
             document.getElementById('reqPhone').placeholder = dict.ph_contact;
             document.getElementById('reqPromoCode').placeholder = dict.ph_promo;
             document.getElementById('reqMeetingFormat').placeholder = dict.ph_time;
             document.getElementById('reqDetails').placeholder = dict.ph_details;
 
-            // Sync mode-dependent labels
             setMode(currentMode);
         }
 
@@ -1278,6 +1238,7 @@
             }
         }
 
+        // Frictionless submit: never blocks if promo code is omitted; highlights 10% off if ID/id is entered
         function handleQuickSubmit(e) {
             const dict = translations[currentLang];
             const btn = document.getElementById('submitBtn');
@@ -1286,29 +1247,26 @@
             const promoInput = document.getElementById('reqPromoCode');
             const rawPromo = promoInput.value.trim();
 
-            // STRICT GATEKEEPER: Must be exactly "id" or "ID"
-            if (rawPromo !== 'id' && rawPromo !== 'ID') {
-                e.preventDefault();
-                status.className = "mb-6 p-4 rounded-xl text-xs font-semibold text-center bg-rose-950 border border-rose-700 text-rose-200 block font-mono";
-                status.innerHTML = dict.err_promo;
-                promoInput.classList.add('border-rose-500');
-                promoInput.focus();
-                return false;
-            }
-
             const mode = document.getElementById('requestMode').value;
             const name = document.getElementById('reqName').value;
             const category = document.getElementById('reqCategory').value;
-            document.getElementById('hiddenSubject').value = `[Twinter Labs 10% OFF] ${mode}: ${name} (${category})`;
+            const hasValidPromo = (rawPromo === 'id' || rawPromo === 'ID');
 
-            promoInput.classList.remove('border-rose-500');
+            if (hasValidPromo) {
+                document.getElementById('hiddenSubject').value = `[Twinter Labs 10% OFF - Code: ${rawPromo.toUpperCase()}] ${mode}: ${name} (${category})`;
+                document.getElementById('hiddenDiscount').value = `10% Discount Applied (Code: ${rawPromo.toUpperCase()})`;
+            } else {
+                document.getElementById('hiddenSubject').value = `[Twinter Labs Inquiry] ${mode}: ${name} (${category})`;
+                document.getElementById('hiddenDiscount').value = rawPromo ? `Entered Code: ${rawPromo} (Standard Quote)` : "Standard Quote";
+            }
+
             const originalBtnHtml = btn.innerHTML;
             btn.disabled = true;
             btn.innerHTML = dict.sending_msg;
 
             setTimeout(() => {
                 status.className = "mb-6 p-4 rounded-xl text-xs font-semibold text-center bg-emerald-950 border border-emerald-700 text-emerald-200 block font-mono";
-                status.innerHTML = dict.success_msg(rawPromo);
+                status.innerHTML = hasValidPromo ? dict.success_promo_msg(rawPromo.toUpperCase()) : dict.success_std_msg;
                 form.reset();
                 setMode('product');
                 btn.disabled = false;
@@ -1317,6 +1275,22 @@
 
             return true;
         }
+
+        // Pre-select service when redirected from pilates-demo.html or quant.html
+        window.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            const svc = params.get('service');
+            const map = {
+                website: 'Commercial Website / Web Platform',
+                app: 'Mobile Application (React Native / Expo)',
+                fullstack: 'Full-Stack Custom System Architecture',
+                quant: 'Custom Quantitative & Algorithmic System (MQL5 / Python)',
+                maintenance: 'Monthly Website & System Maintenance Plan (NT$1,500 - 3,500/mo)'
+            };
+            if (svc && map[svc]) {
+                document.getElementById('reqCategory').value = map[svc];
+            }
+        });
     </script>
 </body>
 </html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twinter Labs | 客製化量化執行引擎與 MT5 歷史回測技術案例</title>
+    <meta name="description" content="Twinter Labs MQL5 與 Python 自動化交易程式開發案例，包含 100% 真實 Tick 歷史壓力測試、ATR 動態風控與交易時段過濾架構。">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Noto+Sans+TC:wght@400;500;700;900&family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Space+Grotesk:wght@600;700&display=swap');
+        .font-display { font-family: 'Space Grotesk', 'Noto Sans TC', sans-serif; }
+        .font-mono { font-family: 'JetBrains Mono', 'Noto Sans TC', monospace; }
+        body { font-family: 'Plus Jakarta Sans', 'Noto Sans TC', sans-serif; }
+    </style>
+</head>
+<body class="bg-[#080B11] text-slate-200 antialiased">
+
+    <nav class="sticky top-0 z-50 bg-[#080B11]/90 backdrop-blur-md border-b border-slate-800/80">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-600 to-emerald-500 flex items-center justify-center font-display font-black text-xl text-black">
+                    TL
+                </div>
+                <div>
+                    <span class="font-display text-lg font-bold text-white block">Twinter Labs</span>
+                    <span class="text-[10px] text-cyan-400 font-mono block -mt-0.5">返回官網首頁 ←</span>
+                </div>
+            </a>
+            <a href="index.html?service=quant#quick-request" class="bg-cyan-500 hover:bg-cyan-400 text-black font-extrabold text-xs uppercase tracking-wider px-5 py-2.5 rounded-xl transition">
+                洽談客製化程式開發 →
+            </a>
+        </div>
+    </nav>
+
+    <main class="py-20 px-6 max-w-7xl mx-auto space-y-14">
+        <div class="text-center max-w-3xl mx-auto space-y-3">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-950 border border-emerald-800 text-emerald-400 font-mono text-xs">
+                <i class="fa-solid fa-microchip"></i>
+                <span>技術工程實證 • MQL5 &amp; PYTHON 量化執行架構</span>
+            </div>
+            <h1 class="font-display text-3xl sm:text-5xl font-bold text-white">客製化自動交易程式開發與回測架構</h1>
+            <p class="text-slate-400 text-xs sm:text-sm leading-relaxed">
+                如果您已經有一套自己的交易策略或進出場條件，我們可以用 MQL5 或 Python 幫您寫成全自動執行程式，並使用 100% 真實 Tick 歷史報價進行嚴格壓力測試。
+            </p>
+        </div>
+
+        <!-- Benchmark Metrics -->
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 font-mono">
+            <div class="bg-[#0D131F] p-5 rounded-2xl border border-slate-800 text-center">
+                <span class="text-[10px] text-slate-500 uppercase block mb-1">獲利因子 (Profit Factor)</span>
+                <span class="text-2xl font-bold text-emerald-400 font-display">3.14</span>
+            </div>
+            <div class="bg-[#0D131F] p-5 rounded-2xl border border-slate-800 text-center">
+                <span class="text-[10px] text-slate-500 uppercase block mb-1">恢復因子 (Recovery)</span>
+                <span class="text-2xl font-bold text-emerald-400 font-display">3.68</span>
+            </div>
+            <div class="bg-[#0D131F] p-5 rounded-2xl border border-slate-800 text-center">
+                <span class="text-[10px] text-slate-500 uppercase block mb-1">最大資金回檔</span>
+                <span class="text-2xl font-bold text-cyan-400 font-display">1.55%</span>
+            </div>
+            <div class="bg-[#0D131F] p-5 rounded-2xl border border-slate-800 text-center">
+                <span class="text-[10px] text-slate-500 uppercase block mb-1">夏普比率 (Sharpe)</span>
+                <span class="text-2xl font-bold text-white font-display">9.17</span>
+            </div>
+            <div class="bg-[#0D131F] p-5 rounded-2xl border border-slate-800 text-center">
+                <span class="text-[10px] text-slate-500 uppercase block mb-1">歷史數據精準度</span>
+                <span class="text-2xl font-bold text-emerald-400 font-display">100%</span>
+            </div>
+            <div class="bg-[#0D131F] p-5 rounded-2xl border border-slate-800 text-center">
+                <span class="text-[10px] text-slate-500 uppercase block mb-1">測試報價筆數</span>
+                <span class="text-2xl font-bold text-white font-display">325 萬筆</span>
+            </div>
+        </div>
+
+        <!-- Audit Cards -->
+        <div class="space-y-8">
+            <div class="bg-[#0D131F] rounded-3xl border border-slate-800 overflow-hidden shadow-2xl">
+                <div class="bg-[#121A2B] px-6 py-4 border-b border-slate-800 flex flex-wrap items-center justify-between gap-4">
+                    <span class="font-mono text-sm font-bold text-white">技術案例 01：MT5 歷史真實報價壓力測試報告</span>
+                    <span class="font-mono text-xs text-emerald-400 bg-emerald-950 px-3 py-1 rounded-full border border-emerald-800 font-bold">100% 真實 TICK 數據測試</span>
+                </div>
+                <div class="p-6 bg-[#090D15]">
+                    <img src="images/ea-backtest-report.png" alt="MetaTrader 5 Detailed Strategy Tester Report" onerror="this.style.display='none'" class="w-full rounded-2xl border border-slate-800 object-contain shadow-lg mb-4">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs font-mono text-slate-300">
+                        <div class="bg-slate-900/90 p-4 rounded-xl border border-slate-800">
+                            <span class="text-slate-500 block mb-1">測試基準資金：</span>
+                            <strong class="text-white text-base font-bold">$10,000.00 USD</strong>
+                            <span class="text-emerald-400 block mt-1">測試期間淨變動：+14.39%</span>
+                        </div>
+                        <div class="bg-slate-900/90 p-4 rounded-xl border border-slate-800">
+                            <span class="text-slate-500 block mb-1">風險控制表現：</span>
+                            <span class="text-emerald-400 font-bold">PF 3.14</span> / <span class="text-cyan-400">Sharpe 9.17</span>
+                            <span class="text-slate-400 block mt-1">自動追蹤波動率移動停損</span>
+                        </div>
+                        <div class="bg-slate-900/90 p-4 rounded-xl border border-slate-800">
+                            <span class="text-slate-500 block mb-1">最大資金回檔幅度：</span>
+                            <strong class="text-cyan-400 text-base font-bold">1.55% ($174.53)</strong>
+                            <span class="text-slate-400 block mt-1">最大相對回檔：3.68%</span>
+                        </div>
+                        <div class="bg-slate-900/90 p-4 rounded-xl border border-slate-800">
+                            <span class="text-slate-500 block mb-1">模擬成交跳動數：</span>
+                            <strong class="text-white text-base font-bold">3,254,826</strong>
+                            <span class="text-emerald-400 block mt-1">每一筆價格跳動完整模擬</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="bg-[#0D131F] rounded-3xl border border-slate-800 overflow-hidden shadow-2xl">
+                    <div class="bg-[#121A2B] px-6 py-4 border-b border-slate-800 flex items-center justify-between">
+                        <span class="font-mono text-xs font-bold text-white">技術案例 02：資金曲線與風險控管穩定度</span>
+                        <span class="font-mono text-[10px] text-cyan-400 bg-cyan-950 px-2 py-0.5 rounded border border-cyan-800">RISK CONTROL</span>
+                    </div>
+                    <div class="p-6 bg-[#090D15]">
+                        <img src="images/ea-equity-curve.png" alt="MetaTrader 5 Equity Curve" onerror="this.style.display='none'" class="w-full rounded-2xl border border-slate-800 object-contain shadow-md mb-4">
+                        <p class="p-4 rounded-xl bg-slate-900/80 border border-slate-800 text-xs text-slate-400 font-mono leading-relaxed">
+                            嚴格限制每次下單的資金比例（保證金使用率低於 10%），避免重倉風險，讓資金曲線維持平穩。
+                        </p>
+                    </div>
+                </div>
+
+                <div class="bg-[#0D131F] rounded-3xl border border-slate-800 overflow-hidden shadow-2xl">
+                    <div class="bg-[#121A2B] px-6 py-4 border-b border-slate-800 flex items-center justify-between">
+                        <span class="font-mono text-xs font-bold text-white">技術案例 03：自動避開冷門時段與高點差</span>
+                        <span class="font-mono text-[10px] text-emerald-400 bg-emerald-950 px-2 py-0.5 rounded border border-emerald-800">SMART FILTER</span>
+                    </div>
+                    <div class="p-6 bg-[#090D15]">
+                        <img src="images/ea-distributions.png" alt="MetaTrader 5 Profits and losses" onerror="this.style.display='none'" class="w-full rounded-2xl border border-slate-800 object-contain shadow-md mb-4">
+                        <p class="p-4 rounded-xl bg-slate-900/80 border border-slate-800 text-xs text-slate-400 font-mono leading-relaxed">
+                            程式內建交易時段過濾器，只在市場交易最活絡的倫敦與紐約時段運作，自動避開半夜冷門時段的滑價損耗。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-[#0D131F] p-8 rounded-3xl border border-slate-800 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="space-y-2">
+                <h2 class="font-display text-2xl font-bold text-white">把您的交易策略寫成全自動執行程式（NT$12,000 – 45,000）</h2>
+                <p class="text-xs text-slate-400">完全保密、交付完整原始碼、僅提供客製化軟體代寫服務。</p>
+            </div>
+            <a href="index.html?service=quant#quick-request" class="px-8 py-4 bg-cyan-500 hover:bg-cyan-400 text-black font-extrabold text-xs uppercase tracking-wider rounded-xl shrink-0">
+                前往委託客製化程式 →
+            </a>
+        </div>
+    </main>
+</body>
+</html>
