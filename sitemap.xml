@@ -11,6 +11,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.twinterlabs.com/posts.html</loc>
+    <lastmod>2026-11-16</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.twinterlabs.com/quant.html</loc>
     <lastmod>2026-11-16</lastmod>
     <priority>0.7</priority>

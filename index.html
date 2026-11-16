@@ -70,6 +70,7 @@
                 <a href="#services" class="hover:text-cyan-400 transition" data-i18n="nav_services">方案與價格</a>
                 <a href="#portfolio" class="hover:text-cyan-400 transition" data-i18n="nav_portfolio">線上網站作品</a>
                 <a href="#apps" class="hover:text-cyan-400 transition" data-i18n="nav_apps">手機 APP 展示</a>
+                <a href="#updates" id="navUpdates" class="hidden hover:text-cyan-400 transition" data-i18n="nav_updates">最新動態</a>
                 <a href="#process" class="hover:text-cyan-400 transition" data-i18n="nav_process">合作流程與 FAQ</a>
                 <a href="#quick-request" class="hover:text-cyan-400 transition" data-i18n="nav_request">立即下單</a>
             </div>
@@ -578,6 +579,20 @@
         </div>
     </section>
 
+    <!-- Latest Posts (written in admin.html, stored in content/posts.json; hidden until the first post is published) -->
+    <section id="updates" class="hidden py-24 bg-[#0A0E17] border-t border-slate-800/80">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+                <div>
+                    <span class="text-xs font-mono font-bold uppercase tracking-widest text-cyan-400" data-i18n="upd_badge">最新動態</span>
+                    <h2 class="font-display text-3xl sm:text-4xl font-bold text-white mt-2" data-i18n="upd_title">作品更新與最新消息</h2>
+                </div>
+                <a href="posts.html" id="updatesAllLink" class="text-xs font-mono font-bold text-cyan-400 hover:text-cyan-300 transition" data-i18n="upd_all">查看全部動態 →</a>
+            </div>
+            <div id="updatesGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+        </div>
+    </section>
+
     <!-- 3-Step Workflow & Client FAQ -->
     <section id="process" class="py-24 bg-[#080B11] border-t border-slate-800/80">
         <div class="max-w-7xl mx-auto px-6 space-y-20">
@@ -803,6 +818,8 @@
         </div>
     </footer>
 
+    <script src="posts.js"></script>
+
     <!-- Bilingual Dictionary, Language Switcher, URL Query Pre-select & Frictionless Native Form Handler -->
     <script>
         let currentLang = 'zh';
@@ -820,6 +837,10 @@
                 nav_process: "合作流程與 FAQ",
                 nav_request: "立即下單",
                 nav_cta: "立即訂購",
+                nav_updates: "最新動態",
+                upd_badge: "最新動態",
+                upd_title: "作品更新與最新消息",
+                upd_all: "查看全部動態 →",
                 hero_badge: "網站製作販售 • 手機 APP 開發 • 完整全端系統",
                 hero_title: '我們專門開發並販售<span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-teal-300 to-emerald-400">網站、手機 APP 與完整全端系統</span>',
                 hero_desc: "無論您想為店面或品牌<strong>架設形象與預約網站</strong>、開發上架 <strong>iOS / Android 手機 APP</strong>，還是需要一套包含前台畫面、後台管理與資料庫的<strong>完整全端系統</strong>，我們都能直接幫您從零做到好、交付給您使用。",
@@ -1002,6 +1023,10 @@
                 nav_process: "Process & FAQ",
                 nav_request: "Order Now",
                 nav_cta: "Order Now",
+                nav_updates: "Updates",
+                upd_badge: "LATEST UPDATES",
+                upd_title: "New Work & News",
+                upd_all: "View all updates →",
                 hero_badge: "WE BUILD & SELL WEBSITES • MOBILE APPS • FULL-STACK SYSTEMS",
                 hero_title: 'We build and sell <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-teal-300 to-emerald-400">websites, mobile apps &amp; full-stack systems</span>',
                 hero_desc: "Twinter Labs builds and sells ready-to-launch <strong>business websites</strong>, cross-platform <strong>iOS &amp; Android mobile apps</strong>, and complete <strong>full-stack systems</strong> (customer frontend, admin dashboard, and cloud database) with transparent pricing.",
@@ -1199,6 +1224,17 @@
             document.getElementById('reqDetails').placeholder = dict.ph_details;
 
             setMode(currentMode);
+            renderHomePosts();
+        }
+
+        // Latest posts section: shows the three newest posts once at least one is published
+        let homePosts = [];
+        function renderHomePosts() {
+            if (!homePosts.length) return;
+            document.getElementById('updatesGrid').innerHTML = homePosts.slice(0, 3).map(post => TLPosts.cardHTML(post, currentLang)).join('');
+            document.getElementById('updatesAllLink').href = 'posts.html' + (currentLang === 'en' ? '?lang=en' : '');
+            document.getElementById('updates').classList.remove('hidden');
+            document.getElementById('navUpdates').classList.remove('hidden');
         }
 
         function selectService(serviceName) {
@@ -1289,6 +1325,19 @@
             };
             if (svc && map[svc]) {
                 document.getElementById('reqCategory').value = map[svc];
+            }
+
+            // Keep English when coming back from posts.html?lang=en
+            if (params.get('lang') === 'en') {
+                currentLang = 'en';
+                applyLanguage('en');
+            }
+
+            if (window.TLPosts) {
+                TLPosts.load().then(posts => {
+                    homePosts = posts;
+                    renderHomePosts();
+                });
             }
         });
     </script>

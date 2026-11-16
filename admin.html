@@ -1,0 +1,1195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Twinter Labs Admin</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Noto+Sans+TC:wght@400;500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap');
+
+        :root {
+            --bg: #080B11;
+            --panel: #0D131F;
+            --panel-2: #111A2B;
+            --line: #1E293B;
+            --line-strong: #334155;
+            --text: #E2E8F0;
+            --muted: #94A3B8;
+            --dim: #64748B;
+            --cyan: #06B6D4;
+            --cyan-soft: #67E8F9;
+            --emerald: #34D399;
+            --amber: #FBBF24;
+            --rose: #FB7185;
+            --radius: 14px;
+        }
+        * { box-sizing: border-box; }
+        html { -webkit-text-size-adjust: 100%; }
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Plus Jakarta Sans', 'Noto Sans TC', system-ui, -apple-system, 'Segoe UI', sans-serif;
+            font-size: 15px;
+            line-height: 1.55;
+            -webkit-font-smoothing: antialiased;
+        }
+        [hidden] { display: none !important; }
+        h1, h2, h3 { font-family: 'Space Grotesk', 'Noto Sans TC', sans-serif; color: #fff; margin: 0; line-height: 1.25; }
+        h1 { font-size: 26px; }
+        h2 { font-size: 18px; }
+        a { color: var(--cyan-soft); }
+        .mono { font-family: 'JetBrains Mono', 'Noto Sans TC', ui-monospace, monospace; }
+        .muted { color: var(--muted); }
+        .small { font-size: 13px; }
+
+        /* Top bar */
+        .topbar { position: sticky; top: 0; z-index: 20; background: rgba(8, 11, 17, 0.92); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+        .topbar-inner { max-width: 1180px; margin: 0 auto; padding: 0 20px; height: 64px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+        .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        .brand-mark { width: 38px; height: 38px; border-radius: 11px; background: linear-gradient(45deg, #0891B2, #10B981); display: flex; align-items: center; justify-content: center; font-family: 'Space Grotesk', sans-serif; font-weight: 800; font-size: 18px; color: #000; }
+        .brand-name { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 17px; color: #fff; display: block; line-height: 1.2; }
+        .brand-sub { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--cyan-soft); font-weight: 700; display: block; }
+        .topbar-actions { display: flex; align-items: center; gap: 8px; }
+
+        .wrap { max-width: 1180px; margin: 0 auto; padding: 32px 20px 96px; }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+            min-height: 42px; padding: 0 18px; border-radius: 12px; border: 1px solid var(--line-strong);
+            background: var(--panel); color: var(--text); font: inherit; font-weight: 700; font-size: 14px;
+            cursor: pointer; text-decoration: none; transition: border-color .15s, background .15s, color .15s; white-space: nowrap;
+        }
+        .btn:hover { border-color: var(--cyan); color: #fff; }
+        .btn:focus-visible, input:focus-visible, textarea:focus-visible, .tab:focus-visible, .dropzone:focus-visible { outline: 2px solid var(--cyan); outline-offset: 2px; }
+        .btn[disabled] { opacity: .5; cursor: not-allowed; }
+        .btn-primary { background: var(--cyan); border-color: var(--cyan); color: #00161A; }
+        .btn-primary:hover { background: #22D3EE; border-color: #22D3EE; color: #00161A; }
+        .btn-ghost { background: transparent; border-color: transparent; color: var(--muted); }
+        .btn-ghost:hover { border-color: var(--line-strong); }
+        .btn-danger { color: var(--rose); }
+        .btn-danger:hover { border-color: var(--rose); color: var(--rose); }
+        .btn-danger.armed { background: #9F1239; border-color: #E11D48; color: #fff; }
+        .btn-sm { min-height: 34px; padding: 0 12px; font-size: 13px; border-radius: 10px; }
+
+        /* Panels and forms */
+        .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 24px; }
+        label, .label { display: block; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+        input[type="text"], input[type="password"], input[type="date"], input[type="url"], textarea {
+            width: 100%; background: var(--bg); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px;
+            color: #fff; font: inherit; font-size: 15px;
+        }
+        input::placeholder, textarea::placeholder { color: var(--dim); }
+        input:focus, textarea:focus { border-color: var(--cyan); outline: none; }
+        textarea { min-height: 220px; resize: vertical; line-height: 1.7; border-top-left-radius: 0; border-top-right-radius: 0; }
+        input[type="date"] { color-scheme: dark; }
+        .field { margin-bottom: 22px; }
+        .hint { font-size: 13px; color: var(--dim); margin-top: 8px; }
+        .check { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: var(--text); text-transform: none; letter-spacing: 0; font-weight: 500; cursor: pointer; margin: 0; }
+        .check input { width: 18px; height: 18px; margin-top: 2px; accent-color: var(--cyan); flex: none; }
+
+        /* Notices */
+        .notice { border-radius: 12px; padding: 12px 16px; font-size: 14px; border: 1px solid; margin-bottom: 20px; }
+        .notice-ok { background: #022C22; border-color: #047857; color: #A7F3D0; }
+        .notice-ok a { color: #fff; font-weight: 700; }
+        .notice-err { background: #2A0A12; border-color: #9F1239; color: #FECDD3; }
+        .notice-warn { background: #291B03; border-color: #92400E; color: #FDE68A; }
+
+        /* Sign in */
+        .signin { max-width: 520px; margin: 40px auto 0; }
+        .signin h1 { margin-bottom: 8px; }
+        .steps { margin: 12px 0 0; padding-left: 20px; color: var(--muted); font-size: 14px; }
+        .steps li { margin-bottom: 6px; }
+        .steps b { color: var(--text); }
+        details { margin-top: 22px; border-top: 1px solid var(--line); padding-top: 18px; }
+        summary { cursor: pointer; font-weight: 700; color: var(--cyan-soft); font-size: 14px; }
+
+        /* Post list */
+        .list-head { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 24px; flex-wrap: wrap; }
+        .post-row { display: flex; align-items: center; gap: 16px; padding: 14px; background: var(--panel); border: 1px solid var(--line); border-radius: 16px; margin-bottom: 12px; }
+        .post-thumb { width: 88px; height: 66px; flex: none; border-radius: 10px; background: #000 center/cover no-repeat; border: 1px solid var(--line); display: flex; align-items: center; justify-content: center; color: var(--dim); font-size: 11px; overflow: hidden; }
+        .post-thumb img, .post-thumb video { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .post-info { flex: 1; min-width: 0; }
+        .post-title { font-family: 'Space Grotesk', 'Noto Sans TC', sans-serif; font-weight: 700; color: #fff; font-size: 16px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .post-meta { font-size: 12px; color: var(--muted); display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-top: 4px; }
+        .badge { display: inline-block; padding: 2px 8px; border-radius: 999px; font-size: 11px; font-weight: 700; border: 1px solid; }
+        .badge-live { color: var(--emerald); border-color: #065F46; background: #022C22; }
+        .badge-hidden { color: var(--amber); border-color: #92400E; background: #291B03; }
+        .post-actions { display: flex; gap: 6px; flex: none; }
+        .empty { text-align: center; padding: 64px 20px; border: 1px dashed var(--line-strong); border-radius: 18px; color: var(--muted); }
+        .empty h2 { margin-bottom: 8px; }
+
+        /* Editor */
+        .editor-head { display: flex; align-items: center; gap: 14px; margin-bottom: 24px; flex-wrap: wrap; }
+        .editor-grid { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 24px; align-items: start; }
+        .tabs { display: inline-flex; background: var(--bg); border: 1px solid var(--line); border-radius: 12px; padding: 4px; margin-bottom: 20px; }
+        .tab { border: 0; background: transparent; color: var(--muted); font: inherit; font-weight: 700; font-size: 13px; padding: 8px 16px; border-radius: 9px; cursor: pointer; }
+        .tab.active { background: var(--cyan); color: #00161A; }
+        .tab .dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--emerald); margin-left: 6px; vertical-align: middle; }
+        .tab.active .dot { background: #00161A; }
+        .toolbar { display: flex; gap: 4px; padding: 6px; background: var(--panel-2); border: 1px solid var(--line); border-bottom: 0; border-radius: 12px 12px 0 0; flex-wrap: wrap; }
+        .tool { border: 0; background: transparent; color: var(--text); font: inherit; font-size: 13px; font-weight: 700; padding: 6px 12px; border-radius: 8px; cursor: pointer; }
+        .tool:hover { background: var(--line); }
+
+        .dropzone { border: 2px dashed var(--line-strong); border-radius: 16px; padding: 28px 20px; text-align: center; cursor: pointer; transition: border-color .15s, background .15s; background: var(--bg); }
+        .dropzone:hover, .dropzone.over { border-color: var(--cyan); background: #06202A; }
+        .dropzone strong { display: block; color: #fff; font-size: 16px; margin-bottom: 4px; }
+        .media-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; margin-top: 14px; }
+        .media-item { position: relative; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; background: #000; }
+        .media-item .frame { aspect-ratio: 4 / 3; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        .media-item img, .media-item video { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .media-item .tag { position: absolute; top: 6px; left: 6px; padding: 2px 7px; border-radius: 6px; background: rgba(0, 0, 0, .75); color: #fff; font-size: 10px; font-weight: 700; letter-spacing: .05em; }
+        .media-item .tag.cover { background: var(--cyan); color: #00161A; left: auto; right: 6px; }
+        .media-bar { display: flex; align-items: center; justify-content: space-between; gap: 4px; padding: 6px; background: var(--panel-2); font-size: 11px; color: var(--muted); }
+        .media-bar .size { padding-left: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .icon-btn { width: 30px; height: 30px; border-radius: 8px; border: 1px solid var(--line); background: var(--panel); color: var(--text); cursor: pointer; font-size: 14px; line-height: 1; flex: none; }
+        .icon-btn:hover { border-color: var(--cyan); }
+        .icon-btn.remove:hover { border-color: var(--rose); color: var(--rose); }
+        .icon-btn[disabled] { opacity: .3; cursor: default; }
+        .yt-row { display: flex; gap: 8px; margin-top: 14px; }
+        .yt-row input { flex: 1; }
+        .options { display: grid; grid-template-columns: 200px 1fr; gap: 20px; align-items: end; }
+
+        /* Preview */
+        .preview { position: sticky; top: 88px; }
+        .preview-card { background: var(--bg); border: 1px solid var(--line); border-radius: 16px; padding: 22px; }
+        .preview-date { font-size: 12px; color: var(--cyan-soft); letter-spacing: .08em; }
+        .preview-title { font-size: 24px; margin: 8px 0 16px; overflow-wrap: anywhere; }
+        .preview-media { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 18px; }
+        .preview-media > * { border-radius: 10px; overflow: hidden; background: #000; aspect-ratio: 1; position: relative; }
+        .preview-media > *:first-child { grid-column: 1 / -1; aspect-ratio: 16 / 10; }
+        .preview-media img, .preview-media video { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .post-body { color: #CBD5E1; font-size: 15px; line-height: 1.85; overflow-wrap: anywhere; }
+        .post-body p { margin: 0 0 1em; }
+        .post-body h3 { font-size: 18px; margin: 1.4em 0 .6em; }
+        .post-body ul, .post-body ol { margin: 0 0 1em; padding-left: 1.4em; }
+        .post-body li { margin-bottom: .3em; }
+        .post-body strong { color: #fff; }
+        .post-body a { color: var(--cyan-soft); }
+        .preview-empty { color: var(--dim); font-size: 14px; }
+
+        /* Publish bar */
+        .publish-bar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 30; background: rgba(13, 19, 31, .96); backdrop-filter: blur(10px); border-top: 1px solid var(--line); }
+        .publish-inner { max-width: 1180px; margin: 0 auto; padding: 12px 20px; display: flex; align-items: center; gap: 16px; }
+        .publish-status { flex: 1; min-width: 0; font-size: 13px; color: var(--muted); }
+        .progress { height: 6px; background: var(--line); border-radius: 999px; overflow: hidden; margin-top: 6px; }
+        .progress > i { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--cyan), var(--emerald)); transition: width .2s; }
+
+        @media (max-width: 900px) {
+            .editor-grid { grid-template-columns: 1fr; }
+            .preview { position: static; }
+        }
+        @media (max-width: 640px) {
+            .wrap { padding: 24px 14px 110px; }
+            .panel { padding: 18px; }
+            .post-row { flex-wrap: wrap; }
+            .post-actions { width: 100%; }
+            .post-actions .btn { flex: 1; }
+            .options { grid-template-columns: 1fr; }
+            .brand-sub { display: none; }
+            .yt-row { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="topbar">
+        <div class="topbar-inner">
+            <a class="brand" href="admin.html">
+                <span class="brand-mark">TL</span>
+                <span>
+                    <span class="brand-name">Twinter Labs</span>
+                    <span class="brand-sub mono">Admin</span>
+                </span>
+            </a>
+            <div class="topbar-actions">
+                <a class="btn btn-ghost btn-sm" href="posts.html" target="_blank" rel="noopener">View site ↗</a>
+                <button type="button" class="btn btn-sm" id="signOutBtn" hidden>Sign out</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="wrap">
+
+        <!-- Sign in -->
+        <section id="viewSignIn" class="signin" hidden>
+            <div class="panel">
+                <h1>Sign in</h1>
+                <p class="muted">Posts are saved straight into the website's GitHub repository, so you sign in with a GitHub access token instead of a password.</p>
+                <div id="signInError" class="notice notice-err" hidden></div>
+                <form id="signInForm">
+                    <div class="field">
+                        <label for="tokenInput">GitHub access token</label>
+                        <input type="password" id="tokenInput" placeholder="github_pat_…" autocomplete="off" spellcheck="false" required>
+                    </div>
+                    <div class="field">
+                        <label class="check"><input type="checkbox" id="rememberInput" checked> <span>Remember me on this device<br><span class="muted small">Leave this off on a shared computer.</span></span></label>
+                    </div>
+                    <button type="submit" class="btn btn-primary" id="signInBtn" style="width:100%">Sign in</button>
+                </form>
+                <details>
+                    <summary>How do I get a token? (one-time setup, 2 minutes)</summary>
+                    <ol class="steps">
+                        <li>Open <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">GitHub → New fine-grained token</a> while logged in as the repository owner.</li>
+                        <li>Give it a name such as <b>Twinter Labs admin</b> and pick an expiration date.</li>
+                        <li>Under <b>Repository access</b> choose <b>Only select repositories</b> → <b id="repoNameHelp">twinter-labs</b>.</li>
+                        <li>Under <b>Permissions → Repository permissions</b>, set <b>Contents</b> to <b>Read and write</b>.</li>
+                        <li>Press <b>Generate token</b>, copy it, and paste it above.</li>
+                    </ol>
+                    <p class="hint">The token stays in this browser only. Anyone who has it can change the website, so treat it like a password.</p>
+                </details>
+            </div>
+        </section>
+
+        <!-- Post list -->
+        <section id="viewList" hidden>
+            <div class="list-head">
+                <div>
+                    <h1>Posts</h1>
+                    <p class="muted small" id="listCount" style="margin:4px 0 0"></p>
+                </div>
+                <button type="button" class="btn btn-primary" id="newPostBtn">+ New post</button>
+            </div>
+            <div id="listNotice" class="notice notice-ok" hidden></div>
+            <div id="listError" class="notice notice-err" hidden></div>
+            <div id="postList"></div>
+        </section>
+
+        <!-- Editor -->
+        <section id="viewEditor" hidden>
+            <div class="editor-head">
+                <button type="button" class="btn btn-sm" id="backBtn">← Posts</button>
+                <h1 id="editorTitle">New post</h1>
+            </div>
+            <div id="editorError" class="notice notice-err" hidden></div>
+
+            <div class="editor-grid">
+                <div>
+                    <div class="panel" style="margin-bottom:24px">
+                        <div class="tabs" role="tablist">
+                            <button type="button" class="tab active" data-lang="zh" role="tab">中文<span class="dot" hidden></span></button>
+                            <button type="button" class="tab" data-lang="en" role="tab">English<span class="dot" hidden></span></button>
+                        </div>
+                        <div class="field">
+                            <label for="titleInput" id="titleLabel">Title</label>
+                            <input type="text" id="titleInput" maxlength="140">
+                        </div>
+                        <div class="field" style="margin-bottom:0">
+                            <label for="bodyInput">Text</label>
+                            <div class="toolbar">
+                                <button type="button" class="tool" data-tool="bold" title="Bold"><b>B</b> Bold</button>
+                                <button type="button" class="tool" data-tool="heading" title="Heading">H Heading</button>
+                                <button type="button" class="tool" data-tool="list" title="Bullet list">• List</button>
+                                <button type="button" class="tool" data-tool="link" title="Link">↗ Link</button>
+                            </div>
+                            <textarea id="bodyInput"></textarea>
+                            <p class="hint" id="langHint"></p>
+                        </div>
+                    </div>
+
+                    <div class="panel" style="margin-bottom:24px">
+                        <h2 style="margin-bottom:14px">Pictures and videos</h2>
+                        <div id="mediaWarn" class="notice notice-warn" hidden></div>
+                        <div class="dropzone" id="dropzone" tabindex="0" role="button">
+                            <strong>Drop pictures and videos here</strong>
+                            <span class="muted small">or click to choose files — you can also paste a screenshot</span>
+                        </div>
+                        <input type="file" id="fileInput" accept="image/jpeg,image/png,image/webp,image/gif,video/mp4,video/webm,video/quicktime" multiple hidden>
+                        <div class="media-grid" id="mediaGrid"></div>
+                        <div class="yt-row">
+                            <input type="url" id="ytInput" placeholder="Or paste a YouTube link (best for long videos)">
+                            <button type="button" class="btn" id="ytAddBtn">Add YouTube video</button>
+                        </div>
+                        <p class="hint">Pictures are resized automatically. The first item is the cover shown on the post card. Videos work best as MP4 under 25 MB.</p>
+                    </div>
+
+                    <div class="panel">
+                        <div class="options">
+                            <div>
+                                <label for="dateInput">Date</label>
+                                <input type="date" id="dateInput">
+                            </div>
+                            <label class="check" style="padding-bottom:10px"><input type="checkbox" id="publishedInput" checked> <span>Show on the website<br><span class="muted small">Untick to save it without showing it yet.</span></span></label>
+                        </div>
+                    </div>
+                </div>
+
+                <aside class="preview">
+                    <div class="label">Preview</div>
+                    <div class="preview-card">
+                        <div class="preview-date mono" id="pvDate"></div>
+                        <h2 class="preview-title" id="pvTitle"></h2>
+                        <div class="preview-media" id="pvMedia"></div>
+                        <div class="post-body" id="pvBody"></div>
+                    </div>
+                </aside>
+            </div>
+
+            <div class="publish-bar">
+                <div class="publish-inner">
+                    <div class="publish-status">
+                        <span id="publishStatus">Ready when you are.</span>
+                        <div class="progress" id="progress" hidden><i id="progressBar"></i></div>
+                    </div>
+                    <button type="button" class="btn btn-ghost" id="cancelBtn">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="publishBtn">Publish post</button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="posts.js"></script>
+    <script>
+    (function () {
+        'use strict';
+
+        /* ---------- Settings: change these if the repository moves ---------- */
+        var REPO = { owner: 'FichieX', name: 'twinter-labs', branch: 'main' };
+        var POSTS_PATH = 'content/posts.json';
+        var MEDIA_DIR = 'content/media/';
+        var IMAGE_MAX_SIDE = 1920;          // longer side of uploaded pictures, in pixels
+        var IMAGE_QUALITY = 0.85;
+        var VIDEO_WARN_BYTES = 25 * 1024 * 1024;
+        var VIDEO_MAX_BYTES = 95 * 1024 * 1024;   // GitHub rejects files of 100 MB and above
+        var TOKEN_KEY = 'tl_admin_token';
+
+        var API = 'https://api.github.com/repos/' + REPO.owner + '/' + REPO.name;
+        var T = window.TLPosts;
+        var $ = function (id) { return document.getElementById(id); };
+
+        var token = null;
+        var posts = [];
+        var draft = null;
+        var lang = 'zh';
+        var dirty = false;
+        var busy = false;
+        var localPreviews = {};   // site path -> object URL, for files uploaded in this session
+
+        $('repoNameHelp').textContent = REPO.name;
+
+        /* ---------- GitHub API ---------- */
+        function ApiError(status, message) {
+            this.status = status;
+            this.message = message;
+        }
+
+        function explain(err) {
+            if (!(err instanceof ApiError)) {
+                return 'Could not reach GitHub. Check your internet connection and try again.';
+            }
+            if (err.status === 401) return 'Your access token is not valid any more. Sign out and sign in with a new token.';
+            if (err.status === 403 || err.status === 404) {
+                return 'GitHub refused the request. Make sure the token has access to the "' + REPO.name + '" repository with Contents set to "Read and write".';
+            }
+            if (err.status === 413 || err.status === 422) return 'GitHub rejected the upload (' + (err.message || 'file too large or invalid') + ').';
+            return 'GitHub returned an error (' + err.status + (err.message ? ': ' + err.message : '') + '). Please try again.';
+        }
+
+        function gh(path, options) {
+            options = options || {};
+            var headers = { 'Accept': options.raw ? 'application/vnd.github.raw+json' : 'application/vnd.github+json' };
+            if (token) headers['Authorization'] = 'Bearer ' + token;
+            if (options.body) headers['Content-Type'] = 'application/json';
+            return fetch(API + path, {
+                method: options.method || 'GET',
+                headers: headers,
+                body: options.body ? JSON.stringify(options.body) : undefined,
+                cache: 'no-store'
+            }).then(function (res) {
+                if (!res.ok) {
+                    return res.json().catch(function () { return {}; }).then(function (data) {
+                        throw new ApiError(res.status, data && data.message);
+                    });
+                }
+                return options.raw ? res.text() : res.json();
+            });
+        }
+
+        function readPosts(ref) {
+            return gh('/contents/' + POSTS_PATH + '?ref=' + encodeURIComponent(ref), { raw: true })
+                .then(function (text) {
+                    var data = JSON.parse(text);
+                    if (!data || !Array.isArray(data.posts)) data = { posts: [] };
+                    return data;
+                })
+                .catch(function (err) {
+                    if (err instanceof ApiError && err.status === 404) return { posts: [] };
+                    throw err;
+                });
+        }
+
+        function fileToBase64(blob) {
+            return new Promise(function (resolve, reject) {
+                var reader = new FileReader();
+                reader.onload = function () { resolve(String(reader.result).split(',')[1] || ''); };
+                reader.onerror = function () { reject(new Error('read failed')); };
+                reader.readAsDataURL(blob);
+            });
+        }
+
+        // Uploads one file to GitHub and reports upload progress (0..1).
+        function uploadBlob(blob, onProgress) {
+            return fileToBase64(blob).then(function (base64) {
+                return new Promise(function (resolve, reject) {
+                    var xhr = new XMLHttpRequest();
+                    xhr.open('POST', API + '/git/blobs');
+                    xhr.setRequestHeader('Accept', 'application/vnd.github+json');
+                    xhr.setRequestHeader('Authorization', 'Bearer ' + token);
+                    xhr.setRequestHeader('Content-Type', 'application/json');
+                    xhr.upload.onprogress = function (event) {
+                        if (event.lengthComputable && onProgress) onProgress(event.loaded / event.total);
+                    };
+                    xhr.onload = function () {
+                        var data = {};
+                        try { data = JSON.parse(xhr.responseText); } catch (e) { /* ignore */ }
+                        if (xhr.status >= 200 && xhr.status < 300 && data.sha) resolve(data.sha);
+                        else reject(new ApiError(xhr.status, data.message));
+                    };
+                    xhr.onerror = function () { reject(new Error('network')); };
+                    xhr.send(JSON.stringify({ content: base64, encoding: 'base64' }));
+                });
+            });
+        }
+
+        /*
+         * Writes one commit: updated posts.json + new media files − removed media files.
+         * posts.json is re-read from the newest commit first, so edits made on another
+         * device are kept. Retries if the branch moved while we were working.
+         */
+        function commitChange(change, attempt) {
+            attempt = attempt || 1;
+            var head, baseTree, nextData;
+            return gh('/git/ref/heads/' + REPO.branch)
+                .then(function (ref) {
+                    head = ref.object.sha;
+                    return gh('/git/commits/' + head);
+                })
+                .then(function (commit) {
+                    baseTree = commit.tree.sha;
+                    return Promise.all([gh('/git/trees/' + baseTree + '?recursive=1'), readPosts(head)]);
+                })
+                .then(function (results) {
+                    var existing = {};
+                    (results[0].tree || []).forEach(function (entry) {
+                        if (entry.type === 'blob') existing[entry.path] = true;
+                    });
+                    nextData = change.mutate(results[1]);
+
+                    var entries = [{
+                        path: POSTS_PATH, mode: '100644', type: 'blob',
+                        content: JSON.stringify(nextData, null, 2) + '\n'
+                    }];
+                    var added = {};
+                    (change.files || []).forEach(function (file) {
+                        added[file.path] = true;
+                        entries.push({ path: file.path, mode: '100644', type: 'blob', sha: file.sha });
+                    });
+                    var doomed = {};
+                    (change.removePaths || []).forEach(function (path) {
+                        if (existing[path] && !added[path]) doomed[path] = true;
+                    });
+                    (change.removeDirs || []).forEach(function (dir) {
+                        Object.keys(existing).forEach(function (path) {
+                            if (path.indexOf(dir) === 0 && !added[path]) doomed[path] = true;
+                        });
+                    });
+                    Object.keys(doomed).forEach(function (path) {
+                        entries.push({ path: path, mode: '100644', type: 'blob', sha: null });
+                    });
+                    return gh('/git/trees', { method: 'POST', body: { base_tree: baseTree, tree: entries } });
+                })
+                .then(function (tree) {
+                    return gh('/git/commits', { method: 'POST', body: { message: change.message, tree: tree.sha, parents: [head] } });
+                })
+                .then(function (commit) {
+                    return gh('/git/refs/heads/' + REPO.branch, { method: 'PATCH', body: { sha: commit.sha } });
+                })
+                .then(function () { return nextData; })
+                .catch(function (err) {
+                    if (err instanceof ApiError && err.status === 422 && attempt < 3) return commitChange(change, attempt + 1);
+                    throw err;
+                });
+        }
+
+        /* ---------- Views ---------- */
+        function show(view) {
+            ['viewSignIn', 'viewList', 'viewEditor'].forEach(function (id) { $(id).hidden = id !== view; });
+            $('signOutBtn').hidden = view === 'viewSignIn';
+            window.scrollTo(0, 0);
+        }
+
+        function setNotice(id, html) {
+            var el = $(id);
+            el.hidden = !html;
+            el.innerHTML = html || '';
+        }
+
+        /* ---------- Sign in ---------- */
+        function storedToken() {
+            try { return sessionStorage.getItem(TOKEN_KEY) || localStorage.getItem(TOKEN_KEY); } catch (e) { return null; }
+        }
+        function storeToken(value, remember) {
+            try {
+                sessionStorage.removeItem(TOKEN_KEY);
+                localStorage.removeItem(TOKEN_KEY);
+                if (value) (remember ? localStorage : sessionStorage).setItem(TOKEN_KEY, value);
+            } catch (e) { /* storage unavailable: stay signed in for this page only */ }
+        }
+
+        function signIn(value, remember, silent) {
+            token = value;
+            return gh('').then(function (repo) {
+                if (repo.permissions && repo.permissions.push === false) {
+                    throw new ApiError(403, 'no write access');
+                }
+                if (!silent) storeToken(value, remember);
+                return loadList();
+            }).catch(function (err) {
+                token = null;
+                if (err instanceof ApiError && err.status === 401) storeToken(null);
+                show('viewSignIn');
+                var message = err instanceof ApiError && err.status === 401
+                    ? 'That token was not accepted. Check that you copied all of it and that it has not expired.'
+                    : explain(err);
+                setNotice('signInError', T.esc(message));
+            });
+        }
+
+        $('signInForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+            var value = $('tokenInput').value.trim();
+            if (!value) return;
+            var button = $('signInBtn');
+            button.disabled = true;
+            button.textContent = 'Checking…';
+            setNotice('signInError', '');
+            signIn(value, $('rememberInput').checked).then(function () {
+                button.disabled = false;
+                button.textContent = 'Sign in';
+                $('tokenInput').value = '';
+            });
+        });
+
+        $('signOutBtn').addEventListener('click', function () {
+            if (!confirmLeave()) return;
+            storeToken(null);
+            token = null;
+            posts = [];
+            draft = null;
+            dirty = false;
+            setNotice('signInError', '');
+            show('viewSignIn');
+        });
+
+        /* ---------- Post list ---------- */
+        function loadList(notice) {
+            show('viewList');
+            setNotice('listError', '');
+            setNotice('listNotice', notice || '');
+            $('postList').innerHTML = '<p class="muted">Loading posts…</p>';
+            return readPosts(REPO.branch).then(function (data) {
+                posts = T.sortPosts(data.posts);
+                renderList();
+            }).catch(function (err) {
+                $('postList').innerHTML = '';
+                if (err instanceof ApiError && err.status === 401) {
+                    // Token expired or was revoked: back to the sign-in screen.
+                    storeToken(null);
+                    token = null;
+                    show('viewSignIn');
+                    setNotice('signInError', T.esc(explain(err)));
+                    return;
+                }
+                setNotice('listError', T.esc(explain(err)));
+            });
+        }
+
+        function previewSrc(path) {
+            return localPreviews[path] || path;
+        }
+
+        function thumbHTML(post) {
+            var cover = T.coverOf(post);
+            if (!cover) return '<span>No media</span>';
+            if (cover.video) return '<video src="' + T.esc(previewSrc(cover.video)) + '#t=0.1" muted playsinline preload="metadata"></video>';
+            return '<img src="' + T.esc(previewSrc(cover.src)) + '" alt="">';
+        }
+
+        function renderList() {
+            var live = posts.filter(function (post) { return post.published !== false; }).length;
+            $('listCount').textContent = posts.length
+                ? posts.length + (posts.length === 1 ? ' post' : ' posts') + ' · ' + live + ' showing on the website'
+                : '';
+            if (!posts.length) {
+                $('postList').innerHTML = '<div class="empty"><h2>No posts yet</h2><p>Press “New post” to write your first one.</p></div>';
+                return;
+            }
+            $('postList').innerHTML = posts.map(function (post) {
+                var count = (post.media || []).length;
+                var isLive = post.published !== false;
+                return '<div class="post-row" data-id="' + T.esc(post.id) + '">' +
+                    '<div class="post-thumb">' + thumbHTML(post) + '</div>' +
+                    '<div class="post-info">' +
+                        '<div class="post-title">' + T.esc(T.pick(post.title, 'zh') || '(untitled)') + '</div>' +
+                        '<div class="post-meta"><span class="mono">' + T.esc(T.formatDate(post.date)) + '</span>' +
+                            '<span class="badge ' + (isLive ? 'badge-live">Live' : 'badge-hidden">Hidden') + '</span>' +
+                            (count ? '<span>' + count + (count === 1 ? ' file' : ' files') + '</span>' : '') +
+                        '</div>' +
+                    '</div>' +
+                    '<div class="post-actions">' +
+                        '<button type="button" class="btn btn-sm" data-action="edit">Edit</button>' +
+                        (isLive ? '<a class="btn btn-sm" href="' + T.esc(T.postUrl(post)) + '" target="_blank" rel="noopener">View</a>' : '') +
+                        '<button type="button" class="btn btn-sm btn-danger" data-action="delete">Delete</button>' +
+                    '</div>' +
+                '</div>';
+            }).join('');
+        }
+
+        $('postList').addEventListener('click', function (event) {
+            var button = event.target.closest('button[data-action]');
+            if (!button || busy) return;
+            var id = button.closest('.post-row').getAttribute('data-id');
+            var post = posts.filter(function (item) { return item.id === id; })[0];
+            if (!post) return;
+            if (button.getAttribute('data-action') === 'edit') { openEditor(post); return; }
+
+            // Delete needs a second click to confirm.
+            if (!button.classList.contains('armed')) {
+                button.classList.add('armed');
+                button.textContent = 'Really delete?';
+                setTimeout(function () {
+                    if (button.isConnected && !busy) { button.classList.remove('armed'); button.textContent = 'Delete'; }
+                }, 4000);
+                return;
+            }
+            busy = true;
+            button.disabled = true;
+            button.textContent = 'Deleting…';
+            commitChange({
+                message: 'Delete post: ' + (T.pick(post.title, 'zh') || post.id),
+                removeDirs: [MEDIA_DIR + post.id + '/'],
+                mutate: function (data) {
+                    data.posts = data.posts.filter(function (item) { return item.id !== post.id; });
+                    return data;
+                }
+            }).then(function () {
+                busy = false;
+                return loadList('Post deleted. It will disappear from the website in about a minute.');
+            }).catch(function (err) {
+                busy = false;
+                renderList();
+                setNotice('listError', T.esc(explain(err)));
+            });
+        });
+
+        $('newPostBtn').addEventListener('click', function () { openEditor(null); });
+
+        /* ---------- Editor ---------- */
+        function today() {
+            var now = new Date();
+            var pad = function (n) { return (n < 10 ? '0' : '') + n; };
+            return now.getFullYear() + '-' + pad(now.getMonth() + 1) + '-' + pad(now.getDate());
+        }
+        function randomId(length) {
+            var chars = 'abcdefghijklmnopqrstuvwxyz0123456789';
+            var out = '';
+            for (var i = 0; i < length; i++) out += chars.charAt(Math.floor(Math.random() * chars.length));
+            return out;
+        }
+        function textPair(field) {
+            if (typeof field === 'string') return { zh: field, en: '' };
+            return { zh: (field && field.zh) || '', en: (field && field.en) || '' };
+        }
+
+        function openEditor(post) {
+            var date = post ? post.date : today();
+            draft = {
+                isNew: !post,
+                id: post ? post.id : date.replace(/-/g, '') + '-' + randomId(5),
+                date: date,
+                published: post ? post.published !== false : true,
+                title: textPair(post && post.title),
+                body: textPair(post && post.body),
+                media: post ? (post.media || []).map(function (item) { return Object.assign({}, item); }) : [],
+                originalPaths: []
+            };
+            draft.media.forEach(function (item) {
+                if (item.src && item.type !== 'youtube') draft.originalPaths.push(item.src);
+                if (item.poster) draft.originalPaths.push(item.poster);
+            });
+            lang = 'zh';
+            dirty = false;
+            $('editorTitle').textContent = post ? 'Edit post' : 'New post';
+            $('publishBtn').textContent = post ? 'Save changes' : 'Publish post';
+            $('dateInput').value = draft.date;
+            $('publishedInput').checked = draft.published;
+            $('ytInput').value = '';
+            setNotice('editorError', '');
+            setNotice('mediaWarn', '');
+            setStatus('Ready when you are.');
+            syncLangFields();
+            renderMedia();
+            renderPreview();
+            show('viewEditor');
+            $('titleInput').focus();
+        }
+
+        function syncLangFields() {
+            document.querySelectorAll('.tab').forEach(function (tab) {
+                var tabLang = tab.getAttribute('data-lang');
+                tab.classList.toggle('active', tabLang === lang);
+                tab.querySelector('.dot').hidden = !(draft.title[tabLang] || draft.body[tabLang]);
+            });
+            $('titleInput').value = draft.title[lang];
+            $('bodyInput').value = draft.body[lang];
+            $('titleInput').placeholder = lang === 'zh' ? '例如：新作品上線 — 陽光咖啡廳官網' : 'e.g. New launch — Sunshine Café website';
+            $('bodyInput').placeholder = lang === 'zh' ? '寫下這篇貼文的內容…' : 'Write the English version here…';
+            $('langHint').textContent = lang === 'zh'
+                ? 'Leave an empty line between paragraphs. Links are turned into clickable links automatically.'
+                : 'Optional. If you leave English empty, English visitors see the Chinese text.';
+        }
+
+        function markDirty() { dirty = true; }
+
+        document.querySelectorAll('.tab').forEach(function (tab) {
+            tab.addEventListener('click', function () {
+                lang = tab.getAttribute('data-lang');
+                syncLangFields();
+                renderPreview();
+            });
+        });
+        $('titleInput').addEventListener('input', function () { draft.title[lang] = this.value; markDirty(); refreshDots(); renderPreview(); });
+        $('bodyInput').addEventListener('input', function () { draft.body[lang] = this.value; markDirty(); refreshDots(); renderPreview(); });
+        $('dateInput').addEventListener('input', function () { draft.date = this.value; markDirty(); renderPreview(); });
+        $('publishedInput').addEventListener('change', function () { draft.published = this.checked; markDirty(); });
+
+        function refreshDots() {
+            document.querySelectorAll('.tab').forEach(function (tab) {
+                var tabLang = tab.getAttribute('data-lang');
+                tab.querySelector('.dot').hidden = !(draft.title[tabLang] || draft.body[tabLang]);
+            });
+        }
+
+        // Formatting buttons
+        document.querySelectorAll('.tool').forEach(function (button) {
+            button.addEventListener('click', function () {
+                var area = $('bodyInput');
+                var start = area.selectionStart, end = area.selectionEnd;
+                var value = area.value;
+                var selected = value.slice(start, end);
+                var lineStart = value.lastIndexOf('\n', start - 1) + 1;
+                var tool = button.getAttribute('data-tool');
+                var before = value.slice(0, start), after = value.slice(end);
+                var insert, selFrom, selTo;
+
+                if (tool === 'bold') {
+                    var text = selected || (lang === 'zh' ? '粗體文字' : 'bold text');
+                    insert = '**' + text + '**';
+                    selFrom = start + 2; selTo = selFrom + text.length;
+                } else if (tool === 'link') {
+                    var label = selected || (lang === 'zh' ? '連結文字' : 'link text');
+                    insert = '[' + label + '](https://)';
+                    selFrom = start + label.length + 3; selTo = selFrom + 8;
+                } else {
+                    var prefix = tool === 'heading' ? '## ' : '- ';
+                    before = value.slice(0, lineStart);
+                    var block = value.slice(lineStart, end);
+                    insert = block.split('\n').map(function (line) { return prefix + line; }).join('\n');
+                    selFrom = selTo = lineStart + insert.length;
+                }
+                area.value = before + insert + after;
+                area.focus();
+                area.setSelectionRange(selFrom, selTo);
+                draft.body[lang] = area.value;
+                markDirty();
+                refreshDots();
+                renderPreview();
+            });
+        });
+
+        /* ---------- Media ---------- */
+        function formatBytes(bytes) {
+            if (bytes >= 1024 * 1024) return (bytes / 1024 / 1024).toFixed(1) + ' MB';
+            return Math.max(1, Math.round(bytes / 1024)) + ' KB';
+        }
+
+        function loadImage(file) {
+            if (window.createImageBitmap) {
+                return createImageBitmap(file, { imageOrientation: 'from-image' }).catch(function () { return loadImageElement(file); });
+            }
+            return loadImageElement(file);
+        }
+        function loadImageElement(file) {
+            return new Promise(function (resolve, reject) {
+                var url = URL.createObjectURL(file);
+                var img = new Image();
+                img.onload = function () { resolve(img); };
+                img.onerror = function () { URL.revokeObjectURL(url); reject(new Error('unreadable')); };
+                img.src = url;
+            });
+        }
+        function canvasToBlob(canvas, type, quality) {
+            return new Promise(function (resolve) { canvas.toBlob(resolve, type, quality); });
+        }
+
+        // Shrinks big pictures to IMAGE_MAX_SIDE and saves them as JPEG. Small files and GIFs are kept as they are.
+        function processImage(file) {
+            var originalExt = { 'image/jpeg': 'jpg', 'image/png': 'png', 'image/webp': 'webp', 'image/gif': 'gif' }[file.type];
+            return loadImage(file).then(function (image) {
+                var width = image.width, height = image.height;
+                var scale = Math.min(1, IMAGE_MAX_SIDE / Math.max(width, height));
+                var keepLimit = file.type === 'image/png' ? 1500 * 1024 : 400 * 1024;
+                if (file.type === 'image/gif' || (scale === 1 && file.size <= keepLimit)) {
+                    return { blob: file, ext: originalExt, w: width, h: height };
+                }
+                var canvas = document.createElement('canvas');
+                canvas.width = Math.round(width * scale);
+                canvas.height = Math.round(height * scale);
+                var ctx = canvas.getContext('2d');
+                ctx.fillStyle = '#ffffff';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
+                return canvasToBlob(canvas, 'image/jpeg', IMAGE_QUALITY).then(function (blob) {
+                    if (!blob || (scale === 1 && blob.size >= file.size)) {
+                        return { blob: file, ext: originalExt, w: width, h: height };
+                    }
+                    return { blob: blob, ext: 'jpg', w: canvas.width, h: canvas.height };
+                });
+            });
+        }
+
+        // Grabs a still frame from a video to use as its cover picture. Resolves null if the browser cannot decode it.
+        function makePoster(url) {
+            return new Promise(function (resolve) {
+                var video = document.createElement('video');
+                var done = false;
+                var finish = function (value) { if (!done) { done = true; clearTimeout(timer); resolve(value); } };
+                var timer = setTimeout(function () { finish(null); }, 8000);
+                video.muted = true;
+                video.playsInline = true;
+                video.preload = 'auto';
+                video.onerror = function () { finish(null); };
+                video.onloadeddata = function () {
+                    var target = Math.min(0.5, (video.duration || 1) / 2);
+                    if (Math.abs(video.currentTime - target) < 0.01) video.onseeked();
+                    else video.currentTime = target;
+                };
+                video.onseeked = function () {
+                    if (!video.videoWidth) { finish(null); return; }
+                    try {
+                        var scale = Math.min(1, 1280 / Math.max(video.videoWidth, video.videoHeight));
+                        var canvas = document.createElement('canvas');
+                        canvas.width = Math.round(video.videoWidth * scale);
+                        canvas.height = Math.round(video.videoHeight * scale);
+                        canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
+                        canvasToBlob(canvas, 'image/jpeg', 0.8).then(finish);
+                    } catch (e) { finish(null); }
+                };
+                video.src = url;
+            });
+        }
+
+        function addFiles(fileList) {
+            var files = Array.prototype.slice.call(fileList || []);
+            if (!files.length || busy) return;
+            var problems = [];
+            var chain = Promise.resolve();
+            setStatus('Preparing files…');
+
+            files.forEach(function (file) {
+                chain = chain.then(function () {
+                    var isImage = /^image\/(jpeg|png|webp|gif)$/.test(file.type);
+                    var isVideo = /^video\/(mp4|webm|quicktime)$/.test(file.type);
+                    if (isImage) {
+                        return processImage(file).then(function (result) {
+                            draft.media.push({
+                                type: 'image', isNew: true, file: result.blob,
+                                name: 'img-' + randomId(6) + '.' + result.ext,
+                                w: result.w, h: result.h,
+                                preview: URL.createObjectURL(result.blob)
+                            });
+                        }).catch(function () {
+                            problems.push(T.esc(file.name) + ' could not be read. Try saving it as JPG or PNG.');
+                        });
+                    }
+                    if (isVideo) {
+                        if (file.size > VIDEO_MAX_BYTES) {
+                            problems.push(T.esc(file.name) + ' is ' + formatBytes(file.size) + '. GitHub accepts files up to 95 MB — upload it to YouTube and paste the link instead.');
+                            return;
+                        }
+                        if (file.size > VIDEO_WARN_BYTES) {
+                            problems.push(T.esc(file.name) + ' is ' + formatBytes(file.size) + '. It will work, but it uploads slowly and loads slowly for visitors. A YouTube link is faster.');
+                        }
+                        if (file.type === 'video/quicktime') {
+                            problems.push(T.esc(file.name) + ' is a MOV file, which does not play in every browser. MP4 is safer.');
+                        }
+                        var ext = { 'video/mp4': 'mp4', 'video/webm': 'webm', 'video/quicktime': 'mov' }[file.type];
+                        var base = 'vid-' + randomId(6);
+                        var url = URL.createObjectURL(file);
+                        return makePoster(url).then(function (poster) {
+                            draft.media.push({
+                                type: 'video', isNew: true, file: file, name: base + '.' + ext,
+                                posterFile: poster, posterName: base + '-cover.jpg',
+                                posterPreview: poster ? URL.createObjectURL(poster) : null,
+                                preview: url
+                            });
+                        });
+                    }
+                    problems.push(T.esc(file.name) + ' is not a supported file type. Use JPG, PNG, WebP, GIF, MP4 or WebM.');
+                });
+            });
+
+            chain.then(function () {
+                setNotice('mediaWarn', problems.join('<br>'));
+                setStatus('Ready when you are.');
+                markDirty();
+                renderMedia();
+                renderPreview();
+            });
+        }
+
+        function itemPreview(item) {
+            if (item.type === 'youtube') return 'https://i.ytimg.com/vi/' + item.id + '/hqdefault.jpg';
+            if (item.type === 'video') return item.posterPreview || (item.poster ? previewSrc(item.poster) : null);
+            return item.preview || previewSrc(item.src);
+        }
+        function itemVisual(item) {
+            var still = itemPreview(item);
+            if (still) return '<img src="' + T.esc(still) + '" alt="">';
+            return '<video src="' + T.esc(item.preview || previewSrc(item.src)) + '#t=0.1" muted playsinline preload="metadata"></video>';
+        }
+
+        function renderMedia() {
+            var grid = $('mediaGrid');
+            grid.innerHTML = draft.media.map(function (item, index) {
+                var label = item.type === 'youtube' ? 'YouTube' : item.type === 'video' ? 'Video' : 'Picture';
+                var size = item.file ? formatBytes(item.file.size) : (item.type === 'youtube' ? 'link' : 'saved');
+                return '<div class="media-item" data-index="' + index + '">' +
+                    '<div class="frame">' + itemVisual(item) + '</div>' +
+                    '<span class="tag">' + label + '</span>' +
+                    (index === 0 ? '<span class="tag cover">Cover</span>' : '') +
+                    '<div class="media-bar">' +
+                        '<span class="size">' + size + '</span>' +
+                        '<span style="display:flex;gap:4px">' +
+                            '<button type="button" class="icon-btn" data-move="-1" title="Move earlier" aria-label="Move earlier"' + (index === 0 ? ' disabled' : '') + '>←</button>' +
+                            '<button type="button" class="icon-btn" data-move="1" title="Move later" aria-label="Move later"' + (index === draft.media.length - 1 ? ' disabled' : '') + '>→</button>' +
+                            '<button type="button" class="icon-btn remove" data-remove title="Remove" aria-label="Remove">✕</button>' +
+                        '</span>' +
+                    '</div>' +
+                '</div>';
+            }).join('');
+        }
+
+        $('mediaGrid').addEventListener('click', function (event) {
+            var button = event.target.closest('button');
+            if (!button || busy) return;
+            var index = Number(button.closest('.media-item').getAttribute('data-index'));
+            if (button.hasAttribute('data-remove')) {
+                draft.media.splice(index, 1);
+            } else {
+                var target = index + Number(button.getAttribute('data-move'));
+                if (target < 0 || target >= draft.media.length) return;
+                var moved = draft.media.splice(index, 1)[0];
+                draft.media.splice(target, 0, moved);
+            }
+            markDirty();
+            renderMedia();
+            renderPreview();
+        });
+
+        var dropzone = $('dropzone');
+        dropzone.addEventListener('click', function () { $('fileInput').click(); });
+        dropzone.addEventListener('keydown', function (event) {
+            if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); $('fileInput').click(); }
+        });
+        $('fileInput').addEventListener('change', function () { addFiles(this.files); this.value = ''; });
+        ['dragenter', 'dragover'].forEach(function (name) {
+            dropzone.addEventListener(name, function (event) { event.preventDefault(); dropzone.classList.add('over'); });
+        });
+        ['dragleave', 'drop'].forEach(function (name) {
+            dropzone.addEventListener(name, function (event) { event.preventDefault(); dropzone.classList.remove('over'); });
+        });
+        dropzone.addEventListener('drop', function (event) { addFiles(event.dataTransfer && event.dataTransfer.files); });
+        // Dropping a file anywhere else on the page should not navigate away from the editor.
+        window.addEventListener('dragover', function (event) { event.preventDefault(); });
+        window.addEventListener('drop', function (event) { event.preventDefault(); });
+        document.addEventListener('paste', function (event) {
+            if ($('viewEditor').hidden || !event.clipboardData || !event.clipboardData.files.length) return;
+            event.preventDefault();
+            addFiles(event.clipboardData.files);
+        });
+
+        function addYouTube() {
+            var id = T.youtubeId($('ytInput').value);
+            if (!id) {
+                setNotice('mediaWarn', 'That does not look like a YouTube link. Paste the full address, for example https://www.youtube.com/watch?v=…');
+                return;
+            }
+            setNotice('mediaWarn', '');
+            draft.media.push({ type: 'youtube', id: id });
+            $('ytInput').value = '';
+            markDirty();
+            renderMedia();
+            renderPreview();
+        }
+        $('ytAddBtn').addEventListener('click', addYouTube);
+        $('ytInput').addEventListener('keydown', function (event) {
+            if (event.key === 'Enter') { event.preventDefault(); addYouTube(); }
+        });
+
+        /* ---------- Preview ---------- */
+        function renderPreview() {
+            var title = draft.title[lang] || draft.title.zh || draft.title.en;
+            var body = draft.body[lang] || draft.body.zh || draft.body.en;
+            $('pvDate').textContent = T.formatDate(draft.date);
+            $('pvTitle').textContent = title || 'Your title appears here';
+            $('pvTitle').style.color = title ? '' : 'var(--dim)';
+            $('pvMedia').innerHTML = draft.media.map(function (item) { return '<div>' + itemVisual(item) + '</div>'; }).join('');
+            $('pvMedia').hidden = !draft.media.length;
+            $('pvBody').innerHTML = body ? T.renderBody(body) : '<p class="preview-empty">Your text appears here as you type.</p>';
+        }
+
+        /* ---------- Publish ---------- */
+        function setStatus(text, fraction) {
+            $('publishStatus').textContent = text;
+            $('progress').hidden = fraction === undefined;
+            if (fraction !== undefined) $('progressBar').style.width = Math.round(fraction * 100) + '%';
+        }
+        function setBusy(value) {
+            busy = value;
+            ['publishBtn', 'cancelBtn', 'backBtn', 'ytAddBtn'].forEach(function (id) { $(id).disabled = value; });
+        }
+
+        function publish() {
+            if (busy) return;
+            setNotice('editorError', '');
+            if (!draft.title.zh.trim() && !draft.title.en.trim()) {
+                setNotice('editorError', 'Add a title before publishing.');
+                $('titleInput').focus();
+                window.scrollTo(0, 0);
+                return;
+            }
+            if (!/^\d{4}-\d{2}-\d{2}$/.test(draft.date)) {
+                setNotice('editorError', 'Choose a date for the post.');
+                window.scrollTo(0, 0);
+                return;
+            }
+            setBusy(true);
+
+            var dir = MEDIA_DIR + draft.id + '/';
+            var jobs = [];
+            draft.media.forEach(function (item) {
+                if (item.file && !item.sha) jobs.push({ item: item, blob: item.file, key: 'sha' });
+                if (item.posterFile && !item.posterSha) jobs.push({ item: item, blob: item.posterFile, key: 'posterSha' });
+            });
+            var totalBytes = jobs.reduce(function (sum, job) { return sum + job.blob.size; }, 0) || 1;
+            var doneBytes = 0;
+
+            var chain = Promise.resolve();
+            jobs.forEach(function (job, index) {
+                chain = chain.then(function () {
+                    var label = 'Uploading file ' + (index + 1) + ' of ' + jobs.length + '…';
+                    setStatus(label, doneBytes / totalBytes * 0.9);
+                    return uploadBlob(job.blob, function (fraction) {
+                        setStatus(label, (doneBytes + job.blob.size * fraction) / totalBytes * 0.9);
+                    }).then(function (sha) {
+                        job.item[job.key] = sha;
+                        doneBytes += job.blob.size;
+                    });
+                });
+            });
+
+            chain.then(function () {
+                setStatus('Saving the post…', 0.93);
+                var files = [];
+                var media = draft.media.map(function (item) {
+                    if (item.type === 'youtube') return { type: 'youtube', id: item.id };
+                    var entry = { type: item.type, src: item.isNew ? dir + item.name : item.src };
+                    if (item.isNew) {
+                        files.push({ path: entry.src, sha: item.sha });
+                        localPreviews[entry.src] = item.preview;
+                    }
+                    if (item.type === 'image') {
+                        if (item.w) { entry.w = item.w; entry.h = item.h; }
+                    } else if (item.isNew && item.posterSha) {
+                        entry.poster = dir + item.posterName;
+                        files.push({ path: entry.poster, sha: item.posterSha });
+                        localPreviews[entry.poster] = item.posterPreview;
+                    } else if (item.poster) {
+                        entry.poster = item.poster;
+                    }
+                    return entry;
+                });
+                var kept = {};
+                media.forEach(function (entry) {
+                    if (entry.src) kept[entry.src] = true;
+                    if (entry.poster) kept[entry.poster] = true;
+                });
+                var post = {
+                    id: draft.id,
+                    date: draft.date,
+                    published: draft.published,
+                    title: { zh: draft.title.zh.trim(), en: draft.title.en.trim() },
+                    body: { zh: draft.body.zh.trim(), en: draft.body.en.trim() },
+                    media: media
+                };
+                var name = post.title.zh || post.title.en;
+                return commitChange({
+                    message: (draft.isNew ? 'Add post: ' : 'Update post: ') + name,
+                    files: files,
+                    removePaths: draft.originalPaths.filter(function (path) { return !kept[path]; }),
+                    mutate: function (data) {
+                        var index = -1;
+                        data.posts.forEach(function (item, i) { if (item.id === post.id) index = i; });
+                        if (index >= 0) data.posts[index] = post;
+                        else data.posts.unshift(post);
+                        return data;
+                    }
+                }).then(function () { return post; });
+            }).then(function (post) {
+                setStatus('Done.', 1);
+                setBusy(false);
+                dirty = false;
+                var wasNew = draft.isNew;
+                draft = null;
+                var message = post.published
+                    ? (wasNew ? 'Post published.' : 'Changes saved.') + ' The website updates in about a minute — <a href="' + T.esc(T.postUrl(post)) + '" target="_blank" rel="noopener">view the post ↗</a>'
+                    : 'Post saved as hidden. Tick “Show on the website” when you want visitors to see it.';
+                return loadList(message);
+            }).catch(function (err) {
+                setBusy(false);
+                setStatus('Not published yet. Your work is still here — try again.');
+                setNotice('editorError', T.esc(explain(err)));
+                window.scrollTo(0, 0);
+            });
+        }
+        $('publishBtn').addEventListener('click', publish);
+
+        function confirmLeave() {
+            if (busy) return false;
+            if (!dirty || $('viewEditor').hidden) return true;
+            return window.confirm('Leave without publishing? Your changes to this post will be lost.');
+        }
+        function leaveEditor() {
+            if (!confirmLeave()) return;
+            dirty = false;
+            draft = null;
+            loadList();
+        }
+        $('backBtn').addEventListener('click', leaveEditor);
+        $('cancelBtn').addEventListener('click', leaveEditor);
+        window.addEventListener('beforeunload', function (event) {
+            if (dirty || busy) { event.preventDefault(); event.returnValue = ''; }
+        });
+
+        /* ---------- Start ---------- */
+        var saved = storedToken();
+        if (saved) signIn(saved, true, true);
+        else show('viewSignIn');
+    })();
+    </script>
+</body>
+</html>
