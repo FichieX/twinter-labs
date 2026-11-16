@@ -177,6 +177,13 @@
         .progress { height: 6px; background: var(--line); border-radius: 999px; overflow: hidden; margin-top: 6px; }
         .progress > i { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--cyan), var(--emerald)); transition: width .2s; }
 
+        /* Home page app video */
+        .app-video-row { display: flex; gap: 24px; align-items: flex-start; margin-top: 18px; }
+        .phone-frame { width: 170px; flex: none; aspect-ratio: 9 / 19; border-radius: 24px; border: 4px solid var(--line-strong); background: #000; overflow: hidden; }
+        .phone-frame video { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .app-video-side { flex: 1; min-width: 0; }
+        .app-video-actions { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0; }
+
         @media (max-width: 900px) {
             .editor-grid { grid-template-columns: 1fr; }
             .preview { position: static; }
@@ -190,6 +197,8 @@
             .options { grid-template-columns: 1fr; }
             .brand-sub { display: none; }
             .yt-row { flex-direction: column; }
+            .app-video-row { flex-direction: column; align-items: center; }
+            .app-video-side { width: 100%; }
         }
     </style>
 </head>
@@ -255,6 +264,36 @@
             <div id="listNotice" class="notice notice-ok" hidden></div>
             <div id="listError" class="notice notice-err" hidden></div>
             <div id="postList"></div>
+
+            <div class="panel" id="appVideoPanel" style="margin-top:40px" hidden>
+                <h2>Home page app video</h2>
+                <p class="muted small" style="margin:6px 0 0">The video that plays inside the phone in the “Mobile App Demo” section (Spirit Feeder).</p>
+                <div class="app-video-row">
+                    <div class="phone-frame"><video id="appVideoPreview" muted playsinline controls preload="metadata"></video></div>
+                    <div class="app-video-side">
+                        <div id="appVideoNotice" class="notice notice-ok" hidden></div>
+                        <div id="appVideoError" class="notice notice-err" hidden></div>
+                        <div id="appVideoWarn" class="notice notice-warn" hidden></div>
+                        <p id="appVideoState" style="margin:0;color:#fff;font-weight:600"></p>
+                        <div class="app-video-actions">
+                            <button type="button" class="btn btn-primary" id="appVideoSave" hidden>Put this video on the website</button>
+                            <button type="button" class="btn" id="appVideoPick">Choose a new video</button>
+                            <button type="button" class="btn btn-ghost" id="appVideoDiscard" hidden>Cancel</button>
+                            <button type="button" class="btn btn-danger" id="appVideoRestore" hidden>Go back to the original video</button>
+                        </div>
+                        <input type="file" id="appVideoInput" accept="video/mp4,video/webm,video/quicktime" hidden>
+                        <div class="progress" id="appVideoProgress" hidden><i id="appVideoBar"></i></div>
+                        <p class="hint">A vertical phone screen recording fits the frame best. Use MP4, ideally under 25 MB (95 MB is the limit).</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel" style="margin-top:24px">
+                <h2>Customer requests</h2>
+                <p class="muted small" style="margin:6px 0 16px">Orders sent through the “Order Now” form on the home page are stored in Formspree, not on this page. Open the inbox to read them, and sign in with the Formspree account that owns the form.</p>
+                <a class="btn" id="requestsLink" href="https://formspree.io/forms" target="_blank" rel="noopener">Open requests inbox ↗</a>
+                <p class="hint">On Formspree's free plan, requests are kept for 30 days.</p>
+            </div>
         </section>
 
         <!-- Editor -->
@@ -350,6 +389,10 @@
         var REPO = { owner: 'FichieX', name: 'twinter-labs', branch: 'main' };
         var POSTS_PATH = 'content/posts.json';
         var MEDIA_DIR = 'content/media/';
+        var SITE_PATH = 'content/site.json';                    // site-wide settings (home page app video)
+        var APP_VIDEO_DIR = 'content/media/app-video/';         // holds only the uploaded home page app video
+        var DEFAULT_APP_VIDEO = 'videos/spirit-feeder-demo.mp4';
+        var FORMSPREE_FORM_ID = 'xaeonapy';                     // same id as the order form in index.html
         var IMAGE_MAX_SIDE = 1920;          // longer side of uploaded pictures, in pixels
         var IMAGE_QUALITY = 0.85;
         var VIDEO_WARN_BYTES = 25 * 1024 * 1024;
@@ -366,9 +409,12 @@
         var lang = 'zh';
         var dirty = false;
         var busy = false;
+        var site = {};            // contents of content/site.json
+        var pendingVideo = null;  // app video chosen but not saved yet
         var localPreviews = {};   // site path -> object URL, for files uploaded in this session
 
         $('repoNameHelp').textContent = REPO.name;
+        $('requestsLink').href = 'https://formspree.io/forms/' + FORMSPREE_FORM_ID + '/submissions';
 
         /* ---------- GitHub API ---------- */
         function ApiError(status, message) {
@@ -421,6 +467,18 @@
                 });
         }
 
+        function readSite(ref) {
+            return gh('/contents/' + SITE_PATH + '?ref=' + encodeURIComponent(ref), { raw: true })
+                .then(function (text) {
+                    var data = JSON.parse(text);
+                    return data && typeof data === 'object' && !Array.isArray(data) ? data : {};
+                })
+                .catch(function (err) {
+                    if (err instanceof ApiError && err.status === 404) return {};
+                    throw err;
+                });
+        }
+
         function fileToBase64(blob) {
             return new Promise(function (resolve, reject) {
                 var reader = new FileReader();
@@ -455,13 +513,15 @@
         }
 
         /*
-         * Writes one commit: updated posts.json + new media files − removed media files.
-         * posts.json is re-read from the newest commit first, so edits made on another
-         * device are kept. Retries if the branch moved while we were working.
+         * Writes one commit: updated posts.json (or site.json when change.target is 'site')
+         * + new media files − removed media files. The JSON file is re-read from the newest
+         * commit first, so edits made on another device are kept. Retries if the branch
+         * moved while we were working.
          */
         function commitChange(change, attempt) {
             attempt = attempt || 1;
             var head, baseTree, nextData;
+            var isSite = change.target === 'site';
             return gh('/git/ref/heads/' + REPO.branch)
                 .then(function (ref) {
                     head = ref.object.sha;
@@ -469,7 +529,7 @@
                 })
                 .then(function (commit) {
                     baseTree = commit.tree.sha;
-                    return Promise.all([gh('/git/trees/' + baseTree + '?recursive=1'), readPosts(head)]);
+                    return Promise.all([gh('/git/trees/' + baseTree + '?recursive=1'), isSite ? readSite(head) : readPosts(head)]);
                 })
                 .then(function (results) {
                     var existing = {};
@@ -479,7 +539,7 @@
                     nextData = change.mutate(results[1]);
 
                     var entries = [{
-                        path: POSTS_PATH, mode: '100644', type: 'blob',
+                        path: isSite ? SITE_PATH : POSTS_PATH, mode: '100644', type: 'blob',
                         content: JSON.stringify(nextData, null, 2) + '\n'
                     }];
                     var added = {};
@@ -589,12 +649,16 @@
             show('viewList');
             setNotice('listError', '');
             setNotice('listNotice', notice || '');
-            $('postList').innerHTML = '<p class="muted">Loading posts…</p>';
+            $('postList').innerHTML = '<p class="muted loading">Loading posts…</p>';
             return readPosts(REPO.branch).then(function (data) {
                 posts = T.sortPosts(data.posts);
                 renderList();
+                return readSite(REPO.branch);
+            }).then(function (data) {
+                site = data;
+                renderAppVideo();
             }).catch(function (err) {
-                $('postList').innerHTML = '';
+                if ($('postList').querySelector('.loading')) $('postList').innerHTML = '';
                 if (err instanceof ApiError && err.status === 401) {
                     // Token expired or was revoked: back to the sign-in screen.
                     storeToken(null);
@@ -686,6 +750,149 @@
         });
 
         $('newPostBtn').addEventListener('click', function () { openEditor(null); });
+
+        /* ---------- Home page app video ---------- */
+        function customAppVideo() {
+            return site && site.appVideo && site.appVideo.src ? site.appVideo : null;
+        }
+
+        function renderAppVideo() {
+            var custom = customAppVideo();
+            var video = $('appVideoPreview');
+            var src = pendingVideo ? pendingVideo.url : previewSrc(custom ? custom.src : DEFAULT_APP_VIDEO);
+            var poster = pendingVideo ? pendingVideo.posterUrl : (custom && custom.poster ? previewSrc(custom.poster) : null);
+            if (poster) video.setAttribute('poster', poster); else video.removeAttribute('poster');
+            if (video.getAttribute('src') !== src) video.setAttribute('src', src);
+
+            $('appVideoState').textContent = pendingVideo
+                ? 'New video chosen (' + formatBytes(pendingVideo.file.size) + '). It is not on the website yet.'
+                : custom ? 'The website is showing a video you uploaded.' : 'The website is showing the original video.';
+            $('appVideoPick').textContent = pendingVideo ? 'Choose a different video' : 'Choose a new video';
+            $('appVideoSave').hidden = !pendingVideo;
+            $('appVideoDiscard').hidden = !pendingVideo;
+            $('appVideoRestore').hidden = !!pendingVideo || !custom;
+            $('appVideoRestore').classList.remove('armed');
+            $('appVideoRestore').textContent = 'Go back to the original video';
+            $('appVideoPanel').hidden = false;
+        }
+
+        function setAppVideoBusy(value, fraction) {
+            busy = value;
+            ['appVideoSave', 'appVideoPick', 'appVideoDiscard', 'appVideoRestore', 'newPostBtn'].forEach(function (id) { $(id).disabled = value; });
+            $('appVideoProgress').hidden = !value;
+            $('appVideoBar').style.width = Math.round((fraction || 0) * 100) + '%';
+        }
+
+        $('appVideoPick').addEventListener('click', function () { if (!busy) $('appVideoInput').click(); });
+        $('appVideoInput').addEventListener('change', function () {
+            var file = this.files && this.files[0];
+            this.value = '';
+            if (!file || busy) return;
+            setNotice('appVideoNotice', '');
+            setNotice('appVideoError', '');
+            setNotice('appVideoWarn', '');
+            if (!/^video\/(mp4|webm|quicktime)$/.test(file.type)) {
+                setNotice('appVideoError', T.esc(file.name) + ' is not a supported video. Use MP4 (or WebM).');
+                return;
+            }
+            if (file.size > VIDEO_MAX_BYTES) {
+                setNotice('appVideoError', T.esc(file.name) + ' is ' + formatBytes(file.size) + '. The limit is 95 MB — export a shorter or smaller version.');
+                return;
+            }
+            var warnings = [];
+            if (file.size > VIDEO_WARN_BYTES) warnings.push('This video is ' + formatBytes(file.size) + '. It will work, but visitors on slow connections will wait for it.');
+            if (file.type === 'video/quicktime') warnings.push('MOV files do not play in every browser. MP4 is safer.');
+            setNotice('appVideoWarn', warnings.join('<br>'));
+            var url = URL.createObjectURL(file);
+            makePoster(url).then(function (poster) {
+                pendingVideo = { file: file, url: url, poster: poster, posterUrl: poster ? URL.createObjectURL(poster) : null };
+                renderAppVideo();
+            });
+        });
+
+        $('appVideoDiscard').addEventListener('click', function () {
+            if (busy) return;
+            pendingVideo = null;
+            setNotice('appVideoWarn', '');
+            renderAppVideo();
+        });
+
+        $('appVideoSave').addEventListener('click', function () {
+            if (busy || !pendingVideo) return;
+            var chosen = pendingVideo;
+            var ext = { 'video/mp4': 'mp4', 'video/webm': 'webm', 'video/quicktime': 'mov' }[chosen.file.type];
+            var base = APP_VIDEO_DIR + 'app-video-' + randomId(6);
+            var entry = { src: base + '.' + ext };
+            var files = [];
+            setNotice('appVideoNotice', '');
+            setNotice('appVideoError', '');
+            setAppVideoBusy(true, 0);
+
+            uploadBlob(chosen.file, function (fraction) { setAppVideoBusy(true, fraction * 0.9); })
+                .then(function (sha) {
+                    files.push({ path: entry.src, sha: sha });
+                    if (!chosen.poster) return null;
+                    return uploadBlob(chosen.poster).then(function (posterSha) {
+                        entry.poster = base + '-cover.jpg';
+                        files.push({ path: entry.poster, sha: posterSha });
+                    });
+                })
+                .then(function () {
+                    setAppVideoBusy(true, 0.95);
+                    return commitChange({
+                        target: 'site',
+                        message: 'Replace home page app video',
+                        files: files,
+                        removeDirs: [APP_VIDEO_DIR],     // clears the previously uploaded video
+                        mutate: function (data) { data.appVideo = entry; return data; }
+                    });
+                })
+                .then(function (next) {
+                    site = next;
+                    localPreviews[entry.src] = chosen.url;
+                    if (entry.poster) localPreviews[entry.poster] = chosen.posterUrl;
+                    pendingVideo = null;
+                    setAppVideoBusy(false);
+                    setNotice('appVideoWarn', '');
+                    setNotice('appVideoNotice', 'Video replaced. The home page updates in about a minute.');
+                    renderAppVideo();
+                })
+                .catch(function (err) {
+                    setAppVideoBusy(false);
+                    setNotice('appVideoError', T.esc(explain(err)) + ' Your video is still selected — try again.');
+                });
+        });
+
+        $('appVideoRestore').addEventListener('click', function () {
+            var button = this;
+            if (busy) return;
+            if (!button.classList.contains('armed')) {
+                button.classList.add('armed');
+                button.textContent = 'Really remove your video?';
+                setTimeout(function () {
+                    if (!busy && button.classList.contains('armed')) { button.classList.remove('armed'); button.textContent = 'Go back to the original video'; }
+                }, 4000);
+                return;
+            }
+            setNotice('appVideoNotice', '');
+            setNotice('appVideoError', '');
+            setAppVideoBusy(true, 0.5);
+            commitChange({
+                target: 'site',
+                message: 'Restore original home page app video',
+                removeDirs: [APP_VIDEO_DIR],
+                mutate: function (data) { delete data.appVideo; return data; }
+            }).then(function (next) {
+                site = next;
+                setAppVideoBusy(false);
+                setNotice('appVideoNotice', 'The original video is back. The home page updates in about a minute.');
+                renderAppVideo();
+            }).catch(function (err) {
+                setAppVideoBusy(false);
+                renderAppVideo();
+                setNotice('appVideoError', T.esc(explain(err)));
+            });
+        });
 
         /* ---------- Editor ---------- */
         function today() {

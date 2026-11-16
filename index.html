@@ -500,8 +500,8 @@
                         </div>
 
                         <div class="rounded-[32px] overflow-hidden bg-black aspect-[9/19] relative shadow-inner">
-                            <video controls autoplay muted loop playsinline class="w-full h-full object-cover">
-                                <source src="videos/spirit-feeder-demo.mp4" type="video/mp4">
+                            <!-- The video can be replaced from admin.html (saved in content/site.json); this file is the default -->
+                            <video id="appDemoVideo" data-default-src="videos/spirit-feeder-demo.mp4" controls autoplay muted loop playsinline class="w-full h-full object-cover">
                                 Your browser does not support HTML5 video.
                             </video>
                         </div>
@@ -564,7 +564,7 @@
                         <span class="bg-slate-900 px-3 py-1 rounded-lg border border-slate-800 text-cyan-400">React Native</span>
                         <span class="bg-slate-900 px-3 py-1 rounded-lg border border-slate-800 text-cyan-400">Expo</span>
                         <span class="bg-slate-900 px-3 py-1 rounded-lg border border-slate-800 text-yellow-400">Python FastAPI</span>
-                        <span class="bg-slate-900 px-3 py-1 rounded-lg border border-slate-800 text-blue-400">雲端資料庫</span>
+                        <span class="bg-slate-900 px-3 py-1 rounded-lg border border-slate-800 text-blue-400" data-i18n="tech_db">雲端資料庫</span>
                     </div>
 
                     <div class="pt-2 flex flex-col sm:flex-row gap-4">
@@ -901,6 +901,7 @@
                 nav_request: "立即下單",
                 nav_cta: "立即訂購",
                 nav_updates: "最新動態",
+                tech_db: "雲端資料庫",
                 upd_badge: "最新動態",
                 upd_title: "作品更新與最新消息",
                 upd_all: "查看全部動態 →",
@@ -1097,6 +1098,7 @@
                 nav_request: "Order Now",
                 nav_cta: "Order Now",
                 nav_updates: "Updates",
+                tech_db: "Cloud Database",
                 upd_badge: "LATEST UPDATES",
                 upd_title: "New Work & News",
                 upd_all: "View all updates →",
@@ -1415,6 +1417,17 @@
                 currentLang = 'en';
                 applyLanguage('en');
             }
+
+            // App demo video: use the one chosen in admin.html if there is one, otherwise the default file
+            const appVideo = document.getElementById('appDemoVideo');
+            fetch('content/site.json', { cache: 'no-cache' })
+                .then(res => res.ok ? res.json() : {})
+                .catch(() => ({}))
+                .then(site => {
+                    const custom = site && site.appVideo && site.appVideo.src ? site.appVideo : null;
+                    if (custom && custom.poster) appVideo.poster = custom.poster;
+                    appVideo.src = custom ? custom.src : appVideo.dataset.defaultSrc;
+                });
 
             if (window.TLPosts) {
                 TLPosts.load().then(posts => {
