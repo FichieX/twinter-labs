@@ -27,10 +27,26 @@
         #founders img { border-radius: 1rem; }
         #founders a { min-height: 44px; }
         #updates article { background: white; color: var(--ink2); border-radius: 1rem; }
+        nav #langToggleBtn { position: absolute; top: 1rem; right: 1.25rem; }
+        nav > div > div:last-child { display: flex; flex-wrap: nowrap; align-items: center; gap: .625rem; min-width: 0; }
+        nav > div > div:last-child > a { flex-shrink: 0; width: auto; }
+        nav > div > div:last-child > a[title] { width: 44px; }
+        .nav-links { scrollbar-width: none; }
+        .nav-links::-webkit-scrollbar { display: none; }
+        #apps .app-frame::before { content: ""; position: absolute; inset: 8% -8%; z-index: -1; border-radius: 9999px; background: rgb(130 212 187 / .4); filter: blur(64px); pointer-events: none; }
+        @media (max-width: 1023px) {
+            #apps > div { display: flex; flex-direction: column; align-items: stretch; gap: 1.5rem; }
+            #apps .app-heading, #apps .app-layout { display: contents; }
+            #apps .app-heading > div { align-self: center; order: 0; }
+            #apps .app-heading > h2 { text-align: center; order: 1; }
+            #apps .app-video { order: 2; }
+            #apps .app-heading > p { order: 3; text-align: center; }
+            #apps .app-copy { order: 4; }
+        }
         @media (max-width: 639px) {
             body > div:first-of-type > div { flex-direction: column; align-items: flex-start; gap: .5rem; }
             body > div:first-of-type > div > div:last-child { flex-wrap: wrap; gap: .5rem; }
-            nav > div > div:last-child { width: 100%; }
+
             header .space-y-3 > .flex { flex-wrap: wrap; gap: .75rem; }
             header .space-y-3 > .flex > .flex { flex: 1 1 100%; }
         }
@@ -66,18 +82,18 @@
 
     <!-- Main Navigation -->
     <nav class="sticky top-0 z-50 bg-card/85 backdrop-blur border-b border-line">
-        <div class="max-w-7xl mx-auto px-5 py-4 flex flex-wrap items-center justify-between gap-4">
-            <a href="#" class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-xl flex items-center justify-center font-display font-black text-xl text-ink shadow-soft">
+        <div class="relative max-w-7xl mx-auto px-5 py-4 grid grid-cols-1 gap-3">
+            <a href="#" class="flex items-center gap-2 pr-20 min-w-0">
+                <div class="w-10 h-10 shrink-0 rounded-xl flex items-center justify-center font-display font-black text-xl text-ink shadow-soft">
                     <img src="images/logo.svg" alt="Twinter Labs logo" class="w-full h-full object-cover rounded-xl">
                 </div>
                 <div>
                     <span class="font-display text-lg sm:text-xl font-bold tracking-tight text-ink block">Twinter Labs</span>
-                    <span class="text-[10px] tracking-[0.15em] text-mint-deep font-bold block -mt-0.5" data-i18n="brand_sub">網站 • APP • 全端系統開發與販售</span>
+                    <span class="text-[10px] text-mint-deep font-semibold block leading-relaxed" data-i18n="brand_sub">網站 • APP • 全端系統開發與販售</span>
                 </div>
             </a>
 
-            <div class="order-last w-full flex gap-5 overflow-x-auto whitespace-nowrap text-sm font-semibold text-muted">
+            <div class="order-last w-full min-w-0 flex gap-5 overflow-x-auto whitespace-nowrap text-sm font-semibold text-muted nav-links">
                 <a href="#services" class="hover:text-mint-deep transition" data-i18n="nav_services">方案與價格</a>
                 <a href="#portfolio" class="hover:text-mint-deep transition" data-i18n="nav_portfolio">線上網站作品</a>
                 <a href="#apps" class="hover:text-mint-deep transition" data-i18n="nav_apps">手機 APP 展示</a>
@@ -89,9 +105,9 @@
 
             <div class="flex items-center gap-2.5">
                 <!-- Language Toggle Button -->
-                <button type="button" id="langToggleBtn" onclick="toggleLanguage()" class="bg-card border border-line text-ink rounded-xl px-3 py-2 font-semibold hover:border-sea transition min-h-[44px] inline-flex items-center justify-center gap-2 text-xs">
-                    <i class="fa-solid fa-language text-sm text-mint-deep"></i>
-                    <span id="langToggleText">English</span>
+                <button type="button" id="langToggleBtn" onclick="toggleLanguage()" class="shrink-0 inline-flex items-center gap-1.5 h-9 px-3 rounded-full bg-card border border-line text-ink text-xs font-semibold whitespace-nowrap hover:border-sea transition">
+                    <i class="fa-solid fa-globe text-mint-deep"></i>
+                    <span id="langToggleText">EN</span>
                 </button>
 
                 <a href="https://line.me/ti/p/rsc69htRfX" target="_blank" title="加入 LINE 好友" class="w-11 h-11 rounded-xl bg-paper border border-line flex items-center justify-center text-mint-deep hover:border-sea transition">
@@ -231,6 +247,110 @@
             </div>
         </div>
     </header>
+
+    <section id="apps" class="py-14 sm:py-20 px-5 border-t border-line bg-gradient-to-b from-mint-soft to-paper">
+        <div class="max-w-7xl mx-auto px-0">
+
+            <div class="app-heading max-w-3xl mx-auto text-center mb-10 space-y-3">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-card border border-line text-mint-deep text-xs">
+                    <i class="fa-solid fa-mobile-screen"></i>
+                    <span data-i18n="app_badge">手機 APP 實際作品展示 • 我們自己做出來的</span>
+                </div>
+                <h2 class="font-display text-ink text-4xl sm:text-6xl font-extrabold" data-i18n="app_name">Spirit Feeder</h2>
+                <p class="text-muted text-xs sm:text-sm leading-relaxed" data-i18n="app_intro">
+                    這是我們從零開發的手機養成遊戲 APP，同時支援 iPhone 與 Android 手機。使用者可以領養可愛夥伴（獅子、驢子、烏鴉、駱駝），透過每天閱讀獲得食物與經驗值讓寵物長大進化，還能進行問答闖關並自由布置房間。
+                </p>
+            </div>
+
+            <div class="app-layout grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+
+                <div class="app-video lg:col-span-6 flex justify-center">
+                    <div class="app-frame relative isolate w-[min(86vw,360px)] max-w-full bg-ink rounded-[44px] p-2.5 shadow-lift">
+                        <div class="absolute top-6 left-1/2 phone-notch w-28 h-5 bg-black rounded-full z-20 flex items-center justify-center">
+                            <span class="w-2.5 h-2.5 rounded-full bg-paper inline-block mr-2"></span>
+                            <span class="w-2 h-2 rounded-full bg-paper inline-block"></span>
+                        </div>
+
+                        <div class="rounded-[32px] overflow-hidden bg-black aspect-[9/19] relative shadow-inner">
+                            <!-- The video can be replaced from admin.html (saved in content/site.json); this file is the default -->
+                            <video id="appDemoVideo" data-default-src="videos/spirit-feeder-demo.mp4" controls autoplay muted loop playsinline class="w-full h-full object-cover">
+                                Your browser does not support HTML5 video.
+                            </video>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="app-copy lg:col-span-6 space-y-6">
+                    <div>
+                        <span class="text-xs text-mint-deep tracking-widest block font-bold" data-i18n="app_sub">想做自己的手機 APP 嗎？</span>
+                        <h3 class="font-display text-2xl sm:text-3xl font-bold text-ink mt-1" data-i18n="app_quote">「從畫面設計到雲端資料儲存，我們全部幫您做好。」</h3>
+                        <p class="text-muted text-xs sm:text-sm mt-2 leading-relaxed" data-i18n="app_desc">
+                            直接觀看手機實機操作影片！不管您想做會員點數 APP、線上預約訂購 APP、社交互動平台或遊戲化應用，我們都能幫您把想法做成真正可以下載使用的手機程式。
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="bg-card rounded-2xl border border-line space-y-2 p-5 sm:p-6 shadow-soft hover:border-sea hover:shadow-lift transition">
+                            <div class="flex items-center gap-2 text-mint-deep font-display font-bold text-sm">
+                                <i class="fa-solid fa-egg"></i>
+                                <span data-i18n="app_f1_t">角色養成與三階段進化</span>
+                            </div>
+                            <p class="text-xs text-muted leading-relaxed" data-i18n="app_f1_d">
+                                挑選喜歡的小動物夥伴，隨著每天使用累積等級，從寶寶一路進化成青少年（30 級）與大人形態（60 級）。
+                            </p>
+                        </div>
+
+                        <div class="bg-card rounded-2xl border border-line space-y-2 p-5 sm:p-6 shadow-soft hover:border-sea hover:shadow-lift transition">
+                            <div class="flex items-center gap-2 text-mint-deep font-display font-bold text-sm">
+                                <i class="fa-solid fa-book-bible"></i>
+                                <span data-i18n="app_f2_t">每日閱讀任務換獎勵</span>
+                            </div>
+                            <p class="text-xs text-muted leading-relaxed" data-i18n="app_f2_d">
+                                內建完整閱讀功能，完成每天的閱讀目標就能獲得麵包餵食寵物，並拿到額外升級經驗值。
+                            </p>
+                        </div>
+
+                        <div class="bg-card rounded-2xl border border-line space-y-2 p-5 sm:p-6 shadow-soft hover:border-sea hover:shadow-lift transition">
+                            <div class="flex items-center gap-2 text-mint-deep font-display font-bold text-sm">
+                                <i class="fa-solid fa-shield-virus"></i>
+                                <span data-i18n="app_f3_t">趣味問答闖關小遊戲</span>
+                            </div>
+                            <p class="text-xs text-muted leading-relaxed" data-i18n="app_f3_d">
+                                內建即時填空問答對戰，答對就能擊退關卡怪物，解鎖稀有道具與收藏品。
+                            </p>
+                        </div>
+
+                        <div class="bg-card rounded-2xl border border-line space-y-2 p-5 sm:p-6 shadow-soft hover:border-sea hover:shadow-lift transition">
+                            <div class="flex items-center gap-2 text-mint-deep font-display font-bold text-sm">
+                                <i class="fa-solid fa-shirt"></i>
+                                <span data-i18n="app_f4_t">自由換裝與房間布置</span>
+                            </div>
+                            <p class="text-xs text-muted leading-relaxed" data-i18n="app_f4_d">
+                                可以替寵物換上不同衣服與王冠配件，還能自由更換背景與房間裝飾。
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="rounded-2xl bg-card border border-line text-xs flex flex-wrap items-center gap-2 text-ink2 p-5 sm:p-6 shadow-soft hover:border-sea hover:shadow-lift transition">
+                        <span class="text-muted font-bold mr-2" data-i18n="built_with">使用技術：</span>
+                        <span class="bg-paper px-3 py-1 rounded-lg border border-line text-mint-deep" data-i18n="tech_1">React Native</span>
+                        <span class="bg-paper px-3 py-1 rounded-lg border border-line text-mint-deep" data-i18n="tech_2">Expo</span>
+                        <span class="bg-paper px-3 py-1 rounded-lg border border-line text-mint-deep" data-i18n="tech_3">Python FastAPI</span>
+                        <span class="bg-paper px-3 py-1 rounded-lg border border-line text-mint-deep" data-i18n="tech_db">雲端資料庫</span>
+                    </div>
+
+                    <div class="pt-2 flex flex-col sm:flex-row gap-4">
+                        <a href="#quick-request" onclick="selectService('Mobile Application (React Native / Expo)')" class="bg-ink text-white rounded-xl px-5 py-3.5 font-semibold hover:bg-mint-deep transition min-h-[48px] w-full sm:w-auto inline-flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-mobile-screen"></i>
+                            <span data-i18n="app_cta">訂購您的專屬手機 APP</span>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
 
     <!-- The 4 Core Products & Services + Optional Maintenance Tier -->
     <section id="services" class="py-14 sm:py-20 px-5 border-t border-line bg-paper">
@@ -487,109 +607,7 @@
     </section>
 
     <!-- Mobile App Production Demo (Spirit Feeder) -->
-    <section id="apps" class="py-14 sm:py-20 px-5 border-t border-line bg-paper">
-        <div class="max-w-7xl mx-auto px-5">
 
-            <div class="max-w-3xl mx-auto text-center mb-16 space-y-3">
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-mint-soft border border-line text-mint-deep text-xs">
-                    <i class="fa-solid fa-mobile-screen"></i>
-                    <span data-i18n="app_badge">手機 APP 實際作品展示 • 我們自己做出來的</span>
-                </div>
-                <h2 class="font-display text-3xl sm:text-5xl font-bold text-ink" data-i18n="app_name">Spirit Feeder</h2>
-                <p class="text-muted text-xs sm:text-sm leading-relaxed" data-i18n="app_intro">
-                    這是我們從零開發的手機養成遊戲 APP，同時支援 iPhone 與 Android 手機。使用者可以領養可愛夥伴（獅子、驢子、烏鴉、駱駝），透過每天閱讀獲得食物與經驗值讓寵物長大進化，還能進行問答闖關並自由布置房間。
-                </p>
-            </div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-
-                <div class="lg:col-span-5 flex justify-center">
-                    <div class="relative w-[280px] sm:w-[320px] rounded-[42px] p-3 border-4 border-line shadow-soft">
-                        <div class="absolute top-6 left-1/2 phone-notch w-28 h-5 bg-black rounded-full z-20 flex items-center justify-center">
-                            <span class="w-2.5 h-2.5 rounded-full bg-paper inline-block mr-2"></span>
-                            <span class="w-2 h-2 rounded-full bg-paper inline-block"></span>
-                        </div>
-
-                        <div class="rounded-[32px] overflow-hidden bg-black aspect-[9/19] relative shadow-inner">
-                            <!-- The video can be replaced from admin.html (saved in content/site.json); this file is the default -->
-                            <video id="appDemoVideo" data-default-src="videos/spirit-feeder-demo.mp4" controls autoplay muted loop playsinline class="w-full h-full object-cover">
-                                Your browser does not support HTML5 video.
-                            </video>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="lg:col-span-7 space-y-6">
-                    <div>
-                        <span class="text-xs text-mint-deep tracking-widest block font-bold" data-i18n="app_sub">想做自己的手機 APP 嗎？</span>
-                        <h3 class="font-display text-2xl sm:text-3xl font-bold text-ink mt-1" data-i18n="app_quote">「從畫面設計到雲端資料儲存，我們全部幫您做好。」</h3>
-                        <p class="text-muted text-xs sm:text-sm mt-2 leading-relaxed" data-i18n="app_desc">
-                            直接觀看左方的手機實機操作影片！不管您想做會員點數 APP、線上預約訂購 APP、社交互動平台或遊戲化應用，我們都能幫您把想法做成真正可以下載使用的手機程式。
-                        </p>
-                    </div>
-
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div class="bg-card rounded-2xl border border-line space-y-2 p-5 sm:p-6 shadow-soft hover:border-sea hover:shadow-lift transition">
-                            <div class="flex items-center gap-2 text-mint-deep font-display font-bold text-sm">
-                                <i class="fa-solid fa-egg"></i>
-                                <span data-i18n="app_f1_t">角色養成與三階段進化</span>
-                            </div>
-                            <p class="text-xs text-muted leading-relaxed" data-i18n="app_f1_d">
-                                挑選喜歡的小動物夥伴，隨著每天使用累積等級，從寶寶一路進化成青少年（30 級）與大人形態（60 級）。
-                            </p>
-                        </div>
-
-                        <div class="bg-card rounded-2xl border border-line space-y-2 p-5 sm:p-6 shadow-soft hover:border-sea hover:shadow-lift transition">
-                            <div class="flex items-center gap-2 text-mint-deep font-display font-bold text-sm">
-                                <i class="fa-solid fa-book-bible"></i>
-                                <span data-i18n="app_f2_t">每日閱讀任務換獎勵</span>
-                            </div>
-                            <p class="text-xs text-muted leading-relaxed" data-i18n="app_f2_d">
-                                內建完整閱讀功能，完成每天的閱讀目標就能獲得麵包餵食寵物，並拿到額外升級經驗值。
-                            </p>
-                        </div>
-
-                        <div class="bg-card rounded-2xl border border-line space-y-2 p-5 sm:p-6 shadow-soft hover:border-sea hover:shadow-lift transition">
-                            <div class="flex items-center gap-2 text-mint-deep font-display font-bold text-sm">
-                                <i class="fa-solid fa-shield-virus"></i>
-                                <span data-i18n="app_f3_t">趣味問答闖關小遊戲</span>
-                            </div>
-                            <p class="text-xs text-muted leading-relaxed" data-i18n="app_f3_d">
-                                內建即時填空問答對戰，答對就能擊退關卡怪物，解鎖稀有道具與收藏品。
-                            </p>
-                        </div>
-
-                        <div class="bg-card rounded-2xl border border-line space-y-2 p-5 sm:p-6 shadow-soft hover:border-sea hover:shadow-lift transition">
-                            <div class="flex items-center gap-2 text-mint-deep font-display font-bold text-sm">
-                                <i class="fa-solid fa-shirt"></i>
-                                <span data-i18n="app_f4_t">自由換裝與房間布置</span>
-                            </div>
-                            <p class="text-xs text-muted leading-relaxed" data-i18n="app_f4_d">
-                                可以替寵物換上不同衣服與王冠配件，還能自由更換背景與房間裝飾。
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="rounded-2xl bg-card border border-line text-xs flex flex-wrap items-center gap-2 text-ink2 p-5 sm:p-6 shadow-soft hover:border-sea hover:shadow-lift transition">
-                        <span class="text-muted font-bold mr-2" data-i18n="built_with">使用技術：</span>
-                        <span class="bg-paper px-3 py-1 rounded-lg border border-line text-mint-deep" data-i18n="tech_1">React Native</span>
-                        <span class="bg-paper px-3 py-1 rounded-lg border border-line text-mint-deep" data-i18n="tech_2">Expo</span>
-                        <span class="bg-paper px-3 py-1 rounded-lg border border-line text-mint-deep" data-i18n="tech_3">Python FastAPI</span>
-                        <span class="bg-paper px-3 py-1 rounded-lg border border-line text-mint-deep" data-i18n="tech_db">雲端資料庫</span>
-                    </div>
-
-                    <div class="pt-2 flex flex-col sm:flex-row gap-4">
-                        <a href="#quick-request" onclick="selectService('Mobile Application (React Native / Expo)')" class="bg-ink text-white rounded-xl px-5 py-3.5 font-semibold hover:bg-mint-deep transition min-h-[48px] w-full sm:w-auto inline-flex items-center justify-center gap-2">
-                            <i class="fa-solid fa-mobile-screen"></i>
-                            <span data-i18n="app_cta">訂購您的專屬手機 APP</span>
-                        </a>
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
-    </section>
 
     <!-- Latest Posts (written in admin.html, stored in content/posts.json; hidden until the first post is published) -->
     <section id="updates" class="hidden py-14 sm:py-20 px-5 border-t border-line bg-card">
@@ -916,7 +934,7 @@
 
         const translations = {
             zh: {
-                toggle_btn: "English",
+                toggle_btn: "EN",
                 top_tagline: "我們開發並販售：網站 • 手機 APP • 完整全端系統",
                 top_cta: "立即訂購 / 諮詢（輸入優惠碼 ID 享 9 折）→",
                 brand_sub: "網站 • APP • 全端系統開發與販售",
@@ -1043,7 +1061,7 @@
                 app_intro: "這是我們從零開發的手機養成遊戲 APP，同時支援 iPhone 與 Android 手機。使用者可以領養可愛夥伴（獅子、驢子、烏鴉、駱駝），透過每天閱讀獲得食物與經驗值讓寵物長大進化，還能進行問答闖關並自由布置房間。",
                 app_sub: "想做自己的手機 APP 嗎？",
                 app_quote: "「從畫面設計到雲端資料儲存，我們全部幫您做好。」",
-                app_desc: "直接觀看左方的手機實機操作影片！不管您想做會員點數 APP、線上預約訂購 APP、社交互動平台或遊戲化應用，我們都能幫您把想法做成真正可以下載使用的手機程式。",
+                app_desc: "直接觀看手機實機操作影片！不管您想做會員點數 APP、線上預約訂購 APP、社交互動平台或遊戲化應用，我們都能幫您把想法做成真正可以下載使用的手機程式。",
                 app_f1_t: "角色養成與三階段進化",
                 app_f1_d: "挑選喜歡的小動物夥伴，隨著每天使用累積等級，從寶寶一路進化成青少年（30 級）與大人形態（60 級）。",
                 app_f2_t: "每日閱讀任務換獎勵",
@@ -1131,7 +1149,7 @@
                 success_std_msg: `<i class="fa-solid fa-circle-check mr-1.5"></i> 需求已成功送出！我們已收到您的免費估價申請，將於 24 小時內透過 Email 或 LINE 與您聯繫。`
             },
             en: {
-                toggle_btn: "繁體中文",
+                toggle_btn: "中文",
                 top_tagline: "WE BUILD & SELL: WEBSITES • MOBILE APPS • FULL-STACK SYSTEMS",
                 top_cta: "BUY OR ORDER A BUILD (10% OFF CODE: ID) →",
                 brand_sub: "Websites • Apps • Full-Stack Systems For Sale",
@@ -1258,7 +1276,7 @@
                 app_intro: "Spirit Feeder is a cross-platform mobile RPG we built from scratch for iOS and Android. Users hatch companions (Lion, Donkey, Raven, Camel), earn food and XP through daily reading to evolve their pets, play quiz battles, and customize their room.",
                 app_sub: "Want Your Own Mobile App?",
                 app_quote: '"We build and sell complete mobile apps—from UI screens to cloud databases."',
-                app_desc: "Watch the live walkthrough on the left. Whether you need a loyalty rewards app, booking app, social platform, or gamified mobile product, we build and deliver the complete app for iOS and Android.",
+                app_desc: "Watch the live app walkthrough. Whether you need a loyalty rewards app, booking app, social platform, or gamified mobile product, we build and deliver the complete app for iOS and Android.",
                 app_f1_t: "Hatch & Evolve Companions",
                 app_f1_d: "Pick a companion and level them up through daily activity from Baby to Teen (Lv 30) and Adult (Lv 60).",
                 app_f2_t: "Daily Reading Rewards",
