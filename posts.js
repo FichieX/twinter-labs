@@ -167,20 +167,20 @@
                 ? '<video src="' + esc(cover.video) + '#t=0.1" muted playsinline preload="metadata" class="w-full h-full object-cover"></video>'
                 : '<img src="' + esc(cover.src) + '" alt="" loading="lazy" class="w-full h-full object-cover group-hover:scale-[1.03] transition duration-500">';
             var play = cover.kind === 'video'
-                ? '<span class="absolute inset-0 flex items-center justify-center"><span class="w-12 h-12 rounded-full bg-black/60 border border-white/30 flex items-center justify-center text-white"><i class="fa-solid fa-play text-sm ml-0.5"></i></span></span>'
+                ? '<span class="absolute inset-0 flex items-center justify-center"><span class="w-12 h-12 rounded-full bg-card/90 shadow-soft flex items-center justify-center text-ink"><i class="fa-solid fa-play text-sm ml-0.5"></i></span></span>'
                 : '';
             var badge = count > 1
-                ? '<span class="absolute top-3 right-3 px-2 py-1 rounded-lg bg-black/70 text-white font-mono text-[10px]"><i class="fa-regular fa-images mr-1"></i>' + count + '</span>'
+                ? '<span class="absolute top-3 right-3 px-2 py-1 rounded-lg bg-card/90 text-ink font-sans text-[10px]"><i class="fa-regular fa-images mr-1"></i>' + count + '</span>'
                 : '';
-            coverHtml = '<div class="relative aspect-[16/10] bg-black overflow-hidden">' + visual + play + badge + '</div>';
+            coverHtml = '<div class="relative aspect-[16/10] bg-mint-soft overflow-hidden">' + visual + play + badge + '</div>';
         }
-        return '<a href="' + esc(postUrl(post, lang)) + '" class="group flex flex-col bg-[#0D131F] rounded-2xl border border-slate-800 hover:border-cyan-500/50 overflow-hidden transition">' +
+        return '<a href="' + esc(postUrl(post, lang)) + '" class="group flex flex-col bg-card rounded-2xl shadow-soft border border-line hover:border-sea hover:shadow-lift overflow-hidden transition">' +
             coverHtml +
-            '<div class="p-6 flex flex-col gap-3 flex-1">' +
-                '<span class="font-mono text-[11px] text-cyan-400 tracking-wider">' + esc(formatDate(post.date)) + '</span>' +
-                '<h3 class="font-display text-lg font-bold text-white leading-snug group-hover:text-cyan-300 transition">' + esc(title) + '</h3>' +
-                (summary ? '<p class="text-slate-400 text-sm leading-relaxed">' + esc(summary) + '</p>' : '') +
-                '<span class="mt-auto pt-2 text-xs font-mono font-bold text-cyan-400">' + (lang === 'en' ? 'Read more' : '閱讀全文') + ' →</span>' +
+            '<div class="p-5 sm:p-6 flex flex-col gap-3 flex-1">' +
+                '<span class="text-xs font-semibold uppercase tracking-wider text-mint-deep">' + esc(formatDate(post.date)) + '</span>' +
+                '<h3 class="font-display text-lg font-bold text-ink leading-snug group-hover:text-mint-deep transition">' + esc(title) + '</h3>' +
+                (summary ? '<p class="text-muted text-sm leading-relaxed">' + esc(summary) + '</p>' : '') +
+                '<span class="mt-auto pt-2 text-sm text-mint-deep font-semibold hover:underline">' + (lang === 'en' ? 'Read more' : '閱讀全文') + ' →</span>' +
             '</div>' +
         '</a>';
     }
