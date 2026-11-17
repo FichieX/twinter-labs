@@ -33,7 +33,6 @@
         nav > div > div:last-child > a[title] { width: 44px; }
         .nav-links { scrollbar-width: none; }
         .nav-links::-webkit-scrollbar { display: none; }
-        #apps .app-frame::before { content: ""; position: absolute; inset: 8% -8%; z-index: -1; border-radius: 9999px; background: rgb(130 212 187 / .4); filter: blur(64px); pointer-events: none; }
         @media (max-width: 1023px) {
             #apps > div { display: flex; flex-direction: column; align-items: stretch; gap: 1.5rem; }
             #apps .app-heading, #apps .app-layout { display: contents; }
@@ -88,8 +87,8 @@
                     <img src="images/logo.svg" alt="Twinter Labs logo" class="w-full h-full object-cover rounded-xl">
                 </div>
                 <div>
-                    <span class="font-display text-lg sm:text-xl font-bold tracking-tight text-ink block">Twinter Labs</span>
-                    <span class="text-[10px] text-mint-deep font-semibold block leading-relaxed" data-i18n="brand_sub">網站 • APP • 全端系統開發與販售</span>
+                    <span class="font-display text-lg sm:text-xl font-bold tracking-tight text-ink block whitespace-nowrap">Twinter Labs</span>
+                    <span class="text-[10px] text-mint-deep font-semibold block leading-relaxed truncate" data-i18n="brand_sub">網站 • APP • 全端系統開發與販售</span>
                 </div>
             </a>
 
@@ -266,6 +265,7 @@
 
                 <div class="app-video lg:col-span-6 flex justify-center">
                     <div class="app-frame relative isolate w-[min(86vw,360px)] max-w-full bg-ink rounded-[44px] p-2.5 shadow-lift">
+                        <div class="absolute inset-y-[8%] -inset-x-[8%] bg-mint/40 blur-3xl rounded-full -z-10 pointer-events-none"></div>
                         <div class="absolute top-6 left-1/2 phone-notch w-28 h-5 bg-black rounded-full z-20 flex items-center justify-center">
                             <span class="w-2.5 h-2.5 rounded-full bg-paper inline-block mr-2"></span>
                             <span class="w-2 h-2 rounded-full bg-paper inline-block"></span>
