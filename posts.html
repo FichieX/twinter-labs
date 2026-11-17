@@ -8,70 +8,70 @@
     <meta name="description" content="Twinter Labs 最新動態：新上線的網站與 APP 作品、開發進度與公告。">
     <link rel="canonical" href="https://www.twinterlabs.com/posts.html">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="tw-config.js"></script>
+    <link rel="stylesheet" href="theme.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Noto+Sans+TC:wght@400;500;700;900&family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Space+Grotesk:wght@600;700&display=swap');
-        .font-display { font-family: 'Space Grotesk', 'Noto Sans TC', sans-serif; }
-        .font-mono { font-family: 'JetBrains Mono', 'Noto Sans TC', monospace; }
-        body { font-family: 'Plus Jakarta Sans', 'Noto Sans TC', sans-serif; }
 
         /* Text of a single post (HTML comes from TLPosts.renderBody) */
-        .post-body { color: #CBD5E1; font-size: 1rem; line-height: 1.9; overflow-wrap: anywhere; }
+        .post-body { color: var(--ink2); font-size: 17px; line-height: 1.75; overflow-wrap: anywhere; }
         .post-body p { margin: 0 0 1.1em; }
-        .post-body h3 { font-family: 'Space Grotesk', 'Noto Sans TC', sans-serif; color: #fff; font-size: 1.3rem; font-weight: 700; line-height: 1.35; margin: 1.8em 0 0.6em; }
+        .post-body h3 { color: var(--ink); font-size: 1.3rem; font-weight: 700; line-height: 1.35; margin: 1.8em 0 0.6em; }
         .post-body ul, .post-body ol { margin: 0 0 1.1em; padding-left: 1.5em; }
         .post-body ul { list-style: disc; }
         .post-body ol { list-style: decimal; }
         .post-body li { margin-bottom: 0.35em; }
-        .post-body strong { color: #fff; font-weight: 700; }
-        .post-body a { color: #22D3EE; text-decoration: underline; text-underline-offset: 3px; }
-        .post-body a:hover { color: #67E8F9; }
+        .post-body strong { color: var(--ink); font-weight: 700; }
+        .post-body a { color: var(--mint-deep); text-decoration: underline; text-underline-offset: 3px; }
+        .post-body a:hover { color: var(--mint-deep); }
+        .post-body blockquote { border-left: 3px solid var(--mint); background: var(--mint-soft); padding: 1rem; margin: 1.25rem 0; }
+        .post-body code { background: var(--paper); border-radius: 4px; padding: .15em .3em; }
     </style>
 </head>
-<body class="bg-[#080B11] text-slate-200 antialiased selection:bg-cyan-500 selection:text-black">
+<body class="bg-paper text-ink2 antialiased">
 
-    <nav class="sticky top-0 z-50 bg-[#080B11]/90 backdrop-blur-md border-b border-slate-800/80">
+    <nav class="sticky top-0 z-50 bg-card/85 backdrop-blur border-b border-line">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between gap-3">
             <a href="index.html" id="homeLink" class="flex items-center gap-3 whitespace-nowrap">
-                <div class="w-10 h-10 shrink-0 rounded-xl bg-gradient-to-tr from-cyan-600 to-emerald-500 flex items-center justify-center font-display font-black text-xl text-black">
+                <div class="w-10 h-10 shrink-0 rounded-xl bg-mint-soft flex items-center justify-center font-display font-black text-xl text-ink">
                     <img src="images/logo.svg" alt="Twinter Labs logo" class="w-full h-full object-cover rounded-xl">
                 </div>
                 <div class="hidden sm:block">
-                    <span class="font-display text-lg font-bold text-white block">Twinter Labs</span>
-                    <span class="text-[10px] text-cyan-400 font-mono block -mt-0.5" data-i18n="back_home">返回官網首頁 ←</span>
+                    <span class="font-display text-lg font-bold text-ink block">Twinter Labs</span>
+                    <span class="text-[10px] text-mint-deep font-sans block -mt-0.5" data-i18n="back_home">返回官網首頁 ←</span>
                 </div>
             </a>
-            <div class="flex items-center gap-2 sm:gap-2.5">
-                <button type="button" onclick="toggleLanguage()" class="px-3 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 border border-cyan-500/40 text-xs font-mono font-bold text-cyan-300 hover:text-white transition flex items-center gap-1.5 whitespace-nowrap">
-                    <i class="fa-solid fa-language text-sm text-cyan-400 hidden sm:inline"></i>
+            <div class="flex gap-5 overflow-x-auto whitespace-nowrap text-sm max-w-full items-center">
+                <button type="button" onclick="toggleLanguage()" class="bg-card border border-line text-ink rounded-xl px-4 py-3 font-semibold hover:border-sea min-h-[44px] transition flex items-center gap-1.5 whitespace-nowrap shrink-0">
+                    <i class="fa-solid fa-language text-sm text-mint-deep hidden sm:inline"></i>
                     <span data-i18n="toggle_btn">English</span>
                 </button>
-                <a href="index.html#quick-request" id="orderLink" class="bg-cyan-500 hover:bg-cyan-400 text-black font-extrabold text-xs uppercase tracking-wider px-3 sm:px-5 py-2.5 rounded-xl transition whitespace-nowrap">
+                <a href="index.html#quick-request" id="orderLink" class="bg-ink text-white rounded-xl px-5 py-3.5 font-semibold hover:bg-mint-deep transition min-h-[48px] w-full sm:w-auto text-center">
                     <span data-i18n="nav_cta">立即訂購</span> →
                 </a>
             </div>
         </div>
     </nav>
 
-    <main class="py-16 sm:py-20 px-6 min-h-[70vh]">
+    <main class="py-14 sm:py-20 px-5 min-h-[70vh]">
 
         <!-- All posts -->
         <div id="listView" class="max-w-7xl mx-auto hidden">
             <div class="text-center max-w-3xl mx-auto space-y-3 mb-14">
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-950/80 border border-cyan-800/60 text-cyan-400 font-mono text-xs">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-mint-soft border border-line text-mint-deep font-sans text-xs">
                     <i class="fa-solid fa-bullhorn"></i>
                     <span data-i18n="list_badge">最新動態 • 作品更新與公告</span>
                 </div>
-                <h1 class="font-display text-3xl sm:text-5xl font-bold text-white" data-i18n="list_title">Twinter Labs 最新動態</h1>
-                <p class="text-slate-400 text-xs sm:text-sm leading-relaxed" data-i18n="list_desc">新上線的網站與 APP、開發中的專案進度，以及我們的最新消息。</p>
+                <h1 class="font-display text-3xl sm:text-5xl font-bold text-ink" data-i18n="list_title">Twinter Labs 最新動態</h1>
+                <p class="text-muted text-base leading-relaxed" data-i18n="list_desc">新上線的網站與 APP、開發中的專案進度，以及我們的最新消息。</p>
             </div>
             <div id="postGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
-            <p id="emptyState" class="hidden text-center text-slate-500 font-mono text-sm py-16" data-i18n="empty">目前還沒有貼文，敬請期待。</p>
+            <p id="emptyState" class="hidden text-center text-muted font-sans text-sm py-16" data-i18n="empty">目前還沒有貼文，敬請期待。</p>
         </div>
 
         <!-- Single post -->
-        <article id="postView" class="max-w-3xl mx-auto hidden">
-            <a href="posts.html" id="backLink" class="inline-flex items-center gap-2 text-xs font-mono font-bold text-slate-400 hover:text-cyan-400 transition mb-8">
+        <article id="postView" class="max-w-2xl mx-auto hidden">
+            <a href="posts.html" id="backLink" class="inline-flex items-center gap-2 text-sm text-mint-deep font-semibold hover:underline min-h-[44px] transition mb-8">
                 ← <span data-i18n="back_all">所有動態</span>
             </a>
             <div id="postContent"></div>
@@ -79,25 +79,25 @@
 
     </main>
 
-    <footer class="bg-[#05070B] border-t border-slate-900 py-10 px-6 text-slate-500 text-xs font-mono">
+    <footer class="bg-ink text-white/70 border-t border-line py-10 px-5 text-xs">
         <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4">
             <p>© 2026 Twinter Labs (www.twinterlabs.com). All Rights Reserved.</p>
             <p>
-                <a href="mailto:Twinterlabs@gmail.com" class="text-slate-300 hover:text-cyan-400 transition">Twinterlabs@gmail.com</a>
-                <span class="text-slate-700 mx-2">|</span>
-                <a href="https://line.me/ti/p/rsc69htRfX" target="_blank" rel="noopener" class="text-slate-300 hover:text-emerald-400 transition">LINE</a>
-                <span class="text-slate-700 mx-2">|</span>
-                <a href="https://instagram.com/TwinterLabs" target="_blank" rel="noopener" class="text-slate-300 hover:text-pink-400 transition">Instagram</a>
+                <a href="mailto:Twinterlabs@gmail.com" class="text-white/70 hover:text-mint transition">Twinterlabs@gmail.com</a>
+                <span class="text-white/70 mx-2">|</span>
+                <a href="https://line.me/ti/p/rsc69htRfX" target="_blank" rel="noopener" class="text-white/70 hover:text-mint transition">LINE</a>
+                <span class="text-white/70 mx-2">|</span>
+                <a href="https://instagram.com/TwinterLabs" target="_blank" rel="noopener" class="text-white/70 hover:text-mint transition">Instagram</a>
             </p>
         </div>
     </footer>
 
     <!-- Picture viewer -->
-    <div id="lightbox" class="hidden fixed inset-0 z-[100] bg-black/95 flex items-center justify-center p-4" onclick="closeLightbox()">
-        <button type="button" aria-label="Close" class="absolute top-4 right-4 w-11 h-11 rounded-xl bg-slate-900 border border-slate-700 text-white text-lg">✕</button>
-        <button type="button" id="lbPrev" aria-label="Previous" onclick="event.stopPropagation(); stepLightbox(-1)" class="absolute left-3 sm:left-6 w-11 h-11 rounded-xl bg-slate-900 border border-slate-700 text-white text-lg">←</button>
+    <div id="lightbox" class="hidden fixed inset-0 z-[100] bg-ink/95 flex items-center justify-center p-4" onclick="closeLightbox()">
+        <button type="button" aria-label="Close" class="absolute top-4 right-4 w-11 h-11 rounded-xl bg-ink border border-line text-white text-lg">✕</button>
+        <button type="button" id="lbPrev" aria-label="Previous" onclick="event.stopPropagation(); stepLightbox(-1)" class="absolute left-3 sm:left-6 w-11 h-11 rounded-xl bg-ink border border-line text-white text-lg">←</button>
         <img id="lightboxImg" src="" alt="" class="max-w-full max-h-full rounded-xl" onclick="event.stopPropagation()">
-        <button type="button" id="lbNext" aria-label="Next" onclick="event.stopPropagation(); stepLightbox(1)" class="absolute right-3 sm:right-6 w-11 h-11 rounded-xl bg-slate-900 border border-slate-700 text-white text-lg">→</button>
+        <button type="button" id="lbNext" aria-label="Next" onclick="event.stopPropagation(); stepLightbox(1)" class="absolute right-3 sm:right-6 w-11 h-11 rounded-xl bg-ink border border-line text-white text-lg">→</button>
     </div>
 
     <script src="posts.js"></script>
@@ -149,10 +149,10 @@
         function mediaHTML(item, index, isLead) {
             const esc = TLPosts.esc;
             const frame = isLead
-                ? 'rounded-2xl overflow-hidden border border-slate-800 bg-black flex justify-center'
-                : 'rounded-2xl overflow-hidden border border-slate-800 bg-black aspect-[4/3] flex items-center justify-center';
+                ? 'rounded-2xl overflow-hidden border border-line bg-black flex justify-center'
+                : 'rounded-2xl overflow-hidden border border-line bg-black aspect-[4/3] flex items-center justify-center';
             if (item.type === 'youtube') {
-                return `<div class="rounded-2xl overflow-hidden border border-slate-800 bg-black ${isLead ? 'aspect-video' : 'aspect-[4/3]'}">
+                return `<div class="rounded-2xl overflow-hidden border border-line bg-ink ${isLead ? 'aspect-video' : 'aspect-[4/3]'}">
                     <iframe src="https://www.youtube-nocookie.com/embed/${esc(item.id)}" title="YouTube video" class="w-full h-full" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                 </div>`;
             }
@@ -181,8 +181,8 @@
 
             document.title = `${title} | Twinter Labs`;
             document.getElementById('postContent').innerHTML = `
-                <span class="font-mono text-xs text-cyan-400 tracking-wider">${TLPosts.esc(TLPosts.formatDate(post.date))}</span>
-                <h1 class="font-display text-3xl sm:text-4xl font-bold text-white leading-tight mt-3 mb-8">${TLPosts.esc(title)}</h1>
+                <span class="text-xs font-semibold uppercase text-mint-deep tracking-wider">${TLPosts.esc(TLPosts.formatDate(post.date))}</span>
+                <h1 class="font-display text-3xl sm:text-4xl font-bold text-ink leading-tight mt-3 mb-8">${TLPosts.esc(title)}</h1>
                 ${media.length ? `<div class="mb-10">${lead}${restHtml}</div>` : ''}
                 <div class="post-body">${TLPosts.renderBody(body)}</div>`;
         }
@@ -211,7 +211,7 @@
                 } else {
                     document.title = dict.page_title;
                     document.getElementById('postContent').innerHTML =
-                        `<p class="text-slate-400 font-mono text-sm py-16 text-center">${TLPosts.esc(dict.not_found)}</p>`;
+                        `<p class="text-muted font-sans text-sm py-16 text-center">${TLPosts.esc(dict.not_found)}</p>`;
                 }
                 return;
             }
