@@ -391,10 +391,84 @@
         <!-- Customer requests -->
         <section id="viewRequests" hidden>
             <div class="list-head"><h1>Customer requests</h1></div>
-            <div class="panel">
-                <p class="muted small" style="margin:6px 0 16px">Orders sent through the “Order Now” form on the home page are stored in Formspree, not on this page. Open the inbox to read them, and sign in with the Formspree account that owns the form.</p>
-                <a class="btn" id="requestsLink" href="https://formspree.io/forms" target="_blank" rel="noopener">Open requests inbox ↗</a>
-                <p class="hint">On Formspree's free plan, requests are kept for 30 days.</p>
+            <div id="ordersNotice" class="notice notice-ok" hidden></div>
+            <div id="ordersError" class="notice notice-err" hidden></div>
+            <div class="panel home-panel">
+                <h2>Where orders go</h2>
+                <p class="lead" id="ordersState">Checking…</p>
+                <div class="app-video-actions">
+                    <a class="btn" id="sheetLink" href="#" target="_blank" rel="noopener" hidden>Open the orders sheet ↗</a>
+                    <a class="btn" id="requestsLink" href="https://formspree.io/forms" target="_blank" rel="noopener">Open Formspree inbox ↗</a>
+                </div>
+            </div>
+
+            <div class="panel home-panel">
+                <h2>Send orders to our Gmail</h2>
+                <p class="lead">One-time setup in the Google account that should receive the orders. After it, every order from the home page form is emailed to you and saved as a row in a Google Sheet.</p>
+                <ol class="steps" style="margin-bottom:18px">
+                    <li>Signed in to that Google account, create a new Google Sheet (type <b>sheets.new</b> in the address bar) and name it, for example, <b>Twinter Labs orders</b>.</li>
+                    <li>In the sheet menu choose <b>Extensions → Apps Script</b>. Delete the code that is there, then paste the script below.</li>
+                    <li>Check the email address on the line starting with <span class="mono">NOTIFY_EMAIL</span>, then press the save icon.</li>
+                    <li>Press <b>Deploy → New deployment</b>, choose type <b>Web app</b>, set <b>Execute as: Me</b> and <b>Who has access: Anyone</b>, and press <b>Deploy</b>.</li>
+                    <li>Google asks for permission the first time: press <b>Authorize access</b>, pick the account, then <b>Advanced → Go to … (unsafe) → Allow</b>. This warning appears because the script is your own and not reviewed by Google.</li>
+                    <li>Copy the <b>Web app URL</b> (it ends in <span class="mono">/exec</span>) and paste it in the first box below. Copy the sheet's address from the browser into the second box, then press Save.</li>
+                </ol>
+                <div class="field">
+                    <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:8px">
+                        <span class="label" style="margin:0">Script to paste</span>
+                        <button type="button" class="btn btn-sm" id="copyScriptBtn">Copy script</button>
+                    </div>
+                    <textarea id="scriptCode" readonly spellcheck="false" style="border-radius:12px;min-height:200px;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;line-height:1.5">// Twinter Labs order form -&gt; Gmail + Google Sheet
+// Paste this into Extensions &gt; Apps Script of a Google Sheet, then deploy it as a Web app.
+const NOTIFY_EMAIL = &#x27;Twinterlabs@gmail.com&#x27;;   // where each order is emailed
+const SHEET_NAME = &#x27;Orders&#x27;;
+const FIELDS = [&#x27;name&#x27;, &#x27;phone&#x27;, &#x27;email&#x27;, &#x27;category&#x27;, &#x27;mode&#x27;, &#x27;promo_code&#x27;, &#x27;discount_applied&#x27;, &#x27;preferred_date&#x27;, &#x27;meeting_format&#x27;, &#x27;details&#x27;];
+
+function doPost(e) {
+  const p = (e &amp;&amp; e.parameter) || {};
+  if (p.website) return ContentService.createTextOutput(&#x27;ok&#x27;);   // hidden field filled in = spam bot
+
+  // 1. Save the order as a new row
+  const lock = LockService.getScriptLock();
+  lock.waitLock(20000);
+  try {
+    const book = SpreadsheetApp.getActiveSpreadsheet();
+    const sheet = book.getSheetByName(SHEET_NAME) || book.insertSheet(SHEET_NAME);
+    if (sheet.getLastRow() === 0) sheet.appendRow([&#x27;Time&#x27;].concat(FIELDS));
+    sheet.appendRow([new Date()].concat(FIELDS.map(function (f) { return plain(p[f]); })));
+  } finally {
+    lock.releaseLock();
+  }
+
+  // 2. Email it to the team; pressing Reply answers the customer
+  const lines = FIELDS.map(function (f) { return f + &#x27;: &#x27; + (p[f] || &#x27;-&#x27;); });
+  const options = {};
+  if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(p.email || &#x27;&#x27;)) options.replyTo = p.email;
+  MailApp.sendEmail(NOTIFY_EMAIL, p._subject || &#x27;[Twinter Labs] New order&#x27;, lines.join(&#x27;\n&#x27;), options);
+
+  return ContentService.createTextOutput(&#x27;ok&#x27;);
+}
+
+// Stops a value such as &quot;=1+1&quot; from being run as a formula in the sheet
+function plain(value) {
+  const text = String(value || &#x27;&#x27;).slice(0, 5000);
+  return /^[=+\-@]/.test(text) ? &quot;&#x27;&quot; + text : text;
+}
+</textarea>
+                </div>
+                <div class="field">
+                    <label for="endpointInput">Web app URL</label>
+                    <input type="text" id="endpointInput" placeholder="https://script.google.com/macros/s/…/exec" spellcheck="false" autocomplete="off">
+                </div>
+                <div class="field">
+                    <label for="sheetInput">Google Sheet address (optional, for the button above)</label>
+                    <input type="text" id="sheetInput" placeholder="https://docs.google.com/spreadsheets/d/…" spellcheck="false" autocomplete="off">
+                </div>
+                <div class="app-video-actions" style="margin-bottom:0">
+                    <button type="button" class="btn btn-primary" id="ordersSaveBtn">Save</button>
+                    <button type="button" class="btn btn-danger" id="ordersResetBtn" hidden>Go back to Formspree</button>
+                </div>
+                <p class="hint">After saving, send one test order from the home page and check that the email and the new row arrive. Until a Web app URL is saved, orders keep going to Formspree.</p>
             </div>
         </section>
 
@@ -797,6 +871,7 @@
                 var view = tab.getAttribute('data-view');
                 if (view === 'viewList') loadList();
                 else if (view === 'viewHome') openHome();
+                else if (view === 'viewRequests') openRequests();
                 else show(view);
             });
         });
@@ -1479,6 +1554,104 @@
                 setNotice('homeError', T.esc(explain(err)));
                 window.scrollTo(0, 0);
             });
+        });
+
+        /* ---------- Customer requests: where the order form sends ---------- */
+        function endpointOk(url) {
+            return /^https:\/\/script\.google\.com\/macros\/s\/[\w-]+\/exec$/.test(url);
+        }
+        function sheetOk(url) {
+            return /^https:\/\/docs\.google\.com\/spreadsheets\/\S+$/.test(url);
+        }
+        function renderOrders() {
+            var orders = (site && site.orders) || {};
+            var live = endpointOk(orders.endpoint || '');
+            $('ordersState').textContent = live
+                ? 'Orders from the home page form are emailed to you by your Google script and saved in your Google Sheet.'
+                : 'Orders from the home page form currently go to Formspree.';
+            $('endpointInput').value = orders.endpoint || '';
+            $('sheetInput').value = orders.sheet || '';
+            $('sheetLink').hidden = !(live && sheetOk(orders.sheet || ''));
+            if (!$('sheetLink').hidden) $('sheetLink').href = orders.sheet;
+            $('requestsLink').textContent = live ? 'Older orders in Formspree ↗' : 'Open Formspree inbox ↗';
+            $('ordersResetBtn').hidden = !live;
+            $('ordersResetBtn').classList.remove('armed');
+            $('ordersResetBtn').textContent = 'Go back to Formspree';
+        }
+        function openRequests() {
+            show('viewRequests');
+            setNotice('ordersError', '');
+            return readSite(REPO.branch).then(function (data) {
+                site = data;
+                renderOrders();
+            }).catch(function (err) {
+                if (sessionExpired(err)) return;
+                setNotice('ordersError', T.esc(explain(err)));
+            });
+        }
+        function saveOrders(next, message, notice) {
+            busy = true;
+            $('ordersSaveBtn').disabled = $('ordersResetBtn').disabled = true;
+            setNotice('ordersNotice', '');
+            setNotice('ordersError', '');
+            return commitChange({
+                target: 'site',
+                message: message,
+                mutate: function (data) {
+                    if (next) data.orders = next; else delete data.orders;
+                    return data;
+                }
+            }).then(function (saved) {
+                site = saved;
+                setNotice('ordersNotice', notice);
+            }).catch(function (err) {
+                setNotice('ordersError', T.esc(explain(err)));
+            }).then(function () {
+                busy = false;
+                $('ordersSaveBtn').disabled = $('ordersResetBtn').disabled = false;
+                renderOrders();
+                window.scrollTo(0, 0);
+            });
+        }
+        $('ordersSaveBtn').addEventListener('click', function () {
+            if (busy) return;
+            var endpoint = $('endpointInput').value.trim();
+            var sheet = $('sheetInput').value.trim();
+            setNotice('ordersNotice', '');
+            if (!endpointOk(endpoint)) {
+                setNotice('ordersError', 'That is not a Web app URL. It should start with https://script.google.com/macros/s/ and end with /exec.');
+                window.scrollTo(0, 0);
+                return;
+            }
+            if (sheet && !sheetOk(sheet)) {
+                setNotice('ordersError', 'The sheet address should start with https://docs.google.com/spreadsheets/.');
+                window.scrollTo(0, 0);
+                return;
+            }
+            var next = { endpoint: endpoint };
+            if (sheet) next.sheet = sheet;
+            saveOrders(next, 'Send order form to Google script', 'Saved. In about a minute, new orders will go to your Gmail and sheet. Send a test order from the home page to check.');
+        });
+        $('ordersResetBtn').addEventListener('click', function () {
+            var button = this;
+            if (busy) return;
+            if (!button.classList.contains('armed')) {
+                button.classList.add('armed');
+                button.textContent = 'Really switch back?';
+                return;
+            }
+            saveOrders(null, 'Send order form back to Formspree', 'Orders go to Formspree again (after about a minute).');
+        });
+        $('copyScriptBtn').addEventListener('click', function () {
+            var area = $('scriptCode');
+            var button = this;
+            var done = function () { button.textContent = 'Copied'; setTimeout(function () { button.textContent = 'Copy script'; }, 2000); };
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(area.value).then(done, function () { area.select(); });
+            } else {
+                area.select();
+                try { document.execCommand('copy'); done(); } catch (e) { /* user can copy manually */ }
+            }
         });
 
         /* ---------- Editor ---------- */

@@ -24,6 +24,11 @@
         return typeof href === 'string' && /^(https?:\/\/|mailto:|tel:)\S+$/i.test(href);
     }
 
+    // Only a deployed Google Apps Script web app address is accepted as the order form target.
+    function orderEndpointOk(url) {
+        return typeof url === 'string' && /^https:\/\/script\.google\.com\/macros\/s\/[\w-]+\/exec$/.test(url);
+    }
+
     // How a link is written when the address itself is the visible text (email address, @handle, bare domain).
     function displayText(href) {
         var match;
@@ -87,6 +92,7 @@
         DATA_URL: DATA_URL,
         load: load,
         safeLink: safeLink,
+        orderEndpointOk: orderEndpointOk,
         displayText: displayText,
         applyLinks: applyLinks,
         applyImages: applyImages,

@@ -771,6 +771,8 @@
 
                 <iframe name="formspree_target" id="formspree_target" style="display:none;"></iframe>
                 <form id="quickRequestForm" action="https://formspree.io/f/xaeonapy" method="POST" target="formspree_target" onsubmit="return handleQuickSubmit(event)" class="space-y-6">
+                    <!-- Left empty by real visitors; bots that fill it in are ignored by the Google script -->
+                    <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none">
                     <input type="hidden" name="_subject" id="hiddenSubject" value="[Twinter Labs] New Inquiry">
                     <input type="hidden" name="discount_applied" id="hiddenDiscount" value="Standard Quote">
                     <input type="hidden" id="requestMode" name="mode" value="Order Product / Build">
@@ -1487,6 +1489,9 @@
                 const custom = siteData.appVideo && siteData.appVideo.src ? siteData.appVideo : null;
                 if (custom && custom.poster) appVideo.poster = custom.poster;
                 appVideo.src = custom ? custom.src : appVideo.dataset.defaultSrc;
+                // Order form: send to the team's own Google script (set in admin.html) instead of Formspree when one is saved
+                const endpoint = siteData.orders && siteData.orders.endpoint;
+                if (TLSite.orderEndpointOk(endpoint)) document.getElementById('quickRequestForm').action = endpoint;
                 applyTextChanges(TLSite.mergeText(siteData, translations));
                 applySiteContent();
             };
