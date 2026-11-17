@@ -11,19 +11,29 @@
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="tw-config.js"></script>
+    <link rel="stylesheet" href="theme.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 
     <!-- Fonts -->
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Noto+Sans+TC:wght@400;500;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap');
-        
-        .font-display { font-family: 'Space Grotesk', 'Noto Sans TC', sans-serif; }
-        .font-mono { font-family: 'JetBrains Mono', 'Noto Sans TC', monospace; }
-        body { font-family: 'Plus Jakarta Sans', 'Noto Sans TC', sans-serif; }
-
-        .terminal-glow { box-shadow: 0 0 40px rgba(6, 182, 212, 0.12); }
-        .emerald-glow { box-shadow: 0 0 30px rgba(16, 185, 129, 0.2); }
-        .app-glow { box-shadow: 0 0 35px rgba(245, 158, 11, 0.25); }
+        html { scroll-padding-top: 200px; }
+        .phone-notch { transform: translateX(-50%); }
+        body { overflow-wrap: anywhere; }
+        .grid > *, .flex > * { min-width: 0; }
+        nav .overflow-x-auto a { min-height: 44px; display: inline-flex; align-items: center; flex-shrink: 0; }
+        section > div { padding-left: 0; padding-right: 0; }
+        section p { font-size: 1rem; line-height: 1.75; }
+        #founders img { border-radius: 1rem; }
+        #founders a { min-height: 44px; }
+        #updates article { background: white; color: var(--ink2); border-radius: 1rem; }
+        @media (max-width: 639px) {
+            body > div:first-of-type > div { flex-direction: column; align-items: flex-start; gap: .5rem; }
+            body > div:first-of-type > div > div:last-child { flex-wrap: wrap; gap: .5rem; }
+            nav > div > div:last-child { width: 100%; }
+            header .space-y-3 > .flex { flex-wrap: wrap; gap: .75rem; }
+            header .space-y-3 > .flex > .flex { flex: 1 1 100%; }
+        }
     </style>
 
     <!-- Google tag (gtag.js) -->
@@ -35,62 +45,62 @@
       gtag('config', 'G-KG0RQ0JYED');
     </script>
 </head>
-<body class="bg-[#080B11] text-slate-200 antialiased selection:bg-cyan-500 selection:text-black">
+<body class="bg-paper text-ink2 antialiased">
 
     <!-- System Status Bar -->
-    <div class="bg-[#0D131F] border-b border-slate-800 text-xs py-2 px-6">
-        <div class="max-w-7xl mx-auto flex items-center justify-between font-mono text-[11px] text-slate-400">
+    <div class="bg-card border-b border-line text-xs py-2 px-5">
+        <div class="max-w-7xl mx-auto flex items-center justify-between text-[11px] text-muted">
             <div class="flex items-center gap-2">
-                <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                <span class="text-slate-300">TWINTER LABS</span>
-                <span class="text-slate-600">|</span>
-                <span class="hidden sm:inline text-slate-400" data-i18n="top_tagline">我們開發並販售：網站 • 手機 APP • 完整全端系統</span>
+                <span class="inline-block w-2 h-2 rounded-full bg-mint-soft"></span>
+                <span class="text-ink2">TWINTER LABS</span>
+                <span class="text-muted">|</span>
+                <span class="hidden sm:inline text-muted" data-i18n="top_tagline">我們開發並販售：網站 • 手機 APP • 完整全端系統</span>
             </div>
             <div class="flex items-center gap-4">
-                <a href="mailto:Twinterlabs@gmail.com" class="text-slate-300 hover:text-cyan-400 transition">Twinterlabs@gmail.com</a>
-                <span class="text-slate-600">|</span>
-                <a href="#quick-request" class="text-cyan-400 hover:text-cyan-300 font-bold transition" data-i18n="top_cta">立即訂購 / 諮詢（輸入優惠碼 ID 享 9 折）→</a>
+                <a href="mailto:Twinterlabs@gmail.com" class="text-ink2 hover:text-mint-deep transition">Twinterlabs@gmail.com</a>
+                <span class="text-muted">|</span>
+                <a href="#quick-request" class="text-mint-deep hover:text-mint-deep font-bold transition" data-i18n="top_cta">立即訂購 / 諮詢（輸入優惠碼 ID 享 9 折）→</a>
             </div>
         </div>
     </div>
 
     <!-- Main Navigation -->
-    <nav class="sticky top-0 z-50 bg-[#080B11]/90 backdrop-blur-md border-b border-slate-800/80">
-        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+    <nav class="sticky top-0 z-50 bg-card/85 backdrop-blur border-b border-line">
+        <div class="max-w-7xl mx-auto px-5 py-4 flex flex-wrap items-center justify-between gap-4">
             <a href="#" class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-600 to-emerald-500 flex items-center justify-center font-display font-black text-xl text-black shadow-lg">
+                <div class="w-10 h-10 rounded-xl flex items-center justify-center font-display font-black text-xl text-ink shadow-soft">
                     <img src="images/logo.svg" alt="Twinter Labs logo" class="w-full h-full object-cover rounded-xl">
                 </div>
                 <div>
-                    <span class="font-display text-lg sm:text-xl font-bold tracking-tight text-white block">Twinter Labs</span>
-                    <span class="text-[10px] uppercase tracking-[0.15em] text-cyan-400 font-mono font-bold block -mt-0.5" data-i18n="brand_sub">網站 • APP • 全端系統開發與販售</span>
+                    <span class="font-display text-lg sm:text-xl font-bold tracking-tight text-ink block">Twinter Labs</span>
+                    <span class="text-[10px] tracking-[0.15em] text-mint-deep font-bold block -mt-0.5" data-i18n="brand_sub">網站 • APP • 全端系統開發與販售</span>
                 </div>
             </a>
 
-            <div class="hidden lg:flex items-center gap-7 text-xs uppercase tracking-widest font-semibold text-slate-400">
-                <a href="#services" class="hover:text-cyan-400 transition" data-i18n="nav_services">方案與價格</a>
-                <a href="#portfolio" class="hover:text-cyan-400 transition" data-i18n="nav_portfolio">線上網站作品</a>
-                <a href="#apps" class="hover:text-cyan-400 transition" data-i18n="nav_apps">手機 APP 展示</a>
-                <a href="#updates" id="navUpdates" class="hidden hover:text-cyan-400 transition" data-i18n="nav_updates">最新動態</a>
-                <a href="#founders" class="hover:text-cyan-400 transition" data-i18n="nav_founders">創辦團隊</a>
-                <a href="#process" class="hover:text-cyan-400 transition" data-i18n="nav_process">合作流程與 FAQ</a>
-                <a href="#quick-request" class="hover:text-cyan-400 transition" data-i18n="nav_request">立即下單</a>
+            <div class="order-last w-full flex gap-5 overflow-x-auto whitespace-nowrap text-sm font-semibold text-muted">
+                <a href="#services" class="hover:text-mint-deep transition" data-i18n="nav_services">方案與價格</a>
+                <a href="#portfolio" class="hover:text-mint-deep transition" data-i18n="nav_portfolio">線上網站作品</a>
+                <a href="#apps" class="hover:text-mint-deep transition" data-i18n="nav_apps">手機 APP 展示</a>
+                <a href="#updates" id="navUpdates" class="hidden hover:text-mint-deep transition" data-i18n="nav_updates">最新動態</a>
+                <a href="#founders" class="hover:text-mint-deep transition" data-i18n="nav_founders">創辦團隊</a>
+                <a href="#process" class="hover:text-mint-deep transition" data-i18n="nav_process">合作流程與 FAQ</a>
+                <a href="#quick-request" class="hover:text-mint-deep transition" data-i18n="nav_request">立即下單</a>
             </div>
 
             <div class="flex items-center gap-2.5">
                 <!-- Language Toggle Button -->
-                <button type="button" id="langToggleBtn" onclick="toggleLanguage()" class="px-3 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 border border-cyan-500/40 text-xs font-mono font-bold text-cyan-300 hover:text-white transition flex items-center gap-1.5">
-                    <i class="fa-solid fa-language text-sm text-cyan-400"></i>
+                <button type="button" id="langToggleBtn" onclick="toggleLanguage()" class="bg-card border border-line text-ink rounded-xl px-3 py-2 font-semibold hover:border-sea transition min-h-[44px] inline-flex items-center justify-center gap-2 text-xs">
+                    <i class="fa-solid fa-language text-sm text-mint-deep"></i>
                     <span id="langToggleText">English</span>
                 </button>
 
-                <a href="https://line.me/ti/p/rsc69htRfX" target="_blank" title="加入 LINE 好友" class="w-9 h-9 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-emerald-400 hover:border-emerald-500/50 transition">
+                <a href="https://line.me/ti/p/rsc69htRfX" target="_blank" title="加入 LINE 好友" class="w-11 h-11 rounded-xl bg-paper border border-line flex items-center justify-center text-mint-deep hover:border-sea transition">
                     <i class="fa-brands fa-line text-base"></i>
                 </a>
-                <a href="https://instagram.com/TwinterLabs" target="_blank" title="Instagram @TwinterLabs" class="hidden sm:flex w-9 h-9 rounded-xl bg-slate-900 border border-slate-800 items-center justify-center text-pink-400 hover:border-pink-500/50 transition">
+                <a href="https://instagram.com/TwinterLabs" target="_blank" title="Instagram @TwinterLabs" class="hidden sm:flex w-11 h-11 rounded-xl bg-paper border border-line items-center justify-center text-mint-deep hover:border-sea transition">
                     <i class="fa-brands fa-instagram text-base"></i>
                 </a>
-                <a href="#quick-request" class="bg-cyan-500 hover:bg-cyan-400 text-black font-extrabold text-xs uppercase tracking-wider px-4 sm:px-5 py-2.5 rounded-xl transition flex items-center gap-2 emerald-glow">
+                <a href="#quick-request" class="bg-ink text-white rounded-xl px-5 py-3.5 font-semibold hover:bg-mint-deep transition min-h-[48px] w-full sm:w-auto inline-flex items-center justify-center gap-2">
                     <span data-i18n="nav_cta">立即訂購</span>
                     <i class="fa-solid fa-bolt text-[11px]"></i>
                 </a>
@@ -99,121 +109,121 @@
     </nav>
 
     <!-- Balanced Hero Section -->
-    <header class="relative pt-16 pb-24 lg:pt-28 lg:pb-36 overflow-hidden">
-        <div class="absolute inset-0 bg-[radial-gradient(#1e293b_1px,transparent_1px)] [background-size:24px_24px] opacity-20 pointer-events-none"></div>
+    <header class="relative py-14 sm:py-20 overflow-hidden bg-gradient-to-b from-mint-soft to-paper">
+        <div class="absolute inset-0 opacity-20 pointer-events-none"></div>
 
-        <div class="max-w-7xl mx-auto px-6 relative">
+        <div class="max-w-7xl mx-auto px-5 relative">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-                
+
                 <div class="lg:col-span-7 space-y-6">
-                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#0F172A] border border-cyan-500/30 text-cyan-400 font-mono text-xs">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-card border border-line text-mint-deep text-xs">
                         <i class="fa-solid fa-layer-group text-[11px]"></i>
                         <span data-i18n="hero_badge">網站製作販售 • 手機 APP 開發 • 完整全端系統</span>
                     </div>
 
-                    <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-[1.15] tracking-tight" data-i18n="hero_title">
-                        我們專門開發並販售<span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-teal-300 to-emerald-400">網站、手機 APP 與完整全端系統</span>
+                    <h1 class="font-display text-3xl sm:text-5xl lg:text-6xl font-bold text-ink leading-[1.15] tracking-tight" data-i18n="hero_title">
+                        我們專門開發並販售<span class="text-mint-deep">網站、手機 APP 與完整全端系統</span>
                     </h1>
 
-                    <p class="text-slate-400 text-base sm:text-lg leading-relaxed max-w-2xl font-normal" data-i18n="hero_desc">
+                    <p class="text-muted text-base sm:text-lg leading-relaxed max-w-2xl font-normal" data-i18n="hero_desc">
                         無論您想為店面或品牌<strong>架設形象與預約網站</strong>、開發上架 <strong>iOS / Android 手機 APP</strong>，還是需要一套包含前台畫面、後台管理與資料庫的<strong>完整全端系統</strong>，我們都能直接幫您從零做到好、交付給您使用。
                     </p>
 
                     <div class="pt-2 flex flex-col sm:flex-row gap-4">
-                        <a href="#quick-request" class="bg-cyan-500 hover:bg-cyan-400 text-black font-extrabold text-xs uppercase tracking-widest px-8 py-4 rounded-xl shadow-xl transition flex items-center justify-center gap-2 emerald-glow">
+                        <a href="#quick-request" class="bg-ink text-white rounded-xl px-5 py-3.5 font-semibold hover:bg-mint-deep transition min-h-[48px] w-full sm:w-auto inline-flex items-center justify-center gap-2">
                             <span data-i18n="hero_btn_primary">立即下單 / 免費估價（優惠碼 ID 享 9 折）</span>
                             <i class="fa-solid fa-arrow-right text-xs"></i>
                         </a>
-                        <a href="https://line.me/ti/p/rsc69htRfX" target="_blank" class="bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs uppercase tracking-widest px-8 py-4 rounded-xl shadow-md transition flex items-center justify-center gap-2 border border-slate-700">
-                            <i class="fa-brands fa-line text-emerald-400 text-base"></i>
+                        <a href="https://line.me/ti/p/rsc69htRfX" target="_blank" class="bg-card border border-line text-ink rounded-xl px-5 py-3.5 font-semibold hover:border-sea transition min-h-[48px] w-full sm:w-auto inline-flex items-center justify-center gap-2">
+                            <i class="fa-brands fa-line text-mint-deep text-base"></i>
                             <span data-i18n="hero_btn_line">加 LINE 直接聊聊</span>
                         </a>
                     </div>
 
-                    <div class="grid grid-cols-4 gap-4 pt-6 border-t border-slate-800/80 font-mono">
+                    <div class="grid grid-cols-1 sm:grid-cols-4 gap-4 pt-6 border-t border-line">
                         <div>
-                            <div class="text-xl sm:text-2xl font-bold text-white font-display" data-i18n="stat_web_t">NT$1.5萬起</div>
-                            <div class="text-[10px] text-slate-500 uppercase" data-i18n="stat_web">官網與預約系統</div>
+                            <div class="text-xl sm:text-2xl font-bold text-ink font-display" data-i18n="stat_web_t">NT$1.5萬起</div>
+                            <div class="text-[10px] text-muted" data-i18n="stat_web">官網與預約系統</div>
                         </div>
                         <div>
-                            <div class="text-xl sm:text-2xl font-bold text-cyan-400 font-display" data-i18n="stat_mobile_t">NT$4.5萬起</div>
-                            <div class="text-[10px] text-slate-500 uppercase" data-i18n="stat_mobile">iOS & Android APP</div>
+                            <div class="text-xl sm:text-2xl font-bold text-mint-deep font-display" data-i18n="stat_mobile_t">NT$4.5萬起</div>
+                            <div class="text-[10px] text-muted" data-i18n="stat_mobile">iOS & Android APP</div>
                         </div>
                         <div>
-                            <div class="text-xl sm:text-2xl font-bold text-white font-display" data-i18n="stat_api_t">NT$6萬起</div>
-                            <div class="text-[10px] text-slate-500 uppercase" data-i18n="stat_api">完整全端系統</div>
+                            <div class="text-xl sm:text-2xl font-bold text-ink font-display" data-i18n="stat_api_t">NT$6萬起</div>
+                            <div class="text-[10px] text-muted" data-i18n="stat_api">完整全端系統</div>
                         </div>
                         <div>
-                            <div class="text-xl sm:text-2xl font-bold text-emerald-400 font-display" data-i18n="stat_quant_t">NT$1.2萬起</div>
-                            <div class="text-[10px] text-slate-500 uppercase" data-i18n="stat_quant">客製化交易程式</div>
+                            <div class="text-xl sm:text-2xl font-bold text-mint-deep font-display" data-i18n="stat_quant_t">NT$1.2萬起</div>
+                            <div class="text-[10px] text-muted" data-i18n="stat_quant">客製化交易程式</div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Right Feature Panel -->
                 <div class="lg:col-span-5">
-                    <div class="bg-[#0D131F] rounded-3xl border border-slate-800 p-6 space-y-4 shadow-2xl terminal-glow">
-                        <div class="flex items-center justify-between pb-3 border-b border-slate-800 font-mono text-xs">
-                            <span class="text-slate-400" data-i18n="panel_title">公開透明參考價格區間</span>
-                            <span class="text-emerald-400 font-bold" data-i18n="panel_status">優惠碼 ID 再打 9 折</span>
+                    <div class="bg-card rounded-2xl border border-line p-5 sm:p-6 space-y-4 shadow-soft">
+                        <div class="flex items-center justify-between pb-3 border-b border-line text-xs">
+                            <span class="text-muted" data-i18n="panel_title">公開透明參考價格區間</span>
+                            <span class="text-mint-deep font-bold" data-i18n="panel_status">優惠碼 ID 再打 9 折</span>
                         </div>
-                        
+
                         <div class="space-y-3">
-                            <div class="p-3.5 rounded-xl bg-slate-900/90 border border-slate-800/80 flex items-center justify-between">
+                            <div class="p-3.5 rounded-xl bg-paper border border-line flex items-center justify-between">
                                 <div class="flex items-center gap-3">
-                                    <div class="w-9 h-9 rounded-lg bg-cyan-950 text-cyan-400 flex items-center justify-center text-sm border border-cyan-800/50">
+                                    <div class="w-11 h-11 rounded-lg bg-mint-soft text-mint-deep flex items-center justify-center text-sm border border-line">
                                         <i class="fa-solid fa-globe"></i>
                                     </div>
                                     <div>
-                                        <h4 class="text-sm font-bold text-white" data-i18n="panel_item1_t">商業網站製作與販售</h4>
-                                        <p class="text-[11px] text-slate-400" data-i18n="panel_item1_d">品牌官網、商品展示頁、線上預約表單</p>
+                                        <h4 class="text-sm font-bold text-ink" data-i18n="panel_item1_t">商業網站製作與販售</h4>
+                                        <p class="text-[11px] text-muted" data-i18n="panel_item1_d">品牌官網、商品展示頁、線上預約表單</p>
                                     </div>
                                 </div>
-                                <span class="text-[10px] font-mono text-cyan-400 bg-cyan-950/60 px-2.5 py-1 rounded font-bold shrink-0" data-i18n="panel_tag1">NT$15k–45k</span>
+                                <span class="text-[10px] text-mint-deep bg-mint-soft px-2.5 py-1 rounded font-bold shrink-0" data-i18n="panel_tag1">NT$15k–45k</span>
                             </div>
 
-                            <div class="p-3.5 rounded-xl bg-amber-950/20 border border-amber-900/40 flex items-center justify-between">
+                            <div class="p-3.5 rounded-xl bg-mint-soft border border-line flex items-center justify-between">
                                 <div class="flex items-center gap-3">
-                                    <div class="w-9 h-9 rounded-lg bg-amber-950 text-amber-400 flex items-center justify-center text-sm border border-amber-800/50">
+                                    <div class="w-11 h-11 rounded-lg bg-mint-soft text-mint-deep flex items-center justify-center text-sm border border-line">
                                         <i class="fa-solid fa-gamepad"></i>
                                     </div>
                                     <div>
-                                        <h4 class="text-sm font-bold text-white" data-i18n="panel_item2_t">手機 APP 開發（iOS / Android）</h4>
-                                        <p class="text-[11px] text-slate-400" data-i18n="panel_item2_d">參考下方 Spirit Feeder 實機操作影片</p>
+                                        <h4 class="text-sm font-bold text-ink" data-i18n="panel_item2_t">手機 APP 開發（iOS / Android）</h4>
+                                        <p class="text-[11px] text-muted" data-i18n="panel_item2_d">參考下方 Spirit Feeder 實機操作影片</p>
                                     </div>
                                 </div>
-                                <span class="text-[10px] font-mono text-amber-400 bg-amber-950/60 px-2.5 py-1 rounded border border-amber-800/60 font-bold shrink-0" data-i18n="panel_tag2">NT$45k–120k</span>
+                                <span class="text-[10px] text-mint-deep bg-mint-soft px-2.5 py-1 rounded border border-line font-bold shrink-0" data-i18n="panel_tag2">NT$45k–120k</span>
                             </div>
 
-                            <div class="p-3.5 rounded-xl bg-slate-900/90 border border-slate-800/80 flex items-center justify-between">
+                            <div class="p-3.5 rounded-xl bg-paper border border-line flex items-center justify-between">
                                 <div class="flex items-center gap-3">
-                                    <div class="w-9 h-9 rounded-lg bg-cyan-950 text-cyan-400 flex items-center justify-center text-sm border border-cyan-800/50">
+                                    <div class="w-11 h-11 rounded-lg bg-mint-soft text-mint-deep flex items-center justify-center text-sm border border-line">
                                         <i class="fa-solid fa-layer-group"></i>
                                     </div>
                                     <div>
-                                        <h4 class="text-sm font-bold text-white" data-i18n="panel_item3_t">完整全端系統（Full-Stack）</h4>
-                                        <p class="text-[11px] text-slate-400" data-i18n="panel_item3_d">客戶前台＋管理後台＋會員與資料庫一條龍</p>
+                                        <h4 class="text-sm font-bold text-ink" data-i18n="panel_item3_t">完整全端系統（Full-Stack）</h4>
+                                        <p class="text-[11px] text-muted" data-i18n="panel_item3_d">客戶前台＋管理後台＋會員與資料庫一條龍</p>
                                     </div>
                                 </div>
-                                <span class="text-[10px] font-mono text-cyan-400 bg-cyan-950/60 px-2.5 py-1 rounded font-bold shrink-0" data-i18n="panel_tag3">NT$60k–180k+</span>
+                                <span class="text-[10px] text-mint-deep bg-mint-soft px-2.5 py-1 rounded font-bold shrink-0" data-i18n="panel_tag3">NT$60k–180k+</span>
                             </div>
 
-                            <div class="p-3.5 rounded-xl bg-slate-900/90 border border-emerald-900/50 flex items-center justify-between">
+                            <div class="p-3.5 rounded-xl bg-paper border border-line flex items-center justify-between">
                                 <div class="flex items-center gap-3">
-                                    <div class="w-9 h-9 rounded-lg bg-emerald-950 text-emerald-400 flex items-center justify-center text-sm border border-emerald-800/50">
+                                    <div class="w-11 h-11 rounded-lg bg-mint-soft text-mint-deep flex items-center justify-center text-sm border border-line">
                                         <i class="fa-solid fa-chart-line"></i>
                                     </div>
                                     <div>
-                                        <h4 class="text-sm font-bold text-white" data-i18n="panel_item4_t">客製化自動交易程式</h4>
-                                        <p class="text-[11px] text-slate-400" data-i18n="panel_item4_d">把您的交易策略寫成全自動執行程式</p>
+                                        <h4 class="text-sm font-bold text-ink" data-i18n="panel_item4_t">客製化自動交易程式</h4>
+                                        <p class="text-[11px] text-muted" data-i18n="panel_item4_d">把您的交易策略寫成全自動執行程式</p>
                                     </div>
                                 </div>
-                                <span class="text-[10px] font-mono text-emerald-400 bg-emerald-950/60 px-2.5 py-1 rounded border border-emerald-800 font-bold shrink-0" data-i18n="panel_tag4">NT$12k–45k</span>
+                                <span class="text-[10px] text-mint-deep bg-mint-soft px-2.5 py-1 rounded border border-line font-bold shrink-0" data-i18n="panel_tag4">NT$12k–45k</span>
                             </div>
                         </div>
 
                         <div class="pt-2 text-center">
-                            <a href="#services" class="text-xs font-mono text-cyan-400 hover:text-cyan-300 font-bold transition" data-i18n="panel_footer_cta">查看各方案詳細內容與月費維護方案 ↓</a>
+                            <a href="#services" class="text-xs text-mint-deep hover:text-mint-deep font-bold transition" data-i18n="panel_footer_cta">查看各方案詳細內容與月費維護方案 ↓</a>
                         </div>
                     </div>
                 </div>
@@ -223,135 +233,135 @@
     </header>
 
     <!-- The 4 Core Products & Services + Optional Maintenance Tier -->
-    <section id="services" class="py-24 bg-[#0A0E17] border-t border-slate-800/80">
-        <div class="max-w-7xl mx-auto px-6">
+    <section id="services" class="py-14 sm:py-20 px-5 border-t border-line bg-paper">
+        <div class="max-w-7xl mx-auto px-5">
             <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
                 <div class="max-w-2xl space-y-2">
-                    <span class="text-xs font-mono font-bold uppercase tracking-widest text-cyan-400" data-i18n="srv_badge">方案與透明價格區間</span>
-                    <h2 class="font-display text-3xl sm:text-4xl font-bold text-white" data-i18n="srv_title">我們專門製作並販售的四大系統</h2>
-                    <p class="text-slate-400 text-xs sm:text-sm" data-i18n="srv_desc">實際費用會依頁面數量與功能複雜度評估；下單時輸入專屬優惠碼 <strong class="text-cyan-400 font-mono">ID</strong>，總金額直接再打 <strong class="text-emerald-400 font-mono">9 折</strong>。</p>
+                    <span class="text-xs font-bold tracking-widest text-mint-deep" data-i18n="srv_badge">方案與透明價格區間</span>
+                    <h2 class="font-display text-3xl sm:text-5xl font-bold text-ink" data-i18n="srv_title">我們專門製作並販售的四大系統</h2>
+                    <p class="text-muted text-xs sm:text-sm" data-i18n="srv_desc">實際費用會依頁面數量與功能複雜度評估；下單時輸入專屬優惠碼 <strong class="text-mint-deep">ID</strong>，總金額直接再打 <strong class="text-mint-deep">9 折</strong>。</p>
                 </div>
-                <div class="bg-[#0D131F] border border-emerald-800/60 px-4 py-3 rounded-2xl font-mono text-xs text-emerald-300 shrink-0">
-                    <i class="fa-solid fa-tag mr-1.5 text-emerald-400"></i>
+                <div class="bg-card border border-line px-4 py-3 rounded-2xl text-xs text-mint-deep shrink-0 p-5 sm:p-6 shadow-soft hover:border-sea hover:shadow-lift transition">
+                    <i class="fa-solid fa-tag mr-1.5 text-mint-deep"></i>
                     <span data-i18n="srv_promo_note">優惠碼 <strong>ID</strong>：所有方案享 9 折優惠</span>
                 </div>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                
+
                 <!-- 1. Websites -->
-                <div class="bg-[#0D131F] rounded-2xl p-7 border border-slate-800 hover:border-cyan-500/50 transition duration-300 flex flex-col justify-between space-y-5">
+                <div class="bg-card rounded-2xl border border-line hover:border-sea transition duration-300 flex flex-col justify-between space-y-5 p-5 sm:p-6 shadow-soft hover:shadow-lift">
                     <div class="space-y-4">
                         <div class="flex items-center justify-between">
-                            <div class="w-12 h-12 rounded-xl bg-cyan-950/80 text-cyan-400 flex items-center justify-center text-xl border border-cyan-800">
+                            <div class="w-12 h-12 rounded-xl bg-mint-soft text-mint-deep flex items-center justify-center text-xl border border-line">
                                 <i class="fa-solid fa-globe"></i>
                             </div>
-                            <span class="text-[10px] font-mono uppercase px-2.5 py-1 rounded-full bg-slate-900 text-slate-400 border border-slate-800" data-i18n="srv1_time">約 1–2 週交付</span>
+                            <span class="text-[10px] px-2.5 py-1 rounded-full bg-paper text-muted border border-line" data-i18n="srv1_time">約 1–2 週交付</span>
                         </div>
-                        <h3 class="font-display text-lg font-bold text-white" data-i18n="srv1_t">商業網站製作與販售</h3>
-                        <div class="py-2.5 px-3.5 rounded-xl bg-[#080B11] border border-slate-800/90">
-                            <span class="text-[10px] font-mono text-slate-500 block uppercase" data-i18n="price_label">參考價格區間</span>
-                            <span class="font-display text-xl font-bold text-cyan-400" data-i18n="srv1_price">NT$15,000 – 45,000</span>
-                            <span class="text-[10px] font-mono text-emerald-400 block mt-0.5" data-i18n="srv1_disc">輸入 ID 折後約 NT$13,500 起</span>
+                        <h3 class="font-display text-lg font-bold text-ink" data-i18n="srv1_t">商業網站製作與販售</h3>
+                        <div class="py-2.5 px-3.5 rounded-xl bg-card border border-line">
+                            <span class="text-[10px] text-muted block" data-i18n="price_label">參考價格區間</span>
+                            <span class="font-display text-xl font-bold text-mint-deep" data-i18n="srv1_price">NT$15,000 – 45,000</span>
+                            <span class="text-[10px] text-mint-deep block mt-0.5" data-i18n="srv1_disc">輸入 ID 折後約 NT$13,500 起</span>
                         </div>
-                        <p class="text-slate-400 text-xs leading-relaxed" data-i18n="srv1_d">
+                        <p class="text-muted text-xs leading-relaxed" data-i18n="srv1_d">
                             幫您的公司、店面或個人品牌打造專業官網、商品介紹頁與線上預約表單，手機與電腦瀏覽都順暢漂亮。
                         </p>
-                        <ul class="text-xs text-slate-400 space-y-1.5 pt-2 border-t border-slate-800 font-mono">
+                        <ul class="text-xs text-muted space-y-1.5 pt-2 border-t border-line">
                             <li data-i18n="srv1_b1">• 手機與電腦自動適應版面</li>
                             <li data-i18n="srv1_b2">• 客戶填單直接寄信通知您</li>
                             <li data-i18n="srv1_b3">• 幫您設定好專屬網址與安全鎖</li>
                         </ul>
                     </div>
-                    <a href="#quick-request" onclick="selectService('Commercial Website / Web Platform')" class="w-full py-3 bg-slate-900 hover:bg-slate-800 text-cyan-400 text-xs font-bold font-mono uppercase tracking-wider text-center rounded-xl transition border border-slate-800" data-i18n="srv1_cta">
+                    <a href="#quick-request" onclick="selectService('Commercial Website / Web Platform')" class="bg-ink text-white rounded-xl px-5 py-3.5 font-semibold hover:bg-mint-deep transition min-h-[48px] w-full sm:w-auto inline-flex items-center justify-center gap-2" data-i18n="srv1_cta">
                         訂購商業網站 →
                     </a>
                 </div>
 
                 <!-- 2. Mobile Apps -->
-                <div class="bg-[#0D131F] rounded-2xl p-7 border border-slate-800 hover:border-cyan-500/50 transition duration-300 flex flex-col justify-between space-y-5">
+                <div class="bg-card rounded-2xl border border-line hover:border-sea transition duration-300 flex flex-col justify-between space-y-5 p-5 sm:p-6 shadow-soft hover:shadow-lift">
                     <div class="space-y-4">
                         <div class="flex items-center justify-between">
-                            <div class="w-12 h-12 rounded-xl bg-cyan-950/80 text-cyan-400 flex items-center justify-center text-xl border border-cyan-800">
+                            <div class="w-12 h-12 rounded-xl bg-mint-soft text-mint-deep flex items-center justify-center text-xl border border-line">
                                 <i class="fa-solid fa-mobile-screen-button"></i>
                             </div>
-                            <span class="text-[10px] font-mono uppercase px-2.5 py-1 rounded-full bg-slate-900 text-slate-400 border border-slate-800" data-i18n="srv2_time">約 3–6 週交付</span>
+                            <span class="text-[10px] px-2.5 py-1 rounded-full bg-paper text-muted border border-line" data-i18n="srv2_time">約 3–6 週交付</span>
                         </div>
-                        <h3 class="font-display text-lg font-bold text-white" data-i18n="srv2_t">手機 APP 開發與販售</h3>
-                        <div class="py-2.5 px-3.5 rounded-xl bg-[#080B11] border border-slate-800/90">
-                            <span class="text-[10px] font-mono text-slate-500 block uppercase" data-i18n="price_label">參考價格區間</span>
-                            <span class="font-display text-xl font-bold text-cyan-400" data-i18n="srv2_price">NT$45,000 – 120,000</span>
-                            <span class="text-[10px] font-mono text-emerald-400 block mt-0.5" data-i18n="srv2_disc">輸入 ID 折後約 NT$40,500 起</span>
+                        <h3 class="font-display text-lg font-bold text-ink" data-i18n="srv2_t">手機 APP 開發與販售</h3>
+                        <div class="py-2.5 px-3.5 rounded-xl bg-card border border-line">
+                            <span class="text-[10px] text-muted block" data-i18n="price_label">參考價格區間</span>
+                            <span class="font-display text-xl font-bold text-mint-deep" data-i18n="srv2_price">NT$45,000 – 120,000</span>
+                            <span class="text-[10px] text-mint-deep block mt-0.5" data-i18n="srv2_disc">輸入 ID 折後約 NT$40,500 起</span>
                         </div>
-                        <p class="text-slate-400 text-xs leading-relaxed" data-i18n="srv2_d">
+                        <p class="text-muted text-xs leading-relaxed" data-i18n="srv2_d">
                             一套程式同時支援 iPhone（iOS）與 Android 手機（參考下方 Spirit Feeder 實機影片），畫面流暢、功能完整。
                         </p>
-                        <ul class="text-xs text-slate-400 space-y-1.5 pt-2 border-t border-slate-800 font-mono">
+                        <ul class="text-xs text-muted space-y-1.5 pt-2 border-t border-line">
                             <li data-i18n="srv2_b1">• 同時支援蘋果與安卓手機</li>
                             <li data-i18n="srv2_b2">• 會員登入、通知與資料儲存</li>
                             <li data-i18n="srv2_b3">• 雲端即時連線同步更新</li>
                         </ul>
                     </div>
-                    <a href="#quick-request" onclick="selectService('Mobile Application (React Native / Expo)')" class="w-full py-3 bg-slate-900 hover:bg-slate-800 text-cyan-400 text-xs font-bold font-mono uppercase tracking-wider text-center rounded-xl transition border border-slate-800" data-i18n="srv2_cta">
+                    <a href="#quick-request" onclick="selectService('Mobile Application (React Native / Expo)')" class="bg-ink text-white rounded-xl px-5 py-3.5 font-semibold hover:bg-mint-deep transition min-h-[48px] w-full sm:w-auto inline-flex items-center justify-center gap-2" data-i18n="srv2_cta">
                         訂購手機 APP →
                     </a>
                 </div>
 
                 <!-- 3. Full-Stack Systems -->
-                <div class="bg-[#0D131F] rounded-2xl p-7 border-2 border-cyan-500/60 hover:border-cyan-400 transition duration-300 flex flex-col justify-between space-y-5 relative">
-                    <span class="absolute -top-3 right-5 bg-cyan-500 text-black text-[10px] font-mono font-extrabold uppercase tracking-wider px-3 py-0.5 rounded-full" data-i18n="srv3_popular">最受企業歡迎</span>
+                <div class="bg-card rounded-2xl border-2 border-line hover:border-sea transition duration-300 flex flex-col justify-between space-y-5 relative p-5 sm:p-6 shadow-soft hover:shadow-lift">
+                    <span class="absolute -top-3 right-5 bg-mint-soft text-ink text-[10px] font-extrabold tracking-wider px-3 py-0.5 rounded-full" data-i18n="srv3_popular">最受企業歡迎</span>
                     <div class="space-y-4">
                         <div class="flex items-center justify-between">
-                            <div class="w-12 h-12 rounded-xl bg-cyan-950/80 text-cyan-400 flex items-center justify-center text-xl border border-cyan-800">
+                            <div class="w-12 h-12 rounded-xl bg-mint-soft text-mint-deep flex items-center justify-center text-xl border border-line">
                                 <i class="fa-solid fa-layer-group"></i>
                             </div>
-                            <span class="text-[10px] font-mono uppercase px-2.5 py-1 rounded-full bg-slate-900 text-slate-400 border border-slate-800" data-i18n="srv3_time">約 4–8 週交付</span>
+                            <span class="text-[10px] px-2.5 py-1 rounded-full bg-paper text-muted border border-line" data-i18n="srv3_time">約 4–8 週交付</span>
                         </div>
-                        <h3 class="font-display text-lg font-bold text-white" data-i18n="srv3_t">完整全端系統（Full-Stack）</h3>
-                        <div class="py-2.5 px-3.5 rounded-xl bg-[#080B11] border border-cyan-900/60">
-                            <span class="text-[10px] font-mono text-slate-500 block uppercase" data-i18n="price_label">參考價格區間</span>
-                            <span class="font-display text-xl font-bold text-cyan-400" data-i18n="srv3_price">NT$60,000 – 180,000+</span>
-                            <span class="text-[10px] font-mono text-emerald-400 block mt-0.5" data-i18n="srv3_disc">輸入 ID 折後約 NT$54,000 起</span>
+                        <h3 class="font-display text-lg font-bold text-ink" data-i18n="srv3_t">完整全端系統（Full-Stack）</h3>
+                        <div class="py-2.5 px-3.5 rounded-xl bg-card border border-line">
+                            <span class="text-[10px] text-muted block" data-i18n="price_label">參考價格區間</span>
+                            <span class="font-display text-xl font-bold text-mint-deep" data-i18n="srv3_price">NT$60,000 – 180,000+</span>
+                            <span class="text-[10px] text-mint-deep block mt-0.5" data-i18n="srv3_disc">輸入 ID 折後約 NT$54,000 起</span>
                         </div>
-                        <p class="text-slate-400 text-xs leading-relaxed" data-i18n="srv3_d">
+                        <p class="text-muted text-xs leading-relaxed" data-i18n="srv3_d">
                             為您打造「客戶操作前台＋老闆管理後台＋雲端資料庫」的一條龍完整系統，讓訂單管理、會員資料與營運流程全自動化。
                         </p>
-                        <ul class="text-xs text-slate-400 space-y-1.5 pt-2 border-t border-slate-800 font-mono">
+                        <ul class="text-xs text-muted space-y-1.5 pt-2 border-t border-line">
                             <li data-i18n="srv3_b1">• 前台網頁/APP ＋ 後台管理介面</li>
                             <li data-i18n="srv3_b2">• 安全的會員帳號與資料庫儲存</li>
                             <li data-i18n="srv3_b3">• 自動化訂單通知與外部服務串接</li>
                         </ul>
                     </div>
-                    <a href="#quick-request" onclick="selectService('Full-Stack Custom System Architecture')" class="w-full py-3 bg-cyan-500 hover:bg-cyan-400 text-black text-xs font-extrabold font-mono uppercase tracking-wider text-center rounded-xl transition emerald-glow" data-i18n="srv3_cta">
+                    <a href="#quick-request" onclick="selectService('Full-Stack Custom System Architecture')" class="bg-ink text-white rounded-xl px-5 py-3.5 font-semibold hover:bg-mint-deep transition min-h-[48px] w-full sm:w-auto inline-flex items-center justify-center gap-2" data-i18n="srv3_cta">
                         訂購全端系統 →
                     </a>
                 </div>
 
                 <!-- 4. Custom Algorithmic & Trading Systems -->
-                <div class="bg-[#0D131F] rounded-2xl p-7 border border-emerald-500/40 hover:border-emerald-400 transition duration-300 flex flex-col justify-between space-y-5">
+                <div class="bg-card rounded-2xl border border-line hover:border-sea transition duration-300 flex flex-col justify-between space-y-5 p-5 sm:p-6 shadow-soft hover:shadow-lift">
                     <div class="space-y-4">
                         <div class="flex items-center justify-between">
-                            <div class="w-12 h-12 rounded-xl bg-emerald-950/80 text-emerald-400 flex items-center justify-center text-xl border border-emerald-800">
+                            <div class="w-12 h-12 rounded-xl bg-mint-soft text-mint-deep flex items-center justify-center text-xl border border-line">
                                 <i class="fa-solid fa-chart-line"></i>
                             </div>
-                            <span class="text-[10px] font-mono uppercase px-2.5 py-1 rounded-full bg-slate-900 text-slate-400 border border-slate-800" data-i18n="srv4_time">約 1–3 週交付</span>
+                            <span class="text-[10px] px-2.5 py-1 rounded-full bg-paper text-muted border border-line" data-i18n="srv4_time">約 1–3 週交付</span>
                         </div>
-                        <h3 class="font-display text-lg font-bold text-white" data-i18n="srv4_t">客製化自動交易程式</h3>
-                        <div class="py-2.5 px-3.5 rounded-xl bg-[#080B11] border border-slate-800/90">
-                            <span class="text-[10px] font-mono text-slate-500 block uppercase" data-i18n="price_label">參考價格區間</span>
-                            <span class="font-display text-xl font-bold text-emerald-400" data-i18n="srv4_price">NT$12,000 – 45,000</span>
-                            <span class="text-[10px] font-mono text-emerald-400 block mt-0.5" data-i18n="srv4_disc">輸入 ID 折後約 NT$10,800 起</span>
+                        <h3 class="font-display text-lg font-bold text-ink" data-i18n="srv4_t">客製化自動交易程式</h3>
+                        <div class="py-2.5 px-3.5 rounded-xl bg-card border border-line">
+                            <span class="text-[10px] text-muted block" data-i18n="price_label">參考價格區間</span>
+                            <span class="font-display text-xl font-bold text-mint-deep" data-i18n="srv4_price">NT$12,000 – 45,000</span>
+                            <span class="text-[10px] text-mint-deep block mt-0.5" data-i18n="srv4_disc">輸入 ID 折後約 NT$10,800 起</span>
                         </div>
-                        <p class="text-slate-400 text-xs leading-relaxed" data-i18n="srv4_d">
+                        <p class="text-muted text-xs leading-relaxed" data-i18n="srv4_d">
                             如果您有自己的一套交易策略或進出場規則，我們能幫您寫成 MT5 / Python 全自動執行程式，並用歷史數據幫您完整測試。
                         </p>
-                        <ul class="text-xs text-slate-400 space-y-1.5 pt-2 border-t border-slate-800 font-mono">
+                        <ul class="text-xs text-muted space-y-1.5 pt-2 border-t border-line">
                             <li data-i18n="srv4_b1">• 依照您的策略規則量身編寫</li>
                             <li data-i18n="srv4_b2">• 內建自動停損與資金風控保護</li>
-                            <li><a href="quant.html" class="text-emerald-400 hover:underline" data-i18n="srv4_b3">• 查看 100% 歷史回測技術報告 →</a></li>
+                            <li><a href="quant.html" class="text-mint-deep hover:underline" data-i18n="srv4_b3">• 查看 100% 歷史回測技術報告 →</a></li>
                         </ul>
                     </div>
-                    <a href="#quick-request" onclick="selectService('Custom Quantitative & Algorithmic System (MQL5 / Python)')" class="w-full py-3 bg-emerald-950 hover:bg-emerald-900 text-emerald-300 text-xs font-bold font-mono uppercase tracking-wider text-center rounded-xl transition border border-emerald-800" data-i18n="srv4_cta">
+                    <a href="#quick-request" onclick="selectService('Custom Quantitative & Algorithmic System (MQL5 / Python)')" class="bg-ink text-white rounded-xl px-5 py-3.5 font-semibold hover:bg-mint-deep transition min-h-[48px] w-full sm:w-auto inline-flex items-center justify-center gap-2" data-i18n="srv4_cta">
                         洽談客製程式開發 →
                     </a>
                 </div>
@@ -359,19 +369,19 @@
             </div>
 
             <!-- Optional Monthly Maintenance & Hosting Tier -->
-            <div class="mt-8 bg-[#0D131F] rounded-3xl p-6 sm:p-8 border border-slate-800 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
+            <div class="mt-8 bg-card rounded-3xl p-6 sm:p-8 border border-line flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
                 <div class="space-y-2 max-w-2xl">
-                    <div class="inline-flex items-center gap-2 text-xs font-mono text-cyan-400 font-bold">
+                    <div class="inline-flex items-center gap-2 text-xs text-mint-deep font-bold">
                         <i class="fa-solid fa-shield-heart"></i>
                         <span data-i18n="care_badge">選配安心服務 • 上線後免煩惱維護</span>
                     </div>
-                    <h3 class="font-display text-xl sm:text-2xl font-bold text-white" data-i18n="care_title">全託管網站與系統維護方案（NT$1,500 – 3,500 / 月）</h3>
-                    <p class="text-xs text-slate-400 leading-relaxed" data-i18n="care_desc">
+                    <h3 class="font-display text-xl sm:text-2xl font-bold text-ink" data-i18n="care_title">全託管網站與系統維護方案（NT$1,500 – 3,500 / 月）</h3>
+                    <p class="text-xs text-muted leading-relaxed" data-i18n="care_desc">
                         擔心上線後沒人幫忙改文字、換圖片或續約網址嗎？可自由加購月費維護方案（無綁約、隨時可取消）：包含網域與 SSL 安全憑證代管、每月內容圖文更新、24 小時主機監控與雲端備份。
                     </p>
                 </div>
                 <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full lg:w-auto shrink-0">
-                    <a href="#quick-request" onclick="selectService('Monthly Website & System Maintenance Plan (NT$1,500 - 3,500/mo)')" class="py-3.5 px-6 bg-slate-900 hover:bg-slate-800 text-cyan-400 font-bold text-xs font-mono uppercase tracking-wider rounded-xl border border-cyan-800/60 text-center transition" data-i18n="care_cta">
+                    <a href="#quick-request" onclick="selectService('Monthly Website & System Maintenance Plan (NT$1,500 - 3,500/mo)')" class="bg-ink text-white rounded-xl px-5 py-3.5 font-semibold hover:bg-mint-deep transition min-h-[48px] w-full sm:w-auto inline-flex items-center justify-center gap-2" data-i18n="care_cta">
                         加購月費託管維護 →
                     </a>
                 </div>
@@ -380,95 +390,95 @@
     </section>
 
     <!-- Live Client Demos & Portfolio (Now Includes Traditional Chinese Pilates Site!) -->
-    <section id="portfolio" class="py-24 bg-[#080B11] border-t border-slate-800/80">
-        <div class="max-w-7xl mx-auto px-6">
+    <section id="portfolio" class="py-14 sm:py-20 px-5 border-t border-line bg-card">
+        <div class="max-w-7xl mx-auto px-5">
             <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
                 <div>
-                    <span class="text-xs font-mono font-bold uppercase tracking-widest text-cyan-400" data-i18n="port_badge">實際客戶與範例網站作品</span>
-                    <h2 class="font-display text-3xl sm:text-5xl font-bold text-white mt-2" data-i18n="port_title">可以直接點開體驗的線上網站</h2>
+                    <span class="text-xs font-bold tracking-widest text-mint-deep" data-i18n="port_badge">實際客戶與範例網站作品</span>
+                    <h2 class="font-display text-3xl sm:text-5xl font-bold text-ink mt-2" data-i18n="port_title">可以直接點開體驗的線上網站</h2>
                 </div>
-                <p class="text-slate-400 text-xs max-w-md font-mono" data-i18n="port_desc">
+                <p class="text-muted text-xs max-w-md" data-i18n="port_desc">
                     包含台灣本地繁體中文預約官網與海外商業網站，點擊下方連結即可直接操作體驗。
                 </p>
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                
+
                 <!-- Demo 1: Aura Pilates Studio (Traditional Chinese Demo) -->
-                <div class="bg-[#0D131F] rounded-3xl border-2 border-cyan-500/50 overflow-hidden hover:border-cyan-400 transition duration-300 flex flex-col justify-between">
-                    <div class="p-8 space-y-4">
+                <div class="bg-card rounded-2xl shadow-soft hover:shadow-lift border-2 border-line overflow-hidden hover:border-sea transition duration-300 flex flex-col justify-between">
+                    <div class="p-5 sm:p-6 space-y-4">
                         <div class="flex items-center justify-between">
-                            <span class="text-[10px] font-mono uppercase tracking-widest px-3 py-1 rounded-full bg-cyan-950 text-cyan-300 border border-cyan-800" data-i18n="c0_tag">繁體中文 • 運動課程預約官網</span>
-                            <span class="text-xs text-slate-400 font-mono" data-i18n="pf1_loc">Taiwan</span>
+                            <span class="text-[10px] tracking-widest px-3 py-1 rounded-full bg-mint-soft text-mint-deep border border-line" data-i18n="c0_tag">繁體中文 • 運動課程預約官網</span>
+                            <span class="text-xs text-muted" data-i18n="pf1_loc">Taiwan</span>
                         </div>
-                        <h3 class="font-display text-2xl font-bold text-white" data-i18n="c0_title">靜息皮拉提斯 Aura Pilates</h3>
-                        <p class="text-slate-400 text-xs leading-relaxed" data-i18n="c0_desc">
+                        <h3 class="font-display text-2xl font-bold text-ink" data-i18n="c0_title">靜息皮拉提斯 Aura Pilates</h3>
+                        <p class="text-muted text-xs leading-relaxed" data-i18n="c0_desc">
                             專為台灣精品器械皮拉提斯與美學工作室打造的繁體中文官網，支援課程方案展示、即時課表篩選與一鍵線上預約體驗課功能。
                         </p>
-                        <div class="flex flex-wrap gap-2 pt-2 font-mono text-[11px] text-slate-300">
-                            <span class="bg-slate-900 px-3 py-1 rounded-lg border border-slate-800" data-i18n="c0_t1">繁體中文美學排版</span>
-                            <span class="bg-slate-900 px-3 py-1 rounded-lg border border-slate-800" data-i18n="c0_t2">即時課表篩選</span>
-                            <span class="bg-slate-900 px-3 py-1 rounded-lg border border-slate-800" data-i18n="c0_t3">線上預約體驗表單</span>
+                        <div class="flex flex-wrap gap-2 pt-2 text-[11px] text-ink2">
+                            <span class="bg-paper px-3 py-1 rounded-lg border border-line" data-i18n="c0_t1">繁體中文美學排版</span>
+                            <span class="bg-paper px-3 py-1 rounded-lg border border-line" data-i18n="c0_t2">即時課表篩選</span>
+                            <span class="bg-paper px-3 py-1 rounded-lg border border-line" data-i18n="c0_t3">線上預約體驗表單</span>
                         </div>
                     </div>
-                    <div class="p-8 pt-0 flex items-center justify-between border-t border-slate-800/80 mt-6">
-                        <a href="pilates-demo.html" target="_blank" class="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 font-bold text-xs uppercase tracking-wider transition">
+                    <div class="p-5 sm:p-6 pt-0 flex items-center justify-between border-t border-line mt-6">
+                        <a href="pilates-demo.html" target="_blank" class="inline-flex items-center gap-2 text-mint-deep hover:text-mint-deep font-bold text-xs tracking-wider transition">
                             <span data-i18n="launch_site">點我開啟網站</span>
                             <i class="fa-solid fa-arrow-up-right-from-square text-[11px]"></i>
                         </a>
-                        <span class="text-[11px] font-mono text-slate-500" data-i18n="pf1_url">pilates-demo.html</span>
+                        <span class="text-[11px] text-muted" data-i18n="pf1_url">pilates-demo.html</span>
                     </div>
                 </div>
 
                 <!-- Demo 2: Sabina Lady's Cab -->
-                <div class="bg-[#0D131F] rounded-3xl border border-slate-800 overflow-hidden hover:border-cyan-500/40 transition duration-300 flex flex-col justify-between">
-                    <div class="p-8 space-y-4">
+                <div class="bg-card rounded-2xl shadow-soft hover:shadow-lift border border-line overflow-hidden hover:border-sea transition duration-300 flex flex-col justify-between">
+                    <div class="p-5 sm:p-6 space-y-4">
                         <div class="flex items-center justify-between">
-                            <span class="text-[10px] font-mono uppercase tracking-widest px-3 py-1 rounded-full bg-emerald-950 text-emerald-400 border border-emerald-800" data-i18n="c1_tag">觀光旅遊與專車接送預約網</span>
-                            <span class="text-xs text-slate-400 font-mono" data-i18n="pf2_loc">Saint Lucia</span>
+                            <span class="text-[10px] tracking-widest px-3 py-1 rounded-full bg-mint-soft text-mint-deep border border-line" data-i18n="c1_tag">觀光旅遊與專車接送預約網</span>
+                            <span class="text-xs text-muted" data-i18n="pf2_loc">Saint Lucia</span>
                         </div>
-                        <h3 class="font-display text-2xl font-bold text-white" data-i18n="pf2_name">Sabina Lady's Cab</h3>
-                        <p class="text-slate-400 text-xs leading-relaxed" data-i18n="c1_desc">
+                        <h3 class="font-display text-2xl font-bold text-ink" data-i18n="pf2_name">Sabina Lady's Cab</h3>
+                        <p class="text-muted text-xs leading-relaxed" data-i18n="c1_desc">
                             幫加勒比海聖露西亞的觀光包車業者打造的線上預約網站。裡面有實景旅遊影片介紹、線上行程預約表單，客人填完單就會自動寄信通知老闆。
                         </p>
-                        <div class="flex flex-wrap gap-2 pt-2 font-mono text-[11px] text-slate-300">
-                            <span class="bg-slate-900 px-3 py-1 rounded-lg border border-slate-800" data-i18n="c1_t2">線上行程預約</span>
-                            <span class="bg-slate-900 px-3 py-1 rounded-lg border border-slate-800" data-i18n="c1_t3">自動寄信通知</span>
-                            <span class="bg-slate-900 px-3 py-1 rounded-lg border border-slate-800" data-i18n="c1_t4">專屬網址與 SSL</span>
+                        <div class="flex flex-wrap gap-2 pt-2 text-[11px] text-ink2">
+                            <span class="bg-paper px-3 py-1 rounded-lg border border-line" data-i18n="c1_t2">線上行程預約</span>
+                            <span class="bg-paper px-3 py-1 rounded-lg border border-line" data-i18n="c1_t3">自動寄信通知</span>
+                            <span class="bg-paper px-3 py-1 rounded-lg border border-line" data-i18n="c1_t4">專屬網址與 SSL</span>
                         </div>
                     </div>
-                    <div class="p-8 pt-0 flex items-center justify-between border-t border-slate-800/80 mt-6">
-                        <a href="https://www.sabinasladycab.com" target="_blank" class="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 font-bold text-xs uppercase tracking-wider transition">
+                    <div class="p-5 sm:p-6 pt-0 flex items-center justify-between border-t border-line mt-6">
+                        <a href="https://www.sabinasladycab.com" target="_blank" class="inline-flex items-center gap-2 text-mint-deep hover:text-mint-deep font-bold text-xs tracking-wider transition">
                             <span data-i18n="launch_site">點我開啟網站</span>
                             <i class="fa-solid fa-arrow-up-right-from-square text-[11px]"></i>
                         </a>
-                        <span class="text-[11px] font-mono text-slate-500" data-i18n="pf2_url">www.sabinasladycab.com</span>
+                        <span class="text-[11px] text-muted" data-i18n="pf2_url">www.sabinasladycab.com</span>
                     </div>
                 </div>
 
                 <!-- Demo 3: Refined Art Solutions -->
-                <div class="bg-[#0D131F] rounded-3xl border border-slate-800 overflow-hidden hover:border-cyan-500/40 transition duration-300 flex flex-col justify-between">
-                    <div class="p-8 space-y-4">
+                <div class="bg-card rounded-2xl shadow-soft hover:shadow-lift border border-line overflow-hidden hover:border-sea transition duration-300 flex flex-col justify-between">
+                    <div class="p-5 sm:p-6 space-y-4">
                         <div class="flex items-center justify-between">
-                            <span class="text-[10px] font-mono uppercase tracking-widest px-3 py-1 rounded-full bg-cyan-950 text-cyan-400 border border-cyan-800" data-i18n="c2_tag">活動派對與攝影設備租借網</span>
-                            <span class="text-xs text-slate-400 font-mono" data-i18n="pf3_loc">Saint Lucia</span>
+                            <span class="text-[10px] tracking-widest px-3 py-1 rounded-full bg-mint-soft text-mint-deep border border-line" data-i18n="c2_tag">活動派對與攝影設備租借網</span>
+                            <span class="text-xs text-muted" data-i18n="pf3_loc">Saint Lucia</span>
                         </div>
-                        <h3 class="font-display text-2xl font-bold text-white" data-i18n="pf3_name">Refined Art Solutions</h3>
-                        <p class="text-slate-400 text-xs leading-relaxed" data-i18n="c2_desc">
+                        <h3 class="font-display text-2xl font-bold text-ink" data-i18n="pf3_name">Refined Art Solutions</h3>
+                        <p class="text-muted text-xs leading-relaxed" data-i18n="c2_desc">
                             幫活動佈置與派對攝影公司設計的品牌展示官網，清楚展示無限鏡面拍照亭、發光舞台、即時印相機台與派對氣球佈置作品，方便客戶線上詢價預約檔期。
                         </p>
-                        <div class="flex flex-wrap gap-2 pt-2 font-mono text-[11px] text-slate-300">
-                            <span class="bg-slate-900 px-3 py-1 rounded-lg border border-slate-800" data-i18n="c2_t1">精品質感排版</span>
-                            <span class="bg-slate-900 px-3 py-1 rounded-lg border border-slate-800" data-i18n="c2_t3">線上檔期詢價</span>
-                            <span class="bg-slate-900 px-3 py-1 rounded-lg border border-slate-800" data-i18n="c2_t4">專屬網域上線</span>
+                        <div class="flex flex-wrap gap-2 pt-2 text-[11px] text-ink2">
+                            <span class="bg-paper px-3 py-1 rounded-lg border border-line" data-i18n="c2_t1">精品質感排版</span>
+                            <span class="bg-paper px-3 py-1 rounded-lg border border-line" data-i18n="c2_t3">線上檔期詢價</span>
+                            <span class="bg-paper px-3 py-1 rounded-lg border border-line" data-i18n="c2_t4">專屬網域上線</span>
                         </div>
                     </div>
-                    <div class="p-8 pt-0 flex items-center justify-between border-t border-slate-800/80 mt-6">
-                        <a href="https://www.refinedartsolutions.com" target="_blank" class="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 font-bold text-xs uppercase tracking-wider transition">
+                    <div class="p-5 sm:p-6 pt-0 flex items-center justify-between border-t border-line mt-6">
+                        <a href="https://www.refinedartsolutions.com" target="_blank" class="inline-flex items-center gap-2 text-mint-deep hover:text-mint-deep font-bold text-xs tracking-wider transition">
                             <span data-i18n="launch_site">點我開啟網站</span>
                             <i class="fa-solid fa-arrow-up-right-from-square text-[11px]"></i>
                         </a>
-                        <span class="text-[11px] font-mono text-slate-500" data-i18n="pf3_url">www.refinedartsolutions.com</span>
+                        <span class="text-[11px] text-muted" data-i18n="pf3_url">www.refinedartsolutions.com</span>
                     </div>
                 </div>
 
@@ -477,27 +487,27 @@
     </section>
 
     <!-- Mobile App Production Demo (Spirit Feeder) -->
-    <section id="apps" class="py-24 bg-[#0A0E17] border-t border-slate-800/80">
-        <div class="max-w-7xl mx-auto px-6">
-            
+    <section id="apps" class="py-14 sm:py-20 px-5 border-t border-line bg-paper">
+        <div class="max-w-7xl mx-auto px-5">
+
             <div class="max-w-3xl mx-auto text-center mb-16 space-y-3">
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-950/80 border border-amber-800/60 text-amber-400 font-mono text-xs">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-mint-soft border border-line text-mint-deep text-xs">
                     <i class="fa-solid fa-mobile-screen"></i>
                     <span data-i18n="app_badge">手機 APP 實際作品展示 • 我們自己做出來的</span>
                 </div>
-                <h2 class="font-display text-3xl sm:text-5xl font-bold text-white" data-i18n="app_name">Spirit Feeder</h2>
-                <p class="text-slate-400 text-xs sm:text-sm leading-relaxed" data-i18n="app_intro">
+                <h2 class="font-display text-3xl sm:text-5xl font-bold text-ink" data-i18n="app_name">Spirit Feeder</h2>
+                <p class="text-muted text-xs sm:text-sm leading-relaxed" data-i18n="app_intro">
                     這是我們從零開發的手機養成遊戲 APP，同時支援 iPhone 與 Android 手機。使用者可以領養可愛夥伴（獅子、驢子、烏鴉、駱駝），透過每天閱讀獲得食物與經驗值讓寵物長大進化，還能進行問答闖關並自由布置房間。
                 </p>
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-                
+
                 <div class="lg:col-span-5 flex justify-center">
-                    <div class="relative w-[280px] sm:w-[320px] rounded-[42px] p-3 bg-gradient-to-b from-slate-700 via-slate-900 to-black border-4 border-slate-800 shadow-2xl app-glow">
-                        <div class="absolute top-6 left-1/2 -translate-x-1/2 w-28 h-5 bg-black rounded-full z-20 flex items-center justify-center">
-                            <span class="w-2.5 h-2.5 rounded-full bg-slate-900 inline-block mr-2"></span>
-                            <span class="w-2 h-2 rounded-full bg-slate-950 inline-block"></span>
+                    <div class="relative w-[280px] sm:w-[320px] rounded-[42px] p-3 border-4 border-line shadow-soft">
+                        <div class="absolute top-6 left-1/2 phone-notch w-28 h-5 bg-black rounded-full z-20 flex items-center justify-center">
+                            <span class="w-2.5 h-2.5 rounded-full bg-paper inline-block mr-2"></span>
+                            <span class="w-2 h-2 rounded-full bg-paper inline-block"></span>
                         </div>
 
                         <div class="rounded-[32px] overflow-hidden bg-black aspect-[9/19] relative shadow-inner">
@@ -511,65 +521,65 @@
 
                 <div class="lg:col-span-7 space-y-6">
                     <div>
-                        <span class="text-xs font-mono text-amber-400 uppercase tracking-widest block font-bold" data-i18n="app_sub">想做自己的手機 APP 嗎？</span>
-                        <h3 class="font-display text-2xl sm:text-3xl font-bold text-white mt-1" data-i18n="app_quote">「從畫面設計到雲端資料儲存，我們全部幫您做好。」</h3>
-                        <p class="text-slate-400 text-xs sm:text-sm mt-2 leading-relaxed" data-i18n="app_desc">
+                        <span class="text-xs text-mint-deep tracking-widest block font-bold" data-i18n="app_sub">想做自己的手機 APP 嗎？</span>
+                        <h3 class="font-display text-2xl sm:text-3xl font-bold text-ink mt-1" data-i18n="app_quote">「從畫面設計到雲端資料儲存，我們全部幫您做好。」</h3>
+                        <p class="text-muted text-xs sm:text-sm mt-2 leading-relaxed" data-i18n="app_desc">
                             直接觀看左方的手機實機操作影片！不管您想做會員點數 APP、線上預約訂購 APP、社交互動平台或遊戲化應用，我們都能幫您把想法做成真正可以下載使用的手機程式。
                         </p>
                     </div>
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div class="bg-[#0D131F] p-4 rounded-2xl border border-slate-800 space-y-2">
-                            <div class="flex items-center gap-2 text-amber-400 font-display font-bold text-sm">
+                        <div class="bg-card rounded-2xl border border-line space-y-2 p-5 sm:p-6 shadow-soft hover:border-sea hover:shadow-lift transition">
+                            <div class="flex items-center gap-2 text-mint-deep font-display font-bold text-sm">
                                 <i class="fa-solid fa-egg"></i>
                                 <span data-i18n="app_f1_t">角色養成與三階段進化</span>
                             </div>
-                            <p class="text-xs text-slate-400 leading-relaxed" data-i18n="app_f1_d">
+                            <p class="text-xs text-muted leading-relaxed" data-i18n="app_f1_d">
                                 挑選喜歡的小動物夥伴，隨著每天使用累積等級，從寶寶一路進化成青少年（30 級）與大人形態（60 級）。
                             </p>
                         </div>
 
-                        <div class="bg-[#0D131F] p-4 rounded-2xl border border-slate-800 space-y-2">
-                            <div class="flex items-center gap-2 text-amber-400 font-display font-bold text-sm">
+                        <div class="bg-card rounded-2xl border border-line space-y-2 p-5 sm:p-6 shadow-soft hover:border-sea hover:shadow-lift transition">
+                            <div class="flex items-center gap-2 text-mint-deep font-display font-bold text-sm">
                                 <i class="fa-solid fa-book-bible"></i>
                                 <span data-i18n="app_f2_t">每日閱讀任務換獎勵</span>
                             </div>
-                            <p class="text-xs text-slate-400 leading-relaxed" data-i18n="app_f2_d">
+                            <p class="text-xs text-muted leading-relaxed" data-i18n="app_f2_d">
                                 內建完整閱讀功能，完成每天的閱讀目標就能獲得麵包餵食寵物，並拿到額外升級經驗值。
                             </p>
                         </div>
 
-                        <div class="bg-[#0D131F] p-4 rounded-2xl border border-slate-800 space-y-2">
-                            <div class="flex items-center gap-2 text-amber-400 font-display font-bold text-sm">
+                        <div class="bg-card rounded-2xl border border-line space-y-2 p-5 sm:p-6 shadow-soft hover:border-sea hover:shadow-lift transition">
+                            <div class="flex items-center gap-2 text-mint-deep font-display font-bold text-sm">
                                 <i class="fa-solid fa-shield-virus"></i>
                                 <span data-i18n="app_f3_t">趣味問答闖關小遊戲</span>
                             </div>
-                            <p class="text-xs text-slate-400 leading-relaxed" data-i18n="app_f3_d">
+                            <p class="text-xs text-muted leading-relaxed" data-i18n="app_f3_d">
                                 內建即時填空問答對戰，答對就能擊退關卡怪物，解鎖稀有道具與收藏品。
                             </p>
                         </div>
 
-                        <div class="bg-[#0D131F] p-4 rounded-2xl border border-slate-800 space-y-2">
-                            <div class="flex items-center gap-2 text-amber-400 font-display font-bold text-sm">
+                        <div class="bg-card rounded-2xl border border-line space-y-2 p-5 sm:p-6 shadow-soft hover:border-sea hover:shadow-lift transition">
+                            <div class="flex items-center gap-2 text-mint-deep font-display font-bold text-sm">
                                 <i class="fa-solid fa-shirt"></i>
                                 <span data-i18n="app_f4_t">自由換裝與房間布置</span>
                             </div>
-                            <p class="text-xs text-slate-400 leading-relaxed" data-i18n="app_f4_d">
+                            <p class="text-xs text-muted leading-relaxed" data-i18n="app_f4_d">
                                 可以替寵物換上不同衣服與王冠配件，還能自由更換背景與房間裝飾。
                             </p>
                         </div>
                     </div>
 
-                    <div class="p-4 rounded-2xl bg-[#0D131F] border border-slate-800 font-mono text-xs flex flex-wrap items-center gap-2 text-slate-300">
-                        <span class="text-slate-500 font-bold mr-2" data-i18n="built_with">使用技術：</span>
-                        <span class="bg-slate-900 px-3 py-1 rounded-lg border border-slate-800 text-cyan-400" data-i18n="tech_1">React Native</span>
-                        <span class="bg-slate-900 px-3 py-1 rounded-lg border border-slate-800 text-cyan-400" data-i18n="tech_2">Expo</span>
-                        <span class="bg-slate-900 px-3 py-1 rounded-lg border border-slate-800 text-yellow-400" data-i18n="tech_3">Python FastAPI</span>
-                        <span class="bg-slate-900 px-3 py-1 rounded-lg border border-slate-800 text-blue-400" data-i18n="tech_db">雲端資料庫</span>
+                    <div class="rounded-2xl bg-card border border-line text-xs flex flex-wrap items-center gap-2 text-ink2 p-5 sm:p-6 shadow-soft hover:border-sea hover:shadow-lift transition">
+                        <span class="text-muted font-bold mr-2" data-i18n="built_with">使用技術：</span>
+                        <span class="bg-paper px-3 py-1 rounded-lg border border-line text-mint-deep" data-i18n="tech_1">React Native</span>
+                        <span class="bg-paper px-3 py-1 rounded-lg border border-line text-mint-deep" data-i18n="tech_2">Expo</span>
+                        <span class="bg-paper px-3 py-1 rounded-lg border border-line text-mint-deep" data-i18n="tech_3">Python FastAPI</span>
+                        <span class="bg-paper px-3 py-1 rounded-lg border border-line text-mint-deep" data-i18n="tech_db">雲端資料庫</span>
                     </div>
 
                     <div class="pt-2 flex flex-col sm:flex-row gap-4">
-                        <a href="#quick-request" onclick="selectService('Mobile Application (React Native / Expo)')" class="py-3.5 px-6 bg-cyan-500 hover:bg-cyan-400 text-black font-extrabold text-xs uppercase tracking-wider rounded-xl transition flex items-center justify-center gap-2 font-mono emerald-glow">
+                        <a href="#quick-request" onclick="selectService('Mobile Application (React Native / Expo)')" class="bg-ink text-white rounded-xl px-5 py-3.5 font-semibold hover:bg-mint-deep transition min-h-[48px] w-full sm:w-auto inline-flex items-center justify-center gap-2">
                             <i class="fa-solid fa-mobile-screen"></i>
                             <span data-i18n="app_cta">訂購您的專屬手機 APP</span>
                         </a>
@@ -582,53 +592,53 @@
     </section>
 
     <!-- Latest Posts (written in admin.html, stored in content/posts.json; hidden until the first post is published) -->
-    <section id="updates" class="hidden py-24 bg-[#0A0E17] border-t border-slate-800/80">
-        <div class="max-w-7xl mx-auto px-6">
+    <section id="updates" class="hidden py-14 sm:py-20 px-5 border-t border-line bg-card">
+        <div class="max-w-7xl mx-auto px-5">
             <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
                 <div>
-                    <span class="text-xs font-mono font-bold uppercase tracking-widest text-cyan-400" data-i18n="upd_badge">最新動態</span>
-                    <h2 class="font-display text-3xl sm:text-4xl font-bold text-white mt-2" data-i18n="upd_title">作品更新與最新消息</h2>
+                    <span class="text-xs font-bold tracking-widest text-mint-deep" data-i18n="upd_badge">最新動態</span>
+                    <h2 class="font-display text-3xl sm:text-5xl font-bold text-ink mt-2" data-i18n="upd_title">作品更新與最新消息</h2>
                 </div>
-                <a href="posts.html" id="updatesAllLink" class="text-xs font-mono font-bold text-cyan-400 hover:text-cyan-300 transition" data-i18n="upd_all">查看全部動態 →</a>
+                <a href="posts.html" id="updatesAllLink" class="text-xs font-bold text-mint-deep hover:text-mint-deep transition" data-i18n="upd_all">查看全部動態 →</a>
             </div>
             <div id="updatesGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
         </div>
     </section>
 
     <!-- Meet the Founders Section -->
-    <section id="founders" class="py-24 bg-[#0D131F]/60 border-t border-slate-800/80">
-        <div class="max-w-6xl mx-auto px-6">
+    <section id="founders" class="py-14 sm:py-20 px-5 border-t border-line bg-paper">
+        <div class="max-w-6xl mx-auto px-5">
             <div class="text-center max-w-2xl mx-auto mb-14 space-y-2">
-                <span class="text-xs font-mono font-bold uppercase tracking-widest text-cyan-400" data-i18n="fnd_badge">關於創辦團隊 • 淡江大學資訊工程</span>
-                <h2 class="font-display text-3xl sm:text-4xl font-bold text-white" data-i18n="fnd_title">認識 Twinter Labs 創辦團隊</h2>
-                <p class="text-slate-400 text-xs sm:text-sm leading-relaxed" data-i18n="fnd_desc">
+                <span class="text-xs font-bold tracking-widest text-mint-deep" data-i18n="fnd_badge">關於創辦團隊 • 淡江大學資訊工程</span>
+                <h2 class="font-display text-3xl sm:text-5xl font-bold text-ink" data-i18n="fnd_title">認識 Twinter Labs 創辦團隊</h2>
+                <p class="text-muted text-xs sm:text-sm leading-relaxed" data-i18n="fnd_desc">
                     我們是在台灣新北淡水（淡江大學）的軟體開發團隊，直接與客戶一對一溝通需求、設計介面並完成全端開發，不經過層層外包轉手。
                 </p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <!-- Co-Founder 1: Pramesti Afasayunianda -->
-                <div class="bg-[#0D131F] rounded-3xl p-7 sm:p-8 border border-slate-800 hover:border-cyan-500/40 transition duration-300 flex flex-col sm:flex-row items-center sm:items-start gap-6">
-                    <div class="w-28 h-28 sm:w-32 sm:h-32 rounded-2xl overflow-hidden border-2 border-cyan-500/40 shrink-0 bg-slate-900 shadow-lg">
+                <div class="bg-card rounded-2xl p-5 sm:p-6 shadow-soft hover:shadow-lift border border-line hover:border-sea transition duration-300 flex flex-col sm:flex-row items-center sm:items-start gap-6">
+                    <div class="w-28 h-28 sm:w-32 sm:h-32 rounded-2xl overflow-hidden border-2 border-line shrink-0 bg-paper shadow-soft">
                         <img src="images/pramesti.jpg" alt="Pramesti Afasayunianda" class="w-full h-full object-cover object-top">
                     </div>
                     <div class="space-y-2.5 text-center sm:text-left">
-                        <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-cyan-950/80 border border-cyan-800/60 text-[10px] font-mono text-cyan-300 font-bold" data-i18n="fnd1_role">
+                        <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-mint-soft border border-line text-[10px] text-mint-deep font-bold" data-i18n="fnd1_role">
                             共同創辦人 • 產品設計與系統開發
                         </div>
-                        <h3 class="font-display text-xl sm:text-2xl font-bold text-white" data-i18n="fnd1_name">Pramesti Afasayunianda</h3>
-                        <p class="text-xs font-mono text-emerald-400" data-i18n="fnd1_edu">
+                        <h3 class="font-display text-xl sm:text-2xl font-bold text-ink" data-i18n="fnd1_name">Pramesti Afasayunianda</h3>
+                        <p class="text-xs text-mint-deep" data-i18n="fnd1_edu">
                             <i class="fa-solid fa-graduation-cap mr-1"></i>淡江大學（TKU）資訊工程學系 • 四年級
                         </p>
-                        <p class="text-xs text-slate-400 leading-relaxed" data-i18n="fnd1_bio">
+                        <p class="text-xs text-muted leading-relaxed" data-i18n="fnd1_bio">
                             專注於前端使用者體驗設計、軟體工程架構與專案品質控管，確保每個網站與手機 APP 兼顧美感與流暢操作體驗。
                         </p>
-                        <div class="pt-1 flex items-center justify-center sm:justify-start gap-3 text-xs font-mono">
-                            <a href="https://github.com/blaiirytale" target="_blank" rel="noopener" class="text-slate-400 hover:text-cyan-400 transition flex items-center gap-1">
+                        <div class="pt-1 flex items-center justify-center sm:justify-start gap-3 text-xs">
+                            <a href="https://github.com/blaiirytale" target="_blank" rel="noopener" class="text-fog hover:text-mint-deep transition flex items-center gap-1">
                                 <i class="fa-brands fa-github"></i> GitHub
                             </a>
-                            <span class="text-slate-700">|</span>
-                            <a href="https://www.linkedin.com/in/pramesti-afsa-453567276" target="_blank" rel="noopener" class="text-slate-400 hover:text-cyan-400 transition flex items-center gap-1">
+                            <span class="text-muted">|</span>
+                            <a href="https://www.linkedin.com/in/pramesti-afsa-453567276" target="_blank" rel="noopener" class="text-fog hover:text-mint-deep transition flex items-center gap-1">
                                 <i class="fa-brands fa-linkedin"></i> LinkedIn
                             </a>
                         </div>
@@ -636,27 +646,27 @@
                 </div>
 
                 <!-- Co-Founder 2: Kirk Mondesir -->
-                <div class="bg-[#0D131F] rounded-3xl p-7 sm:p-8 border border-slate-800 hover:border-emerald-500/40 transition duration-300 flex flex-col sm:flex-row items-center sm:items-start gap-6">
-                    <div class="w-28 h-28 sm:w-32 sm:h-32 rounded-2xl overflow-hidden border-2 border-emerald-500/40 shrink-0 bg-slate-900 shadow-lg">
+                <div class="bg-card rounded-2xl p-5 sm:p-6 shadow-soft hover:shadow-lift border border-line hover:border-sea transition duration-300 flex flex-col sm:flex-row items-center sm:items-start gap-6">
+                    <div class="w-28 h-28 sm:w-32 sm:h-32 rounded-2xl overflow-hidden border-2 border-line shrink-0 bg-paper shadow-soft">
                         <img src="images/kirk.jpg" alt="Kirk Mondesir" class="w-full h-full object-cover object-[50%_22%] scale-[1.65]">
                     </div>
                     <div class="space-y-2.5 text-center sm:text-left">
-                        <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-950/80 border border-emerald-800/60 text-[10px] font-mono text-emerald-300 font-bold" data-i18n="fnd2_role">
+                        <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-mint-soft border border-line text-[10px] text-mint-deep font-bold" data-i18n="fnd2_role">
                             共同創辦人 • 全端與手機 APP 工程師
                         </div>
-                        <h3 class="font-display text-xl sm:text-2xl font-bold text-white" data-i18n="fnd2_name">Kirk Mondesir</h3>
-                        <p class="text-xs font-mono text-emerald-400" data-i18n="fnd2_edu">
+                        <h3 class="font-display text-xl sm:text-2xl font-bold text-ink" data-i18n="fnd2_name">Kirk Mondesir</h3>
+                        <p class="text-xs text-mint-deep" data-i18n="fnd2_edu">
                             <i class="fa-solid fa-graduation-cap mr-1"></i>淡江大學（TKU）資訊工程學系 • 二年級
                         </p>
-                        <p class="text-xs text-slate-400 leading-relaxed" data-i18n="fnd2_bio">
+                        <p class="text-xs text-muted leading-relaxed" data-i18n="fnd2_bio">
                             負責商業網站建置、React Native 跨平台手機 APP、Python/FastAPI 後端資料庫與自動化程式系統開發。
                         </p>
-                        <div class="pt-1 flex items-center justify-center sm:justify-start gap-3 text-xs font-mono">
-                            <a href="https://github.com/FichieX" target="_blank" class="text-slate-400 hover:text-cyan-400 transition flex items-center gap-1">
+                        <div class="pt-1 flex items-center justify-center sm:justify-start gap-3 text-xs">
+                            <a href="https://github.com/FichieX" target="_blank" class="text-fog hover:text-mint-deep transition flex items-center gap-1">
                                 <i class="fa-brands fa-github"></i> GitHub
                             </a>
-                            <span class="text-slate-700">|</span>
-                            <a href="https://www.linkedin.com/in/kirk-mondesir-606a692b5/" target="_blank" class="text-slate-400 hover:text-cyan-400 transition flex items-center gap-1">
+                            <span class="text-muted">|</span>
+                            <a href="https://www.linkedin.com/in/kirk-mondesir-606a692b5/" target="_blank" class="text-fog hover:text-mint-deep transition flex items-center gap-1">
                                 <i class="fa-brands fa-linkedin"></i> LinkedIn
                             </a>
                         </div>
@@ -667,37 +677,37 @@
     </section>
 
     <!-- 3-Step Workflow & Client FAQ -->
-    <section id="process" class="py-24 bg-[#080B11] border-t border-slate-800/80">
-        <div class="max-w-7xl mx-auto px-6 space-y-20">
-            
+    <section id="process" class="py-14 sm:py-20 px-5 border-t border-line bg-card">
+        <div class="max-w-7xl mx-auto px-5 space-y-20">
+
             <!-- 3-Step Workflow -->
             <div>
                 <div class="text-center max-w-2xl mx-auto mb-12 space-y-2">
-                    <span class="text-xs font-mono font-bold uppercase tracking-widest text-cyan-400" data-i18n="proc_badge">簡單清楚的合作流程</span>
-                    <h2 class="font-display text-3xl sm:text-4xl font-bold text-white" data-i18n="proc_title">從下單到上線只要三個步驟</h2>
+                    <span class="text-xs font-bold tracking-widest text-mint-deep" data-i18n="proc_badge">簡單清楚的合作流程</span>
+                    <h2 class="font-display text-3xl sm:text-5xl font-bold text-ink" data-i18n="proc_title">從下單到上線只要三個步驟</h2>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div class="bg-[#0D131F] p-7 rounded-2xl border border-slate-800 space-y-3">
-                        <span class="inline-block px-3 py-1 rounded-lg bg-cyan-950 text-cyan-400 font-mono text-xs font-bold">STEP 01</span>
-                        <h3 class="font-display text-lg font-bold text-white" data-i18n="p1_t">免費需求諮詢與報價</h3>
-                        <p class="text-xs text-slate-400 leading-relaxed" data-i18n="p1_d">
+                    <div class="bg-card rounded-2xl border border-line space-y-3 p-5 sm:p-6 shadow-soft hover:border-sea hover:shadow-lift transition">
+                        <span class="inline-block px-3 py-1 rounded-lg bg-mint-soft text-mint-deep text-xs font-bold">STEP 01</span>
+                        <h3 class="font-display text-lg font-bold text-ink" data-i18n="p1_t">免費需求諮詢與報價</h3>
+                        <p class="text-xs text-muted leading-relaxed" data-i18n="p1_d">
                             在下方填單或加 LINE 告訴我們您想做的網站或系統，24 小時內提供清楚的報價明細與預計完工日期，完全不收諮詢費。
                         </p>
                     </div>
 
-                    <div class="bg-[#0D131F] p-7 rounded-2xl border border-slate-800 space-y-3">
-                        <span class="inline-block px-3 py-1 rounded-lg bg-cyan-950 text-cyan-400 font-mono text-xs font-bold">STEP 02</span>
-                        <h3 class="font-display text-lg font-bold text-white" data-i18n="p2_t">確認規格並啟動開發</h3>
-                        <p class="text-xs text-slate-400 leading-relaxed" data-i18n="p2_d">
+                    <div class="bg-card rounded-2xl border border-line space-y-3 p-5 sm:p-6 shadow-soft hover:border-sea hover:shadow-lift transition">
+                        <span class="inline-block px-3 py-1 rounded-lg bg-mint-soft text-mint-deep text-xs font-bold">STEP 02</span>
+                        <h3 class="font-display text-lg font-bold text-ink" data-i18n="p2_t">確認規格並啟動開發</h3>
+                        <p class="text-xs text-muted leading-relaxed" data-i18n="p2_d">
                             確認版面風格與功能後啟動製作，開發期間會提供線上測試網址讓您隨時用手機與電腦查看進度並調整細節。
                         </p>
                     </div>
 
-                    <div class="bg-[#0D131F] p-7 rounded-2xl border border-slate-800 space-y-3">
-                        <span class="inline-block px-3 py-1 rounded-lg bg-emerald-950 text-emerald-400 font-mono text-xs font-bold">STEP 03</span>
-                        <h3 class="font-display text-lg font-bold text-white" data-i18n="p3_t">驗收上線與完整交付</h3>
-                        <p class="text-xs text-slate-400 leading-relaxed" data-i18n="p3_d">
+                    <div class="bg-card rounded-2xl border border-line space-y-3 p-5 sm:p-6 shadow-soft hover:border-sea hover:shadow-lift transition">
+                        <span class="inline-block px-3 py-1 rounded-lg bg-mint-soft text-mint-deep text-xs font-bold">STEP 03</span>
+                        <h3 class="font-display text-lg font-bold text-ink" data-i18n="p3_t">驗收上線與完整交付</h3>
+                        <p class="text-xs text-muted leading-relaxed" data-i18n="p3_d">
                             幫您設定好專屬網址、SSL 安全鎖與 Google 搜尋收錄，並交付完整原始碼與管理員帳號，讓您安心開始接單。
                         </p>
                     </div>
@@ -707,35 +717,35 @@
             <!-- Frequently Asked Questions -->
             <div class="max-w-4xl mx-auto">
                 <div class="text-center mb-10 space-y-2">
-                    <span class="text-xs font-mono font-bold uppercase tracking-widest text-emerald-400" data-i18n="faq_badge">常見問題解答</span>
-                    <h2 class="font-display text-2xl sm:text-4xl font-bold text-white" data-i18n="faq_title">下單前您可能想知道的事</h2>
+                    <span class="text-xs font-bold tracking-widest text-mint-deep" data-i18n="faq_badge">常見問題解答</span>
+                    <h2 class="font-display text-2xl sm:text-3xl font-bold text-ink" data-i18n="faq_title">下單前您可能想知道的事</h2>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div class="bg-[#0D131F] p-6 rounded-2xl border border-slate-800 space-y-2">
-                        <h4 class="font-bold text-white text-sm" data-i18n="q1_t">Q1：我不懂程式或網址設定，你們會全部幫我弄好嗎？</h4>
-                        <p class="text-xs text-slate-400 leading-relaxed" data-i18n="q1_d">
+                    <div class="bg-card rounded-2xl border border-line space-y-2 p-5 sm:p-6 shadow-soft hover:border-sea hover:shadow-lift transition">
+                        <h4 class="font-bold text-ink text-sm" data-i18n="q1_t">Q1：我不懂程式或網址設定，你們會全部幫我弄好嗎？</h4>
+                        <p class="text-xs text-muted leading-relaxed" data-i18n="q1_d">
                             會的！從購買專屬網址、設定 DNS、開啟 HTTPS 安全鎖到提交給 Google 搜尋引擎，我們都會一條龍幫您設定到好。
                         </p>
                     </div>
 
-                    <div class="bg-[#0D131F] p-6 rounded-2xl border border-slate-800 space-y-2">
-                        <h4 class="font-bold text-white text-sm" data-i18n="q2_t">Q2：做好之後，網站和程式的所有權是我的嗎？</h4>
-                        <p class="text-xs text-slate-400 leading-relaxed" data-i18n="q2_d">
+                    <div class="bg-card rounded-2xl border border-line space-y-2 p-5 sm:p-6 shadow-soft hover:border-sea hover:shadow-lift transition">
+                        <h4 class="font-bold text-ink text-sm" data-i18n="q2_t">Q2：做好之後，網站和程式的所有權是我的嗎？</h4>
+                        <p class="text-xs text-muted leading-relaxed" data-i18n="q2_d">
                             100% 歸您所有。結案後我們會交付完整的程式原始碼與所有後台帳號密碼，不會綁死您的資料。
                         </p>
                     </div>
 
-                    <div class="bg-[#0D131F] p-6 rounded-2xl border border-slate-800 space-y-2">
-                        <h4 class="font-bold text-white text-sm" data-i18n="q3_t">Q3：製作過程中可以修改設計或文字嗎？</h4>
-                        <p class="text-xs text-slate-400 leading-relaxed" data-i18n="q3_d">
+                    <div class="bg-card rounded-2xl border border-line space-y-2 p-5 sm:p-6 shadow-soft hover:border-sea hover:shadow-lift transition">
+                        <h4 class="font-bold text-ink text-sm" data-i18n="q3_t">Q3：製作過程中可以修改設計或文字嗎？</h4>
+                        <p class="text-xs text-muted leading-relaxed" data-i18n="q3_d">
                             每個專案皆包含 2 次免費版面與圖文微調；上線後若需要長期幫忙改內容或管主機，也可隨時選購 NT$1,500–3,500/月 的維護方案。
                         </p>
                     </div>
 
-                    <div class="bg-[#0D131F] p-6 rounded-2xl border border-slate-800 space-y-2">
-                        <h4 class="font-bold text-white text-sm" data-i18n="q4_t">Q4：付款方式與開發時間大概需要多久？</h4>
-                        <p class="text-xs text-slate-400 leading-relaxed" data-i18n="q4_d">
+                    <div class="bg-card rounded-2xl border border-line space-y-2 p-5 sm:p-6 shadow-soft hover:border-sea hover:shadow-lift transition">
+                        <h4 class="font-bold text-ink text-sm" data-i18n="q4_t">Q4：付款方式與開發時間大概需要多久？</h4>
+                        <p class="text-xs text-muted leading-relaxed" data-i18n="q4_d">
                             商業網站約 1–2 週完工，手機 APP 與全端系統約 3–8 週。標準付款為確認報價後支付 50% 訂金啟動，驗收完成上線後再付 50% 尾款。
                         </p>
                     </div>
@@ -746,28 +756,28 @@
     </section>
 
     <!-- Frictionless Quick Request & Meeting Section (Promo Code Optional!) -->
-    <section id="quick-request" class="py-20 bg-gradient-to-b from-[#080B11] via-[#0D131F] to-[#080B11] border-t border-cyan-500/30">
-        <div class="max-w-4xl mx-auto px-6">
+    <section id="quick-request" class="py-14 sm:py-20 px-5 border-t border-line bg-paper">
+        <div class="max-w-4xl mx-auto px-5">
             <div class="text-center space-y-3 mb-10">
-                <span class="text-xs uppercase font-mono font-bold tracking-widest text-cyan-400" data-i18n="form_badge">線上快速下單與免費估價</span>
-                <h2 class="font-display text-3xl sm:text-5xl font-bold text-white" data-i18n="form_title">訂購網站、APP、全端系統或預約討論</h2>
-                <p class="text-slate-400 text-xs sm:text-sm" data-i18n="form_desc">在下方簡單填寫您的需求（若有優惠碼 <strong class="text-cyan-400 font-mono">ID</strong> 可享 9 折優惠，未填寫亦可直接送出），表單會直接寄到 <span class="text-white">Twinterlabs@gmail.com</span>。</p>
+                <span class="text-xs font-bold tracking-widest text-mint-deep" data-i18n="form_badge">線上快速下單與免費估價</span>
+                <h2 class="font-display text-3xl sm:text-5xl font-bold text-ink" data-i18n="form_title">訂購網站、APP、全端系統或預約討論</h2>
+                <p class="text-muted text-xs sm:text-sm" data-i18n="form_desc">在下方簡單填寫您的需求（若有優惠碼 <strong class="text-mint-deep">ID</strong> 可享 9 折優惠，未填寫亦可直接送出），表單會直接寄到 <span class="text-ink">Twinterlabs@gmail.com</span>。</p>
             </div>
 
             <!-- Mode Switcher -->
             <div class="flex justify-center mb-8">
-                <div class="bg-[#080B11] p-1.5 rounded-2xl border border-slate-800 flex gap-2">
-                    <button type="button" id="tabProduct" onclick="setMode('product')" class="px-6 py-2.5 rounded-xl font-bold text-xs uppercase tracking-wider font-mono transition bg-cyan-500 text-black shadow-lg">
+                <div class="bg-paper border border-line rounded-xl p-1 flex w-full sm:w-auto">
+                    <button type="button" id="tabProduct" onclick="setMode('product')" class="flex-1 px-3 sm:px-6 py-3 min-h-[48px] rounded-xl font-semibold text-sm transition bg-ink text-white">
                         <i class="fa-solid fa-cube mr-2"></i><span data-i18n="tab_prod">訂購網站 / APP / 系統</span>
                     </button>
-                    <button type="button" id="tabMeeting" onclick="setMode('meeting')" class="px-6 py-2.5 rounded-xl font-bold text-xs uppercase tracking-wider font-mono transition text-slate-400 hover:text-white">
+                    <button type="button" id="tabMeeting" onclick="setMode('meeting')" class="flex-1 px-3 sm:px-6 py-3 min-h-[48px] rounded-xl font-semibold text-sm transition text-muted hover:text-ink">
                         <i class="fa-solid fa-calendar-check mr-2"></i><span data-i18n="tab_meet">預約線上通話討論</span>
                     </button>
                 </div>
             </div>
 
-            <div class="bg-[#080B11] p-8 sm:p-12 rounded-3xl border border-slate-800 shadow-2xl relative overflow-hidden">
-                <div id="formStatus" class="hidden mb-6 p-4 rounded-xl text-xs font-semibold text-center font-mono"></div>
+            <div class="bg-card p-5 sm:p-6 rounded-2xl border border-line shadow-soft relative overflow-hidden">
+                <div id="formStatus" class="hidden mb-6 p-4 rounded-xl text-xs font-semibold text-center"></div>
 
                 <iframe name="formspree_target" id="formspree_target" style="display:none;"></iframe>
                 <form id="quickRequestForm" action="https://formspree.io/f/xaeonapy" method="POST" target="formspree_target" onsubmit="return handleQuickSubmit(event)" class="space-y-6">
@@ -779,23 +789,23 @@
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                         <div>
-                            <label class="block text-xs uppercase tracking-wider text-slate-400 font-mono mb-2" data-i18n="lbl_name">您的稱呼 / 公司店名 *</label>
-                            <input type="text" id="reqName" name="name" required placeholder="例如：林先生 / 陽光咖啡廳" class="w-full bg-[#0D131F] border border-slate-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-cyan-500 font-mono">
+                            <label class="block text-xs tracking-wider text-muted mb-2" data-i18n="lbl_name">您的稱呼 / 公司店名 *</label>
+                            <input type="text" id="reqName" name="name" required placeholder="例如：林先生 / 陽光咖啡廳" class="w-full bg-card border border-line rounded-xl px-4 py-3 text-base text-ink placeholder:text-fog focus:outline-none focus:border-mint-deep focus:ring-4 focus:ring-mint/30">
                         </div>
                         <div>
-                            <label class="block text-xs uppercase tracking-wider text-slate-400 font-mono mb-2" data-i18n="lbl_contact">您的 LINE ID / 聯絡方式 *</label>
-                            <input type="text" id="reqPhone" name="phone" required placeholder="方便我們加您好友或聯繫您" class="w-full bg-[#0D131F] border border-slate-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-cyan-500 font-mono">
+                            <label class="block text-xs tracking-wider text-muted mb-2" data-i18n="lbl_contact">您的 LINE ID / 聯絡方式 *</label>
+                            <input type="text" id="reqPhone" name="phone" required placeholder="方便我們加您好友或聯繫您" class="w-full bg-card border border-line rounded-xl px-4 py-3 text-base text-ink placeholder:text-fog focus:outline-none focus:border-mint-deep focus:ring-4 focus:ring-mint/30">
                         </div>
                     </div>
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                         <div>
-                            <label class="block text-xs uppercase tracking-wider text-slate-400 font-mono mb-2" data-i18n="lbl_email">您的電子信箱 (Email) *</label>
-                            <input type="email" id="reqEmail" name="email" required placeholder="yourname@gmail.com" class="w-full bg-[#0D131F] border border-slate-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-cyan-500 font-mono">
+                            <label class="block text-xs tracking-wider text-muted mb-2" data-i18n="lbl_email">您的電子信箱 (Email) *</label>
+                            <input type="email" id="reqEmail" name="email" required placeholder="yourname@gmail.com" class="w-full bg-card border border-line rounded-xl px-4 py-3 text-base text-ink placeholder:text-fog focus:outline-none focus:border-mint-deep focus:ring-4 focus:ring-mint/30">
                         </div>
                         <div>
-                            <label id="categoryLabel" class="block text-xs uppercase tracking-wider text-slate-400 font-mono mb-2" data-i18n="lbl_cat_prod">您想訂購哪一種服務？ *</label>
-                            <select id="reqCategory" name="category" class="w-full bg-[#0D131F] border border-slate-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-cyan-500 font-mono">
+                            <label id="categoryLabel" class="block text-xs tracking-wider text-muted mb-2" data-i18n="lbl_cat_prod">您想訂購哪一種服務？ *</label>
+                            <select id="reqCategory" name="category" class="w-full bg-card border border-line rounded-xl px-4 py-3 text-base text-ink placeholder:text-fog focus:outline-none focus:border-mint-deep focus:ring-4 focus:ring-mint/30">
                                 <option value="Commercial Website / Web Platform" data-i18n="opt_web">商業網站製作（NT$15,000 – 45,000）</option>
                                 <option value="Mobile Application (React Native / Expo)" data-i18n="opt_app">手機 APP 開發（NT$45,000 – 120,000）</option>
                                 <option value="Full-Stack Custom System Architecture" data-i18n="opt_fullstack">完整全端系統（NT$60,000 – 180,000+）</option>
@@ -806,39 +816,39 @@
                     </div>
 
                     <!-- OPTIONAL PROMO CODE FIELD (Never blocks submission!) -->
-                    <div class="p-5 rounded-2xl bg-gradient-to-r from-cyan-950/30 via-slate-900 to-slate-900 border border-cyan-800/50 space-y-2">
+                    <div class="p-5 rounded-2xl border border-line space-y-2">
                         <div class="flex items-center justify-between">
-                            <label class="block text-xs uppercase tracking-wider text-cyan-300 font-mono font-bold">
-                                <i class="fa-solid fa-tag text-cyan-400 mr-1.5"></i> <span data-i18n="lbl_promo">優惠碼（選填，輸入 ID 享 9 折）</span>
+                            <label class="block text-xs tracking-wider text-mint-deep font-bold">
+                                <i class="fa-solid fa-tag text-mint-deep mr-1.5"></i> <span data-i18n="lbl_promo">優惠碼（選填，輸入 ID 享 9 折）</span>
                             </label>
-                            <span class="text-[10px] font-mono text-emerald-400 bg-emerald-950 px-2 py-0.5 rounded border border-emerald-800" data-i18n="promo_badge">輸入 ID 總費用打 9 折</span>
+                            <span class="text-[10px] text-mint-deep bg-mint-soft px-2 py-0.5 rounded border border-line" data-i18n="promo_badge">輸入 ID 總費用打 9 折</span>
                         </div>
-                        <input type="text" id="reqPromoCode" name="promo_code" placeholder="若有優惠碼請輸入 ID（選填，可直接送出）" class="w-full bg-[#080B11] border border-slate-700 rounded-xl px-4 py-3 text-sm text-white uppercase tracking-widest font-mono focus:outline-none focus:border-cyan-400">
+                        <input type="text" id="reqPromoCode" name="promo_code" placeholder="若有優惠碼請輸入 ID（選填，可直接送出）" class="w-full bg-card border border-line rounded-xl px-4 py-3 text-base text-ink placeholder:text-fog focus:outline-none focus:border-mint-deep focus:ring-4 focus:ring-mint/30">
                     </div>
 
                     <!-- Dynamic Meeting Time Row -->
                     <div id="meetingFields" class="hidden grid grid-cols-1 sm:grid-cols-2 gap-6">
                         <div>
-                            <label class="block text-xs uppercase tracking-wider text-slate-400 font-mono mb-2" data-i18n="lbl_date">您方便的日期 *</label> 
-                            <input type="date" id="reqDate" name="preferred_date" class="w-full bg-[#0D131F] border border-slate-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-cyan-500 font-mono">
+                            <label class="block text-xs tracking-wider text-muted mb-2" data-i18n="lbl_date">您方便的日期 *</label>
+                            <input type="date" id="reqDate" name="preferred_date" class="w-full bg-card border border-line rounded-xl px-4 py-3 text-base text-ink placeholder:text-fog focus:outline-none focus:border-mint-deep focus:ring-4 focus:ring-mint/30">
                         </div>
                         <div>
-                            <label class="block text-xs uppercase tracking-wider text-slate-400 font-mono mb-2" data-i18n="lbl_time">偏好的通話方式與時間 *</label>
-                            <input type="text" id="reqMeetingFormat" name="meeting_format" placeholder="例如：LINE 語音或 Google Meet 下午 3 點" class="w-full bg-[#0D131F] border border-slate-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-cyan-500 font-mono">
+                            <label class="block text-xs tracking-wider text-muted mb-2" data-i18n="lbl_time">偏好的通話方式與時間 *</label>
+                            <input type="text" id="reqMeetingFormat" name="meeting_format" placeholder="例如：LINE 語音或 Google Meet 下午 3 點" class="w-full bg-card border border-line rounded-xl px-4 py-3 text-base text-ink placeholder:text-fog focus:outline-none focus:border-mint-deep focus:ring-4 focus:ring-mint/30">
                         </div>
                     </div>
 
                     <div>
-                        <label id="detailsLabel" class="block text-xs uppercase tracking-wider text-slate-400 font-mono mb-2" data-i18n="lbl_det_prod">簡單描述您想做的網站或系統</label>
-                        <textarea id="reqDetails" name="details" rows="4" placeholder="用白話告訴我們您想做什麼功能、希望什麼時候完成，或貼上您喜歡的參考網站..." class="w-full bg-[#0D131F] border border-slate-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-cyan-500 font-mono"></textarea>
+                        <label id="detailsLabel" class="block text-xs tracking-wider text-muted mb-2" data-i18n="lbl_det_prod">簡單描述您想做的網站或系統</label>
+                        <textarea id="reqDetails" name="details" rows="4" placeholder="用白話告訴我們您想做什麼功能、希望什麼時候完成，或貼上您喜歡的參考網站..." class="w-full bg-card border border-line rounded-xl px-4 py-3 text-base text-ink placeholder:text-fog focus:outline-none focus:border-mint-deep focus:ring-4 focus:ring-mint/30"></textarea>
                     </div>
 
                     <div class="flex flex-col sm:flex-row gap-4 items-center pt-2">
-                        <button type="submit" id="submitBtn" class="w-full sm:w-2/3 py-4 bg-cyan-500 hover:bg-cyan-400 text-black font-extrabold uppercase tracking-widest text-xs rounded-xl shadow-xl transition flex items-center justify-center gap-2 emerald-glow font-mono">
+                        <button type="submit" id="submitBtn" class="bg-ink text-white rounded-xl px-5 py-3.5 font-semibold hover:bg-mint-deep transition min-h-[48px] w-full sm:w-auto inline-flex items-center justify-center gap-2">
                             <i class="fa-solid fa-paper-plane text-sm"></i>
                             <span id="btnText" data-i18n="btn_submit_prod">立即送出需求與免費估價</span>
                         </button>
-                        <a href="https://line.me/ti/p/rsc69htRfX" target="_blank" class="w-full sm:w-1/3 py-4 bg-emerald-600 hover:bg-emerald-500 text-white font-bold uppercase tracking-widest text-xs rounded-xl transition flex items-center justify-center gap-2 font-mono">
+                        <a href="https://line.me/ti/p/rsc69htRfX" target="_blank" class="bg-ink text-white rounded-xl px-5 py-3.5 font-semibold hover:bg-mint-deep transition min-h-[48px] w-full sm:w-auto inline-flex items-center justify-center gap-2">
                             <i class="fa-brands fa-line text-lg"></i>
                             <span data-i18n="btn_line">加 LINE 聊聊</span>
                         </a>
@@ -849,50 +859,50 @@
     </section>
 
     <!-- Direct Line Contact Footer -->
-    <footer id="contact" class="bg-[#05070B] border-t border-slate-900 pt-16 pb-12 px-6 text-slate-400 text-xs font-mono">
-        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 pb-12 border-b border-slate-900">
+    <footer id="contact" class="bg-ink border-t border-white/15 pt-16 pb-12 px-5 text-white/70 text-xs">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 pb-12 border-b border-white/15">
             <div>
                 <h3 class="font-display text-xl font-bold text-white mb-2">Twinter Labs</h3>
-                <p class="text-slate-400 leading-relaxed max-w-sm" data-i18n="ft_about">
+                <p class="text-white/70 leading-relaxed max-w-sm" data-i18n="ft_about">
                     我們專門製作並販售商業網站、iPhone/Android 手機 APP，以及包含前台、後台與資料庫的完整全端系統，用最簡單清楚的方式幫您的事業數位升級。
                 </p>
                 <div class="flex items-center gap-3 mt-4">
-                    <a href="https://github.com/FichieX" target="_blank" title="GitHub" class="w-9 h-9 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-300 hover:text-cyan-400 transition"> 
+                    <a href="https://github.com/FichieX" target="_blank" title="GitHub" class="w-11 h-11 rounded-xl bg-ink border border-white/15 flex items-center justify-center text-white/70 hover:text-mint transition">
                         <i class="fa-brands fa-github text-sm"></i>
                     </a>
-                    <a href="https://line.me/ti/p/rsc69htRfX" target="_blank" title="LINE 官方聯繫" class="w-9 h-9 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-emerald-400 hover:border-emerald-500/40 transition">
+                    <a href="https://line.me/ti/p/rsc69htRfX" target="_blank" title="LINE 官方聯繫" class="w-11 h-11 rounded-xl bg-ink border border-white/15 flex items-center justify-center text-fog hover:border-sea transition">
                         <i class="fa-brands fa-line text-base"></i>
                     </a>
-                    <a href="https://instagram.com/TwinterLabs" target="_blank" title="Instagram @TwinterLabs" class="w-9 h-9 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-pink-400 hover:border-pink-500/40 transition">
+                    <a href="https://instagram.com/TwinterLabs" target="_blank" title="Instagram @TwinterLabs" class="w-11 h-11 rounded-xl bg-ink border border-white/15 flex items-center justify-center text-fog hover:border-sea transition">
                         <i class="fa-brands fa-instagram text-base"></i>
                     </a>
                 </div>
             </div>
 
             <div class="space-y-3">
-                <h4 class="font-bold text-white uppercase tracking-wider text-xs mb-3 font-display" data-i18n="ft_contact_t">聯絡我們</h4>
-                <p><i class="fa-solid fa-envelope text-cyan-400 mr-2 text-sm"></i> Email: <a href="mailto:Twinterlabs@gmail.com" class="text-white hover:text-cyan-400 font-bold">Twinterlabs@gmail.com</a></p>
-                <p><i class="fa-brands fa-line text-emerald-400 mr-2 text-sm"></i> LINE: <a href="https://line.me/ti/p/rsc69htRfX" target="_blank" class="text-white hover:text-emerald-400 font-bold" data-i18n="ft_line_link">點此加入 Twinter Labs LINE 好友</a></p>
-                <p><i class="fa-brands fa-instagram text-pink-400 mr-2 text-sm"></i> Instagram: <a href="https://instagram.com/TwinterLabs" target="_blank" class="text-white hover:text-pink-400 font-bold">@TwinterLabs</a></p>
-                <p><i class="fa-solid fa-globe text-cyan-400 mr-2 text-sm"></i> <span data-i18n="ft_domain">官方網站</span>: <a href="https://www.twinterlabs.com" class="text-white hover:underline">www.twinterlabs.com</a></p>
+                <h4 class="font-bold text-white tracking-wider text-xs mb-3 font-display" data-i18n="ft_contact_t">聯絡我們</h4>
+                <p><i class="fa-solid fa-envelope text-fog mr-2 text-sm"></i> Email: <a href="mailto:Twinterlabs@gmail.com" class="text-white hover:text-mint font-bold">Twinterlabs@gmail.com</a></p>
+                <p><i class="fa-brands fa-line text-fog mr-2 text-sm"></i> LINE: <a href="https://line.me/ti/p/rsc69htRfX" target="_blank" class="text-white hover:text-mint font-bold" data-i18n="ft_line_link">點此加入 Twinter Labs LINE 好友</a></p>
+                <p><i class="fa-brands fa-instagram text-fog mr-2 text-sm"></i> Instagram: <a href="https://instagram.com/TwinterLabs" target="_blank" class="text-white hover:text-mint font-bold">@TwinterLabs</a></p>
+                <p><i class="fa-solid fa-globe text-fog mr-2 text-sm"></i> <span data-i18n="ft_domain">官方網站</span>: <a href="https://www.twinterlabs.com" class="text-white hover:underline">www.twinterlabs.com</a></p>
             </div>
 
             <div class="space-y-2">
-                <h4 class="font-bold text-white uppercase tracking-wider text-xs mb-3 font-display" data-i18n="ft_prac_t">我們販售與開發的項目</h4>
+                <h4 class="font-bold text-white tracking-wider text-xs mb-3 font-display" data-i18n="ft_prac_t">我們販售與開發的項目</h4>
                 <p data-i18n="ft_p1">• 商業網站製作販售（NT$15,000 – 45,000）</p>
                 <p data-i18n="ft_p2">• 手機 APP 開發販售（NT$45,000 – 120,000）</p>
                 <p data-i18n="ft_p3">• 完整全端系統開發（NT$60,000 – 180,000+）</p>
-                <p><a href="quant.html" class="hover:text-emerald-400 transition" data-i18n="ft_p4">• 客製化自動交易程式（NT$12,000 – 45,000）→</a></p>
+                <p><a href="quant.html" class="hover:text-mint transition" data-i18n="ft_p4">• 客製化自動交易程式（NT$12,000 – 45,000）→</a></p>
                 <p data-i18n="ft_p5">• 全託管網站與系統維護（NT$1,500 – 3,500 / 月）</p>
             </div>
         </div>
 
-        <div class="max-w-7xl mx-auto pt-8 flex flex-col sm:flex-row justify-between items-center text-slate-600 gap-4">
+        <div class="max-w-7xl mx-auto pt-8 flex flex-col sm:flex-row justify-between items-center text-white/70 gap-4">
             <p>© 2026 Twinter Labs (www.twinterlabs.com). All Rights Reserved.</p>
             <p data-i18n="ft_tagline">公開透明報價、穩定可靠的軟體開發夥伴</p>
         </div>
-            <div class="max-w-6xl mx-auto px-6 pb-8 pt-2 text-center">
-            <button onclick="document.getElementById('privacy-modal').classList.remove('hidden')" class="text-slate-400 hover:text-cyan-400 underline transition text-xs font-mono" data-i18n="footer_privacy">隱私權與個資保護聲明 (PDPA)</button>
+            <div class="max-w-6xl mx-auto px-5 pb-8 pt-2 text-center">
+            <button onclick="document.getElementById('privacy-modal').classList.remove('hidden')" class="text-white/70 hover:text-mint underline transition text-xs" data-i18n="footer_privacy">隱私權與個資保護聲明 (PDPA)</button>
         </div>
     </footer>
 
@@ -936,7 +946,7 @@
                 upd_title: "作品更新與最新消息",
                 upd_all: "查看全部動態 →",
                 hero_badge: "網站製作販售 • 手機 APP 開發 • 完整全端系統",
-                hero_title: '我們專門開發並販售<span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-teal-300 to-emerald-400">網站、手機 APP 與完整全端系統</span>',
+                hero_title: '我們專門開發並販售<span class="text-mint-deep">網站、手機 APP 與完整全端系統</span>',
                 hero_desc: "無論您想為店面或品牌<strong>架設形象與預約網站</strong>、開發上架 <strong>iOS / Android 手機 APP</strong>，還是需要一套包含前台畫面、後台管理與資料庫的<strong>完整全端系統</strong>，我們都能直接幫您從零做到好、交付給您使用。",
                 hero_btn_primary: "立即下單 / 免費估價（優惠碼 ID 享 9 折）",
                 hero_btn_line: "加 LINE 直接聊聊",
@@ -965,7 +975,7 @@
                 panel_footer_cta: "查看各方案詳細內容與月費維護方案 ↓",
                 srv_badge: "方案與透明價格區間",
                 srv_title: "我們專門製作並販售的四大系統",
-                srv_desc: '實際費用會依頁面數量與功能複雜度評估；下單時輸入專屬優惠碼 <strong class="text-cyan-400 font-mono">ID</strong>，總金額直接再打 <strong class="text-emerald-400 font-mono">9 折</strong>。',
+                srv_desc: '實際費用會依頁面數量與功能複雜度評估；下單時輸入專屬優惠碼 <strong class="text-mint-deep">ID</strong>，總金額直接再打 <strong class="text-mint-deep">9 折</strong>。',
                 srv_promo_note: "優惠碼 <strong>ID</strong>：所有方案享 9 折優惠",
                 price_label: "參考價格區間",
                 srv1_time: "約 1–2 週交付",
@@ -1056,7 +1066,7 @@
                 fnd2_bio: "負責商業網站建置、React Native 跨平台手機 APP、Python/FastAPI 後端資料庫與自動化程式系統開發。",
                 footer_privacy: "隱私權與個資保護聲明 (PDPA)",
                 priv_title: "隱私權與個人資料保護聲明",
-                priv_body: '<p><strong class="text-slate-200">1. 無追蹤型 Cookie 聲明：</strong>本網站為純靜態架構，不使用任何第三方廣告追蹤 Cookie 或行為分析工具，您可以安心瀏覽。</p><p><strong class="text-slate-200">2. 個人資料蒐集目的（依台灣個資法第 8 條告知）：</strong>當您主動透過 LINE 或電子郵件聯繫 Twinter Labs 洽談專案時，我們僅於「客戶聯繫、專案報價、系統開發與售後維護」之必要範圍內使用您提供的姓名、聯絡方式與需求內容。</p><p><strong class="text-slate-200">3. 資料保護與當事人權利：</strong>我們絕不會將您的聯絡資訊出售、出租或提供給無關之第三方。您隨時可透過官方聯繫管道請求查詢、更正或刪除您的聯繫紀錄。</p>',
+                priv_body: '<p><strong class="text-ink2">1. 無追蹤型 Cookie 聲明：</strong>本網站為純靜態架構，不使用任何第三方廣告追蹤 Cookie 或行為分析工具，您可以安心瀏覽。</p><p><strong class="text-ink2">2. 個人資料蒐集目的（依台灣個資法第 8 條告知）：</strong>當您主動透過 LINE 或電子郵件聯繫 Twinter Labs 洽談專案時，我們僅於「客戶聯繫、專案報價、系統開發與售後維護」之必要範圍內使用您提供的姓名、聯絡方式與需求內容。</p><p><strong class="text-ink2">3. 資料保護與當事人權利：</strong>我們絕不會將您的聯絡資訊出售、出租或提供給無關之第三方。您隨時可透過官方聯繫管道請求查詢、更正或刪除您的聯繫紀錄。</p>',
                 priv_close: "了解並關閉",
                 proc_badge: "簡單清楚的合作流程",
                 proc_title: "從下單到上線只要三個步驟",
@@ -1078,7 +1088,7 @@
                 q4_d: "商業網站約 1–2 週完工，手機 APP 與全端系統約 3–8 週。標準付款為確認報價後支付 50% 訂金啟動，驗收完成上線後再付 50% 尾款。",
                 form_badge: "線上快速下單與免費估價",
                 form_title: "訂購網站、APP、全端系統或預約討論",
-                form_desc: '在下方簡單填寫您的需求（若有優惠碼 <strong class="text-cyan-400 font-mono">ID</strong> 可享 9 折優惠，未填寫亦可直接送出），表單會直接寄到 <span class="text-white">Twinterlabs@gmail.com</span>。',
+                form_desc: '在下方簡單填寫您的需求（若有優惠碼 <strong class="text-mint-deep">ID</strong> 可享 9 折優惠，未填寫亦可直接送出），表單會直接寄到 <span class="text-ink">Twinterlabs@gmail.com</span>。',
                 tab_prod: "訂購網站 / APP / 系統",
                 tab_meet: "預約線上通話討論",
                 lbl_name: "您的稱呼 / 公司店名 *",
@@ -1151,7 +1161,7 @@
                 upd_title: "New Work & News",
                 upd_all: "View all updates →",
                 hero_badge: "WE BUILD & SELL WEBSITES • MOBILE APPS • FULL-STACK SYSTEMS",
-                hero_title: 'We build and sell <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-teal-300 to-emerald-400">websites, mobile apps &amp; full-stack systems</span>',
+                hero_title: 'We build and sell <span class="text-mint-deep">websites, mobile apps &amp; full-stack systems</span>',
                 hero_desc: "Twinter Labs builds and sells ready-to-launch <strong>business websites</strong>, cross-platform <strong>iOS &amp; Android mobile apps</strong>, and complete <strong>full-stack systems</strong> (customer frontend, admin dashboard, and cloud database) with transparent pricing.",
                 hero_btn_primary: "Get a Free Quote or Order (10% Off Code: ID)",
                 hero_btn_line: "Chat on LINE",
@@ -1180,7 +1190,7 @@
                 panel_footer_cta: "Explore Packages & Monthly Care Plan ↓",
                 srv_badge: "Transparent Pricing & Packages",
                 srv_title: "Websites, Apps & Full-Stack Systems We Sell",
-                srv_desc: 'Final quotes depend on page count and feature scope. Enter promo code <strong class="text-cyan-400 font-mono">ID</strong> at checkout to take <strong class="text-emerald-400 font-mono">10% OFF</strong> your entire build.',
+                srv_desc: 'Final quotes depend on page count and feature scope. Enter promo code <strong class="text-mint-deep">ID</strong> at checkout to take <strong class="text-mint-deep">10% OFF</strong> your entire build.',
                 srv_promo_note: "Code <strong>ID</strong>: 10% OFF All Packages",
                 price_label: "Estimated Price Range",
                 srv1_time: "1–2 Weeks Delivery",
@@ -1271,7 +1281,7 @@
                 fnd2_bio: "Builds custom websites, cross-platform React Native mobile apps, Python/FastAPI backend APIs, and automated execution systems.",
                 footer_privacy: "Privacy & Cookie Policy (Taiwan PDPA)",
                 priv_title: "Privacy & Personal Data Protection Policy",
-                priv_body: '<p><strong class="text-slate-200">1. Zero Tracking Cookies:</strong> This website is statically hosted and does not use advertising cookies, behavioral trackers, or third-party analytics scripts.</p><p><strong class="text-slate-200">2. Purpose of Data Collection (Taiwan PDPA Art. 8):</strong> When you contact Twinter Labs via LINE or email, your name, contact details, and project information are used strictly for project consultation, quoting, development, and support.</p><p><strong class="text-slate-200">3. Data Rights & Confidentiality:</strong> We never sell or share client information with third parties. You may request access to, correction of, or deletion of your contact records at any time.</p>',
+                priv_body: '<p><strong class="text-ink2">1. Zero Tracking Cookies:</strong> This website is statically hosted and does not use advertising cookies, behavioral trackers, or third-party analytics scripts.</p><p><strong class="text-ink2">2. Purpose of Data Collection (Taiwan PDPA Art. 8):</strong> When you contact Twinter Labs via LINE or email, your name, contact details, and project information are used strictly for project consultation, quoting, development, and support.</p><p><strong class="text-ink2">3. Data Rights & Confidentiality:</strong> We never sell or share client information with third parties. You may request access to, correction of, or deletion of your contact records at any time.</p>',
                 priv_close: "Got It",
                 proc_badge: "SIMPLE 3-STEP WORKFLOW",
                 proc_title: "How We Take Your Project From Idea to Launch",
@@ -1293,7 +1303,7 @@
                 q4_d: "Websites take 1–2 weeks; mobile apps and full-stack systems take 3–8 weeks. Standard terms are 50% deposit to start and 50% upon launch approval.",
                 form_badge: "Fast Order & Free Quote",
                 form_title: "Order a Website, App, Full-Stack System or Book a Call",
-                form_desc: 'Tell us what you need below (enter optional promo code <strong class="text-cyan-400 font-mono">ID</strong> for 10% off, or leave blank to submit directly to <span class="text-white">Twinterlabs@gmail.com</span>).',
+                form_desc: 'Tell us what you need below (enter optional promo code <strong class="text-mint-deep">ID</strong> for 10% off, or leave blank to submit directly to <span class="text-ink">Twinterlabs@gmail.com</span>).',
                 tab_prod: "Order Website / App / System",
                 tab_meet: "Schedule a Call",
                 lbl_name: "Your Name / Business Name *",
@@ -1417,16 +1427,16 @@
 
             if (mode === 'meeting') {
                 modeInput.value = "Schedule a Meeting";
-                btnMeet.className = "px-6 py-2.5 rounded-xl font-bold text-xs uppercase tracking-wider font-mono transition bg-cyan-500 text-black shadow-lg";
-                btnProd.className = "px-6 py-2.5 rounded-xl font-bold text-xs uppercase tracking-wider font-mono transition text-slate-400 hover:text-white";
+                btnMeet.className = "flex-1 px-3 sm:px-6 py-3 min-h-[48px] rounded-xl font-semibold text-sm transition bg-ink text-white";
+                btnProd.className = "flex-1 px-3 sm:px-6 py-3 min-h-[48px] rounded-xl font-semibold text-sm transition text-muted hover:text-ink";
                 meetingFields.classList.remove('hidden');
                 categoryLabel.innerText = dict.lbl_cat_meet;
                 detailsLabel.innerText = dict.lbl_det_meet;
                 btnText.innerText = dict.btn_submit_meet;
             } else {
                 modeInput.value = "Order Product / Build";
-                btnProd.className = "px-6 py-2.5 rounded-xl font-bold text-xs uppercase tracking-wider font-mono transition bg-cyan-500 text-black shadow-lg";
-                btnMeet.className = "px-6 py-2.5 rounded-xl font-bold text-xs uppercase tracking-wider font-mono transition text-slate-400 hover:text-white";
+                btnProd.className = "flex-1 px-3 sm:px-6 py-3 min-h-[48px] rounded-xl font-semibold text-sm transition bg-ink text-white";
+                btnMeet.className = "flex-1 px-3 sm:px-6 py-3 min-h-[48px] rounded-xl font-semibold text-sm transition text-muted hover:text-ink";
                 meetingFields.classList.add('hidden');
                 categoryLabel.innerText = dict.lbl_cat_prod;
                 detailsLabel.innerText = dict.lbl_det_prod;
@@ -1461,7 +1471,7 @@
             btn.innerHTML = dict.sending_msg;
 
             setTimeout(() => {
-                status.className = "mb-6 p-4 rounded-xl text-xs font-semibold text-center bg-emerald-950 border border-emerald-700 text-emerald-200 block font-mono";
+                status.className = "mb-6 p-4 rounded-xl text-sm font-semibold text-center bg-sage-soft border border-sage text-sage-deep block";
                 status.innerHTML = hasValidPromo ? dict.success_promo_msg(rawPromo.toUpperCase()) : dict.success_std_msg;
                 form.reset();
                 setMode('product');
@@ -1519,18 +1529,18 @@
     </script>
     <!-- Taiwan PDPA & Privacy Policy Modal -->
     <div id="privacy-modal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
-        <div class="bg-[#0D131F] border border-slate-700 rounded-2xl max-w-lg w-full p-6 sm:p-8 text-slate-300 space-y-4 shadow-2xl relative">
-            <div class="flex items-center justify-between border-b border-slate-800 pb-3">
-                <h3 class="font-display text-lg font-bold text-white" data-i18n="priv_title">隱私權與個人資料保護聲明</h3>
-                <button onclick="document.getElementById('privacy-modal').classList.add('hidden')" class="text-slate-400 hover:text-white text-xl leading-none">&times;</button>
+        <div class="bg-card border border-line rounded-2xl max-w-lg w-full text-ink2 space-y-4 shadow-soft relative p-5 sm:p-6 hover:border-sea hover:shadow-lift transition">
+            <div class="flex items-center justify-between border-b border-line pb-3">
+                <h3 class="font-display text-lg font-bold text-ink" data-i18n="priv_title">隱私權與個人資料保護聲明</h3>
+                <button onclick="document.getElementById('privacy-modal').classList.add('hidden')" class="text-muted hover:text-mint-deep text-xl leading-none min-w-[44px] min-h-[44px]">&times;</button>
             </div>
-            <div class="space-y-3 text-xs leading-relaxed text-slate-400 max-h-[60vh] overflow-y-auto pr-1" data-i18n="priv_body">
-                <p><strong class="text-slate-200">1. 無追蹤型 Cookie 聲明：</strong>本網站為純靜態架構，不使用任何第三方廣告追蹤 Cookie 或行為分析工具，您可以安心瀏覽。</p>
-                <p><strong class="text-slate-200">2. 個人資料蒐集目的（依台灣個資法第 8 條告知）：</strong>當您主動透過 LINE 或電子郵件聯繫 Twinter Labs 洽談專案時，我們僅於「客戶聯繫、專案報價、系統開發與售後維護」之必要範圍內使用您提供的姓名、聯絡方式與需求內容。</p>
-                <p><strong class="text-slate-200">3. 資料保護與當事人權利：</strong>我們絕不會將您的聯絡資訊出售、出租或提供給無關之第三方。您隨時可透過官方聯繫管道請求查詢、更正或刪除您的聯繫紀錄。</p>
+            <div class="space-y-3 text-xs leading-relaxed text-muted max-h-[60vh] overflow-y-auto pr-1" data-i18n="priv_body">
+                <p><strong class="text-ink2">1. 無追蹤型 Cookie 聲明：</strong>本網站為純靜態架構，不使用任何第三方廣告追蹤 Cookie 或行為分析工具，您可以安心瀏覽。</p>
+                <p><strong class="text-ink2">2. 個人資料蒐集目的（依台灣個資法第 8 條告知）：</strong>當您主動透過 LINE 或電子郵件聯繫 Twinter Labs 洽談專案時，我們僅於「客戶聯繫、專案報價、系統開發與售後維護」之必要範圍內使用您提供的姓名、聯絡方式與需求內容。</p>
+                <p><strong class="text-ink2">3. 資料保護與當事人權利：</strong>我們絕不會將您的聯絡資訊出售、出租或提供給無關之第三方。您隨時可透過官方聯繫管道請求查詢、更正或刪除您的聯繫紀錄。</p>
             </div>
             <div class="pt-2 text-right">
-                <button onclick="document.getElementById('privacy-modal').classList.add('hidden')" class="px-4 py-2 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white text-xs font-bold transition" data-i18n="priv_close">了解並關閉</button>
+                <button onclick="document.getElementById('privacy-modal').classList.add('hidden')" class="bg-ink text-white rounded-xl px-5 py-3.5 font-semibold hover:bg-mint-deep transition min-h-[48px] w-full sm:w-auto inline-flex items-center justify-center gap-2" data-i18n="priv_close">了解並關閉</button>
             </div>
         </div>
     </div>
