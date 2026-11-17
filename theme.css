@@ -1,0 +1,26 @@
+/* Twinter Labs shared theme — light, calm, trustworthy. Do not edit per page. */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;700&display=swap');
+
+:root {
+  --paper:#F6F8F7; --card:#FFFFFF; --ink:#1E2A2E; --ink2:#3F4E53; --muted:#5F6F74; --line:#DFE7E4;
+  --mint:#82D4BB; --mint-soft:#E6F6F0; --mint-deep:#2A7059;
+  --sage:#82C09A; --sea:#82AC9F; --fog:#829298;
+  --mauve:#94778B; --mauve-soft:#F2ECF0; --mauve-deep:#6F5468;
+}
+
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  font-family: 'Inter', 'Noto Sans TC', system-ui, sans-serif;
+  background: var(--paper); color: var(--ink2);
+  -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
+  overflow-x: hidden; -webkit-tap-highlight-color: transparent;
+}
+.font-display, .font-mono { font-family: 'Inter', 'Noto Sans TC', system-ui, sans-serif; }
+.font-display { letter-spacing: -0.02em; }
+h1, h2, h3 { color: var(--ink); letter-spacing: -0.02em; }
+::selection { background: var(--mint); color: var(--ink); }
+:focus-visible { outline: 2px solid var(--mint-deep); outline-offset: 2px; border-radius: 8px; }
+input, select, textarea { font-size: 16px; } /* stops iOS zoom on focus */
+img, video { max-width: 100%; }
+.tl-safe-bottom { padding-bottom: max(1rem, env(safe-area-inset-bottom)); }
+@media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; scroll-behavior: auto !important; } }
