@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, nofollow">
     <title>Twinter Labs Admin</title>
@@ -49,6 +50,7 @@
         .topbar-inner { max-width: 1180px; margin: 0 auto; padding: 0 20px; height: 64px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
         .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
         .brand-mark { width: 38px; height: 38px; border-radius: 11px; background: linear-gradient(45deg, #0891B2, #10B981); display: flex; align-items: center; justify-content: center; font-family: 'Space Grotesk', sans-serif; font-weight: 800; font-size: 18px; color: #000; }
+        .brand-mark img { width: 100%; height: 100%; display: block; }
         .brand-name { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 17px; color: #fff; display: block; line-height: 1.2; }
         .brand-sub { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--cyan-soft); font-weight: 700; display: block; }
         .topbar-actions { display: flex; align-items: center; gap: 8px; }
@@ -177,6 +179,42 @@
         .progress { height: 6px; background: var(--line); border-radius: 999px; overflow: hidden; margin-top: 6px; }
         .progress > i { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--cyan), var(--emerald)); transition: width .2s; }
 
+        /* Section tabs */
+        .tabsbar { border-bottom: 1px solid var(--line); }
+        .tabsbar-inner { max-width: 1180px; margin: 0 auto; padding: 0 20px; display: flex; gap: 4px; overflow-x: auto; }
+        .navtab { border: 0; border-bottom: 2px solid transparent; background: transparent; color: var(--muted); font: inherit; font-weight: 700; font-size: 14px; padding: 14px 16px; cursor: pointer; white-space: nowrap; }
+        .navtab:hover { color: #fff; }
+        .navtab.active { color: #fff; border-bottom-color: var(--cyan); }
+        .navtab .dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--amber); margin-left: 7px; vertical-align: middle; }
+
+        /* Home page editor */
+        .home-panel { margin-bottom: 24px; }
+        .home-panel > h2 { margin-bottom: 4px; }
+        .home-panel > .lead { color: var(--muted); font-size: 13px; margin: 0 0 18px; }
+        .image-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }
+        .image-card { display: flex; gap: 14px; padding: 14px; border: 1px solid var(--line); border-radius: 14px; background: var(--bg); }
+        .image-card.changed, .link-row.changed input, .text-row textarea.changed { border-color: var(--cyan); }
+        .image-card .pic { width: 104px; height: 104px; flex: none; border-radius: 12px; overflow: hidden; background: #E2E8F0; border: 1px solid var(--line); }
+        .image-card .pic img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .image-card .info { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 8px; align-items: flex-start; }
+        .image-card .name { font-weight: 700; color: #fff; overflow-wrap: anywhere; }
+        .image-card select { background: var(--panel); color: var(--text); border: 1px solid var(--line); border-radius: 8px; padding: 6px 8px; font: inherit; font-size: 13px; }
+        .link-row { display: grid; grid-template-columns: 200px 1fr auto; gap: 12px; align-items: center; margin-bottom: 12px; }
+        .link-row .name { font-weight: 700; color: #fff; }
+        .link-row .uses { display: block; font-size: 12px; color: var(--dim); font-weight: 400; }
+        .link-row.invalid input { border-color: var(--rose); }
+        .link-btn { border: 0; background: transparent; color: var(--cyan-soft); font: inherit; font-size: 12px; font-weight: 700; cursor: pointer; padding: 4px 6px; text-decoration: underline; }
+        .text-group { border: 1px solid var(--line); border-radius: 14px; margin-bottom: 10px; padding: 0; background: var(--bg); }
+        .text-group[open] { padding-bottom: 6px; }
+        .text-group > summary { padding: 14px 16px; margin: 0; border: 0; color: #fff; font-size: 15px; list-style-position: inside; }
+        .text-group > summary .count { color: var(--dim); font-weight: 400; font-size: 12px; margin-left: 8px; }
+        .text-group > summary .edited { color: var(--cyan-soft); font-size: 12px; margin-left: 8px; }
+        .text-row { padding: 12px 16px; border-top: 1px solid var(--line); }
+        .text-key { display: flex; align-items: center; justify-content: space-between; gap: 8px; font-size: 11px; color: var(--dim); margin-bottom: 8px; min-height: 22px; }
+        .text-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .text-pair .lang-tag { display: block; font-size: 10px; font-weight: 700; letter-spacing: .08em; color: var(--muted); margin-bottom: 4px; }
+        .text-row textarea { min-height: 0; border-radius: 10px; padding: 9px 11px; font-size: 14px; line-height: 1.5; }
+
         /* Home page app video */
         .app-video-row { display: flex; gap: 24px; align-items: flex-start; margin-top: 18px; }
         .phone-frame { width: 170px; flex: none; aspect-ratio: 9 / 19; border-radius: 24px; border: 4px solid var(--line-strong); background: #000; overflow: hidden; }
@@ -197,6 +235,9 @@
             .options { grid-template-columns: 1fr; }
             .brand-sub { display: none; }
             .yt-row { flex-direction: column; }
+            .link-row { grid-template-columns: 1fr; gap: 6px; margin-bottom: 18px; }
+            .text-pair { grid-template-columns: 1fr; }
+            .tabsbar-inner { padding: 0 8px; }
             .app-video-row { flex-direction: column; align-items: center; }
             .app-video-side { width: 100%; }
         }
@@ -207,7 +248,7 @@
     <header class="topbar">
         <div class="topbar-inner">
             <a class="brand" href="admin.html">
-                <span class="brand-mark">TL</span>
+                <span class="brand-mark"><img src="images/logo.svg" alt="Twinter Labs logo"></span>
                 <span>
                     <span class="brand-name">Twinter Labs</span>
                     <span class="brand-sub mono">Admin</span>
@@ -219,6 +260,14 @@
             </div>
         </div>
     </header>
+
+    <nav class="tabsbar" id="tabsBar" hidden>
+        <div class="tabsbar-inner">
+            <button type="button" class="navtab" data-view="viewList">Posts</button>
+            <button type="button" class="navtab" data-view="viewHome">Home page<span class="dot" id="homeTabDot" hidden></span></button>
+            <button type="button" class="navtab" data-view="viewRequests">Customer requests</button>
+        </div>
+    </nav>
 
     <main class="wrap">
 
@@ -264,9 +313,23 @@
             <div id="listNotice" class="notice notice-ok" hidden></div>
             <div id="listError" class="notice notice-err" hidden></div>
             <div id="postList"></div>
+        </section>
 
-            <div class="panel" id="appVideoPanel" style="margin-top:40px" hidden>
-                <h2>Home page app video</h2>
+
+        <!-- Home page content -->
+        <section id="viewHome" hidden>
+            <div class="list-head">
+                <div>
+                    <h1>Home page</h1>
+                    <p class="muted small" style="margin:4px 0 0">Change the video, pictures, links and any text on the home page. Nothing changes on the website until you press Save.</p>
+                </div>
+            </div>
+            <div id="homeNotice" class="notice notice-ok" hidden></div>
+            <div id="homeError" class="notice notice-err" hidden></div>
+            <p class="muted" id="homeLoading">Loading the home page…</p>
+            <div id="homeBody" hidden>
+            <div class="panel home-panel" id="appVideoPanel">
+                <h2>App video</h2>
                 <p class="muted small" style="margin:6px 0 0">The video that plays inside the phone in the “Mobile App Demo” section (Spirit Feeder).</p>
                 <div class="app-video-row">
                     <div class="phone-frame"><video id="appVideoPreview" muted playsinline controls preload="metadata"></video></div>
@@ -288,8 +351,47 @@
                 </div>
             </div>
 
-            <div class="panel" style="margin-top:24px">
-                <h2>Customer requests</h2>
+                <div class="panel home-panel">
+                    <h2>Pictures</h2>
+                    <p class="lead">Every picture on the home page. Replaced pictures are resized automatically.</p>
+                    <div class="image-grid" id="imageList"></div>
+                    <input type="file" id="imageInput" accept="image/jpeg,image/png,image/webp" hidden>
+                </div>
+
+                <div class="panel home-panel">
+                    <h2>Links and social media</h2>
+                    <p class="lead">Each address is changed everywhere it is used on the site. For email, just type the address.</p>
+                    <div id="linkList"></div>
+                </div>
+
+                <div class="panel home-panel">
+                    <h2>Text</h2>
+                    <p class="lead">Every text on the home page, in Chinese and English, grouped by section. Some texts contain small codes such as <span class="mono">&lt;i class="…"&gt;&lt;/i&gt;</span> or <span class="mono">&lt;span …&gt;</span> — they make the icons and colours, so leave them and change only the words.</p>
+                    <div class="field" style="margin-bottom:16px">
+                        <input type="text" id="textSearch" placeholder="Search for a word to find its text box…" autocomplete="off">
+                    </div>
+                    <div id="textProblem" class="notice notice-warn" hidden></div>
+                    <div id="textGroups"></div>
+                    <p class="hint" id="textNoMatch" hidden>No text matches that search.</p>
+                </div>
+            </div>
+
+            <div class="publish-bar" id="homeBar" hidden>
+                <div class="publish-inner">
+                    <div class="publish-status">
+                        <span id="homeStatus">You have unsaved changes.</span>
+                        <div class="progress" id="homeProgress" hidden><i id="homeProgressBar"></i></div>
+                    </div>
+                    <button type="button" class="btn btn-ghost" id="homeDiscardBtn">Discard</button>
+                    <button type="button" class="btn btn-primary" id="homeSaveBtn">Save to website</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Customer requests -->
+        <section id="viewRequests" hidden>
+            <div class="list-head"><h1>Customer requests</h1></div>
+            <div class="panel">
                 <p class="muted small" style="margin:6px 0 16px">Orders sent through the “Order Now” form on the home page are stored in Formspree, not on this page. Open the inbox to read them, and sign in with the Formspree account that owns the form.</p>
                 <a class="btn" id="requestsLink" href="https://formspree.io/forms" target="_blank" rel="noopener">Open requests inbox ↗</a>
                 <p class="hint">On Formspree's free plan, requests are kept for 30 days.</p>
@@ -392,6 +494,8 @@
         var SITE_PATH = 'content/site.json';                    // site-wide settings (home page app video)
         var APP_VIDEO_DIR = 'content/media/app-video/';         // holds only the uploaded home page app video
         var DEFAULT_APP_VIDEO = 'videos/spirit-feeder-demo.mp4';
+        var SITE_IMG_DIR = 'content/media/site/';               // pictures replaced from the Home page tab
+        var SITE_IMAGE_MAX_SIDE = 1200;
         var FORMSPREE_FORM_ID = 'xaeonapy';                     // same id as the order form in index.html
         var IMAGE_MAX_SIDE = 1920;          // longer side of uploaded pictures, in pixels
         var IMAGE_QUALITY = 0.85;
@@ -411,6 +515,7 @@
         var busy = false;
         var site = {};            // contents of content/site.json
         var pendingVideo = null;  // app video chosen but not saved yet
+        var home = null;          // Home page tab: defaults read from index.html + the current edits
         var localPreviews = {};   // site path -> object URL, for files uploaded in this session
 
         $('repoNameHelp').textContent = REPO.name;
@@ -556,6 +661,14 @@
                             if (path.indexOf(dir) === 0 && !added[path]) doomed[path] = true;
                         });
                     });
+                    if (change.prune) {
+                        // remove files in a folder that the saved data no longer points to
+                        var keep = {};
+                        change.prune.keep(nextData).forEach(function (path) { keep[path] = true; });
+                        Object.keys(existing).forEach(function (path) {
+                            if (path.indexOf(change.prune.dir) === 0 && !keep[path] && !added[path]) doomed[path] = true;
+                        });
+                    }
                     Object.keys(doomed).forEach(function (path) {
                         entries.push({ path: path, mode: '100644', type: 'blob', sha: null });
                     });
@@ -576,8 +689,12 @@
 
         /* ---------- Views ---------- */
         function show(view) {
-            ['viewSignIn', 'viewList', 'viewEditor'].forEach(function (id) { $(id).hidden = id !== view; });
+            ['viewSignIn', 'viewList', 'viewEditor', 'viewHome', 'viewRequests'].forEach(function (id) { $(id).hidden = id !== view; });
             $('signOutBtn').hidden = view === 'viewSignIn';
+            $('tabsBar').hidden = view === 'viewSignIn' || view === 'viewEditor';
+            document.querySelectorAll('.navtab').forEach(function (tab) {
+                tab.classList.toggle('active', tab.getAttribute('data-view') === view);
+            });
             window.scrollTo(0, 0);
         }
 
@@ -635,11 +752,15 @@
 
         $('signOutBtn').addEventListener('click', function () {
             if (!confirmLeave()) return;
+            if (homeDirty() && !window.confirm('Sign out without saving your home page changes?')) return;
             storeToken(null);
             token = null;
             posts = [];
             draft = null;
             dirty = false;
+            home = null;
+            pendingVideo = null;
+            refreshHomeBar();
             setNotice('signInError', '');
             show('viewSignIn');
         });
@@ -653,23 +774,32 @@
             return readPosts(REPO.branch).then(function (data) {
                 posts = T.sortPosts(data.posts);
                 renderList();
-                return readSite(REPO.branch);
-            }).then(function (data) {
-                site = data;
-                renderAppVideo();
             }).catch(function (err) {
                 if ($('postList').querySelector('.loading')) $('postList').innerHTML = '';
-                if (err instanceof ApiError && err.status === 401) {
-                    // Token expired or was revoked: back to the sign-in screen.
-                    storeToken(null);
-                    token = null;
-                    show('viewSignIn');
-                    setNotice('signInError', T.esc(explain(err)));
-                    return;
-                }
+                if (sessionExpired(err)) return;
                 setNotice('listError', T.esc(explain(err)));
             });
         }
+
+        // Token expired or was revoked: back to the sign-in screen.
+        function sessionExpired(err) {
+            if (!(err instanceof ApiError) || err.status !== 401) return false;
+            storeToken(null);
+            token = null;
+            show('viewSignIn');
+            setNotice('signInError', T.esc(explain(err)));
+            return true;
+        }
+
+        document.querySelectorAll('.navtab').forEach(function (tab) {
+            tab.addEventListener('click', function () {
+                if (busy) return;
+                var view = tab.getAttribute('data-view');
+                if (view === 'viewList') loadList();
+                else if (view === 'viewHome') openHome();
+                else show(view);
+            });
+        });
 
         function previewSrc(path) {
             return localPreviews[path] || path;
@@ -773,7 +903,6 @@
             $('appVideoRestore').hidden = !!pendingVideo || !custom;
             $('appVideoRestore').classList.remove('armed');
             $('appVideoRestore').textContent = 'Go back to the original video';
-            $('appVideoPanel').hidden = false;
         }
 
         function setAppVideoBusy(value, fraction) {
@@ -891,6 +1020,460 @@
                 setAppVideoBusy(false);
                 renderAppVideo();
                 setNotice('appVideoError', T.esc(explain(err)));
+            });
+        });
+
+        /* ---------- Home page: text, links, pictures ---------- */
+        var SECTION_LABELS = {
+            top: 'Top bar', nav: 'Menu', header: 'Top of the page (hero)', services: 'Pricing and packages',
+            portfolio: 'Live websites', apps: 'Mobile app demo', updates: 'Latest updates', founders: 'Founders',
+            process: 'Process and FAQ', 'quick-request': 'Order form', contact: 'Footer and contact',
+            other: 'Form hints, buttons and messages'
+        };
+
+        // Finds the { ... } that follows a marker in a script, skipping braces inside strings and comments.
+        function extractObjectLiteral(source, marker) {
+            var from = source.indexOf(marker);
+            if (from < 0) return null;
+            var start = source.indexOf('{', from);
+            var depth = 0, quote = null;
+            for (var i = start; i >= 0 && i < source.length; i++) {
+                var ch = source[i];
+                if (quote) {
+                    if (ch === '\\') i++;
+                    else if (ch === quote) quote = null;
+                    continue;
+                }
+                if (ch === '"' || ch === "'" || ch === '`') { quote = ch; continue; }
+                if (ch === '/' && source[i + 1] === '/') { i = source.indexOf('\n', i); if (i < 0) break; continue; }
+                if (ch === '/' && source[i + 1] === '*') { i = source.indexOf('*/', i) + 1; if (i < 1) break; continue; }
+                if (ch === '{') depth++;
+                else if (ch === '}' && --depth === 0) return source.slice(start, i + 1);
+            }
+            return null;
+        }
+
+        function linkLabel(href) {
+            if (/^mailto:/i.test(href)) return 'Email address';
+            if (/^tel:/i.test(href)) return 'Phone number';
+            var host = (/^https?:\/\/([^\/?#]+)/i.exec(href) || [])[1] || href;
+            var known = [[/line\.me$/i, 'LINE'], [/instagram\.com$/i, 'Instagram'], [/facebook\.com$/i, 'Facebook'], [/github\.com$/i, 'GitHub'],
+                [/linkedin\.com$/i, 'LinkedIn'], [/(youtube\.com|youtu\.be)$/i, 'YouTube'], [/(twitter\.com|x\.com)$/i, 'X / Twitter'], [/tiktok\.com$/i, 'TikTok'], [/threads\.(net|com)$/i, 'Threads']];
+            for (var i = 0; i < known.length; i++) if (known[i][0].test(host)) return known[i][1];
+            return 'Website: ' + host.replace(/^www\./i, '');
+        }
+
+        // Accepts what people actually type: a bare email address or a domain without https://
+        function normalizeLink(value) {
+            var v = String(value || '').trim();
+            if (/^[^\s@\/:]+@[^\s@\/]+\.[^\s@\/]+$/.test(v)) return 'mailto:' + v;
+            if (v && !/^[a-z][a-z0-9+.-]*:/i.test(v) && /^[^\s\/]+\.[^\s]+$/.test(v)) return 'https://' + v;
+            return v;
+        }
+        function validLink(value) {
+            return /^(https?:\/\/|mailto:|tel:)\S+$/i.test(value);
+        }
+
+        // Reads index.html: every text key with its original wording, every outside link, every picture.
+        function buildHome(html, saved) {
+            var doc = new DOMParser().parseFromString(html, 'text/html');
+            var dict = { zh: {}, en: {} };
+            var textProblem = false;
+            try {
+                var parsed = new Function('return (' + extractObjectLiteral(html, 'const translations') + ');')();
+                dict.zh = (parsed && parsed.zh) || {};
+                dict.en = (parsed && parsed.en) || {};
+            } catch (e) { textProblem = true; }
+
+            var defaults = {}, groups = [], groupIndex = {};
+            function addKey(groupId, key, zh, en) {
+                if (defaults[key]) return;
+                if (groupIndex[groupId] === undefined) { groupIndex[groupId] = groups.length; groups.push({ id: groupId, keys: [] }); }
+                groups[groupIndex[groupId]].keys.push(key);
+                defaults[key] = { zh: zh, en: en };
+            }
+            doc.querySelectorAll('[data-i18n]').forEach(function (el) {
+                var key = el.getAttribute('data-i18n');
+                var holder = el.closest('section, nav, header, footer');
+                var inline = el.innerHTML.replace(/\s+/g, ' ').trim();
+                addKey(holder ? (holder.id || holder.tagName.toLowerCase()) : 'top', key,
+                    typeof dict.zh[key] === 'string' ? dict.zh[key] : inline,
+                    typeof dict.en[key] === 'string' ? dict.en[key] : '');
+            });
+            Object.keys(dict.zh).concat(Object.keys(dict.en)).forEach(function (key) {
+                if (typeof dict.zh[key] !== 'string' && typeof dict.en[key] !== 'string') return;
+                addKey('other', key, typeof dict.zh[key] === 'string' ? dict.zh[key] : '', typeof dict.en[key] === 'string' ? dict.en[key] : '');
+            });
+
+            var links = [], linkIndex = {};
+            function addLink(href) {
+                if (!validLink(href)) return;
+                if (linkIndex[href] === undefined) { linkIndex[href] = links.length; links.push({ href: href, label: linkLabel(href), count: 0 }); }
+                links[linkIndex[href]].count++;
+            }
+            doc.querySelectorAll('a[href]').forEach(function (a) { addLink(a.getAttribute('href')); });
+            ['zh', 'en'].forEach(function (lang) {
+                Object.keys(dict[lang]).forEach(function (key) {
+                    var value = dict[lang][key], match, pattern = /href=["']([^"']+)["']/g;
+                    if (typeof value !== 'string') return;
+                    while ((match = pattern.exec(value))) if (linkIndex[match[1]] === undefined) addLink(match[1]);
+                });
+            });
+
+            var images = [], imageSeen = {};
+            doc.querySelectorAll('img[src]').forEach(function (img) {
+                var src = img.getAttribute('src');
+                if (!src || imageSeen[src]) return;
+                imageSeen[src] = true;
+                images.push({ src: src, label: img.getAttribute('alt') || src.split('/').pop() });
+            });
+
+            var state = { defaults: defaults, groups: groups, linkList: links, imageList: images, textProblem: textProblem, text: {}, links: {}, images: {} };
+            var savedText = (saved && saved.text) || {}, savedLinks = (saved && saved.links) || {}, savedImages = (saved && saved.images) || {};
+            Object.keys(defaults).forEach(function (key) {
+                var over = savedText[key] || {};
+                state.text[key] = {
+                    zh: typeof over.zh === 'string' ? over.zh : defaults[key].zh,
+                    en: typeof over.en === 'string' ? over.en : defaults[key].en
+                };
+            });
+            links.forEach(function (link) { state.links[link.href] = validLink(savedLinks[link.href]) ? savedLinks[link.href] : link.href; });
+            images.forEach(function (image) {
+                var over = savedImages[image.src];
+                state.images[image.src] = over && over.src ? { src: over.src, pos: over.pos || 'top' } : null;
+            });
+            state.saved = JSON.stringify(homePayload(state));
+            return state;
+        }
+
+        // What gets written to site.json: only the things that differ from index.html.
+        function homePayload(state) {
+            var text = {}, links = {}, images = {};
+            Object.keys(state.text).forEach(function (key) {
+                ['zh', 'en'].forEach(function (lang) {
+                    if (state.text[key][lang] !== state.defaults[key][lang]) {
+                        (text[key] = text[key] || {})[lang] = state.text[key][lang];
+                    }
+                });
+            });
+            Object.keys(state.links).forEach(function (href) {
+                var value = normalizeLink(state.links[href]);
+                if (value && value !== href) links[href] = value;
+            });
+            Object.keys(state.images).forEach(function (src) {
+                var item = state.images[src];
+                if (item) images[src] = { src: item.file ? SITE_IMG_DIR + item.name : item.src, pos: item.pos };
+            });
+            return { text: text, links: links, images: images };
+        }
+        function homeDirty() {
+            return !!home && JSON.stringify(homePayload(home)) !== home.saved;
+        }
+        function refreshHomeBar() {
+            var isDirty = homeDirty();
+            $('homeBar').hidden = !isDirty && !busy;
+            $('homeTabDot').hidden = !isDirty;
+            if (isDirty && !busy) $('homeStatus').textContent = 'You have unsaved changes.';
+        }
+
+        function openHome() {
+            show('viewHome');
+            if (home) { refreshHomeBar(); return Promise.resolve(); }   // keep unsaved edits when switching tabs
+            setNotice('homeError', '');
+            $('homeLoading').hidden = false;
+            $('homeBody').hidden = true;
+            return Promise.all([readSite(REPO.branch), gh('/contents/index.html?ref=' + encodeURIComponent(REPO.branch), { raw: true })])
+                .then(function (results) {
+                    site = results[0];
+                    home = buildHome(results[1], site);
+                    renderAppVideo();
+                    renderImages();
+                    renderLinks();
+                    renderTexts();
+                    $('textSearch').value = '';
+                    setNotice('textProblem', home.textProblem ? 'The text list could not be read fully from index.html, so some texts may be missing here.' : '');
+                    $('homeLoading').hidden = true;
+                    $('homeBody').hidden = false;
+                    refreshHomeBar();
+                })
+                .catch(function (err) {
+                    $('homeLoading').hidden = true;
+                    if (sessionExpired(err)) return;
+                    setNotice('homeError', T.esc(explain(err)));
+                });
+        }
+
+        /* Pictures */
+        var imageTarget = null;
+        function renderImages() {
+            var positions = { top: 'center top', center: 'center', bottom: 'center bottom' };
+            $('imageList').innerHTML = home.imageList.map(function (image, index) {
+                var item = home.images[image.src];
+                var shown = item ? (item.preview || previewSrc(item.src)) : image.src;
+                var options = ['top', 'center', 'bottom'].map(function (pos) {
+                    return '<option value="' + pos + '"' + (item && item.pos === pos ? ' selected' : '') + '>Show the ' + pos + ' of the picture</option>';
+                }).join('');
+                return '<div class="image-card' + (item ? ' changed' : '') + '" data-index="' + index + '">' +
+                    '<div class="pic"><img src="' + T.esc(shown) + '" alt="" style="object-position:' + (item ? positions[item.pos] : 'center top') + '"></div>' +
+                    '<div class="info">' +
+                        '<span class="name">' + T.esc(image.label) + '</span>' +
+                        '<button type="button" class="btn btn-sm" data-act="replace">' + (item ? 'Choose another picture' : 'Replace picture') + '</button>' +
+                        (item ? '<select data-act="pos" aria-label="Which part of the picture to show">' + options + '</select>' +
+                            '<button type="button" class="link-btn" data-act="original">Use the original picture</button>' : '') +
+                    '</div>' +
+                '</div>';
+            }).join('') || '<p class="muted">There are no pictures on the home page.</p>';
+        }
+        $('imageList').addEventListener('click', function (event) {
+            var button = event.target.closest('button[data-act]');
+            if (!button || busy) return;
+            var image = home.imageList[Number(button.closest('.image-card').getAttribute('data-index'))];
+            if (button.getAttribute('data-act') === 'replace') {
+                imageTarget = image.src;
+                $('imageInput').click();
+            } else {
+                home.images[image.src] = null;
+                renderImages();
+                refreshHomeBar();
+            }
+        });
+        $('imageList').addEventListener('change', function (event) {
+            var select = event.target.closest('select[data-act]');
+            if (!select) return;
+            var image = home.imageList[Number(select.closest('.image-card').getAttribute('data-index'))];
+            if (home.images[image.src]) home.images[image.src].pos = select.value;
+            renderImages();
+            refreshHomeBar();
+        });
+        $('imageInput').addEventListener('change', function () {
+            var file = this.files && this.files[0];
+            var target = imageTarget;
+            this.value = '';
+            if (!file || !target || busy || !home) return;
+            setNotice('homeError', '');
+            if (!/^image\/(jpeg|png|webp)$/.test(file.type)) {
+                setNotice('homeError', T.esc(file.name) + ' is not a supported picture. Use JPG, PNG or WebP.');
+                return;
+            }
+            processImage(file, SITE_IMAGE_MAX_SIDE).then(function (result) {
+                var previous = home.images[target];
+                home.images[target] = {
+                    file: result.blob, name: 'pic-' + randomId(6) + '.' + result.ext,
+                    preview: URL.createObjectURL(result.blob), pos: previous ? previous.pos : 'top'
+                };
+                renderImages();
+                refreshHomeBar();
+            }).catch(function () {
+                setNotice('homeError', T.esc(file.name) + ' could not be read. Try saving it as JPG or PNG.');
+            });
+        });
+
+        /* Links */
+        function renderLinks() {
+            $('linkList').innerHTML = home.linkList.map(function (link, index) {
+                var value = home.links[link.href];
+                var changed = normalizeLink(value) !== link.href;
+                return '<div class="link-row' + (changed ? ' changed' : '') + '" data-index="' + index + '">' +
+                    '<div class="name">' + T.esc(link.label) + '<span class="uses">used ' + link.count + (link.count === 1 ? ' time' : ' times') + '</span></div>' +
+                    '<input type="text" value="' + T.esc(/^mailto:/i.test(value) ? value.replace(/^mailto:/i, '') : value) + '" spellcheck="false" autocomplete="off" aria-label="' + T.esc(link.label) + '">' +
+                    '<button type="button" class="link-btn" data-act="reset"' + (changed ? '' : ' hidden') + '>Reset</button>' +
+                '</div>';
+            }).join('') || '<p class="muted">There are no outside links on the home page.</p>';
+        }
+        function linkRowState(row) {
+            var link = home.linkList[Number(row.getAttribute('data-index'))];
+            var value = normalizeLink(home.links[link.href]);
+            row.classList.toggle('changed', value !== link.href);
+            row.classList.toggle('invalid', !!value && !validLink(value));
+            row.querySelector('[data-act=reset]').hidden = value === link.href;
+        }
+        $('linkList').addEventListener('input', function (event) {
+            var row = event.target.closest('.link-row');
+            if (!row) return;
+            var link = home.linkList[Number(row.getAttribute('data-index'))];
+            home.links[link.href] = event.target.value.trim() ? event.target.value : link.href;
+            linkRowState(row);
+            refreshHomeBar();
+        });
+        $('linkList').addEventListener('click', function (event) {
+            var button = event.target.closest('button[data-act=reset]');
+            if (!button || busy) return;
+            var link = home.linkList[Number(button.closest('.link-row').getAttribute('data-index'))];
+            home.links[link.href] = link.href;
+            renderLinks();
+            refreshHomeBar();
+        });
+
+        /* Text */
+        function textRows(value) {
+            return Math.max(1, Math.min(6, Math.ceil(String(value).length / 34)));
+        }
+        function renderTexts() {
+            $('textGroups').innerHTML = home.groups.map(function (group) {
+                var rows = group.keys.map(function (key) {
+                    var cells = ['zh', 'en'].map(function (lang) {
+                        var value = home.text[key][lang];
+                        var changed = value !== home.defaults[key][lang];
+                        return '<div><span class="lang-tag">' + (lang === 'zh' ? '中文' : 'ENGLISH') + '</span>' +
+                            '<textarea data-lang="' + lang + '" rows="' + textRows(value) + '"' + (changed ? ' class="changed"' : '') + ' aria-label="' + key + ' ' + lang + '">' + T.esc(value) + '</textarea></div>';
+                    }).join('');
+                    return '<div class="text-row" data-key="' + T.esc(key) + '">' +
+                        '<div class="text-key"><span class="mono">' + T.esc(key) + '</span><button type="button" class="link-btn" data-act="reset" hidden>Reset to original</button></div>' +
+                        '<div class="text-pair">' + cells + '</div></div>';
+                }).join('');
+                return '<details class="text-group" data-group="' + T.esc(group.id) + '"><summary>' + T.esc(SECTION_LABELS[group.id] || group.id) +
+                    '<span class="count">' + group.keys.length + (group.keys.length === 1 ? ' text' : ' texts') + '</span><span class="edited"></span></summary>' + rows + '</details>';
+            }).join('');
+            document.querySelectorAll('#textGroups .text-row').forEach(textRowState);
+            home.groups.forEach(textGroupState);
+        }
+        function textRowState(row) {
+            var key = row.getAttribute('data-key');
+            var changed = false;
+            row.querySelectorAll('textarea').forEach(function (area) {
+                var differs = home.text[key][area.getAttribute('data-lang')] !== home.defaults[key][area.getAttribute('data-lang')];
+                area.classList.toggle('changed', differs);
+                changed = changed || differs;
+            });
+            row.querySelector('[data-act=reset]').hidden = !changed;
+        }
+        function textGroupState(group) {
+            var edited = group.keys.filter(function (key) {
+                return home.text[key].zh !== home.defaults[key].zh || home.text[key].en !== home.defaults[key].en;
+            }).length;
+            var el = document.querySelector('#textGroups .text-group[data-group="' + group.id + '"] .edited');
+            if (el) el.textContent = edited ? edited + ' changed' : '';
+        }
+        function groupOfRow(row) {
+            var id = row.closest('.text-group').getAttribute('data-group');
+            return home.groups.filter(function (group) { return group.id === id; })[0];
+        }
+        $('textGroups').addEventListener('input', function (event) {
+            var area = event.target.closest('textarea');
+            if (!area) return;
+            var row = area.closest('.text-row');
+            home.text[row.getAttribute('data-key')][area.getAttribute('data-lang')] = area.value;
+            textRowState(row);
+            textGroupState(groupOfRow(row));
+            refreshHomeBar();
+        });
+        $('textGroups').addEventListener('click', function (event) {
+            var button = event.target.closest('button[data-act=reset]');
+            if (!button || busy) return;
+            var row = button.closest('.text-row');
+            var key = row.getAttribute('data-key');
+            home.text[key] = { zh: home.defaults[key].zh, en: home.defaults[key].en };
+            row.querySelectorAll('textarea').forEach(function (area) { area.value = home.text[key][area.getAttribute('data-lang')]; });
+            textRowState(row);
+            textGroupState(groupOfRow(row));
+            refreshHomeBar();
+        });
+        $('textSearch').addEventListener('input', function () {
+            var query = this.value.trim().toLowerCase();
+            var any = false;
+            document.querySelectorAll('#textGroups .text-group').forEach(function (group) {
+                var visible = 0;
+                group.querySelectorAll('.text-row').forEach(function (row) {
+                    var key = row.getAttribute('data-key');
+                    var hit = !query || (key + '\n' + home.text[key].zh + '\n' + home.text[key].en).toLowerCase().indexOf(query) >= 0;
+                    row.hidden = !hit;
+                    if (hit) visible++;
+                });
+                group.hidden = !visible;
+                group.open = !!query && visible > 0;
+                any = any || visible > 0;
+            });
+            $('textNoMatch').hidden = any;
+        });
+
+        /* Save / discard */
+        function setHomeBusy(value, text, fraction) {
+            busy = value;
+            ['homeSaveBtn', 'homeDiscardBtn', 'appVideoPick', 'appVideoSave', 'appVideoRestore'].forEach(function (id) { $(id).disabled = value; });
+            if (text) $('homeStatus').textContent = text;
+            $('homeProgress').hidden = fraction === undefined;
+            if (fraction !== undefined) $('homeProgressBar').style.width = Math.round(fraction * 100) + '%';
+            refreshHomeBar();
+        }
+
+        $('homeDiscardBtn').addEventListener('click', function () {
+            if (busy || !home) return;
+            if (!window.confirm('Discard all unsaved changes on this tab?')) return;
+            home = null;
+            setNotice('homeNotice', '');
+            openHome();
+        });
+
+        $('homeSaveBtn').addEventListener('click', function () {
+            if (busy || !homeDirty()) return;
+            setNotice('homeNotice', '');
+            setNotice('homeError', '');
+            var badRow = null;
+            document.querySelectorAll('#linkList .link-row').forEach(function (row) {
+                linkRowState(row);
+                if (!badRow && row.classList.contains('invalid')) badRow = row;
+            });
+            if (badRow) {
+                setNotice('homeError', 'One of the links is not a full address. Use something like https://instagram.com/yourname or an email address.');
+                badRow.scrollIntoView({ block: 'center' });
+                badRow.querySelector('input').focus();
+                return;
+            }
+
+            var uploads = Object.keys(home.images).map(function (src) { return home.images[src]; })
+                .filter(function (item) { return item && item.file && !item.sha; });
+            var chain = Promise.resolve();
+            setHomeBusy(true, 'Saving…', 0.05);
+            uploads.forEach(function (item, index) {
+                chain = chain.then(function () {
+                    setHomeBusy(true, 'Uploading picture ' + (index + 1) + ' of ' + uploads.length + '…', 0.1 + 0.7 * index / uploads.length);
+                    return uploadBlob(item.file).then(function (sha) { item.sha = sha; });
+                });
+            });
+            chain.then(function () {
+                setHomeBusy(true, 'Saving to the website…', 0.9);
+                var payload = homePayload(home);
+                var files = Object.keys(home.images).map(function (src) { return home.images[src]; })
+                    .filter(function (item) { return item && item.file; })
+                    .map(function (item) { return { path: SITE_IMG_DIR + item.name, sha: item.sha }; });
+                return commitChange({
+                    target: 'site',
+                    message: 'Update home page content',
+                    files: files,
+                    prune: {
+                        dir: SITE_IMG_DIR,
+                        keep: function (next) {
+                            return Object.keys(next.images || {}).map(function (src) { return next.images[src].src; });
+                        }
+                    },
+                    mutate: function (data) {
+                        ['text', 'links', 'images'].forEach(function (part) {
+                            if (Object.keys(payload[part]).length) data[part] = payload[part];
+                            else delete data[part];
+                        });
+                        return data;
+                    }
+                });
+            }).then(function (next) {
+                site = next;
+                Object.keys(home.images).forEach(function (src) {
+                    var item = home.images[src];
+                    if (item && item.file) {
+                        localPreviews[SITE_IMG_DIR + item.name] = item.preview;
+                        home.images[src] = { src: SITE_IMG_DIR + item.name, pos: item.pos };
+                    }
+                });
+                Object.keys(home.links).forEach(function (href) { home.links[href] = normalizeLink(home.links[href]) || href; });
+                home.saved = JSON.stringify(homePayload(home));
+                setHomeBusy(false);
+                renderImages();
+                renderLinks();
+                setNotice('homeNotice', 'Saved. The website updates in about a minute — <a href="index.html" target="_blank" rel="noopener">open the home page ↗</a>');
+                window.scrollTo(0, 0);
+            }).catch(function (err) {
+                setHomeBusy(false, 'Not saved yet. Your changes are still here — try again.');
+                setNotice('homeError', T.esc(explain(err)));
+                window.scrollTo(0, 0);
             });
         });
 
@@ -1043,11 +1626,11 @@
         }
 
         // Shrinks big pictures to IMAGE_MAX_SIDE and saves them as JPEG. Small files and GIFs are kept as they are.
-        function processImage(file) {
+        function processImage(file, maxSide) {
             var originalExt = { 'image/jpeg': 'jpg', 'image/png': 'png', 'image/webp': 'webp', 'image/gif': 'gif' }[file.type];
             return loadImage(file).then(function (image) {
                 var width = image.width, height = image.height;
-                var scale = Math.min(1, IMAGE_MAX_SIDE / Math.max(width, height));
+                var scale = Math.min(1, (maxSide || IMAGE_MAX_SIDE) / Math.max(width, height));
                 var keepLimit = file.type === 'image/png' ? 1500 * 1024 : 400 * 1024;
                 if (file.type === 'image/gif' || (scale === 1 && file.size <= keepLimit)) {
                     return { blob: file, ext: originalExt, w: width, h: height };
@@ -1389,7 +1972,7 @@
         $('backBtn').addEventListener('click', leaveEditor);
         $('cancelBtn').addEventListener('click', leaveEditor);
         window.addEventListener('beforeunload', function (event) {
-            if (dirty || busy) { event.preventDefault(); event.returnValue = ''; }
+            if (dirty || busy || homeDirty()) { event.preventDefault(); event.returnValue = ''; }
         });
 
         /* ---------- Start ---------- */

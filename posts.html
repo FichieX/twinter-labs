@@ -2,6 +2,7 @@
 <html lang="zh-Hant" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>最新動態 | Twinter Labs</title>
     <meta name="description" content="Twinter Labs 最新動態：新上線的網站與 APP 作品、開發進度與公告。">
@@ -33,7 +34,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between gap-3">
             <a href="index.html" id="homeLink" class="flex items-center gap-3 whitespace-nowrap">
                 <div class="w-10 h-10 shrink-0 rounded-xl bg-gradient-to-tr from-cyan-600 to-emerald-500 flex items-center justify-center font-display font-black text-xl text-black">
-                    TL
+                    <img src="images/logo.svg" alt="Twinter Labs logo" class="w-full h-full object-cover rounded-xl">
                 </div>
                 <div class="hidden sm:block">
                     <span class="font-display text-lg font-bold text-white block">Twinter Labs</span>
@@ -100,6 +101,7 @@
     </div>
 
     <script src="posts.js"></script>
+    <script src="site.js"></script>
     <script>
         const params = new URLSearchParams(window.location.search);
         const postId = params.get('id');
@@ -256,6 +258,8 @@
             allPosts = posts;
             render();
         });
+        // Contact links and the logo changed in admin.html apply here as well
+        if (window.TLSite) TLSite.load().then(site => { TLSite.applyLinks(site, document); TLSite.applyImages(site, document); });
     </script>
 </body>
 </html>

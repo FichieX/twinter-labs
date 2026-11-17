@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="132 160 960 960" role="img" aria-label="Twinter Labs">
+  <g fill="#111" stroke="#111" stroke-width="54" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="498" cy="384" r="90" stroke="none"/>
+    <circle cx="792" cy="516" r="60" stroke="none"/>
+    <path fill="none" d="M294 564H666M498 564V960M792 636V924H931"/>
+  </g>
+</svg>
