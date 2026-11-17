@@ -1059,7 +1059,11 @@
             var host = (/^https?:\/\/([^\/?#]+)/i.exec(href) || [])[1] || href;
             var known = [[/line\.me$/i, 'LINE'], [/instagram\.com$/i, 'Instagram'], [/facebook\.com$/i, 'Facebook'], [/github\.com$/i, 'GitHub'],
                 [/linkedin\.com$/i, 'LinkedIn'], [/(youtube\.com|youtu\.be)$/i, 'YouTube'], [/(twitter\.com|x\.com)$/i, 'X / Twitter'], [/tiktok\.com$/i, 'TikTok'], [/threads\.(net|com)$/i, 'Threads']];
-            for (var i = 0; i < known.length; i++) if (known[i][0].test(host)) return known[i][1];
+            // e.g. "GitHub · FichieX", so two people's profiles on the same network can be told apart
+            var parts = href.replace(/^https?:\/\/[^\/?#]+\/?/i, '').split(/[?#]/)[0].split('/').filter(Boolean);
+            var handle = parts[0] === 'in' || parts[0] === 'company' || parts[0] === 'ti' ? '' : parts[0];
+            if (/linkedin\.com$/i.test(host) && parts[1]) handle = parts[1].replace(/-[0-9a-f]{6,}$/i, '');
+            for (var i = 0; i < known.length; i++) if (known[i][0].test(host)) return known[i][1] + (handle ? ' · ' + handle : '');
             return 'Website: ' + host.replace(/^www\./i, '');
         }
 
