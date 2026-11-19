@@ -38,16 +38,16 @@
                 </div>
                 <div class="hidden sm:block">
                     <span class="font-display text-lg font-bold text-ink block">Twinter Labs</span>
-                    <span class="text-[10px] text-mint-deep font-sans block -mt-0.5" data-i18n="back_home">返回官網首頁 ←</span>
+                    <span class="text-[10px] text-mint-deep font-sans block -mt-0.5" data-i18n="back_home">回首頁</span>
                 </div>
             </a>
-            <div class="flex gap-5 overflow-x-auto whitespace-nowrap text-sm max-w-full items-center">
+            <div class="flex gap-2 sm:gap-5 whitespace-nowrap text-sm items-center">
                 <button type="button" onclick="toggleLanguage()" class="bg-card border border-line text-ink rounded-xl px-4 py-3 font-semibold hover:border-sea min-h-[44px] transition flex items-center gap-1.5 whitespace-nowrap shrink-0">
                     <i class="fa-solid fa-language text-sm text-mint-deep hidden sm:inline"></i>
                     <span data-i18n="toggle_btn">English</span>
                 </button>
-                <a href="index.html#quick-request" id="orderLink" class="bg-ink text-white rounded-xl px-5 py-3.5 font-semibold hover:bg-mint-deep transition min-h-[48px] w-full sm:w-auto text-center">
-                    <span data-i18n="nav_cta">立即訂購</span> →
+                <a href="index.html#quick-request" id="orderLink" class="bg-mint text-white rounded-xl px-5 py-3.5 font-semibold hover:bg-mint-deep transition min-h-[48px] w-full sm:w-auto text-center">
+                    <span data-i18n="nav_cta">詢價</span> →
                 </a>
             </div>
         </div>
@@ -57,16 +57,12 @@
 
         <!-- All posts -->
         <div id="listView" class="max-w-7xl mx-auto hidden">
-            <div class="text-center max-w-3xl mx-auto space-y-3 mb-14">
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-mint-soft border border-line text-mint-deep font-sans text-xs">
-                    <i class="fa-solid fa-bullhorn"></i>
-                    <span data-i18n="list_badge">最新動態 • 作品更新與公告</span>
-                </div>
-                <h1 class="font-display text-3xl sm:text-5xl font-bold text-ink" data-i18n="list_title">Twinter Labs 最新動態</h1>
-                <p class="text-muted text-base leading-relaxed" data-i18n="list_desc">新上線的網站與 APP、開發中的專案進度，以及我們的最新消息。</p>
+            <div class="space-y-3 mb-10">
+                <h1 class="font-display text-3xl sm:text-5xl font-bold text-ink" data-i18n="list_title">最近動態</h1>
+                <p class="text-muted text-base leading-relaxed" data-i18n="list_desc">看我們最近上線的作品和開發進度。</p>
             </div>
             <div id="postGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
-            <p id="emptyState" class="hidden text-center text-muted font-sans text-sm py-16" data-i18n="empty">目前還沒有貼文，敬請期待。</p>
+            <p id="emptyState" class="hidden text-center text-muted font-sans text-sm py-16" data-i18n="empty">目前還沒有貼文。</p>
         </div>
 
         <!-- Single post -->
@@ -83,11 +79,11 @@
         <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4">
             <p>© 2026 Twinter Labs (www.twinterlabs.com). All Rights Reserved.</p>
             <p>
-                <a href="mailto:Twinterlabs@gmail.com" class="text-white/70 hover:text-mint transition">Twinterlabs@gmail.com</a>
+                <a href="mailto:Twinterlabs@gmail.com" class="text-white/70 hover:text-sea-soft transition">Twinterlabs@gmail.com</a>
                 <span class="text-white/70 mx-2">|</span>
-                <a href="https://line.me/ti/p/rsc69htRfX" target="_blank" rel="noopener" class="text-white/70 hover:text-mint transition">LINE</a>
+                <a href="https://line.me/ti/p/rsc69htRfX" target="_blank" rel="noopener" class="text-white/70 hover:text-sea-soft transition">LINE</a>
                 <span class="text-white/70 mx-2">|</span>
-                <a href="https://instagram.com/TwinterLabs" target="_blank" rel="noopener" class="text-white/70 hover:text-mint transition">Instagram</a>
+                <a href="https://instagram.com/TwinterLabs" target="_blank" rel="noopener" class="text-white/70 hover:text-sea-soft transition">Instagram</a>
             </p>
         </div>
     </footer>
@@ -113,14 +109,14 @@
         const translations = {
             zh: {
                 toggle_btn: 'English',
-                back_home: '返回官網首頁 ←',
-                nav_cta: '立即訂購',
-                list_badge: '最新動態 • 作品更新與公告',
-                list_title: 'Twinter Labs 最新動態',
-                list_desc: '新上線的網站與 APP、開發中的專案進度，以及我們的最新消息。',
-                empty: '目前還沒有貼文，敬請期待。',
+                back_home: '回首頁',
+                nav_cta: '詢價',
+                list_badge: '',
+                list_title: '最近動態',
+                list_desc: '看我們最近上線的作品和開發進度。',
+                empty: '目前還沒有貼文。',
                 back_all: '所有動態',
-                not_found: '找不到這篇貼文，可能已經被移除。',
+                not_found: '找不到這篇貼文。',
                 page_title: '最新動態 | Twinter Labs'
             },
             en: {
