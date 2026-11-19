@@ -76,7 +76,7 @@
         <div class="tl-container">
             <h2 class="tl-heading" data-i18n="srv_title">我們做什麼</h2>
             <p class="tl-intro" data-i18n="srv_desc">從店家官網到訂單後台，都可以找我們。</p>
-            <div class="tl-service-grid">
+            <div class="tl-service-grid lg:grid-cols-3">
                 <article class="tl-service">
                     <div class="tl-service-top">
                         <i class="fa-solid fa-window-maximize" aria-hidden="true"></i>
@@ -120,21 +120,38 @@
                     <p class="text-muted" data-i18n="srv3_time"></p>
                     <a href="#quick-request" onclick="selectService('Full-Stack Custom System Architecture')" class="tl-button tl-primary" data-i18n="srv3_cta">詢問系統</a>
                 </article>
-                <article class="tl-service">
-                    <div class="tl-service-top">
-                        <i class="fa-solid fa-chart-line" aria-hidden="true"></i>
-                    </div>
-                    <h3 data-i18n="srv4_t">交易自動化</h3>
-                    <p data-i18n="srv4_d">把你的進出場規則寫成程式。</p>
-                    <ul>
-                        <li data-i18n="srv4_b1">依策略寫程式</li>
-                        <li data-i18n="srv4_b2">自動停損</li>
-                        <li><a href="quant.html" class="tl-inline-link" data-i18n="srv4_b3">看回測案例</a></li>
-                    </ul>
-                    <p class="text-muted" data-i18n="srv4_time"></p>
-                    <a href="#quick-request" onclick="selectService('Custom Quantitative & Algorithmic System (MQL5 / Python)')" class="tl-button tl-primary" data-i18n="srv4_cta">詢問交易程式</a>
-                </article>
             </div>
+            <article class="mt-4 rounded-2xl border-t-4 border-mauve bg-ink p-6 text-white shadow-lift sm:p-8">
+                <div class="grid gap-6 md:grid-cols-2 md:items-center md:gap-8">
+                    <div class="space-y-3">
+                        <span class="inline-block rounded-full bg-mauve-deep px-3 py-1 text-xs font-bold text-white" data-i18n="bot_badge">真實回測</span>
+                        <h3 class="text-2xl font-extrabold text-white sm:text-3xl" data-i18n="srv4_t">交易自動化</h3>
+                        <p class="text-white/75" data-i18n="srv4_d">把你的進出場規則寫成程式。</p>
+                        <ul class="list-disc space-y-1 pl-5 text-white/80 marker:text-mauve">
+                            <li data-i18n="srv4_b1">依策略寫程式</li>
+                            <li data-i18n="srv4_b2">自動停損</li>
+                            <li class="hidden"><a href="quant.html" class="tl-inline-link" data-i18n="srv4_b3">看回測案例</a></li>
+                        </ul>
+                        <p class="text-sm text-white/75" data-i18n="srv4_time"></p>
+                    </div>
+                    <div class="grid grid-cols-2 gap-3">
+                        <div class="rounded-xl border border-white/10 bg-white/5 p-4">
+                            <p class="text-3xl font-extrabold text-mint-soft">3.14</p>
+                            <span class="text-xs text-white/60" data-i18n="bot_stat1_l">獲利因子</span>
+                        </div>
+                        <div class="rounded-xl border border-white/10 bg-white/5 p-4">
+                            <p class="text-3xl font-extrabold text-mint-soft">1.55%</p>
+                            <span class="text-xs text-white/60" data-i18n="bot_stat2_l">最大回檔</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-6 grid gap-3 sm:flex sm:flex-wrap">
+                    <a href="quant.html" class="tl-button min-h-[48px] bg-mauve text-xl font-bold text-white hover:bg-mauve-deep focus-visible:outline-white">
+                        <span data-i18n="bot_cta">看完整回測報告</span>
+                    </a>
+                    <a href="#quick-request" onclick="selectService('Custom Quantitative & Algorithmic System (MQL5 / Python)')" class="tl-button min-h-[48px] border border-white/20 bg-white/10 text-white hover:bg-white/20 focus-visible:outline-white" data-i18n="srv4_cta">詢問交易程式</a>
+                </div>
+            </article>
             <div class="tl-care">
                 <p><strong data-i18n="care_title">每月維護</strong><span data-i18n="care_desc">可代管網域、備份和更新圖文。</span></p>
                 <a href="#quick-request" onclick="selectService('Monthly Website & System Maintenance Plan (NT$1,500 - 3,500/mo)')" class="tl-button tl-outline" data-i18n="care_cta">詢問維護</a>
@@ -503,6 +520,10 @@
                 srv3_b2: "店家管理後台",
                 srv3_b3: "訂單通知",
                 srv3_cta: "詢問系統",
+                bot_badge: "真實回測",
+                bot_stat1_l: "獲利因子",
+                bot_stat2_l: "最大回檔",
+                bot_cta: "看完整回測報告",
                 srv4_time: "約 1–3 週交付",
                 srv4_t: "交易自動化",
                 srv4_price: "",
