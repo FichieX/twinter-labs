@@ -870,6 +870,9 @@
             setMode(currentMode);
             renderHomePosts();
             applySiteContent();
+            document.querySelectorAll('a[href="quant.html"], a[href="quant.html?lang=en"]').forEach(link => {
+                link.setAttribute('href', lang === 'en' ? 'quant.html?lang=en' : 'quant.html');
+            });
         }
 
         // Changes saved from admin.html (content/site.json): links and pictures are re-applied after every language switch
