@@ -15,14 +15,7 @@
     <link rel="stylesheet" href="theme.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KG0RQ0JYED"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-KG0RQ0JYED');
-    </script>
+    <script src="consent.js?v=20261119" charset="utf-8" defer></script>
 </head>
 <body class="bg-paper text-ink2 antialiased">
 
@@ -433,6 +426,7 @@
                 <a href="https://line.me/ti/p/rsc69htRfX" target="_blank" rel="noopener">LINE</a>
                 <a href="https://instagram.com/TwinterLabs" target="_blank" rel="noopener">Instagram</a>
                 <button onclick="document.getElementById('privacy-modal').classList.remove('hidden')" data-i18n="footer_privacy">隱私權聲明</button>
+                <button type="button" onclick="window.tlConsent && tlConsent.open()" data-i18n="cookie_settings">Cookie 設定</button>
             </div>
             <p class="text-sm text-sea-soft">© 2026 Twinter Labs</p>
         </div>
@@ -443,7 +437,9 @@
 
     <!-- Bilingual Dictionary, Language Switcher, URL Query Pre-select & Frictionless Native Form Handler -->
     <script>
-        let currentLang = 'zh';
+        const params = new URLSearchParams(window.location.search);
+        let currentLang = params.get('lang') === 'en' ? 'en' : 'zh';
+        document.documentElement.lang = currentLang === 'en' ? 'en' : 'zh-Hant';
         let currentMode = 'product';
 
         const translations = {
@@ -606,8 +602,9 @@
                 fnd2_edu: "淡江大學資訊工程學系",
                 fnd2_bio: "負責網站、App 和後台串接。",
                 footer_privacy: "隱私權聲明",
+                cookie_settings: "Cookie 設定",
                 priv_title: "隱私權聲明",
-                priv_body: "<p><strong class=\"text-ink\">瀏覽資料</strong>　本網站使用 Google Analytics 統計瀏覽情況。</p><p><strong class=\"text-ink\">聯絡資料</strong>　我們使用你提供的姓名、聯絡方式和需求來回覆詢問、估價及提供專案服務。</p><p><strong class=\"text-ink\">查詢與更正</strong>　你可寄信到 Twinterlabs@gmail.com，查詢、更正或刪除聯絡資料。</p>",
+                priv_body: "<p><strong class=\"text-ink\">1. Cookie：</strong>你按「同意」後，我們才會用 Google Analytics 的 Cookie 計算造訪人數。按「不同意」就不會追蹤。隨時可以在頁尾「Cookie 設定」更改。</p><p><strong class=\"text-ink\">聯絡資料</strong>　我們使用你提供的姓名、聯絡方式和需求來回覆詢問、估價及提供專案服務。</p><p><strong class=\"text-ink\">查詢與更正</strong>　你可寄信到 Twinterlabs@gmail.com，查詢、更正或刪除聯絡資料。</p>",
                 priv_close: "關閉",
                 proc_badge: "",
                 proc_title: "怎麼合作",
@@ -890,12 +887,16 @@
 
         function toggleLanguage() {
             currentLang = currentLang === 'zh' ? 'en' : 'zh';
+            const url = new URL(window.location.href);
+            if (currentLang === 'en') url.searchParams.set('lang', 'en');
+            else url.searchParams.delete('lang');
+            history.replaceState(history.state, '', url);
             applyLanguage(currentLang);
         }
 
         function applyLanguage(lang) {
             const dict = translations[lang];
-            document.documentElement.lang = lang === 'zh' ? 'zh-Hant' : 'en';
+            document.documentElement.lang = currentLang === 'en' ? 'en' : 'zh-Hant';
             document.getElementById('langToggleText').innerText = dict.toggle_btn;
 
             document.querySelectorAll('[data-i18n]').forEach(el => {
@@ -1024,7 +1025,6 @@
 
         // Pre-select service when redirected from pilates-demo.html or quant.html
         window.addEventListener('DOMContentLoaded', () => {
-            const params = new URLSearchParams(window.location.search);
             const svc = params.get('service');
             const map = {
                 website: 'Commercial Website / Web Platform',
@@ -1038,10 +1038,7 @@
             }
 
             // Keep English when coming back from posts.html?lang=en
-            if (params.get('lang') === 'en') {
-                currentLang = 'en';
-                applyLanguage('en');
-            }
+            if (currentLang === 'en') applyLanguage(currentLang);
 
             // Content saved from admin.html: app video, text, links and pictures. Without it the page stays as written here.
             const appVideo = document.getElementById('appDemoVideo');
@@ -1074,7 +1071,7 @@
                 <h3 id="privacy-title" class="font-display text-lg font-bold text-ink" data-i18n="priv_title">隱私權聲明</h3>
                 <button onclick="document.getElementById('privacy-modal').classList.add('hidden')" class="text-muted hover:text-mint-deep text-xl leading-none min-w-[44px] min-h-[44px]">&times;</button>
             </div>
-            <div class="space-y-3 text-xs leading-relaxed text-muted max-h-[60vh] overflow-y-auto pr-1" data-i18n="priv_body"><p><strong class="text-ink">瀏覽資料</strong>　本網站使用 Google Analytics 統計瀏覽情況。</p><p><strong class="text-ink">聯絡資料</strong>　我們使用你提供的姓名、聯絡方式和需求來回覆詢問、估價及提供專案服務。</p><p><strong class="text-ink">查詢與更正</strong>　你可寄信到 Twinterlabs@gmail.com，查詢、更正或刪除聯絡資料。</p></div>
+            <div class="space-y-3 text-xs leading-relaxed text-muted max-h-[60vh] overflow-y-auto pr-1" data-i18n="priv_body"><p><strong class="text-ink">1. Cookie：</strong>你按「同意」後，我們才會用 Google Analytics 的 Cookie 計算造訪人數。按「不同意」就不會追蹤。隨時可以在頁尾「Cookie 設定」更改。</p><p><strong class="text-ink">聯絡資料</strong>　我們使用你提供的姓名、聯絡方式和需求來回覆詢問、估價及提供專案服務。</p><p><strong class="text-ink">查詢與更正</strong>　你可寄信到 Twinterlabs@gmail.com，查詢、更正或刪除聯絡資料。</p></div>
             <div class="pt-2 text-right">
                 <button onclick="document.getElementById('privacy-modal').classList.add('hidden')" class="bg-mint text-white rounded-xl px-5 py-3.5 font-semibold hover:bg-mint-deep transition min-h-[48px] w-full sm:w-auto inline-flex items-center justify-center gap-2" data-i18n="priv_close">關閉</button>
             </div>
